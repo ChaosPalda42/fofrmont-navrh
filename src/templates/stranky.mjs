@@ -35,10 +35,12 @@ export function uvod(ctx) {
         </div>
         <div class="hero__vykres je-videt" data-kriz>
         <div data-varianta-obsah="b2b">${vykresB2b({
-          kota1: "4 000", kota2: "+3,60", jednotka: "VZT jednotka 12 000 m³/h", odbocka: "Ø 400 — odbočka do sálu",
+          kota1: t("uvod.vykresKota1"), kota2: t("uvod.vykresKota2"),
+          jednotka: t("uvod.vykresJednotka"), odbocka: t("uvod.vykresOdbocka"),
         })}</div>
         <div data-varianta-obsah="b2c" hidden>${vykresB2c({
-          kota1: "2 600", kota2: "+4,40", jednotka: "TČ vzduch–voda 14 kW", zasobnik: "Akumulace + TUV",
+          kota1: t("uvod.vykresKota1c"), kota2: t("uvod.vykresKota2c"),
+          jednotka: t("uvod.vykresTc"), zasobnik: t("uvod.vykresZasobnik"),
         })}</div>
         <div class="kriz" aria-hidden="true">
           <div class="kriz__v"></div><div class="kriz__h"></div>

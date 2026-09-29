@@ -1,0 +1,530 @@
+{
+  "administrace": {
+    "dataLead": "You can download changes as a file and upload them back on another computer.",
+    "exportovat": "Download changes",
+    "importovat": "Upload changes",
+    "lead": "This is what the website management interface would look like. In this demo, everything is stored only in your browser — nothing is sent to the server, and simply clearing the page data will return the website to its original state.",
+    "nadpis": "Administration",
+    "oznacitPrectene": "Mark as read",
+    "poptavkyLead": "This is where inquiries from forms arrive. In the live version, an email would also be sent simultaneously.",
+    "poptavkyPrazdno": "Nothing has arrived yet. Fill out the form on the website and come back here.",
+    "prehledPoptavky": "Unread inquiries",
+    "prehledRecenzeCeka": "Reviews pending approval",
+    "prehledStavby": "Projects on the website",
+    "prehledTexty": "Edited texts",
+    "pridatStavbu": "Add project",
+    "prihlaseni": "Login",
+    "prihlaseniLead": "The demo is password-free — administration is part of the design, not a live system.",
+    "recenzeLead": "New reviews are awaiting approval. Approved reviews will be displayed on the website.",
+    "schvalit": "Approve",
+    "skryt": "Hide",
+    "smazat": "Delete",
+    "stavCeka": "Pending",
+    "stavSchvalena": "Approved",
+    "stavSkryta": "Hidden",
+    "stavbyLead": "Add and edit buildings. Fields correspond to what is shown on the website.",
+    "stitek": "Demo administration",
+    "textyHledat": "Search in texts",
+    "textyLead": "Click on the text to rewrite it. Changes will be reflected on the website immediately.",
+    "textyPuvodni": "Original text",
+    "textyVratit": "Restore original",
+    "ulozeno": "Saved",
+    "ulozit": "Save",
+    "vstoupit": "Go to administration",
+    "vymazat": "Discard all changes",
+    "vymazatPotvrzeni": "Are you sure you want to delete all changes and revert the website to its original state?",
+    "zalozkaData": "Export and import",
+    "zalozkaPoptavky": "Incoming inquiries",
+    "zalozkaPrehled": "Overview",
+    "zalozkaRecenze": "Reviews",
+    "zalozkaStavby": "Projects",
+    "zalozkaTexty": "Texts",
+    "zrusit": "Cancel"
+  },
+  "b2b": {
+    "ctaNadpis": "Do you have a tender inquiry?",
+    "ctaText": "Send the Bill of Quantities. We will provide itemized pricing and deadlines that we can meet.",
+    "lead": "We are capable of operating on large-scale construction sites: coordination meetings, HSE protocols, phasing, and handovers. For MEP trades, we are a single point of contact instead of four.",
+    "nadpis": "A subcontractor that sticks to the schedule",
+    "postup": [
+      "Send us the Bill of Quantities or the project documentation, ideally including the deadline for completion.",
+      "Within two working days, we will confirm whether we can take on the job and arrange a site inspection.",
+      "You will receive an itemized quote and a schedule aligned with yours.",
+      "After signing, we move to coordination and begin with penetrations and preparation."
+    ],
+    "postupNadpis": "How we start working together",
+    "stitek": "For general contractors",
+    "vyhody": [
+      {
+        "nadpis": "One supplier for four trades",
+        "text": "HVAC, heating, plumbing, and cooling all under one contract. We resolve clashes between trades internally, not during coordination meetings."
+      },
+      {
+        "nadpis": "Documentation provided with every quote",
+        "text": "Liability insurance, team qualifications, welding certificates, and references. We send them immediately, so you don't have to wait."
+      },
+      {
+        "nadpis": "Installation during operation",
+        "text": "Night shifts, weekends, and phasing by floors or production lines. We have extensive experience from hospitals and terminals."
+      },
+      {
+        "nadpis": "3D Coordination",
+        "text": "We detect clashes in ceilings using the model even before ordering materials. It's cheaper than after installation."
+      },
+      {
+        "nadpis": "In-house teams",
+        "text": "We don't outsource. You know exactly who is coming to your site and who is responsible."
+      },
+      {
+        "nadpis": "Handover with protocols",
+        "text": "Pressure tests, balancing, flow measurements, as-built documentation."
+      }
+    ],
+    "vyhodyNadpis": "What you get from us"
+  },
+  "b2c": {
+    "ctaNadpis": "Want to know how much it will cost?",
+    "ctaText": "Write to us about your needs. We will contact you, arrange a site visit, and you will receive a quote within a week.",
+    "lead": "Heat pumps, water and heating distribution in houses and apartments. We work with the same care as on large-scale construction sites — just on a smaller scale and with booties.",
+    "nadpis": "For homes where others said it's impossible",
+    "stitek": "For households",
+    "tcNadpis": "Heat pump for tight spaces",
+    "tcText": "We are most often called when the technical room is only two square meters, neighbors are three meters from the fence, and the facade must not be disturbed. That is exactly the kind of job we want.",
+    "vyhody": [
+      {
+        "nadpis": "We'll come for a site visit",
+        "text": "We do not provide quotes without a site inspection. We will assess the space, measure it, and tell you what is feasible and what is not."
+      },
+      {
+        "nadpis": "The quoted price is binding",
+        "text": "Additional work only arises if something is discovered inside a wall. We will inform you before we proceed."
+      },
+      {
+        "nadpis": "We clean up after ourselves",
+        "text": "Every day. Cutting and grinding are performed outside living areas; dust stays out of the house."
+      },
+      {
+        "nadpis": "We coordinate with neighbors",
+        "text": "If a riser passes through three apartments or an outdoor unit is near a fence, we handle it, not you."
+      }
+    ],
+    "vyhodyNadpis": "What it means for you"
+  },
+  "chyba404": {
+    "cta": "Back to home",
+    "lead": "The page you are looking for is not here. Try returning to the home page or take a look at our projects.",
+    "nadpis": "This path leads nowhere"
+  },
+  "dotazy": {
+    "hledat": "Search FAQs",
+    "lead": "If you can't find the answer here, give us a call. We also answer questions where the answer might be \"we don't do that\".",
+    "nadpis": "Most frequently asked questions",
+    "nenalezeno": "We don't have an answer for this. Please ask us directly.",
+    "stitek": "Frequently Asked Questions"
+  },
+  "jakPracujeme": {
+    "celkem": "Total",
+    "harmonogramNadpis": "Sample schedule",
+    "harmonogramPopis": "Medium-sized project: HVAC and heating in an office building. Bars indicate working days, the critical path is highlighted.",
+    "kritickaCesta": "Critical path",
+    "lead": "Eight steps from the first call to handover. The schedule below is a sample — it will differ for your construction project, but the sequence remains the same.",
+    "nadpis": "How we work",
+    "pracovnichDnu": "working days",
+    "pravidla": [
+      {
+        "nadpis": "Cleaned and functional every morning",
+        "text": "When installing during operation, each block is handed over in an operational state every morning. No \"we'll finish it tomorrow\"."
+      },
+      {
+        "nadpis": "Reporting discrepancies immediately",
+        "text": "Discrepancies between the design and reality are reported after site measurement, not after installation. We will propose a solution and have it confirmed by the designer."
+      },
+      {
+        "nadpis": "One team from start to finish",
+        "text": "We don't outsource the work. The people who come for the site survey are the ones who will install it."
+      },
+      {
+        "nadpis": "Handover with full documentation",
+        "text": "Test reports, commissioning, as-built documentation, and operator training. Not just keys and a handshake."
+      }
+    ],
+    "pravidlaNadpis": "Four rules we follow on site",
+    "stitek": "Procedure"
+  },
+  "kalkulacky": {
+    "lead": "Three simple calculators for a preliminary idea. They do not replace a design or a quote — but they show the order of magnitude of what we are talking about.",
+    "nadpis": "Get a rough estimate",
+    "rekCena": "Energy price (CZK/kWh)",
+    "rekDelta": "Temperature difference (K)",
+    "rekDnu": "Days per year",
+    "rekHodin": "Hours per day",
+    "rekKoruny": "In money",
+    "rekKwh": "Annual savings",
+    "rekNadpis": "Heat recovery savings",
+    "rekPopis": "How much is saved by heat recovery compared to exhausting air without it.",
+    "rekPrutok": "Flow rate (m³/h)",
+    "rekUcinnost": "Heat recovery efficiency",
+    "rekVykon": "Thermal output",
+    "stitek": "Indicative calculations",
+    "tcMerna": "Specific heat loss (W/m²)",
+    "tcNadpis": "Heat pump capacity",
+    "tcNovostavba": "New building (30 W/m²)",
+    "tcPlocha": "Heated area (m²)",
+    "tcPokryti": "Demand coverage",
+    "tcPopis": "Based on the area and specific heat loss, we estimate the required capacity and find the closest size.",
+    "tcPotreba": "Required capacity",
+    "tcStarsi": "Older uninsulated (100 W/m²)",
+    "tcTuv": "Hot water heating load (kW)",
+    "tcVykon": "Designed capacity",
+    "tcVyska": "Clear height (m)",
+    "tcZateplenyDum": "Insulated house (55 W/m²)",
+    "tcZtrata": "Heat loss",
+    "upozorneni": "Results are indicative. Actual values are based on the design and site inspection.",
+    "vztDavka": "Airflow per person (m³/h)",
+    "vztDelka": "Length (m)",
+    "vztHranate": "Rectangular variant",
+    "vztNadpis": "Airflow and duct dimensions",
+    "vztNavrh": "Designed airflow",
+    "vztNorma": "From the standard series",
+    "vztObjem": "Room volume",
+    "vztOsoby": "Number of persons",
+    "vztPodleOsob": "Based on occupancy",
+    "vztPodleVymen": "Based on air changes",
+    "vztPopis": "Enter the room dimensions and the number of air changes. We will calculate the required flow rate and suggest a pipe diameter from the standard range.",
+    "vztPrumer": "Pipe diameter",
+    "vztRychlost": "Duct velocity (m/s)",
+    "vztSirka": "Width (m)",
+    "vztSkutecna": "Actual velocity",
+    "vztVymeny": "Air changes per hour",
+    "vztVyska": "Height (m)"
+  },
+  "kariera": {
+    "formularLead": "You don't need to send a CV. Just write what you can do and where you have worked.",
+    "formularNadpis": "Get in touch",
+    "lead": "We are hiring for permanent teams. Work is in Prague and its surroundings, on large construction sites as well as in family houses. If you want simple jobs, you won't be bored with us — but you won't be entertained either.",
+    "misto": "Location",
+    "nabizime": [
+      "Jobs that others refused. It won't be boring.",
+      "A steady crew, not being shuffled between sites every week.",
+      "Tools, platforms, and machinery, not improvisation.",
+      "On-time payment. Always.",
+      "Paid courses and certifications required for your work.",
+      "Full-time employment or B2B cooperation, depending on what suits you."
+    ],
+    "nabizimeNadpis": "What we offer",
+    "nadpis": "We are looking for people who are skilled with their hands",
+    "odeslano": "Thank you, we will get back to you. In this demo, the message ended up in administration.",
+    "odeslat": "Submit",
+    "poleEmail": "E-mail",
+    "poleJmeno": "First and last name",
+    "polePozice": "Position applied for",
+    "poleSouhlas": "I consent to the processing of my personal data for recruitment purposes",
+    "poleTelefon": "Phone",
+    "poleText": "What you can do and where you have worked",
+    "pozadujeme": "What you need to know",
+    "poziceNadpis": "Open positions",
+    "stitek": "Careers",
+    "uvazek": "Employment type"
+  },
+  "kontakt": {
+    "fakturacniNadpis": "Billing information",
+    "formularNadpis": "Contact us",
+    "lead": "The fastest way is by phone. If you need a quote, send the project or bill of quantities directly — it will save a step.",
+    "mapaPopis": "Company headquarters, Roháčova 145/14, Prague 3-Žižkov",
+    "nadpis": "Get in touch",
+    "odeslano": "Thank you. In this demo, the message ended up in the administration among incoming inquiries.",
+    "odeslat": "Send message",
+    "poleEmail": "Email",
+    "poleFirma": "Company (optional)",
+    "poleJmeno": "First and last name",
+    "poleSouhlas": "I agree to the processing of data for handling the inquiry",
+    "poleTelefon": "Phone (optional)",
+    "poleTyp": "Subject",
+    "poleZprava": "Message",
+    "provozniDoba": "Opening hours",
+    "stitek": "Contact",
+    "typJine": "Other",
+    "typKariera": "Career",
+    "typObhlidka": "Request a site inspection",
+    "typPoptavka": "Installation inquiry",
+    "udajeNadpis": "Contact details"
+  },
+  "meta": {
+    "popis": "Installation company for ventilation, heating, plumbing, and cooling. Turnkey supply and installation for general contractors and households.",
+    "pripona": "FOFRMONT CZ",
+    "titulek": "FOFRMONT CZ — MEP installations"
+  },
+  "montaze": {
+    "lead": "Six MEP trades. You can choose one, or all of them under a single contract — the latter is often cheaper and faster.",
+    "nadpis": "What we install",
+    "nedelameLead": "We'd rather be upfront than have you find out halfway through the construction.",
+    "nedelameNadpis": "What we don't do"
+  },
+  "narocne": {
+    "ctaNadpis": "Did you get a high difficulty score?",
+    "ctaText": "Excellent. That's a job for us. Send us the specifications, and we'll come to take a look.",
+    "doporuceniNadpis": "What to expect with such a project",
+    "lead": "Chiseling into a historic vault, piping eleven meters above passengers' heads, a pump for a pantry. Here is our indicative difficulty meter — answer six questions and see how we view your project.",
+    "mericNadpis": "Difficulty Meter",
+    "mericPopis": "For each factor, select the option that fits best. The result is indicative, but it tells you what to expect with us.",
+    "nadpis": "Challenging spaces",
+    "priklady": "Three projects where we scored high",
+    "prispevkyNadpis": "What increases difficulty the most",
+    "stitek": "Our specialty",
+    "vysledekChybi": "Select {pocet} more, to make it complete.",
+    "vysledekNadpis": "Complexity estimate"
+  },
+  "nav": {
+    "administrace": "Administration",
+    "b2b": "For general contractors",
+    "b2c": "For households",
+    "dotazy": "FAQ",
+    "jakPracujeme": "How we work",
+    "kalkulacky": "Indicative calculations",
+    "kariera": "Careers",
+    "kontakt": "Contact",
+    "montaze": "What we install",
+    "narocne": "Challenging spaces",
+    "oNas": "About us",
+    "poptavka": "Inquiry",
+    "prokoho": "For whom",
+    "recenze": "Reviews",
+    "stavby": "Projects",
+    "uvod": "Home",
+    "dalsi": "More"
+  },
+  "oNas": {
+    "dic": "VAT ID",
+    "faktaNadpis": "Company Information",
+    "ico": "Company ID",
+    "jednatel": "Managing Director",
+    "kapital": "Share Capital",
+    "lead": "FOFRMONT CZ is an installation company based in Prague's Žižkov district. Since 2014, we have been installing building services — for general contractors on large-scale projects as well as directly for investors and households.",
+    "nadpis": "Who we are",
+    "partneriNadpis": "Our partners",
+    "partneriText": "For tasks we do not perform in-house, we provide services through verified partners: design, refrigerant charging and vacuuming, measurement and control, regular service, and inspections. For you, it remains a single contract.",
+    "pribeh": "We are not a design office that took up installation as a side business, nor a trading company that resells work. We are the ones who show up with tools. This has two practical consequences: we know what looks good on a drawing but is impossible to assemble in reality, and we have no one to shift the responsibility to when things go wrong.\n\nOver years on construction sites, we have accumulated projects that others refused — installation above an operating terminal, renovation in a cultural monument, a pump in a space where doors could not be opened. We found that this is exactly what we enjoy and where we outperform the competition.",
+    "pribehNadpis": "What sets us apart",
+    "pusobnost": "Scope of operations",
+    "sidlo": "Headquarters",
+    "stitek": "About us",
+    "tymLead": "Permanent teams of fitters, plumbers, and welders. For every project, we send the same team that performed the site survey.",
+    "tymNadpis": "Who performs the installation",
+    "tymPozice": [
+      {
+        "nazev": "HVAC installers",
+        "text": "Ductwork, units, terminal elements. Working at heights and from platforms."
+      },
+      {
+        "nazev": "Plumbers and heating engineers",
+        "text": "Water supply, sewage, and heating systems, boiler rooms, and transfer stations."
+      },
+      {
+        "nazev": "Welders",
+        "text": "Steel, copper, carbon steel. Valid certifications, pressure testing."
+      },
+      {
+        "nazev": "Site managers",
+        "text": "Project management, site coordination, handovers, and commissioning."
+      }
+    ],
+    "vznik": "Recorded",
+    "zapis": "File reference"
+  },
+  "obor": {
+    "chlazeni": {
+      "detail": "Insulated cooling distribution, fan coils, chilled beams, connection of chillers and dry coolers. We handle condensate drainage together with plumbing (ZTI), so there is no downtime waiting for another trade.",
+      "kdyVolat": "When you are dealing with cooling distribution, fan coils, or cooling of technology that cannot be shut down even for a minute."
+    },
+    "coDelameNadpis": "Our expertise",
+    "dalsiObory": "Other trades",
+    "kdyVolat": "When to call us",
+    "klic": {
+      "detail": "We source materials and equipment, assemble them, and hand them over with protocols. One schedule, one responsibility, one invoice. We handle coordination with other trades on-site ourselves.",
+      "kdyVolat": "When you don't want to coordinate three different suppliers and deal with who is responsible for what."
+    },
+    "stavbyNadpis": "Projects in this discipline",
+    "stitek": "Trade",
+    "tc": {
+      "detail": "Air-to-water and ground-to-water heat pumps, including thermal storage, hot water heating, and bivalent sources. We install outdoor units on anti-vibration frames and handle noise reduction to prevent disputes with neighbors.",
+      "kdyVolat": "When you want a heat pump but the technical room is small, neighbors are close, and the facade must not be disturbed."
+    },
+    "ut": {
+      "detail": "We provide piping in copper, steel, carbon steel, and plastic. We install boiler rooms and transfer stations, including pumps, valves, and control system connections. Every system is pressure tested, flushed, and balanced.",
+      "kdyVolat": "When you need piping, radiators, underfloor heating, or an entire boiler room — and you want a single company to handle everything from the pipe to the pressure test."
+    },
+    "vzt": {
+      "detail": "We install rectangular and round ductwork, units, heat recovery systems, and terminal elements. We commonly work in suspended ceilings where space is limited to centimeters, and above operational areas that cannot be shut down. After installation, we balance the system and provide flow rate reports.",
+      "kdyVolat": "When you have a ventilation project and need a crew that will assemble it on time and within a space that looked much larger on the blueprints."
+    },
+    "zti": {
+      "detail": "Internal water supply including fire protection, sewage and stormwater drainage, hot water circulation, and its regulation. We specialize in rerouting during operation, where water continues to flow and downtime lasts hours, not days.",
+      "kdyVolat": "When you need water supply, drainage, or sanitary fixtures — often in a building where another company said it couldn't be done."
+    }
+  },
+  "patka": {
+    "copyright": "© {rok} FOFRMONT CZ s.r.o.",
+    "kontaktNadpis": "Contact",
+    "navigaceNadpis": "Navigation",
+    "navigaceNadpis2": "Who we are and About us",
+    "oNasNadpis": "FOFRMONT CZ s.r.o.",
+    "oNasText": "Installation of building services. Ventilation, heating, plumbing, and cooling — supply and installation.",
+    "ochranaUdaju": "Data Protection",
+    "pravniNadpis": "Legal",
+    "ukazkaPozn": "Website design sample. It is not indexed and does not serve as a live company presentation."
+  },
+  "poptavka": {
+    "dalsi": "Continue",
+    "kontaktNadpis": "Contact details",
+    "krok": "Step {cislo} of {celkem}",
+    "lead": "Six to eight questions depending on who you are. You can go back and change your answers at any time.",
+    "moznosti": {
+      "objektBd": "Apartment building",
+      "objektByt": "Apartment",
+      "objektChata": "Cottage or cabin",
+      "objektHala": "Production hall",
+      "objektJine": "Something else",
+      "objektKancelar": "Offices",
+      "objektRd": "Family house",
+      "objektSkola": "School or kindergarten",
+      "objektZdravotnictvi": "Healthcare",
+      "terminIhned": "As soon as possible",
+      "terminKvartal": "Within three months",
+      "terminNevim": "I don't know yet",
+      "terminPul": "Within six months"
+    },
+    "nadpis": "Tell us what you need",
+    "odeslano": "Inquiry sent",
+    "odeslanoText": "In the live version, it would now be sent via email and to the system. In this demo, you can find it in the administration under received inquiries.",
+    "odeslat": "Submit inquiry",
+    "otazky": {
+      "objekt": "What type of building is it?",
+      "obory": "Which trades do you require?",
+      "plocha": "Approximate area in m²",
+      "pozn": "What else should we know?",
+      "projekt": "Do you have a completed design?",
+      "provoz": "Will the building be operational during installation?",
+      "segment": "Who is inquiring?",
+      "termin": "When should the installation take place?"
+    },
+    "poleEmail": "E-mail",
+    "poleFirma": "Company",
+    "poleIco": "Company ID",
+    "poleJmeno": "Full name",
+    "poleSouhlas": "I consent to the processing of data for the purpose of handling the inquiry",
+    "poleTelefon": "Phone",
+    "shrnutiNadpis": "Summary",
+    "stitek": "Inquiry",
+    "znovu": "Fill out again",
+    "zpet": "Back"
+  },
+  "recenze": {
+    "doporucuje": "{procent} % of writers would recommend us again",
+    "filtrB2b": "Companies",
+    "filtrB2c": "Residential",
+    "filtrVse": "All",
+    "formularLead": "Have we worked for you? Let us know how it went. Reviews will be published after approval.",
+    "formularNadpis": "Write a review",
+    "keStavbe": "To the project",
+    "lead": "Ratings from investors, site managers, technical supervisors, and homeowners. All published reviews undergo an approval process.",
+    "nadpis": "Reviews",
+    "odeslano": "Thank you. The review is awaiting approval — in this demo, you can find it in the administration.",
+    "odeslat": "Submit review",
+    "poleDoporucuje": "I would recommend Fofrmont further",
+    "poleEmail": "Email (will not be published)",
+    "poleFirma": "Company and position (optional)",
+    "poleHodnoceni": "Rating",
+    "poleJmeno": "First and last name",
+    "poleSegment": "Where are you viewing from",
+    "poleSouhlas": "I agree to the publication of the review after approval",
+    "poleText": "Your experience",
+    "prumerPopis": "average rating",
+    "razeni": "Sorting",
+    "razeniNejhorsi": "Worst",
+    "razeniNejlepsi": "Best",
+    "razeniNejnovejsi": "Newest",
+    "stitek": "Customer testimonials",
+    "zPoctu": "out of {pocet}"
+  },
+  "spolecne": {
+    "cta": "Non-binding inquiry",
+    "ctaPopis": "Six questions, two minutes. We will contact you within two working days.",
+    "hledat": "Search",
+    "kraj": "Region",
+    "nacistDalsi": "Load more",
+    "napistNam": "Contact us",
+    "nenalezeno": "No results match your criteria. Try removing a filter.",
+    "obor": "Discipline",
+    "razitkoDatum": "Date",
+    "razitkoInvestor": "Client",
+    "razitkoKreslil": "Drawn by",
+    "razitkoList": "Sheet",
+    "razitkoMeritko": "Scale",
+    "razitkoProfese": "Profession",
+    "razitkoStupen": "Stage",
+    "razitkoStupenHodnota": "Website design",
+    "rok": "Year",
+    "sdilet": "Link copied",
+    "segmentB2b": "Company / General Contractor",
+    "segmentB2c": "Household",
+    "souvisejici": "Similar buildings",
+    "telefonDoplnit": "Phone number will be added after the design is approved",
+    "ukazka": "Website design sample — content and references are for demonstration purposes, not live data.",
+    "ukazkaOdkaz": "What is fictional in the sample",
+    "vice": "More",
+    "viceOOboru": "What we do in this field",
+    "vse": "All",
+    "vsechnyRecenze": "All reviews",
+    "vsechnyStavby": "All buildings",
+    "zavolejte": "Call",
+    "zpet": "Back",
+    "znackaPodtitul": "HVAC installations · Prague"
+  },
+  "stavby": {
+    "detailObory": "Trades",
+    "detailReseni": "How we solved it",
+    "detailRole": "Our role",
+    "detailRozsah": "Scope",
+    "detailTrvani": "Installation duration",
+    "detailZadani": "Specifications",
+    "filtrNadpis": "Filter",
+    "lead": "A selection of completed projects. For each, we describe the most challenging part of the brief and how we solved it.",
+    "nadpis": "Projects",
+    "pocet": "Showing {zobrazeno} of {celkem}",
+    "stitek": "References"
+  },
+  "uvod": {
+    "ctaHlavni": "I want a non-binding quote",
+    "ctaPatka": "Do you have a project, or at least an idea?",
+    "ctaPatkaText": "Send us your brief and we will get back to you within two working days to let you know if we can do it, when we can do it, and at what cost.",
+    "ctaVedlejsi": "View projects",
+    "heroB2bNadpis": "Hospitals, terminals, halls",
+    "heroB2bText": "We install during operation, in night shifts, and within a schedule that holds. For general contractors, we are the subcontractor who calls not with a problem, but with a solution.",
+    "heroB2cNadpis": "Family houses and apartments",
+    "heroB2cText": "A heat pump for a technical room the size of a pantry, piping in a house where no wall-cutting is allowed. The tighter the space, the better.",
+    "lead": "Ventilation, heating, plumbing, and cooling. Supply and installation in a single contract — for general contractors on large-scale projects and for family houses.",
+    "nadpis": "We will assemble it even where the design says it's impossible",
+    "narocneCta": "Calculate complexity",
+    "narocneLead": "Most companies want a level ceiling, free access, and an empty construction site. We choose exactly what others have rejected. Try calculating how demanding yours is.",
+    "narocneNadpis": "The more complex the space, the greater the challenge",
+    "oboryLead": "We are not a design office or a service company. We are the ones who actually assemble it — and who stand behind it.",
+    "oboryNadpis": "Six professions, one team",
+    "postupLead": "Eight steps from the first call to handover. We skip none of them.",
+    "postupNadpis": "How we work",
+    "prepinacPopis": "Select what you want to see:",
+    "recenzeLead": "Investors, site managers, technical supervisors, and homeowners.",
+    "recenzeNadpis": "What they say about us",
+    "stavbyLead": "From operating rooms to residential attics. The same rule applies everywhere: cleaned and functional by morning.",
+    "stavbyNadpis": "Recent projects",
+    "stitek": "HVAC installations · since 2014",
+    "otacejte": "You can grab and rotate the drawing.",
+    "vykresJednotka": "AHU unit 12,000 m³/h",
+    "vykresKota1": "4,000",
+    "vykresKota1c": "2,600",
+    "vykresKota2": "+3.60",
+    "vykresKota2c": "+4.40",
+    "vykresOdbocka": "Ø 400 — branch to the OR",
+    "vykresTc": "Air-to-water heat pump 14 kW",
+    "vykresZasobnik": "Accumulation + DHW"
+  }
+}

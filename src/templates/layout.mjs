@@ -28,7 +28,7 @@ export function navigace(ctx, aktivni) {
     ${polozka("recenze", t("nav.recenze"))}
     ${rozbal("prokoho", t("nav.prokoho"), [["b2b", t("nav.b2b")], ["b2c", t("nav.b2c")]],
       aktivni === "b2b" || aktivni === "b2c")}
-    ${rozbal("vice", "Další", [
+    ${rozbal("vice", t("nav.dalsi"), [
       ["jakPracujeme", t("nav.jakPracujeme")], ["kalkulacky", t("nav.kalkulacky")],
       ["oNas", t("nav.oNas")], ["kariera", t("nav.kariera")],
       ["dotazy", t("nav.dotazy")], ["kontakt", t("nav.kontakt")],
@@ -140,7 +140,7 @@ export function stranka(ctx, { titulek, popis, aktivni, obsah, telo = "" }) {
     <a class="znacka" href="${odkaz("uvod")}">
       ${logo()}
       <span><span class="znacka__text">FOFR<span>MONT</span></span>
-      <span class="znacka__pod">montáže TZB · Praha</span></span>
+      <span class="znacka__pod">${esc(t("spolecne.znackaPodtitul"))}</span></span>
     </a>
     <button class="hamburger" type="button" aria-label="Menu" aria-controls="navigace" aria-expanded="false">
       <span></span><span></span><span></span>

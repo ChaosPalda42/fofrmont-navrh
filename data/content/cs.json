@@ -20,7 +20,8 @@
     "dotazy": "Časté dotazy",
     "kontakt": "Kontakt",
     "poptavka": "Poptávka",
-    "administrace": "Administrace"
+    "administrace": "Administrace",
+    "dalsi": "Další"
   },
   "spolecne": {
     "ukazka": "Ukázka návrhu webu — obsah i reference jsou pracovní, ne ostrá data.",
@@ -53,7 +54,8 @@
     "hledat": "Hledat",
     "nacistDalsi": "Načíst další",
     "souvisejici": "Podobné stavby",
-    "sdilet": "Odkaz zkopírován"
+    "sdilet": "Odkaz zkopírován",
+    "znackaPodtitul": "montáže TZB · Praha"
   },
   "uvod": {
     "stitek": "Montáže TZB · od roku 2014",
@@ -79,7 +81,15 @@
     "postupLead": "Od telefonu k předání osm kroků. Žádný z nich nepřeskakujeme.",
     "ctaPatka": "Máte projekt, nebo aspoň představu?",
     "ctaPatkaText": "Pošlete zadání a my se do dvou pracovních dnů ozveme s tím, jestli to umíme, kdy to umíme a za kolik.",
-    "otacejte": "Výkres můžete chytit a otočit."
+    "otacejte": "Výkres můžete chytit a otočit.",
+    "vykresJednotka": "VZT jednotka 12 000 m³/h",
+    "vykresOdbocka": "Ø 400 — odbočka do sálu",
+    "vykresKota1": "4 000",
+    "vykresKota2": "+3,60",
+    "vykresTc": "TČ vzduch–voda 14 kW",
+    "vykresZasobnik": "Akumulace + TUV",
+    "vykresKota1c": "2 600",
+    "vykresKota2c": "+4,40"
   },
   "montaze": {
     "nadpis": "Co montujeme",
