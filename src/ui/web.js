@@ -697,8 +697,20 @@
       var posledni = index === viditelne.length - 1;
       $("[data-dalsi]", obal).hidden = posledni && kontaktniFaze;
       kontaktEl.hidden = !(posledni && kontaktniFaze);
+      jenProFirmu(stav.segment === "b2b");
       $("[data-odeslat]", obal).hidden = !(posledni && kontaktniFaze);
       vykresliShrnuti();
+    }
+
+    /** Fakturační pole dávají smysl jen firmě; domácnost je nevidí ani nevyplňuje. */
+    function jenProFirmu(zobrazit) {
+      $$("[data-jen-firma]", kontaktEl).forEach(function (blok) {
+        blok.hidden = !zobrazit;
+        $$("input, select, textarea", blok).forEach(function (vstup) {
+          vstup.disabled = !zobrazit;
+          if (!zobrazit) vstup.value = "";
+        });
+      });
     }
 
     function uloz(krok) {
@@ -752,10 +764,12 @@
       vykresliKrok();
     });
     $("[data-odeslat]", obal).addEventListener("click", function () {
+      var proFirmu = stav.segment === "b2b";
       var pravidla = { jmeno: ["required"], email: ["required", "email"], telefon: ["telefon"],
-        ico: ["ico"], souhlas: ["souhlas"] };
+        souhlas: ["souhlas"] };
+      if (proFirmu) pravidla.ico = ["ico"];
       var hodnoty = {};
-      ["jmeno", "firma", "email", "telefon", "ico"].forEach(function (id) {
+      ["jmeno", "email", "telefon"].concat(proFirmu ? ["firma", "ico"] : []).forEach(function (id) {
         var el = document.getElementById(id); if (el) hodnoty[id] = el.value;
       });
       hodnoty.souhlas = (document.getElementById("souhlas") || {}).checked === true;

@@ -212,13 +212,15 @@ export function poptavka(ctx) {
             <h3 style="font-size:1.1rem">${esc(t("poptavka.kontaktNadpis"))}</h3>
             <div class="pole-dvojice">
               ${pole("jmeno", t("poptavka.poleJmeno"), { povinne: true })}
-              ${pole("firma", t("poptavka.poleFirma"))}
-            </div>
-            <div class="pole-dvojice">
               ${pole("email", t("poptavka.poleEmail"), { typ: "email", povinne: true })}
-              ${pole("telefon", t("poptavka.poleTelefon"), { typ: "tel" })}
             </div>
-            ${pole("ico", t("poptavka.poleIco"), { napoveda: "Nepovinné, urychlí to fakturaci." })}
+            <div data-jen-firma>
+              <div class="pole-dvojice">
+                ${pole("firma", t("poptavka.poleFirma"))}
+                ${pole("ico", t("poptavka.poleIco"), { napoveda: t("poptavka.icoNapoveda") })}
+              </div>
+            </div>
+            ${pole("telefon", t("poptavka.poleTelefon"), { typ: "tel" })}
             ${souhlas("souhlas", t("poptavka.poleSouhlas"))}
           </div>
           <div class="tlacitka" style="margin-top:1.6rem">

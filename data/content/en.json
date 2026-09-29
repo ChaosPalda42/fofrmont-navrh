@@ -416,7 +416,8 @@
     "shrnutiNadpis": "Summary",
     "stitek": "Inquiry",
     "znovu": "Fill out again",
-    "zpet": "Back"
+    "zpet": "Back",
+    "icoNapoveda": "Optional, it speeds up invoicing."
   },
   "recenze": {
     "doporucuje": "{procent} % of writers would recommend us again",
