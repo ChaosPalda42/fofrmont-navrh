@@ -1,0 +1,13 @@
+{
+  "id": "C-011",
+  "file": "tools/kontrola_webu.py",
+  "role": "coder",
+  "title": "Kontrola vygenerovaného webu – mrtvé odkazy, alt, duplicitní id",
+  "interface": "Kontrola statického webu ve složce `out/`. Používá jen standardní knihovnu (html.parser, pathlib, json, sys).\n\ndef zkontroluj(korenova: str | Path) -> dict\n  Projde rekurzivně všechny soubory *.html pod `korenova` (seřazené podle relativní cesty) a vrátí:\n  { \"stranek\": int, \"problemy\": [ { \"soubor\": relativní cesta s lomítky, \"typ\": str, \"detail\": str } ], \"pocty\": { typ: počet } }\n  `problemy` jsou v pořadí: podle souboru, uvnitř souboru podle pořadí nálezu.\n  Kontrolované typy:\n  - \"mrtvy-odkaz\": hodnota href nebo src, která je relativní cesta a odpovídající soubor pod `korenova` neexistuje. Před testem se odřízne \"#kotva\" i \"?dotaz\". Netestují se hodnoty začínající \"http:\", \"https:\", \"//\", \"mailto:\", \"tel:\", \"data:\" a \"#\". `detail` je původní hodnota atributu.\n  - \"prazdny-odkaz\": <a> s href rovným \"\", \"#\" nebo chybějícím href.\n  - \"absolutni-odkaz\": href nebo src začínající jedním lomítkem (web musí běžet i z podadresáře).\n  - \"chybi-alt\": <img> bez atributu alt (alt=\"\" je v pořádku, je to dekorace).\n  - \"duplicitni-id\": stejná hodnota atributu id se v souboru vyskytne podruhé; `detail` je ta hodnota.\n  - \"chybi-title\": v souboru není <title> nebo je prázdný.\n  - \"chybi-noindex\": v souboru není <meta name=\"robots\" …> s hodnotou obsahující \"noindex\".\n  - \"prazdny-nadpis\": <h1>…<h6> bez textu (po odstranění bílých znaků; obsah vnořených značek se počítá jako text).\n  `pocty` obsahuje jen typy, které se vyskytly.\n\ndef hlavni(argv: list[str]) -> int\n  argv[0] je cesta ke složce (chybí-li, použije se \"out\"). Vytiskne json.dumps(zkontroluj(...), ensure_ascii=False, indent=2) a vrátí 1, když je `problemy` neprázdné, jinak 0.",
+  "uses": {},
+  "acceptance": "tests/test_kontrola_webu.py",
+  "notes": "Čistý Python 3.11 ze standardní knihovny (bez requests, bez bs4, bez pydantic). Modul se dá naimportovat bez vedlejších účinků: žádný kód na úrovni modulu kromě definic a konstant.",
+  "budget": {
+    "iterations": 18
+  }
+}

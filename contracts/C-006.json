@@ -1,0 +1,13 @@
+{
+  "id": "C-006",
+  "file": "src/lib/obtiznost.mjs",
+  "role": "coder",
+  "title": "Náročnost prostoru – bodování podle faktorů",
+  "interface": "Faktor = { id, nazev, vaha: number, moznosti: [{ id, popis, body: number }] }\nVolby = { idFaktoru: idMoznosti }\n\nexport function najdiMoznost(faktor, volby) -> moznost | null\n  Možnost zvolená pro daný faktor, jinak null.\n\nexport function skore(faktory, volby) -> { body, max, procent, stupen }\n  body = součet vaha * body zvolené možnosti přes všechny faktory (nezvolený faktor přispívá 0).\n  max = součet vaha * (nejvyšší `body` mezi možnostmi faktoru) přes VŠECHNY faktory.\n  procent = Math.round(body / max * 100); pro max === 0 je procent 0.\n  stupen podle procent: < 25 -> \"bezna\", < 50 -> \"narocna\", < 75 -> \"slozita\", jinak \"extremni\".\n  body a max zaokrouhli na jedno desetinné místo přes Math.round(x * 10) / 10.\n\nexport function chybejici(faktory, volby) -> pole id faktorů bez platné volby (v pořadí definice)\n\nexport function prispevky(faktory, volby) -> [{ id, nazev, body, podil }]\n  Pro každý faktor jeho příspěvek `body` (vaha * body zvolené možnosti, nezvolený 0) a `podil` = Math.round(body / celkoveBody * 100); pro nulový součet je podil 0. Seřazeno podle `body` sestupně, při shodě podle pořadí v definici.\n\nexport function doporuceni(faktory, volby, katalog) -> pole textů\n  Pro každý faktor se zvolenou možností vezmi katalog[idFaktoru]?.[idMoznosti]; nenulové texty vrať v pořadí prispevky (tedy od největšího příspěvku). Duplicitní texty se vypustí (zůstane první výskyt).\n\nexport function porovnej(faktory, a, b) -> { rozdil, narocnejsi }\n  rozdil = skore(faktory, a).procent - skore(faktory, b).procent; narocnejsi je \"a\", \"b\", nebo \"shoda\" při nule.\n\nexport function popisStupne(stupen, katalog) -> string\n  katalog[stupen] ?? stupen.",
+  "uses": {},
+  "acceptance": "tests/test_obtiznost.py",
+  "notes": "ESM modul BEZ jakýchkoli importů. Musí běžet v Node 24 i v prohlížeči: žádné `require`, žádné Node API (fs, path, process), žádné DOM API (document, window, localStorage). Jen čistý JavaScript a standardní vestavěné objekty. Bez závislostí, bez buildu. Všechny funkce jsou čisté: vstupní pole ani objekty se nikdy nemutují.",
+  "budget": {
+    "iterations": 14
+  }
+}

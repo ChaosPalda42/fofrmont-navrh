@@ -1,0 +1,13 @@
+{
+  "id": "C-012",
+  "file": "tools/preklad.py",
+  "role": "coder",
+  "title": "Překlad textů do angličtiny lokálním modelem",
+  "interface": "Překládá plochý slovník českých textů do angličtiny. Model se volá přes předaný `klient`, takže modul jde testovat bez sítě. Standardní knihovna (json, re, sys, pathlib).\n\ndef plochy(slovnik: dict, prefix: str = \"\") -> dict[str, str]\n  Rekurzivně (objekty i seznamy, seznamy indexované číslem) vytvoří { \"a.b\": \"text\" }. Zahrne jen listy typu str, které po strip() nejsou prázdné.\n\ndef davky(polozky: list, velikost: int) -> list[list]\n  Rozdělí seznam na dávky dané velikosti; poslední může být kratší. velikost <= 0 -> jedna dávka se vším.\n\ndef sestav_prompt(davka: list[tuple[str, str]], jazyk: str) -> str\n  Vrátí text výzvy, který OBSAHUJE: název cílového jazyka, každý klíč i jeho český text, pokyn odpovědět jen JSON objektem klíč -> překlad, a pokyn zachovat HTML značky a zástupné symboly ve složených závorkách.\n\ndef vytahni_json(text: str) -> dict\n  Z odpovědi modelu vytáhne JSON objekt: snese ```json …``` i prostý text okolo (vezme úsek od první \"{\" po poslední \"}\"). Nepovede-li se rozparsovat, vrať prázdný slovník.\n\nZNACKA = re.compile(r\"<[^>]+>|\\{[a-zA-Z0-9_]+\\}\")\n\ndef znacky(text: str) -> list[str]\n  Všechny výskyty ZNACKA v pořadí, v jakém jsou v textu.\n\ndef znacky_sedi(zdroj: str, preklad: str) -> bool\n  True, když znacky(zdroj) a znacky(preklad) obsahují TYTÉŽ prvky se stejnými počty (na pořadí nezáleží).\n\ndef zpracuj_odpoved(text: str, davka: list[tuple[str, str]]) -> tuple[dict, list[str]]\n  Z odpovědi vezme jen klíče, které jsou v dávce, a jen neprázdné řetězcové hodnoty.\n  Vrátí (preklady, problemy), kde `problemy` je seznam klíčů, které v odpovědi chybí nebo u nichž znacky_sedi() vyšlo False. Takové klíče v `preklady` NEJSOU.\n\ndef prelozi(slovnik: dict, jazyk: str, klient, velikost_davky: int = 20) -> tuple[dict, list[str]]\n  `klient` je volatelný objekt, který dostane prompt (str) a vrátí odpověď modelu (str).\n  Projde plochy(slovnik) po dávkách, poskládá výsledek jako PLOCHÝ slovník přeložených klíčů a seznam problémových klíčů (v pořadí, v jakém vznikly). Výjimka z `klient` u jedné dávky nesmí shodit celý překlad: klíče dávky se zapíšou do problémů a pokračuje se dál.\n\ndef vnoreny(plochy_slovnik: dict) -> dict\n  Opak funkce `plochy`: segment, který je celé nezáporné číslo, vytvoří seznam, ostatní slovník.",
+  "uses": {},
+  "acceptance": "tests/test_preklad.py",
+  "notes": "Čistý Python 3.11 ze standardní knihovny (bez requests, bez bs4, bez pydantic). Modul se dá naimportovat bez vedlejších účinků: žádný kód na úrovni modulu kromě definic a konstant.",
+  "budget": {
+    "iterations": 18
+  }
+}
