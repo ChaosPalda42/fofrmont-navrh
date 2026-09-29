@@ -45,6 +45,13 @@ export function uvod(ctx) {
           <div class="kriz__popis"></div>
         </div>
         </div>
+        <p class="hero__napoveda mono male tise">
+          <svg width="15" height="15" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor"
+            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 10h12m-3-3 3 3-3 3M7 7 4 10l3 3"/>
+          </svg>
+          ${esc(t("uvod.otacejte"))}
+        </p>
         <div class="hero__popis">
           <div data-varianta-obsah="b2b">
             <h2>${esc(t("uvod.heroB2bNadpis"))}</h2>

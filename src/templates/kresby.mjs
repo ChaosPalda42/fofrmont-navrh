@@ -1,9 +1,11 @@
 /** Technická grafika webu: izometrické výkresy, kóty, značky.
  *  Geometrii počítá src/lib/izometrie.mjs (kontrakt C-008), tady se z ní skládá SVG. */
 import * as iso from "../lib/izometrie.mjs";
+import { vykresli as vykresliScenu, viewBoxRozsahu } from "../lib/scena.mjs";
 import { esc, delkaCesty } from "./lib.mjs";
 
 const M = 15; // měřítko: pixelů na jednotku (1 jednotka ≈ 1 m)
+let poradiSvg = 0;
 
 const p = (x, y, z) => iso.projekce({ x, y, z }, M);
 const bod = (b) => `${b.x} ${b.y}`;
@@ -76,8 +78,6 @@ function vynoska(z, dx, dy, popis, opts = {}) {
   };
 }
 
-let poradiSvg = 0;
-
 function obalka(vnitrek, body, okraj = 62) {
   poradiSvg += 1;
   const znacka = `sipka-kota-${poradiSvg}`;
@@ -90,62 +90,84 @@ function obalka(vnitrek, body, okraj = 62) {
     ${vnitrek.replace(/url\(#sipka-kota\)/g, `url(#${znacka})`)}</svg>`;
 }
 
-/** Hero: strojovna a rozvody ve velké stavbě. */
-export function vykresB2b(popisky) {
-  const podlaha = mrizka(10.5, 6, 1.5);
-  const jednotka = kvadr({ x: 0.5, y: 0, z: 0.8 }, { d: 3.6, s: 2.8, v: 2.4 }, { silna: true, zpozdeni: 120 });
-  const rozvadec = kvadr({ x: 0.9, y: 0, z: 4.6 }, { d: 1, s: 0.9, v: 1.8 }, { zpozdeni: 420 });
-  const hlavni = potrubi({ x: 4.1, y: 1.8, z: 2.2 }, [
-    { osa: "x", delka: 3.4 }, { osa: "y", delka: 1.4 }, { osa: "x", delka: 4.2 },
-    { osa: "z", delka: 4.2 },
-  ], { id: "trasa-b2b", zpozdeni: 300 });
-  const odbocka = potrubi({ x: 7.5, y: 3.2, z: 2.2 }, [
-    { osa: "z", delka: 2.8 }, { osa: "y", delka: -1.1 },
-  ], { zpozdeni: 900, signal: true });
-  const zaveseni = [5.4, 9, 11.4].map((x) => {
-    const a = p(x, 3.2, 2.2); const b = p(x, 4.8, 2.2);
-    return `<path class="vykres-osa" d="${cara([a, b])}"/>`;
-  }).join("");
-  const v1 = vynoska(p(2.3, 2.4, 2.2), 34, -48, popisky.jednotka, { signal: true });
-  const v2 = vynoska(p(7.5, 4.8, 5), 40, 30, popisky.odbocka);
-  const body = [...hlavni.body, ...odbocka.body, p(0.5, 0, 0.8), p(10.5, 0, 6), p(0, 4.8, 0), v1.kraj, v2.kraj];
-  const vnitrek = [
-    podlaha, zaveseni, jednotka, rozvadec, hlavni.svg, odbocka.svg,
-    kota(p(0.5, 0, 0.8), p(4.1, 0, 0.8), popisky.kota1, 20),
-    kota(p(10.5, 0, 6), p(10.5, 3.2, 6), popisky.kota2, 18),
-    v1.svg, v2.svg,
-    `<circle id="tok-b2b" r="4.2" fill="var(--signal)" opacity="0"/>`,
-  ].join("\n");
-  return obalka(vnitrek, body, 18);
+/** Scéna hero výkresu — data, ne kresba. Stejný popis používá prohlížeč,
+ *  když se výkres otáčí tažením myši. */
+export function scenaB2b(popisky) {
+  return {
+    meritko: M, stred: { x: 5.2, z: 3 }, okraj: 18, tok: "tok-b2b",
+    mrizka: { sirka: 10.5, hloubka: 6, krok: 1.5 },
+    kvadry: [
+      { pozice: { x: 0.5, y: 0, z: 0.8 }, rozmer: { d: 3.6, s: 2.8, v: 2.4 }, silna: true, zpozdeni: 120 },
+      { pozice: { x: 0.9, y: 0, z: 4.6 }, rozmer: { d: 1, s: 0.9, v: 1.8 }, zpozdeni: 420 },
+    ],
+    zavesy: [5.4, 9, 10.2].map((x) => ({ x, y1: 3.2, y2: 4.8, z: 2.2 })),
+    trasy: [
+      { id: "trasa-b2b", start: { x: 4.1, y: 1.8, z: 2.2 }, zpozdeni: 300, segmenty: [
+        { osa: "x", delka: 3.4 }, { osa: "y", delka: 1.4 }, { osa: "x", delka: 3 }, { osa: "z", delka: 3.4 }] },
+      { start: { x: 7.5, y: 3.2, z: 2.2 }, zpozdeni: 900, signal: true, segmenty: [
+        { osa: "z", delka: 2.8 }, { osa: "y", delka: -1.1 }] },
+    ],
+    kotace: [
+      { a: { x: 0.5, y: 0, z: 0.8 }, b: { x: 4.1, y: 0, z: 0.8 }, popis: popisky.kota1, odsazeni: 20 },
+      { a: { x: 10.5, y: 0, z: 6 }, b: { x: 10.5, y: 3.2, z: 6 }, popis: popisky.kota2, odsazeni: 18 },
+    ],
+    vynosky: [
+      { kotva: { x: 2.3, y: 2.4, z: 2.2 }, dx: 34, dy: -48, popis: popisky.jednotka, signal: true },
+      { kotva: { x: 7.5, y: 4.8, z: 5 }, dx: 40, dy: 30, popis: popisky.odbocka },
+    ],
+  };
 }
 
-/** Hero: rodinný dům s tepelným čerpadlem. */
-export function vykresB2c(popisky) {
-  const podlaha = mrizka(10.5, 6, 1.5);
-  const dum = kvadr({ x: 3, y: 0, z: 1 }, { d: 6, s: 5, v: 3.6 }, { silna: true, zpozdeni: 120 });
-  const hreben = (() => {
-    const a = p(3, 3.6, 1), b = p(9, 3.6, 1), c = p(9, 3.6, 6), d = p(3, 3.6, 6);
-    const vrchA = p(6, 5.4, 1), vrchB = p(6, 5.4, 6);
-    return `<polygon class="vykres-vypln" points="${[a, vrchA, vrchB, d].map((q) => `${q.x},${q.y}`).join(" ")}"/>
-            <path class="vykres-cara kresli" style="--delka:640;--zpozdeni:360ms" d="${cara([a, vrchA, b])} ${cara([d, vrchB, c])} ${cara([vrchA, vrchB])}"/>`;
-  })();
-  const venkovni = kvadr({ x: 0.4, y: 0.3, z: 2.6 }, { d: 1.5, s: 0.8, v: 1.3 }, { zpozdeni: 560 });
-  const trasa = potrubi({ x: 1.9, y: 0.9, z: 3 }, [
-    { osa: "x", delka: 1.1 }, { osa: "z", delka: 1.3 }, { osa: "x", delka: 2 }, { osa: "y", delka: 0.5 },
-  ], { id: "trasa-b2c", zpozdeni: 760, signal: true });
-  const zasobnik = kvadr({ x: 5, y: 0, z: 4.1 }, { d: 0.9, s: 0.9, v: 1.8 }, { zpozdeni: 980 });
-  const v1 = vynoska(p(1.1, 1.6, 3), -30, -44, popisky.jednotka, { signal: true });
-  const v2 = vynoska(p(5.45, 1.8, 4.55), 46, 24, popisky.zasobnik);
-  const body = [...trasa.body, p(0.4, 0, 2.6), p(10.5, 0, 6), p(0, 5.4, 0), p(6, 5.4, 6), v1.kraj, v2.kraj];
-  const vnitrek = [
-    podlaha, dum, hreben, venkovni, trasa.svg, zasobnik,
-    kota(p(0.4, 0, 2.6), p(3, 0, 2.6), popisky.kota1, 18),
-    kota(p(10.5, 0, 6), p(10.5, 3.6, 6), popisky.kota2, 18),
-    v1.svg, v2.svg,
-    `<circle id="tok-b2c" r="4.2" fill="var(--signal)" opacity="0"/>`,
-  ].join("\n");
-  return obalka(vnitrek, body, 18);
+export function scenaB2c(popisky) {
+  return {
+    meritko: M, stred: { x: 5.2, z: 3 }, okraj: 18, tok: "tok-b2c",
+    mrizka: { sirka: 10.5, hloubka: 6, krok: 1.5 },
+    kvadry: [
+      { pozice: { x: 3, y: 0, z: 1 }, rozmer: { d: 6, s: 5, v: 3.6 }, silna: true, zpozdeni: 120 },
+      { pozice: { x: 0.4, y: 0.3, z: 2.6 }, rozmer: { d: 1.5, s: 0.8, v: 1.3 }, zpozdeni: 560 },
+      { pozice: { x: 5, y: 0, z: 4.1 }, rozmer: { d: 0.9, s: 0.9, v: 1.8 }, zpozdeni: 980 },
+    ],
+    polygony: [
+      { body: [{ x: 3, y: 3.6, z: 1 }, { x: 6, y: 5.4, z: 1 }, { x: 6, y: 5.4, z: 6 }, { x: 3, y: 3.6, z: 6 }] },
+    ],
+    cary: [
+      { zpozdeni: 360, body: [{ x: 3, y: 3.6, z: 1 }, { x: 6, y: 5.4, z: 1 }, { x: 9, y: 3.6, z: 1 }] },
+      { zpozdeni: 420, body: [{ x: 3, y: 3.6, z: 6 }, { x: 6, y: 5.4, z: 6 }, { x: 9, y: 3.6, z: 6 }] },
+      { zpozdeni: 480, body: [{ x: 6, y: 5.4, z: 1 }, { x: 6, y: 5.4, z: 6 }] },
+    ],
+    trasy: [
+      { id: "trasa-b2c", start: { x: 1.9, y: 0.9, z: 3 }, zpozdeni: 760, signal: true, segmenty: [
+        { osa: "x", delka: 1.1 }, { osa: "z", delka: 1.3 }, { osa: "x", delka: 2 }, { osa: "y", delka: 0.5 }] },
+    ],
+    kotace: [
+      { a: { x: 0.4, y: 0, z: 2.6 }, b: { x: 3, y: 0, z: 2.6 }, popis: popisky.kota1, odsazeni: 18 },
+      { a: { x: 10.5, y: 0, z: 6 }, b: { x: 10.5, y: 3.6, z: 6 }, popis: popisky.kota2, odsazeni: 18 },
+    ],
+    vynosky: [
+      { kotva: { x: 1.1, y: 1.6, z: 3 }, dx: -30, dy: -44, popis: popisky.jednotka, signal: true },
+      { kotva: { x: 5.45, y: 1.8, z: 4.55 }, dx: 46, dy: 24, popis: popisky.zasobnik },
+    ],
+  };
 }
+
+/** Hero výkres — vykreslí scénu a přibalí její popis pro otáčení v prohlížeči. */
+function heroVykres(scena) {
+  poradiSvg += 1;
+  const znacka = `sipka-kota-${poradiSvg}`;
+  const viewBox = viewBoxRozsahu(iso, scena);
+  const { vnitrek } = vykresliScenu(iso, scena, { uhel: 0, znacka, viewBox });
+  return `<svg viewBox="${viewBox}" role="img" xmlns="http://www.w3.org/2000/svg"
+      data-scena="${esc(JSON.stringify(scena))}" data-znacka="${znacka}" data-viewbox="${viewBox}">
+    <defs>
+      <marker id="${znacka}" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M1 1 7 4 1 7" fill="none" stroke="var(--sedy-2)" stroke-width="1"/>
+      </marker>
+    </defs>
+    ${vnitrek}</svg>`;
+}
+
+export function vykresB2b(popisky) { return heroVykres(scenaB2b(popisky)); }
+export function vykresB2c(popisky) { return heroVykres(scenaB2c(popisky)); }
 
 /** Malý izometrický motiv pro kartu stavby (osm variant podle typu). */
 export function motivStavby(druh) {

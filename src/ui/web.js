@@ -16,7 +16,7 @@
   function svitivaMrizka() {
     var vrstva = $(".rastr-svit");
     var snap = $(".rastr-snap");
-    if (!vrstva || tlumene || window.matchMedia("(hover: none)").matches) return;
+    if (!vrstva || tlumene) return;
     var tmave = $$(".pas--vykres").map(function (sekce) {
       var svit = document.createElement("div");
       svit.className = "pas__svit";
@@ -59,13 +59,15 @@
     }
 
     document.addEventListener("pointermove", function (e) {
-      if (e.pointerType === "touch") return;
       if (cx < -500) { x = e.clientX; y = e.clientY; }
       cx = e.clientX; cy = e.clientY;
       document.body.dataset.kurzor = "1";
       if (!bezi) { bezi = true; requestAnimationFrame(ramec); }
     }, { passive: true });
     document.addEventListener("pointerleave", function () { document.body.dataset.kurzor = "0"; });
+    document.addEventListener("pointerup", function (e) {
+      if (e.pointerType === "touch") window.setTimeout(function () { document.body.dataset.kurzor = "0"; }, 900);
+    });
     window.addEventListener("blur", function () { document.body.dataset.kurzor = "0"; });
   }
 
@@ -335,6 +337,68 @@
       beh = requestAnimationFrame(krok);
     }
     setTimeout(spustTok, 1400);
+  }
+
+
+  /* ---------- otáčení izometrického výkresu (myš i prst) ---------- */
+  function otacecka() {
+    var plocha = $("[data-kriz]");
+    if (!plocha || !FM.scena || !FM.izometrie) return;
+    var stav = { uhel: 0, cil: 0, tazeni: false, zacatekX: 0, zacatekUhel: 0, beh: null };
+    plocha.dataset.tahatelne = "1";
+
+    function aktivniSvg() {
+      return $$("svg[data-scena]", plocha).filter(function (svg) {
+        var obal = svg.closest("[data-varianta-obsah]");
+        return !obal || !obal.hidden;
+      })[0];
+    }
+
+    function vykresli(uhel) {
+      var svg = aktivniSvg();
+      if (!svg) return;
+      var scena = jsonAttr(svg, "data-scena", null);
+      if (!scena) return;
+      var v = FM.scena.vykresli(FM.izometrie, scena, {
+        uhel: uhel, animace: false, znacka: svg.dataset.znacka || "sipka-kota",
+        viewBox: svg.dataset.viewbox || null,
+      });
+      var defs = svg.querySelector("defs");
+      svg.innerHTML = (defs ? defs.outerHTML : "") + v.vnitrek;
+    }
+
+    function plyn() {
+      stav.uhel += (stav.cil - stav.uhel) * (stav.tazeni ? 0.45 : 0.14);
+      vykresli(Math.round(stav.uhel * 10) / 10);
+      if (Math.abs(stav.cil - stav.uhel) > 0.15) stav.beh = requestAnimationFrame(plyn);
+      else { stav.uhel = stav.cil; vykresli(stav.cil); stav.beh = null; }
+    }
+    function rozjed() { if (!stav.beh) stav.beh = requestAnimationFrame(plyn); }
+
+    plocha.addEventListener("pointerdown", function (e) {
+      if (tlumene) return;
+      stav.tazeni = true;
+      stav.zacatekX = e.clientX;
+      stav.zacatekUhel = stav.cil;
+      plocha.dataset.tazeni = "1";
+      try { plocha.setPointerCapture(e.pointerId); } catch (chyba) { /* nevadí */ }
+    });
+    plocha.addEventListener("pointermove", function (e) {
+      if (!stav.tazeni) return;
+      stav.cil = FM.scena.omez(stav.zacatekUhel + (e.clientX - stav.zacatekX) * 0.22);
+      rozjed();
+    });
+    var pust = function () {
+      if (!stav.tazeni) return;
+      stav.tazeni = false;
+      plocha.dataset.tazeni = "0";
+      stav.cil = 0;                 // výkres se vrátí do základního pohledu
+      rozjed();
+    };
+    plocha.addEventListener("pointerup", pust);
+    plocha.addEventListener("pointercancel", pust);
+    plocha.addEventListener("pointerleave", pust);
+    window.FMotoc = { vykresli: vykresli, stav: stav };
   }
 
   /* ---------- měřič náročnosti ---------- */
@@ -798,7 +862,7 @@
   function start() {
     nacitani();
     navigace(); prijezd(); rastr(); svitivaMrizka(); pravitko(); pocitadla();
-    hero(); naklon(); magnety(); meric(); gantt();
+    hero(); naklon(); otacecka(); magnety(); meric(); gantt();
     filtrujStavby(); filtrujRecenze(); dotazy(); kalkulacky(); pruvodce(); formulare();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);

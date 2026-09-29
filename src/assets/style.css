@@ -727,7 +727,8 @@ body[data-kurzor="1"] .rastr-snap { opacity: .3; }
   .je-videt .spoj { animation: none; }
 }
 @media (hover: none) {
-  .rastr-svit, .rastr-snap, .pas__svit { display: none; }
+  body[data-kurzor="1"] .rastr-svit { opacity: .45; }
+  body[data-kurzor="1"] .rastr-snap { opacity: .25; }
 }
 
 /* ======================================================================
@@ -902,3 +903,18 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 520ms cubic-bezier(.6
 @media (prefers-reduced-motion: reduce) {
   .hlavicka-sekce h2::after { transform: scaleX(1); }
 }
+
+.vykres-mrizka { fill: none; stroke: var(--cara); stroke-width: .6; opacity: .3; }
+.hero__vykres[data-tazeni="1"] { cursor: grabbing; }
+.hero__vykres[data-tahatelne="1"] { cursor: grab; }
+.hero__vykres[data-tazeni="1"] svg { transition: none; }
+
+/* výkres jde chytit a otočit; svislé rolování zůstává na prstu */
+.hero__vykres { touch-action: pan-y; }
+
+.hero__napoveda {
+  display: flex; align-items: center; justify-content: flex-end; gap: .45rem;
+  margin: .6rem 0 0; opacity: .75;
+}
+@media (max-width: 64rem) { .hero__napoveda { justify-content: flex-start; } }
+@media (prefers-reduced-motion: reduce) { .hero__napoveda { display: none; } }
