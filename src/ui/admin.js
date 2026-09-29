@@ -190,7 +190,10 @@
       bod.style.opacity = "1";
       bublina.style.left = (b.x / sirka * 100) + "%";
       bublina.style.top = (b.y / (vyska + 22) * r.height) + "px";
-      bublina.innerHTML = "<b>" + cislo(den.navstevy) + "</b> " + esc(H.statNavstevy.toLowerCase())
+      var tvar = FM.i18n && Array.isArray(H.statNavstevyTvary)
+        ? FM.i18n.pocet(den.navstevy, H.statNavstevyTvary, Z.jazyk)
+        : String(H.statNavstevy).toLowerCase();
+      bublina.innerHTML = "<b>" + cislo(den.navstevy) + "</b> " + esc(tvar)
         + "<br><span class='tise'>" + esc(den.datum) + "</span>";
     });
     plocha.addEventListener("pointerleave", function () {

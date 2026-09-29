@@ -66,3 +66,40 @@ při otáčení poskakoval.
 ### Stav
 64 stránek (CZ + EN), 178 akceptačních testů zelených, kontrola vygenerovaného
 webu bez nálezu, balíček `_balicek/Fofrmont-ukazka.zip` (432 kB).
+
+## Doplněno 30. 9. 2026 — druhé kolo připomínek
+
+1. **Poptávka podle segmentu.** Typ objektu se větví (domácnost nevidí haly, školy
+   ani zdravotnictví) a fakturační pole (firma, IČO) se domácnosti vůbec neukážou
+   — a nevalidují se.
+2. **Administrace dodělaná tak, aby šla osahat.** Přehled s posledním děním,
+   texty s přepínačem jazyka a filtrem oblasti, recenze s filtrem podle stavu,
+   stavby s plným formulářem, došlé poptávky, kontaktní údaje a export/import.
+   Klíčová věc: **co se změní v administraci, se opravdu projeví na webu.**
+   Kontaktní údaje mají v šablonách `data-udaj="kontakt.*"`, texty se vyměňují
+   podle původního znění, které si administrace uloží k přepisu (`_zaklad`).
+3. **Statistiky návštěvnosti** (kontrakt C-013) v duchu byPalda.cz: dlaždice
+   s porovnáním období, graf návštěv s nitkovým křížem, poptávky jako sdílená
+   osa pod ním, zdroje, zařízení, nejčtenější stránky. Data jsou **deterministicky
+   vymyšlená** (stejný seed = stejná čísla) a je to na stránce napsané.
+4. **Přílohy u formulářů.** Bereme jen to, co se dá otevřít a prohlédnout:
+   PDF, DWG, DXF, IFC, STEP, XLSX, CSV, DOCX a fotky. Archivy (ZIP, RAR) ani
+   spustitelné soubory ne — jsou to typické nosiče škodlivého kódu. 15 MB na
+   soubor, 40 MB dohromady, nejvýš 10 souborů; na větší je pole pro odkaz
+   (celá dokumentace nebo BIM model se do 15 MB nevejde).
+   **Pozor pro ostrou verzi:** kontrola v prohlížeči je jen pohodlí pro uživatele.
+   Skutečná ochrana musí být na serveru — kontrola typu podle obsahu (ne podle
+   přípony), limit velikosti a antivirus.
+5. **Světlý a tmavý režim.** Přepínač v liště, výchozí podle nastavení systému,
+   volba se pamatuje v `localStorage` (`fm-tema`). V tmavém režimu se z papíru
+   stane modrotisk. Tokeny jsou rozdělené na `--tmave` (tmavá plocha: patička,
+   modrotiskové pásy) a `--plne` (plný ovládací prvek: hlavní tlačítko, aktivní
+   přepínač, bublina) — `--plne` se v tmavém režimu obrací na světlou.
+6. **Načítací animace** trvá ~2 s, aby byla celá vidět; ukáže se jen při prvním
+   otevření v relaci.
+
+### Poučení do harnessu
+**Když běží `factory run`, nesahej na projekt.** Harness vrací zpět všechno mimo
+soubor právě zpracovávaného kontraktu (PATH_POLICY) — při běhu C-013 mi takhle
+zmizel hotový kus `src/assets/style.css` a projevilo se to až jako nastylovaný
+graf bez stylů. Buď počkat, nebo pracovat ve vlastním worktree.

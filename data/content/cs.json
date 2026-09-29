@@ -68,7 +68,8 @@
     "prilohaCelkem": "Dohromady je to přes 40 MB. Zbytek prosím pošlete odkazem.",
     "prilohaPocet": "Najednou vezmeme nejvýš 10 souborů.",
     "prilohaOdkaz": "Odkaz na velké soubory (úschovna, Dropbox, sdílený disk)",
-    "prilohaOdkazNapoveda": "Celá projektová dokumentace nebo BIM model bývá větší než 15 MB — ty pošlete odkazem."
+    "prilohaOdkazNapoveda": "Celá projektová dokumentace nebo BIM model bývá větší než 15 MB — ty pošlete odkazem.",
+    "temaPrepnout": "Přepnout světlý a tmavý režim"
   },
   "uvod": {
     "stitek": "Montáže TZB · od roku 2014",
@@ -586,7 +587,12 @@
     "zdrojEmail": "E-mail",
     "zarizeniMobil": "Mobil",
     "zarizeniPocitac": "Počítač",
-    "zarizeniTablet": "Tablet"
+    "zarizeniTablet": "Tablet",
+    "statNavstevyTvary": [
+      "návštěva",
+      "návštěvy",
+      "návštěv"
+    ]
   },
   "chyba404": {
     "nadpis": "Tahle trasa nikam nevede",

@@ -245,6 +245,25 @@
     }
   }
 
+  /* ---------- světlý a tmavý režim ---------- */
+  function tema() {
+    var tlacitko = $("[data-tema]");
+    if (!tlacitko) return;
+    var barva = $('meta[name="theme-color"]');
+    var nastav = function (hodnota) {
+      if (hodnota === "tmavy") document.documentElement.dataset.tema = "tmavy";
+      else delete document.documentElement.dataset.tema;
+      if (barva) barva.setAttribute("content", hodnota === "tmavy" ? "#091626" : "#f2f6fa");
+      tlacitko.setAttribute("aria-pressed", String(hodnota === "tmavy"));
+    };
+    nastav(document.documentElement.dataset.tema === "tmavy" ? "tmavy" : "svetly");
+    tlacitko.addEventListener("click", function () {
+      var nove = document.documentElement.dataset.tema === "tmavy" ? "svetly" : "tmavy";
+      nastav(nove);
+      try { window.localStorage.setItem("fm-tema", nove); } catch (e) { /* soukromé okno */ }
+    });
+  }
+
   /* ---------- navigace ---------- */
   function navigace() {
     var tlacitko = $(".hamburger");
@@ -1017,7 +1036,7 @@
   function nacitani() {
     var od = Date.now();
     var hotovo = function () {
-      var zbyva = Math.max(0, 620 - (Date.now() - od));
+      var zbyva = Math.max(0, 2150 - (Date.now() - od));   // ať je celá animace vidět
       window.setTimeout(function () { document.body.dataset.nacteno = "1"; }, zbyva);
     };
     if (document.readyState === "complete") hotovo();
@@ -1028,6 +1047,7 @@
     nacitani();
     prepisyUdaju();
     prilohy();
+    tema();
     navigace(); prijezd(); rastr(); svitivaMrizka(); pravitko(); pocitadla();
     hero(); naklon(); otacecka(); magnety(); meric(); gantt();
     filtrujStavby(); filtrujRecenze(); dotazy(); kalkulacky(); pruvodce(); formulare();

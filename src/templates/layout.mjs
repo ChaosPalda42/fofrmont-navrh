@@ -34,6 +34,11 @@ export function navigace(ctx, aktivni) {
       ["dotazy", t("nav.dotazy")], ["kontakt", t("nav.kontakt")],
       ["administrace", t("nav.administrace")],
     ], ["jakPracujeme", "kalkulacky", "oNas", "kariera", "dotazy", "kontakt", "administrace"].includes(aktivni))}
+    <button class="tema" type="button" data-tema aria-label="${esc(t("spolecne.temaPrepnout"))}"
+      title="${esc(t("spolecne.temaPrepnout"))}">
+      <span class="slunce">${ikona("slunce", { velikost: 17 })}</span>
+      <span class="mesic">${ikona("mesic", { velikost: 17 })}</span>
+    </button>
     <div class="jazyky">
       ${["cs", "en"].map((kod) => (kod === ctx.jazyk
         ? `<span aria-current="true">${kod.toUpperCase()}</span>`
@@ -114,6 +119,7 @@ export function stranka(ctx, { titulek, popis, aktivni, obsah, telo = "" }) {
 <meta name="theme-color" content="#0b1a2d">
 <link rel="icon" href="${asset("favicon.svg")}" type="image/svg+xml">
 <link rel="stylesheet" href="${asset("style.css")}">
+<script>try{var t=localStorage.getItem("fm-tema");if(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)t="tmavy";if(t)document.documentElement.dataset.tema=t;}catch(e){}</script>
 </head>
 <body${telo}>
 <div class="nacitani" aria-hidden="true">
