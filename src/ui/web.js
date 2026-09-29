@@ -377,6 +377,15 @@
         + "<span class='gantt__drazka'><i class='gantt__pruh' data-kriticka='" + jeKriticka
         + "' style='--levo:" + p.levo + "%;--sirka:" + p.sirka + "%;transition-delay:" + (i * 90) + "ms'></i></span></div>";
     }).join("");
+    $$(".gantt__radek", obal).forEach(function (radek, i) {
+      radek.addEventListener("pointerenter", function () {
+        var krok = $$(".krok")[i];
+        if (krok) krok.dataset.zvyrazneno = "1";
+      });
+      radek.addEventListener("pointerleave", function () {
+        $$(".krok").forEach(function (k) { k.dataset.zvyrazneno = "0"; });
+      });
+    });
     var t = FM.harmonogram.trvani(plan);
     var vystup = $("[data-vystup='trvani']");
     if (vystup) vystup.textContent = t.start + " → " + t.konec + " · " + t.pracovnichDnu + " pracovních dnů";

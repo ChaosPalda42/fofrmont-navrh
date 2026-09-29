@@ -605,17 +605,17 @@ input[type="range"] { width: 100%; accent-color: var(--cara); }
   position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
   transition: opacity 500ms ease;
   background-image:
-    radial-gradient(circle 180px at var(--mx, -999px) var(--my, -999px), rgba(47, 111, 237, .07), transparent 70%),
-    linear-gradient(to right, rgba(47, 111, 237, .85) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(47, 111, 237, .85) 1px, transparent 1px);
+    radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px), rgba(47, 111, 237, .028), transparent 70%),
+    linear-gradient(to right, rgba(47, 111, 237, .3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(47, 111, 237, .3) 1px, transparent 1px);
   background-size: 100% 100%, var(--rastr) var(--rastr), var(--rastr) var(--rastr);
   transform: translate3d(0, var(--rastr-posun, 0), 0);
-  -webkit-mask-image: radial-gradient(circle 190px at var(--mx, -999px) var(--my, -999px),
-    #000 0, rgba(0, 0, 0, .6) 48%, transparent 80%);
-  mask-image: radial-gradient(circle 190px at var(--mx, -999px) var(--my, -999px),
-    #000 0, rgba(0, 0, 0, .6) 48%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px),
+    #000 0, rgba(0, 0, 0, .45) 45%, transparent 78%);
+  mask-image: radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px),
+    #000 0, rgba(0, 0, 0, .45) 45%, transparent 78%);
 }
-body[data-kurzor="1"] .rastr-svit { opacity: 1; }
+body[data-kurzor="1"] .rastr-svit { opacity: .6; }
 
 /* značka, která skáče po uzlech mřížky jako uchycení v CADu */
 .rastr-snap {
@@ -629,20 +629,20 @@ body[data-kurzor="1"] .rastr-svit { opacity: 1; }
 }
 .rastr-snap::before { left: 3px; top: -5px; width: 1px; height: 15px; }
 .rastr-snap::after { top: 3px; left: -5px; height: 1px; width: 15px; }
-body[data-kurzor="1"] .rastr-snap { opacity: .55; }
+body[data-kurzor="1"] .rastr-snap { opacity: .3; }
 
 .pas__svit {
   position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
   transition: opacity 500ms ease;
   background-image:
-    radial-gradient(circle 190px at var(--mx, -999px) var(--my, -999px), rgba(111, 211, 255, .1), transparent 70%),
-    linear-gradient(to right, rgba(111, 211, 255, .85) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(111, 211, 255, .85) 1px, transparent 1px);
+    radial-gradient(circle 160px at var(--mx, -999px) var(--my, -999px), rgba(111, 211, 255, .04), transparent 70%),
+    linear-gradient(to right, rgba(111, 211, 255, .34) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(111, 211, 255, .34) 1px, transparent 1px);
   background-size: 100% 100%, var(--rastr) var(--rastr), var(--rastr) var(--rastr);
-  -webkit-mask-image: radial-gradient(circle 200px at var(--mx, -999px) var(--my, -999px), #000 0, transparent 76%);
-  mask-image: radial-gradient(circle 200px at var(--mx, -999px) var(--my, -999px), #000 0, transparent 76%);
+  -webkit-mask-image: radial-gradient(circle 165px at var(--mx, -999px) var(--my, -999px), #000 0, transparent 76%);
+  mask-image: radial-gradient(circle 165px at var(--mx, -999px) var(--my, -999px), #000 0, transparent 76%);
 }
-.pas--vykres[data-svit="1"] .pas__svit { opacity: .8; }
+.pas--vykres[data-svit="1"] .pas__svit { opacity: .45; }
 
 /* pravítko postupu čtení pod lištou */
 .merit {
@@ -773,3 +773,29 @@ body[data-kurzor="1"] .rastr-snap { opacity: .55; }
   stroke-dasharray: 5 9; animation: proud 1.4s linear infinite; }
 @keyframes proud { to { stroke-dashoffset: -14; } }
 @media (prefers-reduced-motion: reduce) { .prurez .proud { animation: none; } }
+
+/* ======================================================================
+   Přechody mezi stránkami — přejezd rýsovací hlavy
+   ====================================================================== */
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) { animation: odjezd 260ms cubic-bezier(.4, 0, 1, 1) forwards; }
+::view-transition-new(root) { animation: prijezdStranky 380ms cubic-bezier(.22, .61, .36, 1); }
+@keyframes odjezd { to { opacity: 0; transform: translateY(-10px); } }
+@keyframes prijezdStranky {
+  from { opacity: 0; transform: translateY(14px); clip-path: inset(0 0 100% 0); }
+  to { opacity: 1; transform: none; clip-path: inset(0 0 0 0); }
+}
+::view-transition-group(lista) { animation-duration: 1ms; }
+.lista { view-transition-name: lista; }
+.ukazka { view-transition-name: ukazka; }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
+/* harmonogram — zvýraznění fáze při najetí */
+.gantt__radek { border-radius: 3px; transition: background 200ms ease; cursor: default; }
+.gantt__radek:hover { background: rgba(47, 111, 237, .06); }
+.gantt__radek:hover .gantt__pruh { filter: brightness(1.12); }
+.krok[data-zvyrazneno="1"] { background: rgba(255, 106, 31, .07); border-radius: 3px; }
