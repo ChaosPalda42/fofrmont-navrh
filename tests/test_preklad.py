@@ -109,3 +109,27 @@ def test_prelozi_prezije_vyjimku_klienta(modul):
 def test_vnoreny(modul):
     assert modul.vnoreny({"a.b": "x", "s.0": "p", "s.1": "q"}) == {"a": {"b": "x"}, "s": ["p", "q"]}
     assert modul.vnoreny(modul.plochy(CS))["vyhody"] == ["Rychle", "Přesně"]
+
+
+def test_vnoreny_objekt_uvnitr_seznamu(modul):
+    """Texty webu mají tvar `sekce.polozky.0.nadpis` — seznam objektů."""
+    plochy = {
+        "b.pravidla.0.nadpis": "A", "b.pravidla.0.text": "a",
+        "b.pravidla.1.nadpis": "B", "b.pravidla.1.text": "b",
+    }
+    assert modul.vnoreny(plochy) == {"b": {"pravidla": [
+        {"nadpis": "A", "text": "a"}, {"nadpis": "B", "text": "b"}]}}
+
+
+def test_vnoreny_seznam_v_seznamu(modul):
+    assert modul.vnoreny({"m.0.0": "x", "m.0.1": "y", "m.1.0": "z"}) == {"m": [["x", "y"], ["z"]]}
+
+
+def test_vnoreny_je_opakem_plochy_i_pro_slozity_tvar(modul):
+    zdroj = {
+        "nav": {"a": "A"},
+        "pravidla": [{"nadpis": "N1", "text": "T1"}, {"nadpis": "N2", "text": "T2"}],
+        "seznam": ["x", "y"],
+        "hloubka": {"vnor": [{"k": ["p", "q"]}]},
+    }
+    assert modul.vnoreny(modul.plochy(zdroj)) == zdroj

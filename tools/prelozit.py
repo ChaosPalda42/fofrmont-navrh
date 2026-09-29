@@ -1,7 +1,11 @@
-"""Spustí překlad data/content/cs.json -> data/content/<jazyk>.json lokálním modelem.
+"""Přeloží data/content/cs.json do dalšího jazyka lokálním modelem.
 
-Operátorský skript (není kontrakt): jen propojí tools/preklad.py s llama-serverem.
-Použití: uv run python -m tools.prelozit en [--model gemma-4-26b-a4b] [--port 8081]
+Operátorský skript (není kontrakt). Překlad běží po dávkách a po každé dávce
+se hotové klíče ukládají do mezipaměti, takže pád ani přerušení neznamená
+ztrátu práce — další spuštění navazuje tam, kde předchozí skončilo.
+
+    uv run python -m tools.prelozit en
+    uv run python -m tools.prelozit en --znovu       # zahodí mezipaměť
 """
 from __future__ import annotations
 
@@ -9,7 +13,6 @@ import argparse
 import json
 import sys
 import time
-import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -46,20 +49,42 @@ def hlavni(argv: list[str]) -> int:
     p.add_argument("--port", type=int, default=8081)
     p.add_argument("--model", default="gemma-4-26b-a4b")
     p.add_argument("--davka", type=int, default=14)
+    p.add_argument("--znovu", action="store_true", help="zahodí mezipaměť a přeloží vše znovu")
     a = p.parse_args(argv)
 
     zdroj = json.loads((KOREN / "data/content/cs.json").read_text(encoding="utf-8"))
+    polozky = sorted(preklad.plochy(zdroj).items())
+    mezipamet = KOREN / f"data/content/.preklad-{a.jazyk}.json"
+    hotovo: dict[str, str] = {}
+    if mezipamet.exists() and not a.znovu:
+        hotovo = json.loads(mezipamet.read_text(encoding="utf-8"))
+
+    zbyva = [(klic, text) for klic, text in polozky if klic not in hotovo]
+    klient = klient_llama(a.port, a.model)
+    problemy: list[str] = []
     zacatek = time.time()
-    preklady, problemy = preklad.prelozi(zdroj, JAZYKY[a.jazyk], klient_llama(a.port, a.model), a.davka)
+
+    for cislo, davka in enumerate(preklad.davky(zbyva, a.davka), start=1):
+        try:
+            odpoved = klient(preklad.sestav_prompt(davka, JAZYKY[a.jazyk]))
+        except Exception as chyba:  # výpadek modelu nesmí shodit celý běh
+            problemy.extend(klic for klic, _ in davka)
+            print(f"dávka {cislo}: {type(chyba).__name__}", flush=True)
+            continue
+        preklady, davka_problemy = preklad.zpracuj_odpoved(odpoved, davka)
+        hotovo.update(preklady)
+        problemy.extend(davka_problemy)
+        mezipamet.write_text(json.dumps(hotovo, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"dávka {cislo}: +{len(preklady)} (celkem {len(hotovo)}/{len(polozky)})", flush=True)
+
     cil = KOREN / f"data/content/{a.jazyk}.json"
-    cil.write_text(json.dumps(preklad.vnoreny(preklady), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    celkem = len(preklad.plochy(zdroj))
+    cil.write_text(json.dumps(preklad.vnoreny(hotovo), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({
-        "jazyk": a.jazyk, "klicu": celkem, "prelozeno": len(preklady),
+        "jazyk": a.jazyk, "klicu": len(polozky), "prelozeno": len(hotovo),
         "problemu": len(problemy), "sekund": round(time.time() - zacatek),
         "prvni_problemy": problemy[:15],
     }, ensure_ascii=False))
-    return 0 if len(preklady) > celkem * 0.9 else 1
+    return 0 if len(hotovo) > len(polozky) * 0.9 else 1
 
 
 if __name__ == "__main__":

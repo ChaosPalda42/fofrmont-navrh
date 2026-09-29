@@ -101,12 +101,12 @@
     },
     "C-012": {
       "status": "green",
-      "attempts": 1,
-      "iterations": 3,
-      "commit": "87c7da0",
+      "attempts": 2,
+      "iterations": 14,
+      "commit": "297d094",
       "last_finding": "",
       "packet": "",
-      "updated_at": "2026-09-29T22:38:25+00:00"
+      "updated_at": "2026-09-29T23:03:15+00:00"
     }
   },
   "runs": [
@@ -129,6 +129,26 @@
       "red": 0,
       "escalated": 0,
       "note": "full suite passed (0 tests)"
+    },
+    {
+      "started_at": "2026-09-29T22:58:14+00:00",
+      "finished_at": "2026-09-29T22:58:26+00:00",
+      "outcome": "failed",
+      "iterations": 0,
+      "green": 12,
+      "red": 0,
+      "escalated": 0,
+      "note": "full suite failed (3 failed) after all contracts were green"
+    },
+    {
+      "started_at": "2026-09-29T22:59:43+00:00",
+      "finished_at": "2026-09-29T23:03:28+00:00",
+      "outcome": "green",
+      "iterations": 11,
+      "green": 12,
+      "red": 0,
+      "escalated": 0,
+      "note": "full suite passed (178 tests)"
     }
   ],
   "open_packets": []

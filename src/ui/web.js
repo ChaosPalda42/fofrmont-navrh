@@ -8,6 +8,8 @@
     try { return JSON.parse(el.getAttribute(jmeno)); } catch (e) { return zaskok; }
   };
   var tlumene = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var ROZTEC = 24;          // rozteč mřížky, musí sedět s --rastr v CSS
+  var posunRastru = 0;      // svislé posunutí mřížky při rolování (parallax)
 
 
   /* ---------- mřížka, která se rozsvítí pod kurzorem ---------- */
@@ -21,16 +23,25 @@
       sekce.insertBefore(svit, sekce.firstChild);
       return { sekce: sekce, svit: svit };
     });
-    var KROK = 24;
     var cx = -999, cy = -999, x = -999, y = -999, bezi = false;
+
+    /** Nejbližší uzel mřížky pod kurzorem. Světlé pozadí má počátek v okně
+     *  (posunutý parallaxem), tmavý pás má vlastní počátek u svého horního okraje. */
+    function uzel(sekce) {
+      var posunY = sekce ? sekce.getBoundingClientRect().top : posunRastru;
+      var posunX = sekce ? sekce.getBoundingClientRect().left : 0;
+      return {
+        x: Math.round((cx - posunX) / ROZTEC) * ROZTEC + posunX + 0.5,
+        y: Math.round((cy - posunY) / ROZTEC) * ROZTEC + posunY + 0.5,
+      };
+    }
 
     function ramec() {
       x += (cx - x) * 0.2;
       y += (cy - y) * 0.2;
       vrstva.style.setProperty("--mx", x.toFixed(1) + "px");
       vrstva.style.setProperty("--my", y.toFixed(1) + "px");
-      snap.style.transform = "translate3d(" + Math.round(cx / KROK) * KROK + "px,"
-        + Math.round(cy / KROK) * KROK + "px,0)";
+      var nadTmavou = null;
       for (var i = 0; i < tmave.length; i += 1) {
         var r = tmave[i].sekce.getBoundingClientRect();
         var uvnitr = cy > r.top - 240 && cy < r.bottom + 240 && r.height > 0;
@@ -38,8 +49,11 @@
         if (uvnitr) {
           tmave[i].svit.style.setProperty("--mx", (x - r.left).toFixed(1) + "px");
           tmave[i].svit.style.setProperty("--my", (y - r.top).toFixed(1) + "px");
+          if (cy >= r.top && cy <= r.bottom) nadTmavou = tmave[i].sekce;
         }
       }
+      var u = uzel(nadTmavou);
+      snap.style.transform = "translate3d(" + u.x.toFixed(1) + "px," + u.y.toFixed(1) + "px,0)";
       if (Math.abs(cx - x) > 0.4 || Math.abs(cy - y) > 0.4) requestAnimationFrame(ramec);
       else bezi = false;
     }
@@ -133,6 +147,13 @@
     $$(".karta--odkaz").forEach(function (karta) {
       var motiv = $(".karta__motiv", karta);
       if (!motiv) return;
+      karta.addEventListener("pointerenter", function () {
+        $$("path.kresli", motiv).forEach(function (cesta) {
+          cesta.style.animation = "none";
+          void cesta.getBoundingClientRect();
+          cesta.style.animation = "";
+        });
+      });
       karta.addEventListener("pointermove", function (e) {
         var r = karta.getBoundingClientRect();
         motiv.style.setProperty("--posunX", (((e.clientX - r.left) / r.width - 0.5) * 12).toFixed(1) + "px");
@@ -233,7 +254,8 @@
       if (ceka) return;
       ceka = true;
       window.requestAnimationFrame(function () {
-        el.style.setProperty("--rastr-posun", (-(window.scrollY * 0.06) % 120) + "px");
+        posunRastru = -(window.scrollY * 0.06) % (ROZTEC * 5);
+        el.style.setProperty("--rastr-posun", posunRastru + "px");
         ceka = false;
       });
     }, { passive: true });
@@ -762,7 +784,19 @@
     });
   }
 
+  /** Načítací překryv zmizí sám (CSS), po načtení stránky ale dřív. */
+  function nacitani() {
+    var od = Date.now();
+    var hotovo = function () {
+      var zbyva = Math.max(0, 620 - (Date.now() - od));
+      window.setTimeout(function () { document.body.dataset.nacteno = "1"; }, zbyva);
+    };
+    if (document.readyState === "complete") hotovo();
+    else window.addEventListener("load", hotovo);
+  }
+
   function start() {
+    nacitani();
     navigace(); prijezd(); rastr(); svitivaMrizka(); pravitko(); pocitadla();
     hero(); naklon(); magnety(); meric(); gantt();
     filtrujStavby(); filtrujRecenze(); dotazy(); kalkulacky(); pruvodce(); formulare();

@@ -24,25 +24,16 @@ export function uvod(ctx) {
           <a class="tl tl--signal" href="${odkaz("poptavka")}">${esc(t("uvod.ctaHlavni"))} ${ikona("sipka", { velikost: 16 })}</a>
           <a class="tl tl--obrys" href="${odkaz("stavby")}">${esc(t("uvod.ctaVedlejsi"))}</a>
         </div>
-        <div data-prepinac="hero">
-          <p class="mono male tise" style="margin-bottom:.5rem">${esc(t("uvod.prepinacPopis"))}</p>
+      </div>
+      <div>
+        <div class="hero__prepinac" data-prepinac="hero">
+          <p class="mono male tise" style="margin:0">${esc(t("uvod.prepinacPopis"))}</p>
           <div class="prepinac" role="group">
             <button type="button" data-varianta="b2b" aria-pressed="true">${esc(t("spolecne.segmentB2b"))}</button>
             <button type="button" data-varianta="b2c" aria-pressed="false">${esc(t("spolecne.segmentB2c"))}</button>
           </div>
-          <div style="margin-top:1.1rem;max-width:46ch">
-            <div data-varianta-obsah="b2b">
-              <h2 style="font-size:1.12rem;margin-bottom:.3rem">${esc(t("uvod.heroB2bNadpis"))}</h2>
-              <p class="male tise" style="margin:0">${esc(t("uvod.heroB2bText"))}</p>
-            </div>
-            <div data-varianta-obsah="b2c" hidden>
-              <h2 style="font-size:1.12rem;margin-bottom:.3rem">${esc(t("uvod.heroB2cNadpis"))}</h2>
-              <p class="male tise" style="margin:0">${esc(t("uvod.heroB2cText"))}</p>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="hero__vykres je-videt" data-kriz>
+        <div class="hero__vykres je-videt" data-kriz>
         <div data-varianta-obsah="b2b">${vykresB2b({
           kota1: "4 000", kota2: "+3,60", jednotka: "VZT jednotka 12 000 m³/h", odbocka: "Ø 400 — odbočka do sálu",
         })}</div>
@@ -52,6 +43,17 @@ export function uvod(ctx) {
         <div class="kriz" aria-hidden="true">
           <div class="kriz__v"></div><div class="kriz__h"></div>
           <div class="kriz__popis"></div>
+        </div>
+        </div>
+        <div class="hero__popis">
+          <div data-varianta-obsah="b2b">
+            <h2>${esc(t("uvod.heroB2bNadpis"))}</h2>
+            <p>${esc(t("uvod.heroB2bText"))}</p>
+          </div>
+          <div data-varianta-obsah="b2c" hidden>
+            <h2>${esc(t("uvod.heroB2cNadpis"))}</h2>
+            <p>${esc(t("uvod.heroB2cText"))}</p>
+          </div>
         </div>
       </div>
     </div>

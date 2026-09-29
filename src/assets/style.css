@@ -620,15 +620,15 @@ body[data-kurzor="1"] .rastr-svit { opacity: .6; }
 /* značka, která skáče po uzlech mřížky jako uchycení v CADu */
 .rastr-snap {
   position: fixed; top: 0; left: 0; z-index: 2; pointer-events: none;
-  width: 9px; height: 9px; margin: -5px 0 0 -5px; opacity: 0;
+  width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; opacity: 0;
   border: 1px solid var(--signal);
   transition: transform 140ms cubic-bezier(.2, .9, .3, 1), opacity 400ms ease;
 }
 .rastr-snap::before, .rastr-snap::after {
   content: ""; position: absolute; background: var(--signal); opacity: .7;
 }
-.rastr-snap::before { left: 3px; top: -5px; width: 1px; height: 15px; }
-.rastr-snap::after { top: 3px; left: -5px; height: 1px; width: 15px; }
+.rastr-snap::before { left: 50%; margin-left: -.5px; top: -6px; width: 1px; height: 21px; }
+.rastr-snap::after { top: 50%; margin-top: -.5px; left: -6px; height: 1px; width: 21px; }
 body[data-kurzor="1"] .rastr-snap { opacity: .3; }
 
 .pas__svit {
@@ -779,12 +779,31 @@ body[data-kurzor="1"] .rastr-snap { opacity: .3; }
    ====================================================================== */
 @view-transition { navigation: auto; }
 
-::view-transition-old(root) { animation: odjezd 260ms cubic-bezier(.4, 0, 1, 1) forwards; }
-::view-transition-new(root) { animation: prijezdStranky 380ms cubic-bezier(.22, .61, .36, 1); }
-@keyframes odjezd { to { opacity: 0; transform: translateY(-10px); } }
+::view-transition-old(root) { animation: odjezd 220ms cubic-bezier(.4, 0, 1, 1) forwards; }
+::view-transition-new(root) { animation: prijezdStranky 760ms cubic-bezier(.45, .02, .35, 1); }
+@keyframes odjezd { to { opacity: 0; transform: translateY(-8px); } }
 @keyframes prijezdStranky {
-  from { opacity: 0; transform: translateY(14px); clip-path: inset(0 0 100% 0); }
-  to { opacity: 1; transform: none; clip-path: inset(0 0 0 0); }
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* rýsovací hlava: přejede stránku shora dolů, jak se obsah odkrývá */
+.plotter {
+  position: fixed; left: 0; right: 0; top: 0; height: 1px; z-index: 88; pointer-events: none;
+  background: var(--signal); opacity: 0; box-shadow: 0 0 14px rgba(255, 106, 31, .6);
+}
+.plotter::before, .plotter::after {
+  content: ""; position: absolute; top: -3px; width: 7px; height: 7px;
+  border: 1px solid var(--signal); background: var(--papir);
+}
+.plotter::before { left: 0; }
+.plotter::after { right: 0; }
+html[data-prejezd="1"] .plotter { animation: plotterSjezd 780ms cubic-bezier(.45, .02, .35, 1) forwards; }
+@keyframes plotterSjezd {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: .9; }
+  85% { opacity: .9; }
+  100% { top: 100%; opacity: 0; }
 }
 ::view-transition-group(lista) { animation-duration: 1ms; }
 .lista { view-transition-name: lista; }
@@ -792,6 +811,7 @@ body[data-kurzor="1"] .rastr-snap { opacity: .3; }
 
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+  html[data-prejezd="1"] .plotter { animation: none; }
 }
 
 /* harmonogram — zvýraznění fáze při najetí */
@@ -799,3 +819,86 @@ body[data-kurzor="1"] .rastr-snap { opacity: .3; }
 .gantt__radek:hover { background: rgba(47, 111, 237, .06); }
 .gantt__radek:hover .gantt__pruh { filter: brightness(1.12); }
 .krok[data-zvyrazneno="1"] { background: rgba(255, 106, 31, .07); border-radius: 3px; }
+
+/* přepínač varianty nad výkresem */
+.hero__prepinac {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem;
+  justify-content: flex-end; margin-bottom: .9rem;
+}
+@media (max-width: 64rem) { .hero__prepinac { justify-content: flex-start; margin-top: 1.6rem; } }
+.hero__popis { margin-top: 1rem; max-width: 46ch; margin-left: auto; }
+.hero__popis h2 { font-size: 1.12rem; margin-bottom: .3rem; }
+.hero__popis p { margin: 0; font-size: .9rem; color: var(--sedy); }
+@media (max-width: 64rem) { .hero__popis { margin-left: 0; } }
+
+/* ======================================================================
+   Načítání — rýsovací hlava přejede list a odhalí web
+   ====================================================================== */
+.nacitani {
+  position: fixed; inset: 0; z-index: 90; display: grid; place-items: center;
+  background: var(--papir); animation: nacitaniPryc 1500ms cubic-bezier(.6, 0, .2, 1) forwards;
+}
+body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 520ms cubic-bezier(.6, 0, .2, 1) forwards; }
+@keyframes nacitaniPryc {
+  0%, 62% { opacity: 1; clip-path: inset(0 0 0 0); }
+  100% { opacity: 0; clip-path: inset(0 0 100% 0); visibility: hidden; }
+}
+.nacitani::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(47, 111, 237, .09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(47, 111, 237, .09) 1px, transparent 1px);
+  background-size: var(--rastr) var(--rastr), var(--rastr) var(--rastr);
+}
+.nacitani__vnitrek { position: relative; display: grid; justify-items: center; gap: 1.1rem; }
+.nacitani__znak { width: 74px; height: 74px; color: var(--tus); }
+.nacitani__znak rect, .nacitani__znak path { stroke-dasharray: 190; stroke-dashoffset: 190;
+  animation: nacitaniKresli 900ms cubic-bezier(.3, .1, .2, 1) forwards; }
+.nacitani__znak path { animation-delay: 240ms; }
+.nacitani__znak circle { opacity: 0; animation: nacitaniTecka 420ms ease 900ms forwards; }
+@keyframes nacitaniKresli { to { stroke-dashoffset: 0; } }
+@keyframes nacitaniTecka { to { opacity: 1; } }
+.nacitani__jmeno {
+  font-family: var(--pismo-mono); font-size: .7rem; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--sedy-2);
+}
+.nacitani__pruh { width: 164px; height: 2px; background: var(--cara-3); overflow: hidden; }
+.nacitani__pruh i {
+  display: block; height: 100%; width: 100%; background: linear-gradient(90deg, var(--cara), var(--signal));
+  transform-origin: left; transform: scaleX(0); animation: nacitaniPruh 1150ms cubic-bezier(.35, .1, .25, 1) forwards;
+}
+@keyframes nacitaniPruh { to { transform: scaleX(1); } }
+/* rýsovací hlava přejede přes celou plochu */
+.nacitani__hlava {
+  position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--signal); opacity: .55;
+  animation: nacitaniHlava 1400ms cubic-bezier(.5, 0, .5, 1) forwards;
+}
+@keyframes nacitaniHlava { from { top: 0; } to { top: 100%; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .nacitani { animation: nacitaniPryc 320ms linear forwards; }
+  .nacitani__znak rect, .nacitani__znak path { stroke-dashoffset: 0; animation: none; }
+  .nacitani__znak circle { opacity: 1; animation: none; }
+  .nacitani__hlava { display: none; }
+  .nacitani__pruh i { transform: scaleX(1); animation: none; }
+}
+
+/* kóta, která se dokreslí pod nadpisem sekce */
+.hlavicka-sekce h2 { position: relative; display: inline-block; padding-bottom: .32rem; }
+.hlavicka-sekce h2::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--cara-2); transform: scaleX(0); transform-origin: left;
+  transition: transform 760ms cubic-bezier(.22, .61, .36, 1) 180ms;
+}
+.prijezd.je-videt .hlavicka-sekce h2::after,
+.hlavicka-sekce.je-videt h2::after,
+.je-videt .hlavicka-sekce h2::after { transform: scaleX(1); }
+.hlavicka-sekce h2::before {
+  content: ""; position: absolute; left: 0; bottom: -2px; width: 1px; height: 5px;
+  background: var(--cara-2); opacity: 0; transition: opacity 300ms ease 760ms;
+}
+.je-videt .hlavicka-sekce h2::before, .prijezd.je-videt .hlavicka-sekce h2::before { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hlavicka-sekce h2::after { transform: scaleX(1); }
+}

@@ -115,6 +115,21 @@ export function stranka(ctx, { titulek, popis, aktivni, obsah, telo = "" }) {
 <link rel="stylesheet" href="${asset("style.css")}">
 </head>
 <body${telo}>
+<div class="nacitani" aria-hidden="true">
+  <div class="nacitani__hlava"></div>
+  <div class="nacitani__vnitrek">
+    <svg class="nacitani__znak" viewBox="0 0 32 32" fill="none">
+      <rect x="1.2" y="1.2" width="29.6" height="29.6" rx="2" stroke="currentColor" stroke-width="1.4" opacity=".3"/>
+      <path d="M7 24V13.5A3.5 3.5 0 0 1 10.5 10H25" stroke="var(--cara)" stroke-width="2.6"
+        stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="25" cy="10" r="2.6" fill="var(--signal)"/>
+    </svg>
+    <span class="nacitani__jmeno">Fofrmont · montáže TZB</span>
+    <span class="nacitani__pruh"><i></i></span>
+  </div>
+</div>
+<div class="plotter" aria-hidden="true"></div>
+<script>try{var u=document.currentScript.previousElementSibling.previousElementSibling;if(sessionStorage.getItem("fm-videno")){if(u&&u.classList.contains("nacitani"))u.remove();document.documentElement.dataset.prejezd="1";}else{sessionStorage.setItem("fm-videno","1");}}catch(e){}</script>
 <a class="preskocit" href="#obsah">Přeskočit na obsah</a>
 <div class="rastr" aria-hidden="true"></div>
 <div class="rastr-svit" aria-hidden="true"></div>

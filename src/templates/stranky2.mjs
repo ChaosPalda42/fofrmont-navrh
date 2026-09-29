@@ -180,8 +180,13 @@ export function poptavka(ctx) {
       moznosti: [{ id: "b2b", popis: t("spolecne.segmentB2b") }, { id: "b2c", popis: t("spolecne.segmentB2c") }] },
     { id: "obory", otazka: t("poptavka.otazky.obory"), typ: "vicevolba", povinne: true, min: 1,
       moznosti: site.obory.map((o) => ({ id: o.id, popis: o.nazev })) },
-    { id: "objekt", otazka: t("poptavka.otazky.objekt"), typ: "volba", povinne: true,
-      moznosti: ["Rd", "Byt", "Bd", "Kancelar", "Hala", "Zdravotnictvi", "Skola", "Jine"]
+    { id: "objektFirma", otazka: t("poptavka.otazky.objekt"), typ: "volba", povinne: true,
+      podminka: { krok: "segment", hodnota: "b2b" },
+      moznosti: ["Kancelar", "Hala", "Zdravotnictvi", "Skola", "Bd", "Jine"]
+        .map((k) => ({ id: k.toLowerCase(), popis: t(`poptavka.moznosti.objekt${k}`) })) },
+    { id: "objektDomacnost", otazka: t("poptavka.otazky.objekt"), typ: "volba", povinne: true,
+      podminka: { krok: "segment", hodnota: "b2c" },
+      moznosti: ["Rd", "Byt", "Bd", "Chata", "Jine"]
         .map((k) => ({ id: k.toLowerCase(), popis: t(`poptavka.moznosti.objekt${k}`) })) },
     { id: "projekt", otazka: t("poptavka.otazky.projekt"), typ: "ano-ne", povinne: true,
       podminka: { krok: "segment", hodnota: "b2b" } },

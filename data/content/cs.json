@@ -61,7 +61,7 @@
     "lead": "Vzduchotechnika, vytápění, zdravotechnika a chlazení. Dodávka i montáž v jedné smlouvě — pro generální dodavatele na velkých stavbách i pro rodinné domy.",
     "ctaHlavni": "Chci nezávaznou nabídku",
     "ctaVedlejsi": "Prohlédnout stavby",
-    "prepinacPopis": "Vyberte, odkud se díváte:",
+    "prepinacPopis": "Vyberte, co vám ukázat:",
     "heroB2bNadpis": "Nemocnice, terminály, haly",
     "heroB2bText": "Montujeme za provozu, v nočních blocích a v harmonogramu, který drží. Pro generální dodavatele jsme podzhotovitel, který nevolá s problémem, ale s řešením.",
     "heroB2cNadpis": "Rodinné domy a byty",
@@ -311,7 +311,8 @@
       "terminIhned": "Co nejdřív",
       "terminKvartal": "Do tří měsíců",
       "terminPul": "Do půl roku",
-      "terminNevim": "Zatím nevím"
+      "terminNevim": "Zatím nevím",
+      "objektChata": "Chata nebo chalupa"
     }
   },
   "kalkulacky": {

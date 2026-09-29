@@ -8,3 +8,4 @@ out/
 _balicek/
 .factory-run-*.log
 .DS_Store
+data/content/.preklad-*.json
