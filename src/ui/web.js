@@ -8,7 +8,10 @@
     try { return JSON.parse(el.getAttribute(jmeno)); } catch (e) { return zaskok; }
   };
   var tlumene = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var ROZTEC = 24;          // rozteč mřížky, musí sedět s --rastr v CSS
+  var ROZTEC = (function () {   // rozteč mřížky se čte z CSS (--rastr), ať se nemůže rozejít
+    var v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--rastr"));
+    return v > 0 ? v : 24;
+  })();
   var posunRastru = 0;      // svislé posunutí mřížky při rolování (parallax)
 
 
@@ -249,15 +252,15 @@
 
   /* ---------- posun rastru při rolování ---------- */
   function rastr() {
-    var el = $(".rastr");
-    if (!el || tlumene) return;
+    var koren = document.documentElement;
+    if (!$(".rastr") || tlumene) return;
     var ceka = false;
     window.addEventListener("scroll", function () {
       if (ceka) return;
       ceka = true;
       window.requestAnimationFrame(function () {
         posunRastru = -(window.scrollY * 0.06) % (ROZTEC * 5);
-        el.style.setProperty("--rastr-posun", posunRastru + "px");
+        koren.style.setProperty("--rastr-posun", posunRastru + "px");
         ceka = false;
       });
     }, { passive: true });
