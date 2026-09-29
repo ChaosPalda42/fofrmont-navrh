@@ -561,7 +561,8 @@
     "prilohaVelke": "{jmeno} is {velikost} — this is over 15 MB. Please send it via the link below.",
     "prilohaVybrat": "Select files",
     "prilohaVyzva": "Drag files here, or select them",
-    "temaPrepnout": "Toggle light and dark mode"
+    "temaPrepnout": "Toggle light and dark mode",
+    "ukazkaAdmin": "Try administration"
   },
   "stavby": {
     "detailObory": "Trades",

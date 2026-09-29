@@ -849,11 +849,11 @@ html[data-prejezd="1"] .plotter { animation: plotterSjezd 780ms cubic-bezier(.45
    ====================================================================== */
 .nacitani {
   position: fixed; inset: 0; z-index: 90; display: grid; place-items: center;
-  background: var(--papir); animation: nacitaniPryc 3000ms cubic-bezier(.6, 0, .2, 1) forwards;
+  background: var(--papir); animation: nacitaniPryc 4200ms cubic-bezier(.6, 0, .2, 1) forwards;
 }
 body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6, 0, .2, 1) forwards; }
 @keyframes nacitaniPryc {
-  0%, 78% { opacity: 1; clip-path: inset(0 0 0 0); }
+  0%, 82% { opacity: 1; clip-path: inset(0 0 0 0); }
   100% { opacity: 0; clip-path: inset(0 0 100% 0); visibility: hidden; }
 }
 .nacitani::before {
@@ -863,36 +863,48 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
     linear-gradient(to bottom, rgba(47, 111, 237, .09) 1px, transparent 1px);
   background-size: var(--rastr) var(--rastr), var(--rastr) var(--rastr);
 }
-.nacitani__vnitrek { position: relative; display: grid; justify-items: center; gap: 1.1rem; }
-.nacitani__znak { width: 74px; height: 74px; color: var(--tus); }
+.nacitani__vnitrek { position: relative; display: grid; justify-items: center; gap: .85rem; padding: 0 1.2rem; }
+.nacitani__znak { width: clamp(64px, 14vw, 92px); height: clamp(64px, 14vw, 92px); color: var(--tus); }
 .nacitani__znak rect, .nacitani__znak path { stroke-dasharray: 190; stroke-dashoffset: 190;
-  animation: nacitaniKresli 1050ms cubic-bezier(.3, .1, .2, 1) forwards; }
-.nacitani__znak path { animation-delay: 420ms; }
-.nacitani__znak circle { opacity: 0; animation: nacitaniTecka 480ms cubic-bezier(.2,1.4,.4,1) 1420ms forwards; }
+  animation: nacitaniKresli 1250ms cubic-bezier(.3, .1, .2, 1) forwards; }
+.nacitani__znak path { animation-delay: 500ms; }
+.nacitani__znak circle { opacity: 0; animation: nacitaniTecka 520ms cubic-bezier(.2,1.4,.4,1) 1700ms forwards; }
 @keyframes nacitaniKresli { to { stroke-dashoffset: 0; } }
 @keyframes nacitaniTecka { to { opacity: 1; } }
 .nacitani__jmeno {
   font-family: var(--pismo-mono); font-size: .7rem; letter-spacing: .28em; text-transform: uppercase;
   color: var(--sedy-2); opacity: 0;
-  animation: nacitaniJmeno 700ms cubic-bezier(.22, .61, .36, 1) 1180ms forwards;
+  animation: nacitaniJmeno 700ms cubic-bezier(.22, .61, .36, 1) 2050ms forwards;
 }
 @keyframes nacitaniJmeno { from { opacity: 0; letter-spacing: .5em; } to { opacity: 1; letter-spacing: .28em; } }
-.nacitani__pruh { width: 164px; height: 2px; background: var(--cara-3); overflow: hidden; }
+
+/* velký nápis se „vyplotruje“ zleva doprava */
+.nacitani__znacka {
+  font-family: var(--pismo-nadpis); font-weight: 700;
+  font-size: clamp(2.1rem, 9vw, 3.6rem); letter-spacing: -.035em; line-height: 1;
+  color: var(--tus); white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+  animation: nacitaniNapis 1000ms cubic-bezier(.62, .02, .28, 1) 1300ms forwards;
+}
+.nacitani__znacka span { color: var(--cara); }
+.nacitani__pruh { width: min(280px, 60vw); height: 2px; background: var(--cara-3); overflow: hidden; margin-top: .4rem; }
 .nacitani__pruh i {
   display: block; height: 100%; width: 100%; background: linear-gradient(90deg, var(--cara), var(--signal));
-  transform-origin: left; transform: scaleX(0); animation: nacitaniPruh 1750ms cubic-bezier(.35, .1, .25, 1) forwards;
+  transform-origin: left; transform: scaleX(0); animation: nacitaniPruh 3000ms cubic-bezier(.35, .1, .25, 1) forwards;
 }
 @keyframes nacitaniPruh { to { transform: scaleX(1); } }
 /* rýsovací hlava přejede přes celou plochu */
 .nacitani__hlava {
   position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--signal); opacity: .55;
-  animation: nacitaniHlava 1950ms cubic-bezier(.5, 0, .5, 1) forwards;
+  animation: nacitaniHlava 3200ms cubic-bezier(.5, 0, .5, 1) forwards;
 }
 @keyframes nacitaniHlava { from { top: 0; } to { top: 100%; } }
+@keyframes nacitaniNapis { to { clip-path: inset(0 0 0 0); } }
 
 @media (prefers-reduced-motion: reduce) {
   .nacitani { animation: nacitaniPryc 320ms linear forwards; }
   .nacitani__jmeno { opacity: 1; animation: none; }
+  .nacitani__znacka { clip-path: none; animation: none; }
   .nacitani__znak rect, .nacitani__znak path { stroke-dashoffset: 0; animation: none; }
   .nacitani__znak circle { opacity: 1; animation: none; }
   .nacitani__hlava { display: none; }
@@ -1080,3 +1092,23 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 :root[data-tema="tmavy"] .tema .slunce { display: none; }
 :root[data-tema="tmavy"] .tema .mesic { display: block; }
 @media (max-width: 68rem) { .tema { margin: .8rem .4rem 0 0; } }
+
+/* pruh ukázky: odkaz na demo administraci */
+.ukazka {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .3rem .9rem;
+}
+.ukazka a { text-decoration-color: rgba(255, 255, 255, .5); text-underline-offset: .18em; }
+.ukazka a:hover { text-decoration-color: currentColor; }
+.ukazka__admin {
+  display: inline-flex; align-items: center; gap: .35rem; text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, .45); border-radius: 99px; padding: .1rem .6rem;
+  font-weight: 600; transition: background var(--prechod), border-color var(--prechod);
+}
+.ukazka__admin:hover { background: rgba(255, 255, 255, .16); border-color: #fff; }
+.ukazka__admin svg { opacity: .85; }
+
+@media (max-width: 40rem) {
+  .stat-tabulka td:nth-child(2), .stat-tabulka th:nth-child(2) { display: none; }
+  .stat-pruh { grid-template-columns: minmax(0, 1fr) auto; }
+  .stat-pruh__drazka { grid-column: 1 / -1; }
+}

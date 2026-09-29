@@ -1036,7 +1036,7 @@
   function nacitani() {
     var od = Date.now();
     var hotovo = function () {
-      var zbyva = Math.max(0, 2150 - (Date.now() - od));   // ať je celá animace vidět
+      var zbyva = Math.max(0, 3400 - (Date.now() - od));   // ať je celá animace vidět
       window.setTimeout(function () { document.body.dataset.nacteno = "1"; }, zbyva);
     };
     if (document.readyState === "complete") hotovo();

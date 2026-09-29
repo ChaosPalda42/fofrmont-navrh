@@ -131,7 +131,8 @@ export function stranka(ctx, { titulek, popis, aktivni, obsah, telo = "" }) {
         stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="25" cy="10" r="2.6" fill="var(--signal)"/>
     </svg>
-    <span class="nacitani__jmeno">Fofrmont · montáže TZB</span>
+    <span class="nacitani__znacka">FOFR<span>MONT</span></span>
+    <span class="nacitani__jmeno">${esc(t("spolecne.znackaPodtitul"))}</span>
     <span class="nacitani__pruh"><i></i></span>
   </div>
 </div>
@@ -141,7 +142,11 @@ export function stranka(ctx, { titulek, popis, aktivni, obsah, telo = "" }) {
 <div class="rastr" aria-hidden="true"></div>
 <div class="rastr-svit" aria-hidden="true"></div>
 <div class="rastr-snap" aria-hidden="true"></div>
-<div class="ukazka">${esc(t("spolecne.ukazka"))} <a href="${odkaz("ukazka")}">${esc(t("spolecne.ukazkaOdkaz"))}</a></div>
+<div class="ukazka">
+  <span>${esc(t("spolecne.ukazka"))}</span>
+  <a href="${odkaz("ukazka")}">${esc(t("spolecne.ukazkaOdkaz"))}</a>
+  <a href="${odkaz("administrace")}" class="ukazka__admin">${ikona("vykres", { velikost: 14 })} ${esc(t("spolecne.ukazkaAdmin"))}</a>
+</div>
 <header class="lista">
   <div class="obal lista__obal">
     <a class="znacka" href="${odkaz("uvod")}">
