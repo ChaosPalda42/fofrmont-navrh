@@ -1,0 +1,945 @@
+{
+  "firma": {
+    "nazev": "FOFRMONT CZ s.r.o.",
+    "znacka": "FOFRMONT",
+    "ico": "02911973",
+    "dic": "CZ02911973",
+    "adresa": {
+      "ulice": "Roháčova 145/14",
+      "cast": "Žižkov",
+      "psc": "130 00",
+      "mesto": "Praha 3"
+    },
+    "vznik": "2014-04-24",
+    "jednatel": "Miloš Lukeš",
+    "zapis": "C 225069 vedená u Městského soudu v Praze",
+    "kapital": "200 000 Kč",
+    "pusobnost": "Praha, Středočeský kraj a celá ČR"
+  },
+  "kontakt": {
+    "telefon": "+420 XXX XXX XXX",
+    "telefonDoplnit": true,
+    "email": "info@fofrmont.cz",
+    "emailPoptavky": "poptavky@fofrmont.cz",
+    "datovka": "—",
+    "provozniDoba": "Po–Pá 7:00–17:00, na stavbě podle harmonogramu"
+  },
+  "cisla": [
+    {
+      "hodnota": 2014,
+      "popis": "od roku na trhu",
+      "format": "rok"
+    },
+    {
+      "hodnota": 6,
+      "popis": "profesí TZB pod jednou smlouvou"
+    },
+    {
+      "hodnota": 24,
+      "popis": "montérů a svářečů ve stálých partách"
+    },
+    {
+      "hodnota": 100,
+      "popis": "% zakázek s vlastní partou, bez přeprodeje",
+      "sufix": " %"
+    }
+  ],
+  "obory": [
+    {
+      "id": "vzt",
+      "slug": "vzduchotechnika",
+      "nazev": "Vzduchotechnika",
+      "zkratka": "VZT",
+      "cislo": "01",
+      "perex": "Potrubní rozvody, jednotky, rekuperace, koncové prvky. Od strojovny po poslední vyústku.",
+      "polozky": [
+        "Čtyřhranné i kruhové potrubí (SPIRO)",
+        "VZT jednotky a rekuperace",
+        "Odsávání kuchyní a provozů",
+        "Požární klapky a jejich osazení",
+        "Izolace, tlumiče, regulační prvky",
+        "Zaregulování a protokol"
+      ]
+    },
+    {
+      "id": "ut",
+      "slug": "vytapeni",
+      "nazev": "Vytápění a ÚT",
+      "zkratka": "ÚT",
+      "cislo": "02",
+      "perex": "Rozvody, otopná tělesa, podlahovky, kotelny a předávací stanice na klíč.",
+      "polozky": [
+        "Rozvody měď, ocel, uhlíková ocel, plast",
+        "Otopná tělesa a konvektory",
+        "Podlahové a stěnové vytápění",
+        "Kotelny a strojovny",
+        "Předávací stanice",
+        "Tlakové zkoušky a proplach"
+      ]
+    },
+    {
+      "id": "zti",
+      "slug": "zti",
+      "nazev": "Zdravotechnika",
+      "zkratka": "ZTI",
+      "cislo": "03",
+      "perex": "Vodovod, kanalizace, zařizovací předměty. Včetně těch úseků, do kterých se nikomu nechce.",
+      "polozky": [
+        "Vnitřní vodovod a požární vodovod",
+        "Splašková a dešťová kanalizace",
+        "Zařizovací předměty a armatury",
+        "Cirkulace TUV a její zaregulování",
+        "Přeložky za provozu",
+        "Tlakové a těsnostní zkoušky"
+      ]
+    },
+    {
+      "id": "chlazeni",
+      "slug": "chlazeni",
+      "nazev": "Chlazení",
+      "zkratka": "CHL",
+      "cislo": "04",
+      "perex": "Rozvody chladu, fancoily, chladicí stropy a napojení zdrojů chladu.",
+      "polozky": [
+        "Rozvody chladu včetně izolací",
+        "Fancoily a chladicí trámce",
+        "Napojení chillerů a suchých chladičů",
+        "Chlazení serveroven a technologií",
+        "Kondenzát a jeho odvod",
+        "Zaregulování soustavy"
+      ]
+    },
+    {
+      "id": "tc",
+      "slug": "tepelna-cerpadla",
+      "nazev": "Tepelná čerpadla",
+      "zkratka": "TČ",
+      "cislo": "05",
+      "perex": "Vzduch–voda i země–voda. Hlavně tam, kde je to na první pohled neřešitelné.",
+      "polozky": [
+        "Vzduch–voda a země–voda",
+        "Akumulace, TUV, bivalentní zdroj",
+        "Napojení na stávající otopnou soustavu",
+        "Odhlučnění a uložení venkovní jednotky",
+        "Podružné rozvody a regulace",
+        "Uvedení do provozu s topenářem"
+      ]
+    },
+    {
+      "id": "klic",
+      "slug": "dodavka-na-klic",
+      "nazev": "Dodávka na klíč",
+      "zkratka": "D+M",
+      "cislo": "06",
+      "perex": "Dodávka i montáž v jedné smlouvě. Materiál seženeme, odpovědnost neštěpíme.",
+      "polozky": [
+        "Materiál a zařízení od ověřených dodavatelů",
+        "Jeden harmonogram, jedna odpovědnost",
+        "Koordinace se stavbou a ostatními profesemi",
+        "Dílenská dokumentace skutečného provedení",
+        "Předání s protokoly a zaškolením",
+        "Záruční servis přes partnery"
+      ]
+    }
+  ],
+  "nedelame": [
+    {
+      "nazev": "Projekční kancelář",
+      "text": "Projekt neděláme. Pracujeme podle vašeho, nebo vám doporučíme projektanta, se kterým jsme zvyklí."
+    },
+    {
+      "nazev": "Pravidelný servis",
+      "text": "Servisní smlouvy nevedeme. Záruční věci řešíme, pravidelný servis předáváme partnerům."
+    },
+    {
+      "nazev": "Energetické audity a PENB",
+      "text": "Nedodáváme. Poradíme, kdo to udělá."
+    },
+    {
+      "nazev": "Plnění a vakuování chladiva",
+      "text": "Nemáme plničku ani vakuovačku. Klimatizace montujeme s partnerem, který má oprávnění."
+    }
+  ],
+  "faktoryObtiznosti": [
+    {
+      "id": "pristup",
+      "nazev": "Přístup na místo montáže",
+      "vaha": 2,
+      "moznosti": [
+        {
+          "id": "volny",
+          "popis": "Volný, dá se zacouvat",
+          "body": 0
+        },
+        {
+          "id": "uzky",
+          "popis": "Úzké schodiště nebo výtah",
+          "body": 5
+        },
+        {
+          "id": "jerab",
+          "popis": "Jen jeřábem nebo plošinou",
+          "body": 10
+        }
+      ]
+    },
+    {
+      "id": "provoz",
+      "nazev": "Provoz budovy během montáže",
+      "vaha": 3,
+      "moznosti": [
+        {
+          "id": "prazdna",
+          "popis": "Prázdná stavba",
+          "body": 0
+        },
+        {
+          "id": "cast",
+          "popis": "Částečný provoz, po etapách",
+          "body": 5
+        },
+        {
+          "id": "nepretrzity",
+          "popis": "Nepřetržitý provoz 24/7",
+          "body": 10
+        }
+      ]
+    },
+    {
+      "id": "vyska",
+      "nazev": "Výška montáže",
+      "vaha": 2,
+      "moznosti": [
+        {
+          "id": "do3",
+          "popis": "Do 3 m, ze štaflí",
+          "body": 0
+        },
+        {
+          "id": "do8",
+          "popis": "3 až 8 m, z plošiny",
+          "body": 5
+        },
+        {
+          "id": "nad8",
+          "popis": "Nad 8 m nebo z lávek",
+          "body": 10
+        }
+      ]
+    },
+    {
+      "id": "prostor",
+      "nazev": "Prostor pro trasy",
+      "vaha": 3,
+      "moznosti": [
+        {
+          "id": "dost",
+          "popis": "Podhled i šachty podle projektu",
+          "body": 0
+        },
+        {
+          "id": "tesne",
+          "popis": "Těsno, kolize s ostatními profesemi",
+          "body": 6
+        },
+        {
+          "id": "neni",
+          "popis": "Trasa se musí vymyslet na místě",
+          "body": 10
+        }
+      ]
+    },
+    {
+      "id": "pamatka",
+      "nazev": "Památková ochrana",
+      "vaha": 1,
+      "moznosti": [
+        {
+          "id": "ne",
+          "popis": "Žádná",
+          "body": 0
+        },
+        {
+          "id": "zona",
+          "popis": "Památková zóna",
+          "body": 5
+        },
+        {
+          "id": "ano",
+          "popis": "Kulturní památka",
+          "body": 10
+        }
+      ]
+    },
+    {
+      "id": "cistota",
+      "nazev": "Požadavky na čistotu a hluk",
+      "vaha": 2,
+      "moznosti": [
+        {
+          "id": "bezne",
+          "popis": "Běžná stavba",
+          "body": 0
+        },
+        {
+          "id": "zvysene",
+          "popis": "Zvýšené (škola, kancelář)",
+          "body": 5
+        },
+        {
+          "id": "operacni",
+          "popis": "Čisté prostory, operační sály",
+          "body": 10
+        }
+      ]
+    }
+  ],
+  "doporuceniObtiznosti": {
+    "pristup": {
+      "uzky": "Počítáme s ruční dopravou dílů a dělíme potrubí na kratší kusy.",
+      "jerab": "Zajistíme zvedací techniku a zábor, montáž plánujeme na jeden blok."
+    },
+    "provoz": {
+      "cast": "Montujeme po etapách a každou uzavíráme funkční, aby šel provoz dál.",
+      "nepretrzity": "Pracujeme v nočních blocích a o víkendech, s přejímkou po každém bloku."
+    },
+    "vyska": {
+      "do8": "Plošina je v ceně, počítáme s ní od začátku.",
+      "nad8": "Montážní plošiny a lávky, práce ve výškách s doloženou kvalifikací."
+    },
+    "prostor": {
+      "tesne": "Trasy koordinujeme 3D nad projektem, kolize řešíme před nákupem materiálu.",
+      "neni": "Zaměříme skutečný stav a navrhneme trasu, kterou pak potvrdí váš projektant."
+    },
+    "pamatka": {
+      "zona": "Vedení tras volíme tak, aby nebyly vidět z veřejného prostoru.",
+      "ano": "Konzultace s památkáři a rozebíratelné uložení bez zásahu do konstrukcí."
+    },
+    "cistota": {
+      "zvysene": "Řezání a broušení mimo prostor, každý den uklizeno.",
+      "operacni": "Práce v režimu čistých prostor, potrubí zaslepené až do zprovoznění."
+    }
+  },
+  "popisyStupnu": {
+    "bezna": "Běžná montáž. Naceníme obratem a nasadíme jednu partu.",
+    "narocna": "Náročnější zakázka. Chce to obhlídku a harmonogram po etapách.",
+    "slozita": "Složitá stavba. Tohle je přesně to, na čem nás baví pracovat.",
+    "extremni": "Extrém. Pojedeme na obhlídku a přineseme variantní řešení."
+  },
+  "faze": [
+    {
+      "id": "obhlidka",
+      "nazev": "Obhlídka a zaměření",
+      "dny": 2,
+      "text": "Přijedeme na místo, zaměříme skutečný stav a řekneme, co v projektu nesedí."
+    },
+    {
+      "id": "nabidka",
+      "nazev": "Nabídka a harmonogram",
+      "dny": 3,
+      "zavisi": [
+        "obhlidka"
+      ],
+      "text": "Položkový rozpočet a termíny. Co neumíme, napíšeme rovnou."
+    },
+    {
+      "id": "material",
+      "nazev": "Objednání materiálu",
+      "dny": 5,
+      "zavisi": [
+        "nabidka"
+      ],
+      "text": "Potrubí, jednotky, armatury. Dlouhé dodací lhůty hlásíme hned."
+    },
+    {
+      "id": "priprava",
+      "nazev": "Příprava a prostupy",
+      "dny": 4,
+      "zavisi": [
+        "nabidka"
+      ],
+      "text": "Vytyčení tras, prostupy, závěsy. Koordinace s ostatními profesemi."
+    },
+    {
+      "id": "rozvody",
+      "nazev": "Montáž rozvodů",
+      "dny": 12,
+      "zavisi": [
+        "material",
+        "priprava"
+      ],
+      "text": "Hlavní trasy, stoupačky, podružné rozvody. Postupně a s kontrolou."
+    },
+    {
+      "id": "stroje",
+      "nazev": "Osazení strojů",
+      "dny": 6,
+      "zavisi": [
+        "material",
+        "priprava"
+      ],
+      "text": "Jednotky, kotle, čerpadla, fancoily. Uložení a napojení."
+    },
+    {
+      "id": "zkousky",
+      "nazev": "Zkoušky a zaregulování",
+      "dny": 5,
+      "zavisi": [
+        "rozvody",
+        "stroje"
+      ],
+      "text": "Tlakové zkoušky, proplach, zaregulování, měření průtoků."
+    },
+    {
+      "id": "predani",
+      "nazev": "Předání",
+      "dny": 2,
+      "zavisi": [
+        "zkousky"
+      ],
+      "text": "Protokoly, dokumentace skutečného provedení, zaškolení obsluhy."
+    }
+  ],
+  "kraje": [
+    "Praha",
+    "Středočeský",
+    "Jihočeský",
+    "Ústecký",
+    "Plzeňský",
+    "Královéhradecký"
+  ],
+  "stavby": [
+    {
+      "id": "nemocnice-operacni-saly",
+      "nazev": "Operační sály — rekonstrukce za provozu",
+      "misto": "Praha",
+      "kraj": "Praha",
+      "segment": "b2b",
+      "obory": [
+        "vzt",
+        "chlazeni"
+      ],
+      "rok": 2025,
+      "datum": "2025-09-15",
+      "rozsah": "2 400 m²",
+      "trvani": "14 týdnů",
+      "role": "Podzhotovitel generálního dodavatele",
+      "perex": "Dva operační sály a zázemí. Nemocnice běžela dál, montovalo se v nočních blocích.",
+      "zadani": "Výměna vzduchotechniky dvou operačních sálů včetně rozvodů chladu, bez odstavení zbytku patra.",
+      "reseni": [
+        "Montáž rozdělená do devíti nočních bloků, každý ráno uzavřený a funkční",
+        "Potrubí zaslepené až do zprovoznění, aby se do systému nedostal prach",
+        "Dočasné trasy pro sousední pracoviště po dobu přepojení"
+      ],
+      "cisla": [
+        {
+          "popis": "nočních bloků",
+          "hodnota": "9"
+        },
+        {
+          "popis": "m² sálů a zázemí",
+          "hodnota": "2 400"
+        },
+        {
+          "popis": "dní bez provozu",
+          "hodnota": "0"
+        }
+      ],
+      "motiv": "saly"
+    },
+    {
+      "id": "letiste-terminal",
+      "nazev": "Terminál — rozvody VZT v odbavovací hale",
+      "misto": "Praha",
+      "kraj": "Praha",
+      "segment": "b2b",
+      "obory": [
+        "vzt"
+      ],
+      "rok": 2024,
+      "datum": "2024-11-20",
+      "rozsah": "5 100 m²",
+      "trvani": "6 měsíců",
+      "role": "Podzhotovitel generálního dodavatele",
+      "perex": "Hlavní trasy ve výšce 11 metrů nad hlavami cestujících. Práce jen v nočních oknech.",
+      "zadani": "Rozvody vzduchotechniky odbavovací haly včetně napojení na stávající strojovny.",
+      "reseni": [
+        "Montáž z plošin v nočním okně 23:00–5:00",
+        "Předmontáž dílů v dílně, na místě jen spojování",
+        "Denní úklid do stavu, ve kterém hala ráno otevírá"
+      ],
+      "cisla": [
+        {
+          "popis": "m výšky montáže",
+          "hodnota": "11"
+        },
+        {
+          "popis": "bm potrubí",
+          "hodnota": "1 900"
+        },
+        {
+          "popis": "nočních směn",
+          "hodnota": "84"
+        }
+      ],
+      "motiv": "terminal"
+    },
+    {
+      "id": "hala-rakovnik",
+      "nazev": "Výrobní hala — vytápění a odsávání",
+      "misto": "Rakovník",
+      "kraj": "Středočeský",
+      "segment": "b2b",
+      "obory": [
+        "ut",
+        "vzt"
+      ],
+      "rok": 2025,
+      "datum": "2025-04-10",
+      "rozsah": "6 800 m²",
+      "trvani": "9 týdnů",
+      "role": "Přímá zakázka pro investora",
+      "perex": "Sálavé panely, odsávání od strojů a kotelna. Výroba stála jen tři dny.",
+      "zadani": "Vytápění haly, odsávání od obráběcích strojů a nová plynová kotelna.",
+      "reseni": [
+        "Etapizace po výrobních linkách",
+        "Odsávání napojené postupně, aby linky nestály naráz",
+        "Kotelna smontovaná mimo provoz haly a napojená o víkendu"
+      ],
+      "cisla": [
+        {
+          "popis": "m² haly",
+          "hodnota": "6 800"
+        },
+        {
+          "popis": "kW kotelny",
+          "hodnota": "680"
+        },
+        {
+          "popis": "dní odstávky výroby",
+          "hodnota": "3"
+        }
+      ],
+      "motiv": "hala"
+    },
+    {
+      "id": "vila-podkrovi",
+      "nazev": "Tepelné čerpadlo do podkrovní vily",
+      "misto": "Praha",
+      "kraj": "Praha",
+      "segment": "b2c",
+      "obory": [
+        "tc",
+        "ut"
+      ],
+      "rok": 2026,
+      "datum": "2026-02-05",
+      "rozsah": "14 kW",
+      "trvani": "11 dní",
+      "role": "Přímá zakázka pro majitele",
+      "perex": "Technická místnost velká jako spíž, venkovní jednotka na ploché střeše mezi sousedy.",
+      "zadani": "Náhrada plynového kotle tepelným čerpadlem vzduch–voda bez zásahu do fasády.",
+      "reseni": [
+        "Venkovní jednotka na antivibrační rám na střeše, odhlučněná",
+        "Akumulace a TUV poskládané do 1,9 m² technické místnosti",
+        "Stávající otopná tělesa ponechána, přepočítán teplotní spád"
+      ],
+      "cisla": [
+        {
+          "popis": "kW výkonu",
+          "hodnota": "14"
+        },
+        {
+          "popis": "m² technické místnosti",
+          "hodnota": "1,9"
+        },
+        {
+          "popis": "dB u hranice pozemku",
+          "hodnota": "32"
+        }
+      ],
+      "motiv": "vila"
+    },
+    {
+      "id": "skola-kladno",
+      "nazev": "Základní škola — rekuperace učeben",
+      "misto": "Kladno",
+      "kraj": "Středočeský",
+      "segment": "b2b",
+      "obory": [
+        "vzt"
+      ],
+      "rok": 2024,
+      "datum": "2024-08-20",
+      "rozsah": "18 učeben",
+      "trvani": "7 týdnů",
+      "role": "Podzhotovitel generálního dodavatele",
+      "perex": "Osmnáct učeben během letních prázdnin. První září se učilo.",
+      "zadani": "Decentrální rekuperační jednotky v učebnách, rozvody vedené pod stropem chodeb.",
+      "reseni": [
+        "Celý rozsah naplánovaný do prázdnin, dvě party paralelně",
+        "Prostupy do fasády s ohledem na rozvrh stavebních prací",
+        "Předání a zaškolení školníka týden před zahájením roku"
+      ],
+      "cisla": [
+        {
+          "popis": "učeben",
+          "hodnota": "18"
+        },
+        {
+          "popis": "týdnů montáže",
+          "hodnota": "7"
+        },
+        {
+          "popis": "dní skluzu",
+          "hodnota": "0"
+        }
+      ],
+      "motiv": "skola"
+    },
+    {
+      "id": "administrativa-praha",
+      "nazev": "Administrativní budova — chlazení a fancoily",
+      "misto": "Praha",
+      "kraj": "Praha",
+      "segment": "b2b",
+      "obory": [
+        "chlazeni",
+        "zti"
+      ],
+      "rok": 2025,
+      "datum": "2025-06-30",
+      "rozsah": "4 200 m²",
+      "trvani": "10 týdnů",
+      "role": "Podzhotovitel generálního dodavatele",
+      "perex": "Šest pater fancoilů a rozvody chladu v podhledu, který byl o osm centimetrů nízký.",
+      "zadani": "Rozvody chladu, fancoily a odvod kondenzátu v šesti nadzemních podlažích.",
+      "reseni": [
+        "Přetrasování v koordinačním 3D modelu ještě před nákupem materiálu",
+        "Plochý profil izolace v kritickém úseku chodby",
+        "Kondenzát svedený do stoupačky ZTI, kterou jsme montovali zároveň"
+      ],
+      "cisla": [
+        {
+          "popis": "fancoilů",
+          "hodnota": "96"
+        },
+        {
+          "popis": "podlaží",
+          "hodnota": "6"
+        },
+        {
+          "popis": "cm rezervy v podhledu",
+          "hodnota": "2"
+        }
+      ],
+      "motiv": "administrativa"
+    },
+    {
+      "id": "pamatka-zizkov",
+      "nazev": "Památkově chráněný dům — ZTI a vytápění",
+      "misto": "Praha",
+      "kraj": "Praha",
+      "segment": "b2b",
+      "obory": [
+        "zti",
+        "ut"
+      ],
+      "rok": 2023,
+      "datum": "2023-10-10",
+      "rozsah": "12 bytů",
+      "trvani": "16 týdnů",
+      "role": "Přímá zakázka pro investora",
+      "perex": "Kulturní památka, do které se nesmělo sekat. Trasy vedly tam, kde už jednou byly.",
+      "zadani": "Nové rozvody vody, kanalizace a vytápění ve dvanácti bytech bez zásahů do klenb.",
+      "reseni": [
+        "Zaměření skutečného stavu a využití historických šachet",
+        "Rozebíratelné uložení bez kotvení do kleneb",
+        "Průběžné konzultace s památkovým dohledem"
+      ],
+      "cisla": [
+        {
+          "popis": "bytů",
+          "hodnota": "12"
+        },
+        {
+          "popis": "nových prostupů do kleneb",
+          "hodnota": "0"
+        },
+        {
+          "popis": "týdnů",
+          "hodnota": "16"
+        }
+      ],
+      "motiv": "pamatka"
+    },
+    {
+      "id": "serverovna",
+      "nazev": "Serverovna — chlazení s redundancí",
+      "misto": "Ústí nad Labem",
+      "kraj": "Ústecký",
+      "segment": "b2b",
+      "obory": [
+        "chlazeni",
+        "vzt"
+      ],
+      "rok": 2026,
+      "datum": "2026-01-20",
+      "rozsah": "180 kW chladu",
+      "trvani": "5 týdnů",
+      "role": "Přímá zakázka pro investora",
+      "perex": "Chlazení se přepojovalo za běhu racků. Teplota v sále se nesměla hnout.",
+      "zadani": "Doplnění redundantního okruhu chlazení a úprava rozvodů bez odstavení serverovny.",
+      "reseni": [
+        "Přepojování po jednotlivých okruzích s dočasným mobilním chlazením",
+        "Průběžné měření teplot v uličkách během celé montáže",
+        "Zkoušky redundance před předáním, včetně simulovaného výpadku"
+      ],
+      "cisla": [
+        {
+          "popis": "kW chladu",
+          "hodnota": "180"
+        },
+        {
+          "popis": "min výpadku chlazení",
+          "hodnota": "0"
+        },
+        {
+          "popis": "°C maximální odchylka",
+          "hodnota": "1,5"
+        }
+      ],
+      "motiv": "serverovna"
+    }
+  ],
+  "recenze": [
+    {
+      "id": "r-1",
+      "jmeno": "Tomáš Beran",
+      "firma": "stavbyvedoucí, generální dodavatel",
+      "segment": "b2b",
+      "hodnoceni": 5,
+      "datum": "2026-02-18",
+      "stavba": "nemocnice-operacni-saly",
+      "stav": "schvalena",
+      "doporucuje": true,
+      "text": "Devět nočních bloků a ráno vždycky uklizeno a funkční. Za celou dobu jsme neřešili jedinou stížnost od personálu. Když něco nešlo podle projektu, přišli s řešením, ne s problémem."
+    },
+    {
+      "id": "r-2",
+      "jmeno": "Jana Marešová",
+      "firma": "",
+      "segment": "b2c",
+      "hodnoceni": 5,
+      "datum": "2026-02-02",
+      "stavba": "vila-podkrovi",
+      "stav": "schvalena",
+      "doporucuje": true,
+      "text": "Dvě firmy přede mnou řekly, že do té místnosti se čerpadlo nevejde. Tihle přijeli, změřili a za jedenáct dní bylo hotovo. A sousedi si nestěžovali na hluk."
+    },
+    {
+      "id": "r-3",
+      "jmeno": "Ing. Petr Vlček",
+      "firma": "technický dozor investora",
+      "segment": "b2b",
+      "hodnoceni": 5,
+      "datum": "2025-12-10",
+      "stavba": "administrativa-praha",
+      "stav": "schvalena",
+      "doporucuje": true,
+      "text": "Kolizi v podhledu našli dřív než my a přišli s přetrasováním ještě před objednáním materiálu. Ušetřilo to tři týdny."
+    },
+    {
+      "id": "r-4",
+      "jmeno": "Martin Hruška",
+      "firma": "správce areálu",
+      "segment": "b2b",
+      "hodnoceni": 4,
+      "datum": "2025-10-05",
+      "stavba": "hala-rakovnik",
+      "stav": "schvalena",
+      "doporucuje": true,
+      "text": "Odvedená práce bez výhrad, termín seděl. Jedinou výtku mám ke komunikaci v prvním týdnu, kdy se hůř sháněl někdo, kdo rozhodne. Pak už to šlapalo."
+    },
+    {
+      "id": "r-5",
+      "jmeno": "Lucie Dvořáková",
+      "firma": "",
+      "segment": "b2c",
+      "hodnoceni": 5,
+      "datum": "2025-09-01",
+      "stavba": "",
+      "stav": "schvalena",
+      "doporucuje": true,
+      "text": "Rekonstrukce koupelny v paneláku, kde stoupačka vede přes tři byty. Domluvili se se sousedy sami a vodu vypnuli jen na jedno dopoledne."
+    },
+    {
+      "id": "r-6",
+      "jmeno": "Ing. Karel Šimek",
+      "firma": "projektant TZB",
+      "segment": "b2b",
+      "hodnoceni": 5,
+      "datum": "2025-07-22",
+      "stavba": "skola-kladno",
+      "stav": "schvalena",
+      "doporucuje": true,
+      "text": "Jako projektant oceňuju, že se ptají dřív, než něco udělají po svém. Dokumentace skutečného provedení odpovídala realitě, což bohužel není samozřejmost."
+    },
+    {
+      "id": "r-7",
+      "jmeno": "Ondřej Král",
+      "firma": "IT manažer",
+      "segment": "b2b",
+      "hodnoceni": 5,
+      "datum": "2026-03-02",
+      "stavba": "serverovna",
+      "stav": "schvalena",
+      "doporucuje": true,
+      "text": "Přepojovali chlazení za provozu serverovny. Teplota v uličkách se hnula o necelé dva stupně. Tohle si nedovolí každý."
+    },
+    {
+      "id": "r-8",
+      "jmeno": "Zdeněk Prokop",
+      "firma": "",
+      "segment": "b2c",
+      "hodnoceni": 4,
+      "datum": "2025-05-14",
+      "stavba": "",
+      "stav": "schvalena",
+      "doporucuje": true,
+      "text": "Podlahové vytápění v přístavbě. Práce dobrá, cena odpovídala nabídce. Trochu déle trvalo, než přišel termín montáže, ale předem to řekli."
+    },
+    {
+      "id": "r-9",
+      "jmeno": "Michaela Horáková",
+      "firma": "facility manažerka",
+      "segment": "b2b",
+      "hodnoceni": 5,
+      "datum": "2024-12-01",
+      "stavba": "pamatka-zizkov",
+      "stav": "schvalena",
+      "doporucuje": true,
+      "text": "Památkáři byli spokojení, což se nestává. Nesekalo se do kleneb a trasy vedly historickými šachtami."
+    },
+    {
+      "id": "r-10",
+      "jmeno": "Roman Bednář",
+      "firma": "hlavní stavbyvedoucí",
+      "segment": "b2b",
+      "hodnoceni": 5,
+      "datum": "2025-03-18",
+      "stavba": "letiste-terminal",
+      "stav": "schvalena",
+      "doporucuje": true,
+      "text": "Osmdesát čtyři nočních směn bez jediného průšvihu s provozem terminálu. Parta, která ví, co dělá, a hlavně se domluví."
+    },
+    {
+      "id": "r-11",
+      "jmeno": "Věra Nováková",
+      "firma": "",
+      "segment": "b2c",
+      "hodnoceni": 5,
+      "datum": "2026-03-10",
+      "stavba": "",
+      "stav": "ceka",
+      "doporucuje": true,
+      "text": "Výměna rozvodů vody v bytě. Přišli na čas, uklidili po sobě a cena seděla na nabídku. Doporučuju dál."
+    }
+  ],
+  "pozice": [
+    {
+      "id": "monter-vzt",
+      "nazev": "Montér vzduchotechniky",
+      "uvazek": "HPP i IČO",
+      "misto": "Praha a Středočeský kraj",
+      "text": "Čtyřhranné i kruhové potrubí, jednotky, koncové prvky. Práce ve výškách vítána.",
+      "pozadujeme": [
+        "Praxe v montážích VZT alespoň 2 roky",
+        "Řidičský průkaz B",
+        "Ochota jezdit na stavby po ČR",
+        "Výhodou průkaz na plošinu"
+      ]
+    },
+    {
+      "id": "instalater",
+      "nazev": "Instalatér / topenář",
+      "uvazek": "HPP i IČO",
+      "misto": "Praha a Středočeský kraj",
+      "text": "Rozvody vody, kanalizace a topení. Od bytových jader po kotelny.",
+      "pozadujeme": [
+        "Vyučen v oboru nebo praxe",
+        "Sváření mědi a plastů",
+        "Řidičský průkaz B",
+        "Výhodou svářečský průkaz na ocel"
+      ]
+    },
+    {
+      "id": "svarec",
+      "nazev": "Svářeč ocelových rozvodů",
+      "uvazek": "HPP i IČO",
+      "misto": "Praha a stavby po ČR",
+      "text": "Svařování ocelových rozvodů topení a chladu, včetně tlakových zkoušek.",
+      "pozadujeme": [
+        "Platný svářečský průkaz",
+        "Praxe s rozvody TZB",
+        "Samostatnost",
+        "Řidičský průkaz B"
+      ]
+    },
+    {
+      "id": "stavbyvedouci",
+      "nazev": "Stavbyvedoucí TZB",
+      "uvazek": "HPP",
+      "misto": "Praha",
+      "text": "Vedení zakázek od zaměření po předání. Koordinace part a komunikace s generálním dodavatelem.",
+      "pozadujeme": [
+        "Praxe s vedením montáží TZB",
+        "Čtení projektové dokumentace",
+        "Zkušenost s koordinací profesí",
+        "Řidičský průkaz B"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "otazka": "Uděláte i projekt?",
+      "odpoved": "Ne. Jsme montážní firma a projekt neděláme. Pracujeme podle vaší dokumentace, a když ji nemáte, doporučíme projektanta, se kterým jsme zvyklí pracovat."
+    },
+    {
+      "otazka": "Berete i malé zakázky pro domácnosti?",
+      "odpoved": "Ano. Tepelná čerpadla, rozvody vody a topení v rodinných domech i bytech děláme běžně. Čím složitější prostor, tím spíš nás to bude bavit."
+    },
+    {
+      "otazka": "Dodáte i materiál, nebo montujete jen to, co koupím sám?",
+      "odpoved": "Umíme obojí. Většinou jedeme dodávku i montáž v jedné smlouvě — je to rychlejší a odpovědnost se pak neštěpí mezi tři firmy."
+    },
+    {
+      "otazka": "Umíte montovat za provozu?",
+      "odpoved": "Ano, a děláme to často. Nemocnice, terminály, serverovny i výrobní haly. Práce se rozdělí do bloků, každý blok se ráno předává funkční."
+    },
+    {
+      "otazka": "Děláte klimatizace?",
+      "odpoved": "Montujeme je, ale plnění a vakuování chladiva u nás dělá partner s příslušným oprávněním. Pro vás je to jedna zakázka a jedna faktura."
+    },
+    {
+      "otazka": "Jak rychle přijedete na obhlídku?",
+      "odpoved": "V Praze a okolí zpravidla do tří pracovních dnů. U zakázek mimo region se domluvíme na termínu, který dává smysl oběma stranám."
+    },
+    {
+      "otazka": "Pracujete i pro generální dodavatele?",
+      "odpoved": "Ano, je to podstatná část naší práce. Umíme se pohybovat v harmonogramu stavby, na koordinačních schůzkách i v BOZP režimu velkých staveb."
+    },
+    {
+      "otazka": "Jakou dáváte záruku?",
+      "odpoved": "Na montáž standardně 60 měsíců, na dodané zařízení podle záruky výrobce. Záruční vady řešíme sami, pravidelný servis předáváme partnerům."
+    },
+    {
+      "otazka": "Máte pojištění odpovědnosti?",
+      "odpoved": "Ano. Doklady o pojištění i kvalifikacích part posíláme ke každé nabídce pro generální dodavatele."
+    },
+    {
+      "otazka": "Co když projekt v realitě nesedí?",
+      "odpoved": "Napíšeme to hned po zaměření, ne až po zabudování. Navrhneme řešení a necháme ho potvrdit projektantem, aby se to neotáčelo na nás."
+    }
+  ]
+}

@@ -1,0 +1,518 @@
+{
+  "meta": {
+    "titulek": "FOFRMONT CZ — montáže TZB",
+    "popis": "Montážní firma pro vzduchotechniku, vytápění, zdravotechniku a chlazení. Dodávka i montáž na klíč pro generální dodavatele i domácnosti.",
+    "pripona": "FOFRMONT CZ"
+  },
+  "nav": {
+    "uvod": "Úvod",
+    "montaze": "Co montujeme",
+    "narocne": "Náročné prostory",
+    "jakPracujeme": "Jak pracujeme",
+    "stavby": "Stavby",
+    "recenze": "Recenze",
+    "prokoho": "Pro koho",
+    "b2b": "Pro generální dodavatele",
+    "b2c": "Pro domácnosti",
+    "kalkulacky": "Orientační výpočty",
+    "oNas": "O firmě",
+    "kariera": "Kariéra",
+    "dotazy": "Časté dotazy",
+    "kontakt": "Kontakt",
+    "poptavka": "Poptávka",
+    "administrace": "Administrace"
+  },
+  "spolecne": {
+    "ukazka": "Ukázka návrhu webu — obsah i reference jsou pracovní, ne ostrá data.",
+    "ukazkaOdkaz": "Co je v ukázce smyšlené",
+    "cta": "Nezávazná poptávka",
+    "ctaPopis": "Šest otázek, dvě minuty. Ozveme se do dvou pracovních dnů.",
+    "zpet": "Zpět",
+    "vice": "Více",
+    "viceOOboru": "Co v tom oboru děláme",
+    "vsechnyStavby": "Všechny stavby",
+    "vsechnyRecenze": "Všechny recenze",
+    "razitkoInvestor": "Investor",
+    "razitkoProfese": "Profese",
+    "razitkoList": "List",
+    "razitkoMeritko": "Měřítko",
+    "razitkoDatum": "Datum",
+    "razitkoKreslil": "Vypracoval",
+    "razitkoStupen": "Stupeň",
+    "razitkoStupenHodnota": "Návrh webu",
+    "telefonDoplnit": "Telefon doplníme po schválení návrhu",
+    "napistNam": "Napište nám",
+    "zavolejte": "Zavolejte",
+    "segmentB2b": "Firma / generální dodavatel",
+    "segmentB2c": "Domácnost",
+    "obor": "Obor",
+    "rok": "Rok",
+    "kraj": "Kraj",
+    "vse": "Vše",
+    "nenalezeno": "Nic neodpovídá zadání. Zkuste ubrat filtr.",
+    "hledat": "Hledat",
+    "nacistDalsi": "Načíst další",
+    "souvisejici": "Podobné stavby",
+    "sdilet": "Odkaz zkopírován"
+  },
+  "uvod": {
+    "stitek": "Montáže TZB · od roku 2014",
+    "nadpis": "Smontujeme to i tam,\nkde to podle projektu nejde",
+    "lead": "Vzduchotechnika, vytápění, zdravotechnika a chlazení. Dodávka i montáž v jedné smlouvě — pro generální dodavatele na velkých stavbách i pro rodinné domy.",
+    "ctaHlavni": "Chci nezávaznou nabídku",
+    "ctaVedlejsi": "Prohlédnout stavby",
+    "prepinacPopis": "Vyberte, odkud se díváte:",
+    "heroB2bNadpis": "Nemocnice, terminály, haly",
+    "heroB2bText": "Montujeme za provozu, v nočních blocích a v harmonogramu, který drží. Pro generální dodavatele jsme podzhotovitel, který nevolá s problémem, ale s řešením.",
+    "heroB2cNadpis": "Rodinné domy a byty",
+    "heroB2cText": "Tepelné čerpadlo do technické místnosti velké jako spíž, rozvody v domě, kde se nesmí sekat. Čím těsnější prostor, tím lepší.",
+    "oboryNadpis": "Šest profesí, jedna parta",
+    "oboryLead": "Nejsme projekční kancelář ani servisní firma. Jsme ti, kdo to opravdu smontuje — a kdo za to ručí.",
+    "narocneNadpis": "Čím složitější prostor, tím větší výzva",
+    "narocneLead": "Většina firem chce rovný podhled, volný přístup a prázdnou stavbu. My si vybíráme přesně to, co ostatní odmítli. Zkuste si spočítat, jak náročná je ta vaše.",
+    "narocneCta": "Spočítat náročnost",
+    "stavbyNadpis": "Poslední stavby",
+    "stavbyLead": "Od operačních sálů po podkroví rodinného domu. Všude stejné pravidlo: ráno uklizeno a funkční.",
+    "recenzeNadpis": "Co o nás říkají",
+    "recenzeLead": "Investoři, stavbyvedoucí, technický dozor i majitelé domů.",
+    "postupNadpis": "Jak to u nás běží",
+    "postupLead": "Od telefonu k předání osm kroků. Žádný z nich nepřeskakujeme.",
+    "ctaPatka": "Máte projekt, nebo aspoň představu?",
+    "ctaPatkaText": "Pošlete zadání a my se do dvou pracovních dnů ozveme s tím, jestli to umíme, kdy to umíme a za kolik."
+  },
+  "montaze": {
+    "nadpis": "Co montujeme",
+    "lead": "Šest profesí technického zařízení budov. Můžete si vzít jednu, nebo všechny najednou pod jednou smlouvou — to druhé bývá levnější a rychlejší.",
+    "nedelameNadpis": "Co naopak neděláme",
+    "nedelameLead": "Radši to řekneme rovnou, než abyste to zjistili v půlce stavby."
+  },
+  "obor": {
+    "stitek": "Profese",
+    "coDelameNadpis": "Co v tom umíme",
+    "kdyVolat": "Kdy nám volat",
+    "stavbyNadpis": "Stavby z tohoto oboru",
+    "dalsiObory": "Další profese",
+    "vzt": {
+      "kdyVolat": "Když máte projekt vzduchotechniky a potřebujete partu, která ho smontuje v termínu a v prostoru, který v projektu vypadal větší.",
+      "detail": "Montujeme čtyřhranné i kruhové potrubí, jednotky, rekuperace a koncové prvky. Běžně pracujeme v podhledech, kde zbývají centimetry, a nad provozy, které nesmí stát. Po montáži systém zaregulujeme a průtoky doložíme protokolem."
+    },
+    "ut": {
+      "kdyVolat": "Když potřebujete rozvody, otopná tělesa, podlahovku nebo celou kotelnu — a chcete jednu firmu od trubky po tlakovou zkoušku.",
+      "detail": "Děláme rozvody v mědi, oceli, uhlíkové oceli i plastu. Kotelny a předávací stanice montujeme včetně čerpadel, armatur a napojení regulace. Každou soustavu tlakově zkoušíme, propláchneme a zaregulujeme."
+    },
+    "zti": {
+      "kdyVolat": "Když je potřeba vodovod, kanalizace nebo zařizovací předměty — často v domě, kde jiná firma řekla, že se to nedá.",
+      "detail": "Vnitřní vodovod včetně požárního, splašková i dešťová kanalizace, cirkulace teplé vody a její zaregulování. Umíme přeložky za provozu, kdy voda teče dál a odstávka trvá hodiny, ne dny."
+    },
+    "chlazeni": {
+      "kdyVolat": "Když řešíte rozvody chladu, fancoily nebo chlazení technologie, která se nesmí ani na minutu odstavit.",
+      "detail": "Rozvody chladu s izolací, fancoily, chladicí trámce, napojení chillerů a suchých chladičů. Odvod kondenzátu řešíme společně se ZTI, takže se nestane, že čeká jedna profese na druhou."
+    },
+    "tc": {
+      "kdyVolat": "Když chcete tepelné čerpadlo a technická místnost je malá, sousedi blízko a fasáda se nesmí narušit.",
+      "detail": "Vzduch–voda i země–voda, včetně akumulace, ohřevu teplé vody a bivalentního zdroje. Venkovní jednotky ukládáme na antivibrační rámy a řešíme odhlučnění, aby z toho nebyl spor se sousedem."
+    },
+    "klic": {
+      "kdyVolat": "Když nechcete koordinovat tři dodavatele a řešit, kdo za co může.",
+      "detail": "Materiál i zařízení seženeme, smontujeme a předáme s protokoly. Jeden harmonogram, jedna odpovědnost, jedna faktura. Na stavbě se koordinujeme s ostatními profesemi sami."
+    }
+  },
+  "narocne": {
+    "stitek": "Naše specialita",
+    "nadpis": "Náročné prostory",
+    "lead": "Sekání do klenby v památce, potrubí jedenáct metrů nad hlavami cestujících, čerpadlo do spíže. Tady je náš orientační měřič náročnosti — vyplňte šest otázek a uvidíte, jak se na vaši stavbu díváme my.",
+    "mericNadpis": "Měřič náročnosti",
+    "mericPopis": "Vyberte u každého faktoru to, co nejvíc sedí. Výsledek je orientační, ale říká, s čím u nás počítat.",
+    "vysledekNadpis": "Odhad náročnosti",
+    "vysledekChybi": "Vyberte ještě {pocet}, ať to má hlavu a patu.",
+    "doporuceniNadpis": "S čím u takové stavby počítáme",
+    "prispevkyNadpis": "Co náročnost zvedá nejvíc",
+    "ctaNadpis": "Vyšlo vám něco těžkého?",
+    "ctaText": "Výborně. To je zakázka pro nás. Pošlete zadání, přijedeme se podívat.",
+    "priklady": "Tři stavby, kde nám to vyšlo vysoko"
+  },
+  "jakPracujeme": {
+    "stitek": "Postup",
+    "nadpis": "Jak pracujeme",
+    "lead": "Osm kroků od prvního telefonu po předání. Harmonogram níž je modelový — u vaší stavby bude jiný, ale pořadí zůstává.",
+    "harmonogramNadpis": "Modelový harmonogram",
+    "harmonogramPopis": "Střední zakázka: vzduchotechnika a vytápění v administrativní budově. Pruhy ukazují pracovní dny, kritická cesta je zvýrazněná.",
+    "kritickaCesta": "Kritická cesta",
+    "celkem": "Celkem",
+    "pracovnichDnu": "pracovních dnů",
+    "pravidlaNadpis": "Čtyři pravidla, která na stavbě držíme",
+    "pravidla": [
+      {
+        "nadpis": "Ráno uklizeno a funkční",
+        "text": "Když se montuje za provozu, každý blok se ráno předává v provozuschopném stavu. Žádné „dodělá se to zítra“."
+      },
+      {
+        "nadpis": "Co nesedí, hlásíme hned",
+        "text": "Rozpor mezi projektem a realitou napíšeme po zaměření, ne po zabudování. Řešení navrhneme a necháme potvrdit projektantem."
+      },
+      {
+        "nadpis": "Jedna parta od začátku do konce",
+        "text": "Nepřeprodáváme práci dál. Lidé, kteří přijedou na obhlídku, jsou ti, kdo to smontují."
+      },
+      {
+        "nadpis": "Předáváme s papíry",
+        "text": "Protokoly o zkouškách, zaregulování, dokumentace skutečného provedení a zaškolení obsluhy. Ne jen klíče a podání ruky."
+      }
+    ]
+  },
+  "b2b": {
+    "stitek": "Pro generální dodavatele",
+    "nadpis": "Podzhotovitel, který drží harmonogram",
+    "lead": "Umíme se pohybovat na velké stavbě: koordinační schůzky, BOZP režim, etapizace, přejímky. Na TZB profese jsme jeden kontakt místo čtyř.",
+    "vyhodyNadpis": "Co od nás dostanete",
+    "vyhody": [
+      {
+        "nadpis": "Jeden dodavatel na čtyři profese",
+        "text": "VZT, ÚT, ZTI i chlazení pod jednou smlouvou. Kolize mezi profesemi řešíme uvnitř, ne na koordinaci."
+      },
+      {
+        "nadpis": "Doklady ke každé nabídce",
+        "text": "Pojištění odpovědnosti, kvalifikace part, svářečské průkazy, reference. Posíláme rovnou, nečekáte na to."
+      },
+      {
+        "nadpis": "Montáž za provozu",
+        "text": "Noční bloky, víkendy, etapizace po patrech nebo linkách. Máme to nacvičené z nemocnic a terminálů."
+      },
+      {
+        "nadpis": "Koordinace v 3D",
+        "text": "Kolize v podhledech hledáme nad modelem ještě před objednáním materiálu. Levněji než po zabudování."
+      },
+      {
+        "nadpis": "Vlastní party",
+        "text": "Nepřeprodáváme dál. Víte, kdo vám na stavbu přijede a kdo za to ručí."
+      },
+      {
+        "nadpis": "Předání s protokoly",
+        "text": "Tlakové zkoušky, zaregulování, měření průtoků, dokumentace skutečného provedení."
+      }
+    ],
+    "postupNadpis": "Jak spolu začneme",
+    "postup": [
+      "Pošlete výkaz výměr nebo projekt, ideálně i termín, do kdy to má být hotové.",
+      "Do dvou pracovních dnů řekneme, jestli to bereme, a domluvíme obhlídku.",
+      "Dostanete položkovou nabídku a harmonogram navázaný na váš.",
+      "Po podpisu jdeme na koordinaci a začínáme s prostupy a přípravou."
+    ],
+    "ctaNadpis": "Máte poptávku do výběrového řízení?",
+    "ctaText": "Pošlete výkaz výměr. Naceníme položkově a s termíny, které umíme dodržet."
+  },
+  "b2c": {
+    "stitek": "Pro domácnosti",
+    "nadpis": "Do domu, kde jiní řekli, že to nejde",
+    "lead": "Tepelná čerpadla, rozvody vody a topení v rodinných domech a bytech. Pracujeme stejně pečlivě jako na velké stavbě — jen v menším a s botičkami.",
+    "vyhodyNadpis": "Co to pro vás znamená",
+    "vyhody": [
+      {
+        "nadpis": "Přijedeme se podívat",
+        "text": "Bez obhlídky nenacenujeme. Uvidíme prostor, změříme ho a řekneme, co se dá a co ne."
+      },
+      {
+        "nadpis": "Cena z nabídky platí",
+        "text": "Vícepráce vznikají jen tam, kde se něco najde ve zdi. Řekneme to dřív, než to uděláme."
+      },
+      {
+        "nadpis": "Po sobě uklidíme",
+        "text": "Každý den. Řezání a broušení mimo obytný prostor, prach nezůstává v domě."
+      },
+      {
+        "nadpis": "Domluvíme se se sousedy",
+        "text": "Když jde stoupačka přes tři byty nebo venkovní jednotka k plotu, řešíme to my, ne vy."
+      }
+    ],
+    "tcNadpis": "Tepelné čerpadlo do těsného prostoru",
+    "tcText": "Nejčastěji nás volají tam, kde technická místnost měří dva metry čtvereční, sousedi jsou tři metry od plotu a fasáda se nesmí narušit. To je přesně ta zakázka, kterou chceme.",
+    "ctaNadpis": "Chcete vědět, co to bude stát?",
+    "ctaText": "Napište, co potřebujete. Ozveme se, domluvíme obhlídku a nabídku dostanete do týdne."
+  },
+  "stavby": {
+    "stitek": "Reference",
+    "nadpis": "Stavby",
+    "lead": "Výběr z realizací. U každé je napsané, co bylo na zadání nejtěžší a jak jsme to vyřešili.",
+    "filtrNadpis": "Filtr",
+    "pocet": "Zobrazeno {zobrazeno} z {celkem}",
+    "detailZadani": "Zadání",
+    "detailReseni": "Jak jsme to udělali",
+    "detailRole": "Naše role",
+    "detailTrvani": "Doba montáže",
+    "detailRozsah": "Rozsah",
+    "detailObory": "Profese"
+  },
+  "recenze": {
+    "stitek": "Reference od lidí",
+    "nadpis": "Recenze",
+    "lead": "Hodnocení od investorů, stavbyvedoucích, technického dozoru i majitelů domů. Všechny zveřejněné recenze procházejí schválením.",
+    "prumerPopis": "průměrné hodnocení",
+    "zPoctu": "z {pocet}",
+    "doporucuje": "{procent} % pisatelů nás doporučuje dál",
+    "formularNadpis": "Napsat recenzi",
+    "formularLead": "Pracovali jsme pro vás? Napište, jak to dopadlo. Recenze se zveřejní po schválení.",
+    "poleJmeno": "Jméno a příjmení",
+    "poleFirma": "Firma a pozice (nepovinné)",
+    "poleEmail": "E-mail (nezveřejní se)",
+    "poleSegment": "Odkud se díváte",
+    "poleHodnoceni": "Hodnocení",
+    "poleText": "Vaše zkušenost",
+    "poleDoporucuje": "Doporučil(a) bych Fofrmont dál",
+    "poleSouhlas": "Souhlasím se zveřejněním recenze po schválení",
+    "odeslat": "Odeslat recenzi",
+    "odeslano": "Děkujeme. Recenze čeká na schválení — v této ukázce ji najdete v administraci.",
+    "filtrVse": "Všechny",
+    "filtrB2b": "Firmy",
+    "filtrB2c": "Domácnosti",
+    "razeni": "Řazení",
+    "razeniNejnovejsi": "Nejnovější",
+    "razeniNejlepsi": "Nejlepší",
+    "razeniNejhorsi": "Nejhorší",
+    "keStavbe": "Ke stavbě"
+  },
+  "poptavka": {
+    "stitek": "Poptávka",
+    "nadpis": "Řekněte nám, co potřebujete",
+    "lead": "Šest až osm otázek podle toho, kdo jste. Odpovědi si můžete kdykoli vrátit a změnit.",
+    "krok": "Krok {cislo} z {celkem}",
+    "dalsi": "Pokračovat",
+    "zpet": "Zpět",
+    "odeslat": "Odeslat poptávku",
+    "shrnutiNadpis": "Shrnutí",
+    "odeslano": "Poptávka odeslána",
+    "odeslanoText": "V ostré verzi by teď odešla na e-mail a do systému. V této ukázce ji najdete v administraci mezi došlými poptávkami.",
+    "znovu": "Vyplnit znovu",
+    "kontaktNadpis": "Kontaktní údaje",
+    "poleJmeno": "Jméno a příjmení",
+    "poleFirma": "Firma",
+    "poleIco": "IČO",
+    "poleEmail": "E-mail",
+    "poleTelefon": "Telefon",
+    "poleSouhlas": "Souhlasím se zpracováním údajů pro vyřízení poptávky",
+    "otazky": {
+      "segment": "Kdo poptává?",
+      "obory": "Které profese potřebujete?",
+      "projekt": "Máte hotový projekt?",
+      "objekt": "O jaký objekt jde?",
+      "plocha": "Přibližná plocha v m²",
+      "provoz": "Bude budova během montáže v provozu?",
+      "termin": "Kdy by se mělo montovat?",
+      "pozn": "Co ještě máme vědět?"
+    },
+    "moznosti": {
+      "objektRd": "Rodinný dům",
+      "objektByt": "Byt",
+      "objektBd": "Bytový dům",
+      "objektKancelar": "Kanceláře",
+      "objektHala": "Výrobní hala",
+      "objektZdravotnictvi": "Zdravotnictví",
+      "objektSkola": "Škola nebo školka",
+      "objektJine": "Něco jiného",
+      "terminIhned": "Co nejdřív",
+      "terminKvartal": "Do tří měsíců",
+      "terminPul": "Do půl roku",
+      "terminNevim": "Zatím nevím"
+    }
+  },
+  "kalkulacky": {
+    "stitek": "Orientační výpočty",
+    "nadpis": "Spočítejte si to nahrubo",
+    "lead": "Tři jednoduché kalkulačky pro první představu. Nenahrazují projekt ani nabídku — ale ukážou řádově, o čem se bavíme.",
+    "upozorneni": "Výsledky jsou orientační. Skutečné hodnoty vycházejí z projektu a z obhlídky.",
+    "vztNadpis": "Průtok vzduchu a dimenze potrubí",
+    "vztPopis": "Zadejte rozměry místnosti a počet výměn. Spočítáme potřebný průtok a navrhneme průměr potrubí z normované řady.",
+    "vztDelka": "Délka (m)",
+    "vztSirka": "Šířka (m)",
+    "vztVyska": "Výška (m)",
+    "vztVymeny": "Výměn za hodinu",
+    "vztOsoby": "Počet osob",
+    "vztDavka": "Dávka na osobu (m³/h)",
+    "vztRychlost": "Rychlost v potrubí (m/s)",
+    "vztObjem": "Objem místnosti",
+    "vztPodleVymen": "Podle výměn",
+    "vztPodleOsob": "Podle osob",
+    "vztNavrh": "Navržený průtok",
+    "vztPrumer": "Průměr potrubí",
+    "vztNorma": "Z normované řady",
+    "vztSkutecna": "Skutečná rychlost",
+    "vztHranate": "Čtyřhranná varianta",
+    "tcNadpis": "Výkon tepelného čerpadla",
+    "tcPopis": "Podle plochy a měrné tepelné ztráty odhadneme potřebný výkon a najdeme nejbližší velikost.",
+    "tcPlocha": "Vytápěná plocha (m²)",
+    "tcVyska": "Světlá výška (m)",
+    "tcMerna": "Měrná ztráta (W/m²)",
+    "tcTuv": "Příkon na teplou vodu (kW)",
+    "tcZtrata": "Tepelná ztráta",
+    "tcPotreba": "Potřebný výkon",
+    "tcVykon": "Navržená velikost",
+    "tcPokryti": "Pokrytí potřeby",
+    "tcNovostavba": "Novostavba (30 W/m²)",
+    "tcZateplenyDum": "Zateplený dům (55 W/m²)",
+    "tcStarsi": "Starší nezateplený (100 W/m²)",
+    "rekNadpis": "Úspora z rekuperace",
+    "rekPopis": "Kolik ušetří zpětné získávání tepla, když vzduch pouštíte ven bez něj.",
+    "rekPrutok": "Průtok (m³/h)",
+    "rekHodin": "Hodin denně",
+    "rekDnu": "Dnů v roce",
+    "rekUcinnost": "Účinnost rekuperace",
+    "rekDelta": "Rozdíl teplot (K)",
+    "rekCena": "Cena energie (Kč/kWh)",
+    "rekVykon": "Tepelný výkon",
+    "rekKwh": "Úspora za rok",
+    "rekKoruny": "V penězích"
+  },
+  "oNas": {
+    "stitek": "O firmě",
+    "nadpis": "Kdo jsme",
+    "lead": "FOFRMONT CZ je montážní firma se sídlem na pražském Žižkově. Od roku 2014 montujeme technické zařízení budov — pro generální dodavatele na velkých stavbách i přímo pro investory a domácnosti.",
+    "pribehNadpis": "Čím se lišíme",
+    "pribeh": "Nejsme projekční kancelář, která si k tomu přibrala montáž, ani obchodní firma, která práci přeprodává dál. Jsme ti, kdo přijedou s nářadím. To má dvě praktické důsledky: víme, co je v projektu nakreslené hezky a v realitě nesmontovatelné, a nemáme komu hodit odpovědnost, když se to pokazí.\n\nZa roky na stavbách se nám nastřádaly zakázky, které jinde odmítli — montáž nad provozem terminálu, rekonstrukce v kulturní památce, čerpadlo do prostoru, kde se nedaly otevřít dveře. Zjistili jsme, že to je přesně to, co nás baví a v čem jsme lepší než konkurence.",
+    "faktaNadpis": "Údaje o firmě",
+    "ico": "IČO",
+    "dic": "DIČ",
+    "sidlo": "Sídlo",
+    "vznik": "Zapsáno",
+    "jednatel": "Jednatel",
+    "zapis": "Spisová značka",
+    "kapital": "Základní kapitál",
+    "pusobnost": "Působnost",
+    "tymNadpis": "Kdo to montuje",
+    "tymLead": "Stálé party montérů, instalatérů a svářečů. Na každou zakázku jde parta, která byla na obhlídce.",
+    "tymPozice": [
+      {
+        "nazev": "Montéři vzduchotechniky",
+        "text": "Potrubí, jednotky, koncové prvky. Práce ve výškách a z plošin."
+      },
+      {
+        "nazev": "Instalatéři a topenáři",
+        "text": "Rozvody vody, kanalizace a topení, kotelny a předávací stanice."
+      },
+      {
+        "nazev": "Svářeči",
+        "text": "Ocel, měď, uhlíková ocel. Platné průkazy, tlakové zkoušky."
+      },
+      {
+        "nazev": "Stavbyvedoucí",
+        "text": "Vedení zakázek, koordinace se stavbou, přejímky a předání."
+      }
+    ],
+    "partneriNadpis": "S kým spolupracujeme",
+    "partneriText": "Co sami neděláme, zajišťujeme přes prověřené partnery: projekci, plnění a vakuování chladiva, měření a regulaci, pravidelný servis a revize. Pro vás to zůstává jedna zakázka."
+  },
+  "kariera": {
+    "stitek": "Kariéra",
+    "nadpis": "Hledáme lidi, kteří to umí rukama",
+    "lead": "Nabíráme do stálých part. Práce je v Praze a okolí, na velkých stavbách i v rodinných domech. Kdo chce jednoduché zakázky, u nás se nudit nebude — ale ani nebavit.",
+    "nabizimeNadpis": "Co nabízíme",
+    "nabizime": [
+      "Zakázky, které jinde odmítli. Nuda to nebude.",
+      "Stálá parta, ne přehazování mezi stavbami každý týden.",
+      "Nářadí, plošiny a technika, ne improvizace.",
+      "Placení včas. Vždycky.",
+      "Proplacené kurzy a průkazy, které při práci potřebujete.",
+      "HPP i spolupráce na IČO, podle toho, co vám sedí."
+    ],
+    "poziceNadpis": "Otevřené pozice",
+    "pozadujeme": "Co potřebujete umět",
+    "uvazek": "Úvazek",
+    "misto": "Místo",
+    "formularNadpis": "Ozvěte se",
+    "formularLead": "Nemusíte posílat životopis. Stačí napsat, co umíte a kde jste dělali.",
+    "poleJmeno": "Jméno a příjmení",
+    "poleTelefon": "Telefon",
+    "poleEmail": "E-mail",
+    "polePozice": "O kterou pozici jde",
+    "poleText": "Co umíte a kde jste dělali",
+    "poleSouhlas": "Souhlasím se zpracováním údajů pro účely výběrového řízení",
+    "odeslat": "Odeslat",
+    "odeslano": "Děkujeme, ozveme se. V této ukázce zpráva skončila v administraci."
+  },
+  "dotazy": {
+    "stitek": "Časté dotazy",
+    "nadpis": "Na co se ptáte nejčastěji",
+    "lead": "Když tu odpověď nenajdete, zavolejte. Odpovídáme i na otázky, na které je odpověď „to neděláme“.",
+    "hledat": "Hledat v dotazech",
+    "nenalezeno": "Na tohle tu odpověď nemáme. Zeptejte se nás přímo."
+  },
+  "kontakt": {
+    "stitek": "Kontakt",
+    "nadpis": "Ozvěte se",
+    "lead": "Nejrychleji telefonem. Když potřebujete nacenit, pošlete rovnou projekt nebo výkaz výměr — ušetří to jedno kolečko.",
+    "udajeNadpis": "Kontaktní údaje",
+    "fakturacniNadpis": "Fakturační údaje",
+    "provozniDoba": "Provozní doba",
+    "formularNadpis": "Napište nám",
+    "poleJmeno": "Jméno a příjmení",
+    "poleFirma": "Firma (nepovinné)",
+    "poleEmail": "E-mail",
+    "poleTelefon": "Telefon (nepovinné)",
+    "poleTyp": "Čeho se to týká",
+    "poleZprava": "Zpráva",
+    "poleSouhlas": "Souhlasím se zpracováním údajů pro vyřízení dotazu",
+    "odeslat": "Odeslat zprávu",
+    "odeslano": "Děkujeme. V této ukázce zpráva skončila v administraci mezi došlými poptávkami.",
+    "typPoptavka": "Poptávka montáže",
+    "typObhlidka": "Objednání obhlídky",
+    "typKariera": "Práce u vás",
+    "typJine": "Něco jiného",
+    "mapaPopis": "Sídlo firmy, Roháčova 145/14, Praha 3-Žižkov"
+  },
+  "administrace": {
+    "stitek": "Demo administrace",
+    "nadpis": "Administrace",
+    "lead": "Takhle by vypadalo rozhraní pro správu webu. V ukázce se všechno ukládá jen do vašeho prohlížeče — nic neodchází na server a stačí smazat data stránky, aby byl web jako na začátku.",
+    "zalozkaPrehled": "Přehled",
+    "zalozkaTexty": "Texty",
+    "zalozkaRecenze": "Recenze",
+    "zalozkaStavby": "Stavby",
+    "zalozkaPoptavky": "Došlé poptávky",
+    "zalozkaData": "Export a import",
+    "prehledRecenzeCeka": "Recenze ke schválení",
+    "prehledPoptavky": "Nepřečtené poptávky",
+    "prehledStavby": "Staveb na webu",
+    "prehledTexty": "Upravených textů",
+    "textyLead": "Klikněte do textu a přepište ho. Změna se hned projeví na webu.",
+    "textyHledat": "Hledat v textech",
+    "textyPuvodni": "Původní znění",
+    "textyVratit": "Vrátit původní",
+    "recenzeLead": "Nové recenze čekají na schválení. Schválené se zobrazí na webu.",
+    "stavSchvalena": "Schválená",
+    "stavCeka": "Čeká",
+    "stavSkryta": "Skrytá",
+    "schvalit": "Schválit",
+    "skryt": "Skrýt",
+    "smazat": "Smazat",
+    "stavbyLead": "Přidávejte a upravujte stavby. Pole odpovídají tomu, co se ukazuje na webu.",
+    "pridatStavbu": "Přidat stavbu",
+    "ulozit": "Uložit",
+    "zrusit": "Zrušit",
+    "poptavkyLead": "Sem chodí poptávky z formulářů. V ostré verzi by zároveň odcházel e-mail.",
+    "poptavkyPrazdno": "Zatím nic nepřišlo. Vyplňte formulář na webu a vraťte se sem.",
+    "oznacitPrectene": "Označit jako přečtené",
+    "dataLead": "Změny si můžete stáhnout jako soubor a nahrát zpátky na jiném počítači.",
+    "exportovat": "Stáhnout změny",
+    "importovat": "Nahrát změny",
+    "vymazat": "Vymazat všechny změny",
+    "vymazatPotvrzeni": "Opravdu smazat všechny změny a vrátit web do původního stavu?",
+    "ulozeno": "Uloženo",
+    "prihlaseni": "Přihlášení",
+    "prihlaseniLead": "Ukázka je bez hesla — administrace je součást návrhu, ne ostrý systém.",
+    "vstoupit": "Vstoupit do administrace"
+  },
+  "chyba404": {
+    "nadpis": "Tahle trasa nikam nevede",
+    "lead": "Stránka, kterou hledáte, tu není. Zkuste se vrátit na úvod nebo mrkněte na stavby.",
+    "cta": "Zpět na úvod"
+  },
+  "patka": {
+    "oNasNadpis": "FOFRMONT CZ s.r.o.",
+    "oNasText": "Montáže technického zařízení budov. Vzduchotechnika, vytápění, zdravotechnika a chlazení — dodávka i montáž.",
+    "navigaceNadpis": "Navigace",
+    "kontaktNadpis": "Kontakt",
+    "pravniNadpis": "Právní",
+    "ochranaUdaju": "Ochrana osobních údajů",
+    "copyright": "© {rok} FOFRMONT CZ s.r.o.",
+    "ukazkaPozn": "Ukázka návrhu webu. Neindexuje se a neslouží jako ostrá prezentace firmy.",
+    "navigaceNadpis2": "Pro koho a o nás"
+  }
+}

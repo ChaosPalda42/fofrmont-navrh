@@ -1,0 +1,68 @@
+FOFRMONT CZ — návrh nového webu
+===============================
+
+Co to je
+--------
+Klikací ukázka nového webu pro FOFRMONT CZ s.r.o. Není to hotový web, ale návrh,
+na kterém si můžete osahat rozvržení, texty i chování. Otevřete soubor index.html
+v prohlížeči (funguje i bez internetu) nebo si projděte odkaz, který jsme poslali.
+
+Web se záměrně NEINDEXUJE ve vyhledávačích a není nikde veřejně odkázaný.
+
+
+Co je v ukázce skutečné
+-----------------------
+* Název firmy, IČO 02911973, DIČ, sídlo Roháčova 145/14, Praha 3-Žižkov,
+  datum vzniku, jednatel a spisová značka — z veřejného rejstříku.
+* Popis toho, co montujete a co naopak neděláte (projekce, servis, audity,
+  plnění chladiva) — podle toho, co jsme dostali v zadání.
+
+
+Co je vymyšlené, a musíte to přepsat
+------------------------------------
+* VŠECH OSM STAVEB v sekci „Stavby“ — názvy, čísla, termíny i role. Žádná
+  z nich neproběhla. Sloužily jen k tomu, aby web nevypadal prázdně.
+* VŠECHNY RECENZE i jejich autoři.
+* Čísla v přehledu na úvodní stránce („24 montérů“ a podobně).
+* Otevřené pozice v sekci Kariéra.
+* TELEFON je schválně uvedený jako „+420 XXX XXX XXX“ — číslo jsme neměli
+  a vymýšlet ho nebudeme. E-mailové adresy jsou na doméně fofrmont.cz,
+  která zatím není zaregistrovaná.
+* Logo. Firma žádné nemá, tak jsme udělali značku z izometrického kolena
+  v rámečku. Pokud logo máte, nahradíme ho.
+
+Stejný seznam najdete i na stránce „O ukázce“ přímo ve webu.
+
+
+Co si můžete vyzkoušet
+----------------------
+1. Úvodní stránka — přepínač „Firma / Domácnost“ překreslí výkres v záhlaví.
+2. Náročné prostory — měřič náročnosti. Vyberte šest faktorů a uvidíte skóre
+   i to, s čím u takové stavby počítáte.
+3. Orientační výpočty — průtok vzduchu a dimenze potrubí, výkon tepelného
+   čerpadla, úspora z rekuperace. Počítá to živě.
+4. Poptávka — průvodce, který se větví podle toho, jestli jste firma, nebo
+   domácnost. Po odeslání poptávka spadne do administrace.
+5. Recenze — filtrování, řazení a formulář na novou recenzi. Nová recenze
+   čeká na schválení v administraci.
+6. Administrace — bez hesla, stačí kliknout na „Vstoupit“. Dá se v ní přepsat
+   kterýkoli text na webu, schvalovat recenze, přidávat stavby a číst došlé
+   poptávky. Změny se ukládají jen do vašeho prohlížeče a jdou stáhnout
+   jako soubor. Nic neodchází na server.
+
+
+Na čem se musíme domluvit
+-------------------------
+* skutečný telefon, e-mail a doména
+* skutečné reference (ideálně i s fotkami ze staveb — teď jsou všude
+  vlastní technické výkresy, protože fotky nemáme)
+* jestli chcete anglickou verzi (v ukázce je, překládal ji stroj a chtěla
+  by projít rodilým mluvčím)
+* kam mají v ostré verzi chodit poptávky — na e-mail, nebo do systému
+
+
+Jak číst technické věci
+-----------------------
+Web je statický: žádný WordPress, žádná databáze, nic, co by se dalo
+hacknout. Běží odkudkoli, i z flashky. Administrace je zatím demo —
+v ostré verzi se stejné rozhraní napojí na server.

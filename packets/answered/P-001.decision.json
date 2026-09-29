@@ -1,0 +1,8 @@
+{
+  "packet": "P-001",
+  "kind": "retry",
+  "diff": "",
+  "contract": {},
+  "note": "Chyba byla v akceptačním testu, ne v kódu: očekávané pořadí pro serad('nejnovejsi') a serad('nejstarsi') jsem odvodil podle pole rok, ale kontrakt řadí podle pole datum. Test je opravený (poliklinika 2025-06-01, vila 2025-02-01, hala 2024-09-01, skola 2023-08-01). Zbytek modulu byl v pořádku.",
+  "created_at": "2026-09-29T22:39:28+00:00"
+}

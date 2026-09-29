@@ -69,8 +69,8 @@ def test_roky(js):
 
 
 def test_serad(js):
-    assert js('out(m.serad(A.s, "nejnovejsi").map((x) => x.id));') == ["poliklinika", "hala", "vila", "skola"]
-    assert js('out(m.serad(A.s, "nejstarsi").map((x) => x.id));') == ["skola", "vila", "hala", "poliklinika"]
+    assert js('out(m.serad(A.s, "nejnovejsi").map((x) => x.id));') == ["poliklinika", "vila", "hala", "skola"]
+    assert js('out(m.serad(A.s, "nejstarsi").map((x) => x.id));') == ["skola", "hala", "vila", "poliklinika"]
     assert js('out(m.serad(A.s, "nazev").map((x) => x.id));') == ["poliklinika", "vila", "hala", "skola"]
     assert js('out(m.serad(A.s, "rozsah").map((x) => x.id));') == ["poliklinika", "vila", "hala", "skola"]
 
