@@ -2,7 +2,7 @@
 import { esc, odstavce, cisloCs } from "./lib.mjs";
 import { ikona } from "./ikony.mjs";
 import { motivStavby, hvezdy } from "./kresby.mjs";
-import { hlavicka, drobecky, kartaStavby, kartaRecenze, ctaPas, pole, souhlas } from "./casti.mjs";
+import { hlavicka, drobecky, kartaStavby, kartaRecenze, ctaPas, pole, souhlas, prilohy } from "./casti.mjs";
 import * as recenzeLib from "../lib/recenze.mjs";
 import * as stavbyLib from "../lib/stavby.mjs";
 
@@ -221,6 +221,7 @@ export function poptavka(ctx) {
               </div>
             </div>
             ${pole("telefon", t("poptavka.poleTelefon"), { typ: "tel" })}
+            ${prilohy(ctx)}
             ${souhlas("souhlas", t("poptavka.poleSouhlas"))}
           </div>
           <div class="tlacitka" style="margin-top:1.6rem">

@@ -199,6 +199,52 @@
     });
   }
 
+  /** Údaje přepsané v administraci se promítnou na celý web. */
+  function prepisyUdaju() {
+    if (!FM.administrace) return;
+    var stav, prepisy;
+    try {
+      stav = FM.administrace.nacti(window.localStorage);
+      prepisy = FM.administrace.textyProJazyk(stav, "vse", {});
+    } catch (e) { return; }
+    $$("[data-udaj]").forEach(function (el) {
+      var hodnota = prepisy[el.dataset.udaj];
+      if (hodnota === undefined || hodnota === "") return;
+      el.textContent = hodnota;
+      if (el.hasAttribute("data-udaj-mailto")) el.setAttribute("href", "mailto:" + hodnota);
+    });
+    prepisyTextu(stav);
+  }
+
+  /** Texty přepsané v administraci se na statické stránce vymění podle
+   *  původního znění, které si administrace uložila k přepisu. */
+  function prepisyTextu(stav) {
+    var jazyk = document.documentElement.lang || "cs";
+    var prepisy = FM.administrace.textyProJazyk(stav, jazyk, {});
+    var zaklady = FM.administrace.textyProJazyk(stav, "_zaklad", {});
+    var mapa = {};
+    var kolik = 0;
+    Object.keys(prepisy).forEach(function (klic) {
+      var zaklad = zaklady[klic];
+      if (!zaklad || !prepisy[klic] || zaklad === prepisy[klic]) return;
+      mapa[String(zaklad).trim()] = prepisy[klic];
+      kolik += 1;
+    });
+    if (!kolik) return;
+    var prochazeni = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (uzel) {
+        var rodic = uzel.parentNode;
+        if (!rodic || rodic.closest("script, style, textarea, [data-panel]")) return NodeFilter.FILTER_REJECT;
+        return uzel.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      },
+    });
+    var uzel;
+    while ((uzel = prochazeni.nextNode())) {
+      var nahrada = mapa[uzel.nodeValue.trim()];
+      if (nahrada !== undefined) uzel.nodeValue = uzel.nodeValue.replace(uzel.nodeValue.trim(), nahrada);
+    }
+  }
+
   /* ---------- navigace ---------- */
   function navigace() {
     var tlacitko = $(".hamburger");
@@ -790,6 +836,107 @@
     aktualizujPostup();
   }
 
+  /* ---------- přílohy ---------- */
+  var HLASKY_PRILOH = {};
+  // Co od lidí bereme: výkresy, modely, tabulky, dokumenty a fotky.
+  // Archivy ani spustitelné soubory ne — ty bývají nosičem škodlivého kódu.
+  var PRIPONY_PRILOH = ["pdf", "dwg", "dxf", "ifc", "stp", "step", "xlsx", "csv", "docx",
+    "jpg", "jpeg", "png", "heic", "webp"];
+  var MAX_SOUBOR = 15 * 1048576;
+  var MAX_CELKEM = 40 * 1048576;
+  var MAX_POCET = 10;
+
+  function velikost(bajty) {
+    if (bajty >= 1048576) return (bajty / 1048576).toFixed(1).replace(".", ",") + " MB";
+    return Math.max(1, Math.round(bajty / 1024)) + " kB";
+  }
+
+  function prilohy() {
+    $$("[data-prilohy]").forEach(function (obal) {
+      HLASKY_PRILOH = jsonAttr(obal, "data-hlasky", HLASKY_PRILOH) || HLASKY_PRILOH;
+      var vstup = $("input[type='file']", obal);
+      var seznam = $("[data-seznam-priloh]", obal);
+      var chyba = $("[data-chyba]", obal);
+      var soubory = [];
+      obal.soubory = soubory;
+
+      function vykresli() {
+        seznam.innerHTML = soubory.map(function (s, i) {
+          return "<li><span class='jmeno'>" + s.name.replace(/</g, "&lt;") + "</span>"
+            + "<span class='velikost'>" + velikost(s.size) + "</span>"
+            + "<button type='button' data-odebrat='" + i + "' aria-label='"
+            + (HLASKY_PRILOH.odebrat || "Odebrat") + "'>"
+            + "<svg width='16' height='16' viewBox='0 0 20 20' fill='none' stroke='currentColor' stroke-width='1.6'"
+            + " stroke-linecap='round'><path d='m5 5 10 10M15 5 5 15'/></svg></button></li>";
+        }).join("");
+        $$("[data-odebrat]", seznam).forEach(function (b) {
+          b.addEventListener("click", function () {
+            soubory.splice(Number(b.dataset.odebrat), 1);
+            vykresli();
+          });
+        });
+      }
+
+      function odmitni(zprava) {
+        chyba.hidden = false;
+        chyba.textContent = zprava;
+      }
+
+      function pridej(nove) {
+        chyba.hidden = true;
+        Array.prototype.forEach.call(nove, function (s) {
+          var pripona = String(s.name).split(".").pop().toLowerCase();
+          if (PRIPONY_PRILOH.indexOf(pripona) < 0) {
+            odmitni(String(HLASKY_PRILOH.typ || "{jmeno} nepřijímáme.").replace("{jmeno}", s.name));
+            return;
+          }
+          if (s.size > MAX_SOUBOR) {
+            odmitni(String(HLASKY_PRILOH.velke || "{jmeno} je příliš velký.")
+              .replace("{jmeno}", s.name).replace("{velikost}", velikost(s.size)));
+            return;
+          }
+          if (soubory.length >= MAX_POCET) {
+            odmitni(HLASKY_PRILOH.pocet || "Příliš mnoho souborů.");
+            return;
+          }
+          var celkem = soubory.reduce(function (a, x) { return a + x.size; }, 0);
+          if (celkem + s.size > MAX_CELKEM) {
+            odmitni(HLASKY_PRILOH.celkem || "Přílohy jsou dohromady moc velké.");
+            return;
+          }
+          var uz = soubory.some(function (x) { return x.name === s.name && x.size === s.size; });
+          if (!uz) soubory.push(s);
+        });
+        vykresli();
+      }
+
+      vstup.addEventListener("change", function () { pridej(vstup.files); vstup.value = ""; });
+      ["dragenter", "dragover"].forEach(function (udalost) {
+        obal.addEventListener(udalost, function (e) { e.preventDefault(); obal.dataset.nad = "1"; });
+      });
+      ["dragleave", "drop"].forEach(function (udalost) {
+        obal.addEventListener(udalost, function (e) { e.preventDefault(); obal.dataset.nad = "0"; });
+      });
+      obal.addEventListener("drop", function (e) {
+        if (e.dataTransfer && e.dataTransfer.files) pridej(e.dataTransfer.files);
+      });
+    });
+  }
+
+  /** Názvy příloh, které se přiloží k textu poptávky. */
+  function popisPriloh(korene) {
+    var obal = $("[data-prilohy]", korene);
+    if (!obal) return "";
+    var odkaz = $("input[type='url']", obal);
+    var radky = [];
+    if (obal.soubory.length) {
+      radky.push((HLASKY_PRILOH.seznam || "Přílohy") + ": "
+        + obal.soubory.map(function (s) { return s.name + " (" + velikost(s.size) + ")"; }).join(", "));
+    }
+    if (odkaz && odkaz.value.trim()) radky.push((HLASKY_PRILOH.odkaz || "Odkaz") + ": " + odkaz.value.trim());
+    return radky.length ? "\n" + radky.join("\n") : "";
+  }
+
   /* ---------- formuláře ---------- */
   function zobrazChyby(obal, errors) {
     $$("[data-pole]", obal).forEach(function (pole) {
@@ -857,7 +1004,8 @@
           zobrazChyby(form, vysledek.errors);
           if (!vysledek.ok) return;
           ulozPoptavku({ typ: druh, jmeno: hodnoty.jmeno, email: hodnoty.email,
-            telefon: hodnoty.telefon, firma: hodnoty.firma, zprava: hodnoty.zprava });
+            telefon: hodnoty.telefon, firma: hodnoty.firma,
+            zprava: (hodnoty.zprava || "") + popisPriloh(form) });
         }
         $("[data-hotovo]", form).hidden = false;
         $$("input, textarea, select, button", form).forEach(function (el) { el.disabled = true; });
@@ -878,6 +1026,8 @@
 
   function start() {
     nacitani();
+    prepisyUdaju();
+    prilohy();
     navigace(); prijezd(); rastr(); svitivaMrizka(); pravitko(); pocitadla();
     hero(); naklon(); otacecka(); magnety(); meric(); gantt();
     filtrujStavby(); filtrujRecenze(); dotazy(); kalkulacky(); pruvodce(); formulare();

@@ -2,7 +2,7 @@
 import { esc, odstavce } from "./lib.mjs";
 import { ikona } from "./ikony.mjs";
 import { motivStavby } from "./kresby.mjs";
-import { hlavicka, drobecky, ctaPas, pole, souhlas, udaje } from "./casti.mjs";
+import { hlavicka, drobecky, ctaPas, pole, souhlas, udaje, prilohy } from "./casti.mjs";
 import { razitko } from "./layout.mjs";
 
 export function oNas(ctx) {
@@ -148,14 +148,16 @@ export function kontakt(ctx) {
         <div class="karta rohy">
           <span class="karta__cislo">${esc(t("kontakt.udajeNadpis"))}</span>
           <p style="display:flex;gap:.6rem;align-items:center;margin:.9rem 0 .2rem;font-size:1.06rem;font-weight:600">
-            ${ikona("telefon", { velikost: 18 })} <span class="mono">${esc(k.telefon)}</span></p>
+            ${ikona("telefon", { velikost: 18 })} <span class="mono" data-udaj="kontakt.telefon">${esc(k.telefon)}</span></p>
           <p class="male tise" style="margin:0 0 1rem">${esc(t("spolecne.telefonDoplnit"))}</p>
           <p style="display:flex;gap:.6rem;align-items:center;margin:0 0 1rem">
-            ${ikona("obalka", { velikost: 18 })} <a href="mailto:${esc(k.email)}">${esc(k.email)}</a></p>
+            ${ikona("obalka", { velikost: 18 })} <a href="mailto:${esc(k.email)}" data-udaj="kontakt.email" data-udaj-mailto>${esc(k.email)}</a></p>
           <p style="display:flex;gap:.6rem;align-items:flex-start;margin:0">
-            ${ikona("pin", { velikost: 18 })} <span>${esc(a.ulice)}<br>${esc(a.cast)}<br>${esc(a.psc)} ${esc(a.mesto)}</span></p>
+            ${ikona("pin", { velikost: 18 })} <span><span data-udaj="kontakt.ulice">${esc(a.ulice)}</span><br>${esc(a.cast)}<br>
+              <span data-udaj="kontakt.psc">${esc(a.psc)}</span> <span data-udaj="kontakt.mesto">${esc(a.mesto)}</span></span></p>
           <div class="karta__pata">
-            <p class="male tise" style="margin:0">${esc(t("kontakt.provozniDoba"))}: ${esc(k.provozniDoba)}</p>
+            <p class="male tise" style="margin:0">${esc(t("kontakt.provozniDoba"))}:
+              <span data-udaj="kontakt.provozniDoba">${esc(k.provozniDoba)}</span></p>
           </div>
         </div>
         <div class="karta rohy" style="margin-top:1rem">
@@ -182,6 +184,7 @@ export function kontakt(ctx) {
             ["poptavka", t("kontakt.typPoptavka")], ["obhlidka", t("kontakt.typObhlidka")],
             ["kariera", t("kontakt.typKariera")], ["jine", t("kontakt.typJine")]] })}
           ${pole("zprava", t("kontakt.poleZprava"), { radku: 5, povinne: true })}
+          ${prilohy(ctx)}
           ${souhlas("souhlas", t("kontakt.poleSouhlas"))}
           <button class="tl tl--signal" type="submit">${esc(t("kontakt.odeslat"))}</button>
           <p class="hlaska" data-hotovo hidden style="margin-top:1rem">${esc(t("kontakt.odeslano"))}</p>

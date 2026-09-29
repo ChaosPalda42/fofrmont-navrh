@@ -141,3 +141,33 @@ export function deliciTrasa() {
     </svg>
   </div>`;
 }
+
+/** Pole pro přílohy: projekt, výkaz výměr, fotky. */
+export function prilohy(ctx, { id = "prilohy" } = {}) {
+  const { t } = ctx;
+  return `
+  <div class="pole prilohy" data-pole="${esc(id)}" data-prilohy
+    data-hlasky='${esc(JSON.stringify({
+      odebrat: t("spolecne.prilohaOdebrat"), velke: t("spolecne.prilohaVelke"),
+      typ: t("spolecne.prilohaTyp"), celkem: t("spolecne.prilohaCelkem"),
+      pocet: t("spolecne.prilohaPocet"), seznam: t("spolecne.prilohaSeznam"),
+      odkaz: t("spolecne.prilohaOdkaz"),
+    }))}'>
+    <label for="${esc(id)}">${esc(t("spolecne.prilohaPopisek"))}</label>
+    <label class="prilohy__zona" for="${esc(id)}">
+      ${ikona("nahrat", { velikost: 22 })}
+      <span>
+        <strong>${esc(t("spolecne.prilohaVyzva"))}</strong><br>
+        <span class="napoveda">${esc(t("spolecne.prilohaFormaty"))}</span>
+      </span>
+    </label>
+    <input type="file" id="${esc(id)}" name="${esc(id)}" multiple class="skryte"
+      accept=".pdf,.dwg,.dxf,.ifc,.stp,.step,.xlsx,.csv,.docx,.jpg,.jpeg,.png,.heic,.webp">
+    <ul class="prilohy__seznam" data-seznam-priloh></ul>
+    <span class="napoveda">${esc(t("spolecne.prilohaUkazka"))}</span>
+    <span class="chyba" data-chyba hidden></span>
+    <label for="${esc(id)}-odkaz" style="margin-top:.7rem">${esc(t("spolecne.prilohaOdkaz"))}</label>
+    <input type="url" id="${esc(id)}-odkaz" name="${esc(id)}-odkaz" placeholder="https://">
+    <span class="napoveda">${esc(t("spolecne.prilohaOdkazNapoveda"))}</span>
+  </div>`;
+}

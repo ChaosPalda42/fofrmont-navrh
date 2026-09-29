@@ -38,12 +38,12 @@
     },
     "C-005": {
       "status": "green",
-      "attempts": 2,
+      "attempts": 3,
       "iterations": 27,
-      "commit": "7f790fe",
+      "commit": "8af39a2",
       "last_finding": "",
       "packet": "",
-      "updated_at": "2026-09-29T22:42:51+00:00"
+      "updated_at": "2026-09-29T23:33:23+00:00"
     },
     "C-006": {
       "status": "green",
@@ -101,12 +101,21 @@
     },
     "C-012": {
       "status": "green",
-      "attempts": 2,
+      "attempts": 3,
       "iterations": 14,
-      "commit": "297d094",
+      "commit": "8af39a2",
       "last_finding": "",
       "packet": "",
-      "updated_at": "2026-09-29T23:03:15+00:00"
+      "updated_at": "2026-09-29T23:33:22+00:00"
+    },
+    "C-013": {
+      "status": "green",
+      "attempts": 1,
+      "iterations": 5,
+      "commit": "1c4cce7",
+      "last_finding": "",
+      "packet": "",
+      "updated_at": "2026-09-29T23:36:52+00:00"
     }
   },
   "runs": [
@@ -149,6 +158,16 @@
       "red": 0,
       "escalated": 0,
       "note": "full suite passed (178 tests)"
+    },
+    {
+      "started_at": "2026-09-29T23:33:22+00:00",
+      "finished_at": "2026-09-29T23:37:07+00:00",
+      "outcome": "green",
+      "iterations": 5,
+      "green": 13,
+      "red": 0,
+      "escalated": 0,
+      "note": "full suite passed (193 tests)"
     }
   ],
   "open_packets": []

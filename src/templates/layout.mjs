@@ -84,9 +84,10 @@ export function patka(ctx) {
         <div>
           <h3>${esc(t("patka.kontaktNadpis"))}</h3>
           <ul class="patka__seznam">
-            <li>${esc(site.kontakt.telefon)}</li>
-            <li><a href="mailto:${esc(site.kontakt.email)}">${esc(site.kontakt.email)}</a></li>
-            <li style="margin-top:.5rem">${esc(a.ulice)}<br>${esc(a.psc)} ${esc(a.mesto)}</li>
+            <li data-udaj="kontakt.telefon">${esc(site.kontakt.telefon)}</li>
+            <li><a href="mailto:${esc(site.kontakt.email)}" data-udaj="kontakt.email" data-udaj-mailto>${esc(site.kontakt.email)}</a></li>
+            <li style="margin-top:.5rem"><span data-udaj="kontakt.ulice">${esc(a.ulice)}</span><br>
+              <span data-udaj="kontakt.psc">${esc(a.psc)}</span> <span data-udaj="kontakt.mesto">${esc(a.mesto)}</span></li>
             <li style="color:#7f9bbb">IČO ${esc(site.firma.ico)} · DIČ ${esc(site.firma.dic)}</li>
           </ul>
         </div>
