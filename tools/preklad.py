@@ -131,9 +131,22 @@ def vnoreny(plochy_slovnik: dict) -> dict:
         cil = vysledek
         for i, segment in enumerate(segmenty[:-1]):
             nasledujici = segmenty[i + 1]
-            if segment not in cil:
-                cil[segment] = [] if nasledujici.isdigit() else {}
-            cil = cil[segment]
+            if isinstance(cil, list):
+                idx = int(segment)
+                while len(cil) <= idx:
+                    cil.append(None)
+                if cil[idx] is None:
+                    cil[idx] = [] if nasledujici.isdigit() else {}
+                cil = cil[idx]
+            else:
+                if segment not in cil:
+                    cil[segment] = [] if nasledujici.isdigit() else {}
+                cil = cil[segment]
+                if isinstance(cil, list) and i + 1 < len(segmenty) - 1:
+                    # This part is tricky. If we just entered a list, 
+                    # the next segment must be an integer.
+                    pass 
+
         posledni = segmenty[-1]
         if isinstance(cil, list):
             index = int(posledni)
