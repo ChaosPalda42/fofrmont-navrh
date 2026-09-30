@@ -499,8 +499,8 @@
     "prehledPoptavky": "Nepřečtené poptávky",
     "prehledStavby": "Staveb na webu",
     "prehledTexty": "Upravených textů",
-    "textyLead": "Klikněte do textu a přepište ho. Změna se hned projeví na webu.",
-    "textyHledat": "Hledat v textech",
+    "textyLead": "Vyberte vlevo stránku a upravte text. Změna se hned projeví na webu.",
+    "textyHledat": "Hledat ve všech textech",
     "textyPuvodni": "Původní znění",
     "textyVratit": "Vrátit původní",
     "recenzeLead": "Nové recenze čekají na schválení. Schválené se zobrazí na webu.",
@@ -593,7 +593,14 @@
       "návštěva",
       "návštěvy",
       "návštěv"
-    ]
+    ],
+    "textyOblasti": "Stránky",
+    "textyUpraveno": "upraveno",
+    "textyNalezeno": "Nalezeno {pocet}",
+    "textyZobrazit": "Zobrazit stránku",
+    "textyPrazdno": "Nic nenalezeno. Zkuste jiné slovo.",
+    "textyVratitVse": "Vrátit všechny změny na této stránce",
+    "textyPolozka": "{cislo}. položka"
   },
   "chyba404": {
     "nadpis": "Tahle trasa nikam nevede",

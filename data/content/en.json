@@ -107,7 +107,14 @@
     "zdrojOdkazy": "Links from other websites",
     "zdrojPrimo": "Directly (entered address)",
     "zdrojSite": "Social media",
-    "zdrojVyhledavace": "Search engines"
+    "zdrojVyhledavace": "Search engines",
+    "textyNalezeno": "Found {pocet}",
+    "textyOblasti": "Pages",
+    "textyPolozka": "{cislo}. item",
+    "textyPrazdno": "Nothing found. Try another word.",
+    "textyUpraveno": "edited",
+    "textyVratitVse": "Revert all changes on this page",
+    "textyZobrazit": "View page"
   },
   "b2b": {
     "ctaNadpis": "Do you have a tender inquiry?",

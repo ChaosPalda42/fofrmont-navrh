@@ -34,7 +34,7 @@ export function navigace(ctx, aktivni) {
       ["dotazy", t("nav.dotazy")], ["kontakt", t("nav.kontakt")],
       ["administrace", t("nav.administrace")],
     ], ["jakPracujeme", "kalkulacky", "oNas", "kariera", "dotazy", "kontakt", "administrace"].includes(aktivni))}
-    <button class="tema" type="button" data-tema aria-label="${esc(t("spolecne.temaPrepnout"))}"
+    <button class="tema" type="button" data-prepinac-tema aria-label="${esc(t("spolecne.temaPrepnout"))}"
       title="${esc(t("spolecne.temaPrepnout"))}">
       <span class="slunce">${ikona("slunce", { velikost: 17 })}</span>
       <span class="mesic">${ikona("mesic", { velikost: 17 })}</span>

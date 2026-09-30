@@ -1112,3 +1112,37 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
   .stat-pruh { grid-template-columns: minmax(0, 1fr) auto; }
   .stat-pruh__drazka { grid-column: 1 / -1; }
 }
+
+/* ======================================================================
+   Texty v administraci — rozdělené po stránkách
+   ====================================================================== */
+.texty { display: grid; gap: 1.2rem; margin-top: 1rem; }
+@media (min-width: 60rem) { .texty { grid-template-columns: 15rem minmax(0, 1fr); gap: 1.8rem; align-items: start; } }
+.texty__oblasti { display: grid; gap: 1px; }
+@media (min-width: 60rem) { .texty__oblasti { position: sticky; top: 92px; max-height: calc(100dvh - 120px); overflow-y: auto; } }
+.texty__nadpis {
+  font-family: var(--pismo-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--sedy-2); padding: .3rem .1rem .5rem;
+}
+.texty__oblasti button {
+  font: inherit; font-size: .9rem; text-align: left; padding: .5rem .65rem; border: 0; border-radius: var(--radius);
+  background: none; color: var(--tus); cursor: pointer; display: flex; align-items: center; gap: .6rem;
+  justify-content: space-between; transition: background var(--prechod);
+}
+.texty__oblasti button:hover { background: var(--papir-2); }
+.texty__oblasti button[aria-current="true"] { background: var(--plne); color: var(--plne-text); }
+.texty__oblasti button[aria-current="true"] .texty__pocet { color: inherit; opacity: .7; }
+.texty__pocet { font-family: var(--pismo-mono); font-size: .72rem; color: var(--sedy-2); }
+.texty__hlava { display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: baseline; justify-content: space-between; margin-bottom: 1rem; }
+.texty__skupina {
+  font-family: var(--pismo-mono); font-size: .72rem; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--cara); margin: 1.6rem 0 .3rem; padding-top: .8rem; border-top: 1px solid var(--cara-3);
+}
+.texty__skupina:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.texty__znacka {
+  font-family: var(--pismo-mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--signal); border: 1px solid currentColor; border-radius: 2px; padding: .02rem .3rem; margin-left: .3rem;
+}
+.admin-text__popisek { font-family: var(--pismo-nadpis); font-weight: 600; font-size: .88rem; }
+.admin-text .admin-text__klic { order: 3; opacity: .65; }
+.admin-text { gap: .25rem; }

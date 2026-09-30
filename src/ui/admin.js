@@ -26,8 +26,15 @@
     vykresliOdznaky();
   }
 
+  /** Kolik textů je přepsaných. Pomocná zásoba původních znění (_zaklad) se nepočítá. */
+  function pocetZmenenychTextu() {
+    return Object.keys(stav.texty || {}).filter(function (jazyk) { return jazyk !== "_zaklad"; })
+      .reduce(function (soucet, jazyk) { return soucet + Object.keys(stav.texty[jazyk] || {}).length; }, 0);
+  }
+
   function vykresliOdznaky() {
     var s = A.statistiky(stav, Z.recenze, Z.stavby);
+    s.textyZmeneno = pocetZmenenychTextu();
     var nastav = function (id, hodnota) {
       var el = $("[data-odznak='" + id + "']");
       if (!el) return;
@@ -205,6 +212,7 @@
   /* ---------- panely ---------- */
   function prehled(panel) {
     var st = A.statistiky(stav, Z.recenze, Z.stavby);
+    st.textyZmeneno = pocetZmenenychTextu();
     var dlazdice = [
       [H.prehledRecenzeCeka, st.recenzeCeka], [H.prehledPoptavky, st.poptavkyNeprectene],
       [H.prehledStavby, st.stavbyCelkem], [H.prehledTexty, st.textyZmeneno],
@@ -250,77 +258,209 @@
     });
   }
 
+  /* ---------- texty: rozdělené po stránkách ---------- */
+  var textyOblast = null;
+  var textyJazyk = null;
+
+  /** Do které oblasti klíč patří (podle prvního segmentu). */
+  function oblastKlice(klic) {
+    var prvni = klic.split(".")[0];
+    var nalezena = (Z.oblasti || []).filter(function (o) { return o.prefixy.indexOf(prvni) >= 0; })[0];
+    return nalezena ? nalezena.id : "ostatni";
+  }
+
+  /** Lidský popisek pole místo technického klíče. */
+  function popisekKlice(klic) {
+    var presne = Z.popiskyKlicu || {};
+    if (presne[klic]) return presne[klic];
+    var casti = klic.split(".");
+    var posledni = casti[casti.length - 1];
+    var popisky = Z.popisky || {};
+    if (popisky[posledni]) return popisky[posledni];
+    // pole: "pravidla.2.nadpis" -> "Nadpis"
+    if (/^\d+$/.test(posledni) && casti.length > 1) {
+      return String(H.textyPolozka || "{cislo}. položka").replace("{cislo}", String(Number(posledni) + 1));
+    }
+    // z camelCase uděláme větu: "poleJmeno" -> "Pole jméno"
+    var slova = posledni.replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase();
+    return slova.charAt(0).toUpperCase() + slova.slice(1);
+  }
+
+  /** Nadpis skupiny uvnitř stránky (druhý segment klíče). */
+  function skupinaKlice(klic) {
+    var casti = klic.split(".");
+    if (casti.length < 3) return "";
+    var druhy = casti[1];
+    if (/^\d+$/.test(druhy)) return "";
+    var skupiny = Z.skupiny || {};
+    if (skupiny[druhy]) return skupiny[druhy];
+    var slova = druhy.replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase();
+    return slova.charAt(0).toUpperCase() + slova.slice(1);
+  }
+
+  /** Pořadí položky v poli, když je klíč tvaru "sekce.pole.2.nadpis". */
+  function poradiVPoli(klic) {
+    var shoda = klic.match(/\.(\d+)\./);
+    return shoda ? Number(shoda[1]) + 1 : 0;
+  }
+
   function texty(panel) {
     var klice = Object.keys(ploche).filter(function (k) { return typeof ploche[k] === "string"; });
-    var sekce = [];
-    klice.forEach(function (k) {
-      var s = k.split(".")[0];
-      if (sekce.indexOf(s) < 0) sekce.push(s);
-    });
-    var jazyky = [["cs", "Čeština"], ["en", "English"]];
+    var oblasti = (Z.oblasti || []).slice();
+    if (klice.some(function (k) { return oblastKlice(k) === "ostatni"; })) {
+      oblasti.push({ id: "ostatni", nazev: "Ostatní", cesta: "", prefixy: [] });
+    }
+    if (!textyOblast) textyOblast = oblasti.length ? oblasti[0].id : null;
+    if (!textyJazyk) textyJazyk = Z.jazyk;
+
     panel.innerHTML = "<p class='male tise'>" + esc(H.textyLead) + "</p>"
       + "<div class='filtry'>"
       + "<label class='mono male tise' for='admin-jazyk'>" + esc(H.textyJazyk) + "</label>"
-      + "<select id='admin-jazyk' class='vstup' style='width:auto' data-jazyk>" + jazyky.map(function (j) {
-        return "<option value='" + j[0] + "'" + (j[0] === Z.jazyk ? " selected" : "") + ">" + j[1] + "</option>";
+      + "<select id='admin-jazyk' class='vstup' style='width:auto' data-jazyk>"
+      + [["cs", "Čeština"], ["en", "English"]].map(function (j) {
+        return "<option value='" + j[0] + "'" + (j[0] === textyJazyk ? " selected" : "") + ">" + j[1] + "</option>";
       }).join("") + "</select>"
-      + "<label class='mono male tise' for='admin-sekce'>" + esc(H.textySekce) + "</label>"
-      + "<select id='admin-sekce' class='vstup' style='width:auto' data-sekce>"
-      + "<option value=''>" + esc(H.textyVse) + "</option>"
-      + sekce.map(function (s) { return "<option value='" + esc(s) + "'>" + esc(s) + "</option>"; }).join("")
-      + "</select>"
-      + "<input type='search' class='vstup' style='width:auto;flex:1;min-width:12rem' data-hledat-text placeholder='"
+      + "<input type='search' class='vstup' style='flex:1;min-width:12rem' data-hledat-text placeholder='"
       + esc(H.textyHledat) + "'>"
-      + "</div><p class='mono male tise' data-pocet-textu></p><div data-vypis-textu></div>";
-    var vypis = $("[data-vypis-textu]", panel);
+      + "</div>"
+      + "<div class='texty'><nav class='texty__oblasti' data-oblasti></nav>"
+      + "<div class='texty__obsah' data-vypis-textu></div></div>";
 
-    function vykresli() {
-      var jazyk = $("[data-jazyk]", panel).value;
-      var vybranaSekce = $("[data-sekce]", panel).value;
-      var dotaz = ($("[data-hledat-text]", panel).value || "").toLowerCase();
-      var prepisy = A.textyProJazyk(stav, jazyk, {});
-      var vybrane = klice.filter(function (k) {
-        if (vybranaSekce && k.split(".")[0] !== vybranaSekce) return false;
-        if (!dotaz) return true;
-        return k.toLowerCase().indexOf(dotaz) >= 0 || String(ploche[k]).toLowerCase().indexOf(dotaz) >= 0;
+    var vypis = $("[data-vypis-textu]", panel);
+    var navigace = $("[data-oblasti]", panel);
+
+    function prepisy() { return A.textyProJazyk(stav, textyJazyk, {}); }
+
+    function vykresliOblasti() {
+      var p = prepisy();
+      navigace.innerHTML = "<span class='texty__nadpis'>" + esc(H.textyOblasti) + "</span>"
+        + oblasti.map(function (o) {
+          var vlastni = klice.filter(function (k) { return oblastKlice(k) === o.id; });
+          var zmeneno = vlastni.filter(function (k) { return p[k] !== undefined; }).length;
+          return "<button type='button' data-oblast='" + esc(o.id) + "' aria-current='"
+            + (o.id === textyOblast) + "'><span>" + esc(o.nazev) + "</span>"
+            + (zmeneno ? "<span class='odznak'>" + zmeneno + "</span>"
+              : "<span class='texty__pocet'>" + vlastni.length + "</span>") + "</button>";
+        }).join("");
+      $$("[data-oblast]", navigace).forEach(function (b) {
+        b.addEventListener("click", function () {
+          textyOblast = b.dataset.oblast;
+          $("[data-hledat-text]", panel).value = "";
+          vykresliOblasti();
+          vykresliObsah();
+        });
       });
-      $("[data-pocet-textu]", panel).textContent = String(H.textyPocet || "")
-        .replace("{zobrazeno}", String(Math.min(vybrane.length, 200))).replace("{celkem}", String(vybrane.length));
-      vypis.innerHTML = vybrane.slice(0, 200).map(function (k) {
-        var prepis = prepisy[k];
-        var hodnota = prepis === undefined ? ploche[k] : prepis;
-        return "<div class='admin-text' data-klic='" + esc(k) + "' data-zmeneno='" + (prepis === undefined ? "0" : "1") + "'>"
-          + "<span class='admin-text__klic'>" + esc(k) + "</span>"
-          + "<textarea rows='" + (String(hodnota).length > 90 ? 3 : 1) + "'>" + esc(hodnota) + "</textarea>"
-          + (prepis === undefined ? "" : "<div class='admin-akce'><button class='tl tl--obrys tl--maly' type='button' data-vratit>"
-            + esc(H.textyVratit) + "</button><span class='male tise'>" + esc(H.textyPuvodni) + ": "
-            + esc(String(ploche[k]).slice(0, 80)) + "</span></div>")
-          + "</div>";
-      }).join("") || "<p class='prazdno'>Nic nenalezeno.</p>";
+    }
+
+    function polozka(klic, p, ukazOblast) {
+      var prepis = p[klic];
+      var hodnota = prepis === undefined ? ploche[klic] : prepis;
+      var dlouhy = String(hodnota).length > 80;
+      var oblast = ukazOblast ? (oblasti.filter(function (o) { return o.id === oblastKlice(klic); })[0] || {}).nazev : "";
+      return "<div class='admin-text' data-klic='" + esc(klic) + "' data-zmeneno='" + (prepis === undefined ? "0" : "1") + "'>"
+        + "<span class='admin-text__popisek'>" + esc(popisekKlice(klic))
+        + (oblast ? " <span class='tise'>· " + esc(oblast) + "</span>" : "")
+        + (prepis === undefined ? "" : " <span class='texty__znacka'>" + esc(H.textyUpraveno) + "</span>") + "</span>"
+        + "<textarea rows='" + (dlouhy ? Math.min(6, Math.ceil(String(hodnota).length / 70) + 1) : 1) + "'>"
+        + esc(hodnota) + "</textarea>"
+        + "<span class='admin-text__klic'>" + esc(klic) + "</span>"
+        + (prepis === undefined ? "" : "<div class='admin-akce'><button class='tl tl--obrys tl--maly' type='button' data-vratit>"
+          + esc(H.textyVratit) + "</button><span class='male tise'>" + esc(H.textyPuvodni) + ": "
+          + esc(String(ploche[klic]).slice(0, 90)) + "</span></div>")
+        + "</div>";
+    }
+
+    function vykresliObsah() {
+      var p = prepisy();
+      var dotaz = ($("[data-hledat-text]", panel).value || "").trim().toLowerCase();
+      if (dotaz) {
+        var nalezene = klice.filter(function (k) {
+          return k.toLowerCase().indexOf(dotaz) >= 0 || String(ploche[k]).toLowerCase().indexOf(dotaz) >= 0
+            || String(p[k] === undefined ? "" : p[k]).toLowerCase().indexOf(dotaz) >= 0;
+        });
+        vypis.innerHTML = nalezene.length
+          ? "<p class='mono male tise'>" + esc(String(H.textyNalezeno).replace("{pocet}", String(nalezene.length))) + "</p>"
+            + nalezene.slice(0, 120).map(function (k) { return polozka(k, p, true); }).join("")
+          : "<p class='prazdno'>" + esc(H.textyPrazdno) + "</p>";
+        pripojUdalosti();
+        return;
+      }
+
+      var oblast = oblasti.filter(function (o) { return o.id === textyOblast; })[0] || oblasti[0];
+      var vlastni = klice.filter(function (k) { return oblastKlice(k) === oblast.id; });
+      vlastni.sort(function (a, b) {
+        var sa = skupinaKlice(a), sb = skupinaKlice(b);
+        if (sa !== sb) return sa === "" ? -1 : sb === "" ? 1 : sa.localeCompare(sb, "cs");
+        var pa = poradiVPoli(a), pb = poradiVPoli(b);
+        return pa === pb ? 0 : pa - pb;
+      });
+      var zmenenoTady = vlastni.filter(function (k) { return p[k] !== undefined; });
+
+      var kusy = ["<div class='texty__hlava'><h2 style='font-size:1.2rem;margin:0'>" + esc(oblast.nazev) + "</h2>"
+        + (oblast.cesta ? "<a class='sipka' href='" + esc(oblast.cesta) + "' target='_blank' rel='noopener'>"
+          + esc(H.textyZobrazit) + " →</a>" : "") + "</div>"];
+      if (zmenenoTady.length) {
+        kusy.push("<div class='admin-akce' style='margin-bottom:.9rem'>"
+          + "<button class='tl tl--obrys tl--maly' type='button' data-vratit-oblast>" + esc(H.textyVratitVse)
+          + " (" + zmenenoTady.length + ")</button></div>");
+      }
+      var predchoziSkupina = null;
+      vlastni.forEach(function (k) {
+        var skupina = skupinaKlice(k);
+        if (skupina !== predchoziSkupina) {
+          if (skupina) kusy.push("<h3 class='texty__skupina'>" + esc(skupina) + "</h3>");
+          predchoziSkupina = skupina;
+        }
+        kusy.push(polozka(k, p, false));
+      });
+      vypis.innerHTML = kusy.join("");
+      var vratitVse = $("[data-vratit-oblast]", vypis);
+      if (vratitVse) {
+        vratitVse.addEventListener("click", function () {
+          zmenenoTady.forEach(function (k) {
+            stav = A.nastavText(stav, textyJazyk, k, "");
+            stav = A.nastavText(stav, "_zaklad", k, "");
+          });
+          uloz();
+          vykresliOblasti();
+          vykresliObsah();
+        });
+      }
+      pripojUdalosti();
+    }
+
+    function pripojUdalosti() {
       $$(".admin-text textarea", vypis).forEach(function (ta) {
         ta.addEventListener("change", function () {
           var klic = ta.closest(".admin-text").dataset.klic;
           var zmena = ta.value === ploche[klic] ? "" : ta.value;
-          stav = A.nastavText(stav, jazyk, klic, zmena);
-          // původní znění si uložíme, aby statické stránky uměly text najít a vyměnit
+          stav = A.nastavText(stav, textyJazyk, klic, zmena);
           stav = A.nastavText(stav, "_zaklad", klic, zmena ? ploche[klic] : "");
           uloz();
-          vykresli();
+          vykresliOblasti();
+          vykresliObsah();
         });
       });
       $$("[data-vratit]", vypis).forEach(function (b) {
         b.addEventListener("click", function () {
           var klic = b.closest(".admin-text").dataset.klic;
-          stav = A.nastavText(stav, jazyk, klic, "");
+          stav = A.nastavText(stav, textyJazyk, klic, "");
           stav = A.nastavText(stav, "_zaklad", klic, "");
           uloz();
-          vykresli();
+          vykresliOblasti();
+          vykresliObsah();
         });
       });
     }
-    $$("[data-jazyk], [data-sekce]", panel).forEach(function (el) { el.addEventListener("change", vykresli); });
-    $("[data-hledat-text]", panel).addEventListener("input", vykresli);
-    vykresli();
+
+    $("[data-jazyk]", panel).addEventListener("change", function (e) {
+      textyJazyk = e.target.value;
+      vykresliOblasti();
+      vykresliObsah();
+    });
+    $("[data-hledat-text]", panel).addEventListener("input", vykresliObsah);
+    vykresliOblasti();
+    vykresliObsah();
   }
 
   var filtrRecenzi = "vse";

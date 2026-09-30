@@ -247,7 +247,8 @@
 
   /* ---------- světlý a tmavý režim ---------- */
   function tema() {
-    var tlacitko = $("[data-tema]");
+    // pozor: v tmavém režimu nese data-tema i <html>, takže se vybírá výslovně tlačítko
+    var tlacitko = $("button[data-prepinac-tema]");
     if (!tlacitko) return;
     var barva = $('meta[name="theme-color"]');
     var nastav = function (hodnota) {
