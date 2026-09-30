@@ -759,6 +759,7 @@
         if (el.tagName === "TEXTAREA" || el.type === "number") el.addEventListener("input", function () { uloz(krok); });
       });
       popisEl.textContent = "Krok " + (index + 1) + " z " + viditelne.length;
+      window.setTimeout(function () { zvyrazniDalsi(krok, false); }, 0);
       $("[data-zpet]", obal).hidden = index === 0;
       var posledni = index === viditelne.length - 1;
       $("[data-dalsi]", obal).hidden = posledni && kontaktniFaze;
@@ -779,6 +780,20 @@
       });
     }
 
+    /** Po odpovědi dá tlačítko „Pokračovat“ najevo, že se jde dál. */
+    function zvyrazniDalsi(krok, hlasitě) {
+      var tl = $("[data-dalsi]", obal);
+      if (!tl || tl.hidden) return;
+      var hotovo = krok && P.vyplneno(stav[krok.id]) && !P.validujKrok(krok, stav[krok.id]);
+      tl.classList.toggle("tl--pripraveno", Boolean(hotovo));
+      if (!hotovo || !hlasitě || tlumene) return;
+      tl.classList.remove("tl--tepe");
+      void tl.offsetWidth;
+      tl.classList.add("tl--tepe");
+      var r = tl.getBoundingClientRect();
+      if (r.bottom > window.innerHeight - 8) tl.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+
     function uloz(krok) {
       var prvky = $$("[name='k-" + krok.id + "']", kroky);
       if (krok.typ === "vicevolba") {
@@ -797,6 +812,7 @@
       stav = P.vycisti(definice, stav);
       vykresliShrnuti();
       aktualizujPostup();
+      zvyrazniDalsi(krok, true);
     }
 
     function vykresliShrnuti() {

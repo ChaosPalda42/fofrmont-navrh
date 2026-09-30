@@ -1162,3 +1162,16 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
   .lista__obal .tema { margin-left: auto; margin-top: 0; }
   .lista__obal .hamburger { margin-left: .5rem; }
 }
+
+/* průvodce: jakmile je na kroku odpovězeno, tlačítko dá vědět, že se pokračuje */
+.tl--pripraveno {
+  --tl-pozadi: var(--signal); --tl-okraj: var(--signal); --tl-barva: #fff;
+}
+.tl--pripraveno:hover { --tl-pozadi: var(--signal-2); --tl-okraj: var(--signal-2); }
+.tl--tepe { animation: tepniTlacitko 1100ms cubic-bezier(.22, .61, .36, 1) 2; }
+@keyframes tepniTlacitko {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 106, 31, .55); }
+  35% { transform: scale(1.045); box-shadow: 0 0 0 9px rgba(255, 106, 31, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 106, 31, 0); }
+}
+@media (prefers-reduced-motion: reduce) { .tl--tepe { animation: none; } }
