@@ -34,11 +34,6 @@ export function navigace(ctx, aktivni) {
       ["dotazy", t("nav.dotazy")], ["kontakt", t("nav.kontakt")],
       ["administrace", t("nav.administrace")],
     ], ["jakPracujeme", "kalkulacky", "oNas", "kariera", "dotazy", "kontakt", "administrace"].includes(aktivni))}
-    <button class="tema" type="button" data-prepinac-tema aria-label="${esc(t("spolecne.temaPrepnout"))}"
-      title="${esc(t("spolecne.temaPrepnout"))}">
-      <span class="slunce">${ikona("slunce", { velikost: 17 })}</span>
-      <span class="mesic">${ikona("mesic", { velikost: 17 })}</span>
-    </button>
     <div class="jazyky">
       ${["cs", "en"].map((kod) => (kod === ctx.jazyk
         ? `<span aria-current="true">${kod.toUpperCase()}</span>`
@@ -154,6 +149,11 @@ export function stranka(ctx, { titulek, popis, aktivni, obsah, telo = "" }) {
       <span><span class="znacka__text">FOFR<span>MONT</span></span>
       <span class="znacka__pod">${esc(t("spolecne.znackaPodtitul"))}</span></span>
     </a>
+    <button class="tema" type="button" data-prepinac-tema aria-label="${esc(t("spolecne.temaPrepnout"))}"
+      title="${esc(t("spolecne.temaPrepnout"))}">
+      <span class="slunce">${ikona("slunce", { velikost: 17 })}</span>
+      <span class="mesic">${ikona("mesic", { velikost: 17 })}</span>
+    </button>
     <button class="hamburger" type="button" aria-label="Menu" aria-controls="navigace" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>

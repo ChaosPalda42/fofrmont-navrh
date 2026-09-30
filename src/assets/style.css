@@ -1146,3 +1146,19 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 .admin-text__popisek { font-family: var(--pismo-nadpis); font-weight: 600; font-size: .88rem; }
 .admin-text .admin-text__klic { order: 3; opacity: .65; }
 .admin-text { gap: .25rem; }
+
+/* výběr stránky: na mobilu rozbalovací seznam, na šířce sloupec vlevo */
+.texty__vyber { margin-top: 1rem; }
+@media (min-width: 60rem) { .texty__vyber { display: none; } }
+@media (max-width: 59.99rem) { .texty__oblasti { display: none; } }
+
+/* přepínač režimu je vedle hamburgeru i na mobilu */
+.lista__obal > * { order: 2; }
+.lista__obal .znacka { order: 0; }
+.lista__obal .navigace { order: 1; }
+.lista__obal .tema { order: 3; }
+.lista__obal .hamburger { order: 4; }
+@media (max-width: 68rem) {
+  .lista__obal .tema { margin-left: auto; margin-top: 0; }
+  .lista__obal .hamburger { margin-left: .5rem; }
+}

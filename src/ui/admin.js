@@ -323,6 +323,8 @@
       + "<input type='search' class='vstup' style='flex:1;min-width:12rem' data-hledat-text placeholder='"
       + esc(H.textyHledat) + "'>"
       + "</div>"
+      + "<div class='pole texty__vyber'><label for='admin-oblast'>" + esc(H.textyOblasti) + "</label>"
+      + "<select id='admin-oblast' data-oblast-vyber></select></div>"
       + "<div class='texty'><nav class='texty__oblasti' data-oblasti></nav>"
       + "<div class='texty__obsah' data-vypis-textu></div></div>";
 
@@ -331,25 +333,39 @@
 
     function prepisy() { return A.textyProJazyk(stav, textyJazyk, {}); }
 
+    var vyber = $("[data-oblast-vyber]", panel);
+
     function vykresliOblasti() {
       var p = prepisy();
+      var pocty = {};
+      oblasti.forEach(function (o) {
+        var vlastni = klice.filter(function (k) { return oblastKlice(k) === o.id; });
+        pocty[o.id] = { celkem: vlastni.length, zmeneno: vlastni.filter(function (k) { return p[k] !== undefined; }).length };
+      });
+      vyber.innerHTML = oblasti.map(function (o) {
+        var c = pocty[o.id];
+        return "<option value='" + esc(o.id) + "'" + (o.id === textyOblast ? " selected" : "") + ">"
+          + esc(o.nazev) + " (" + c.celkem + (c.zmeneno ? ", " + c.zmeneno + " " + esc(H.textyUpraveno) : "") + ")</option>";
+      }).join("");
       navigace.innerHTML = "<span class='texty__nadpis'>" + esc(H.textyOblasti) + "</span>"
         + oblasti.map(function (o) {
-          var vlastni = klice.filter(function (k) { return oblastKlice(k) === o.id; });
-          var zmeneno = vlastni.filter(function (k) { return p[k] !== undefined; }).length;
+          var zmeneno = pocty[o.id].zmeneno;
+          var vlastni = { length: pocty[o.id].celkem };
           return "<button type='button' data-oblast='" + esc(o.id) + "' aria-current='"
             + (o.id === textyOblast) + "'><span>" + esc(o.nazev) + "</span>"
             + (zmeneno ? "<span class='odznak'>" + zmeneno + "</span>"
               : "<span class='texty__pocet'>" + vlastni.length + "</span>") + "</button>";
         }).join("");
       $$("[data-oblast]", navigace).forEach(function (b) {
-        b.addEventListener("click", function () {
-          textyOblast = b.dataset.oblast;
-          $("[data-hledat-text]", panel).value = "";
-          vykresliOblasti();
-          vykresliObsah();
-        });
+        b.addEventListener("click", function () { zvolOblast(b.dataset.oblast); });
       });
+    }
+
+    function zvolOblast(id) {
+      textyOblast = id;
+      $("[data-hledat-text]", panel).value = "";
+      vykresliOblasti();
+      vykresliObsah();
     }
 
     function polozka(klic, p, ukazOblast) {
@@ -458,6 +474,7 @@
       vykresliOblasti();
       vykresliObsah();
     });
+    vyber.addEventListener("change", function () { zvolOblast(vyber.value); });
     $("[data-hledat-text]", panel).addEventListener("input", vykresliObsah);
     vykresliOblasti();
     vykresliObsah();
