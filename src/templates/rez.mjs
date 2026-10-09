@@ -51,6 +51,46 @@ function vynoska(zX, zY, body, popis, { doprava = true, signal = false } = {}) {
 
 let poradiRezu = 0;
 
+
+/** Proudění v potrubí — čárkovaná vrstva přes rozvod, která se posouvá. */
+function proud(body, druh = "vzduch", zpozdeni = 0) {
+  return `<path class="proud proud--${druh}" style="animation-delay:${zpozdeni}ms" d="${cara(body)}"/>`;
+}
+
+/** Ventilátor, který se točí. */
+function vrtule(x, y, r) {
+  const lopatky = [0, 120, 240].map((uhel) => {
+    const rad = (uhel * Math.PI) / 180;
+    return `M ${x} ${y} L ${(x + Math.cos(rad) * r * 0.82).toFixed(1)} ${(y + Math.sin(rad) * r * 0.82).toFixed(1)}`;
+  }).join(" ");
+  return `<circle class="vykres-cara" cx="${x}" cy="${y}" r="${r}"/>
+    <g class="vrtule" style="transform-origin:${x}px ${y}px">
+      <path class="vykres-cara--tenka" style="stroke:var(--cara);fill:none;stroke-width:1.4" d="${lopatky}"/>
+    </g>
+    <circle cx="${x}" cy="${y}" r="1.6" fill="var(--cara)"/>`;
+}
+
+/** Vzduch foukající z vyústky dolů. */
+function vanek(x, y, zpozdeni = 0) {
+  return [0, 1, 2].map((i) => `<path class="vanek" style="animation-delay:${zpozdeni + i * 420}ms"
+    d="M ${x - 7} ${y + i * 9} Q ${x} ${y + 4 + i * 9} ${x + 7} ${y + i * 9}"/>`).join("");
+}
+
+/** Svítidlo pod stropem, které se rozsvěcí. */
+function svetlo(x, y, zpozdeni = 0) {
+  return `<g class="svetlo" style="animation-delay:${zpozdeni}ms">
+      <path class="vykres-cara" d="M ${x} ${y - 6} L ${x} ${y}"/>
+      <path class="svetlo__telo" d="M ${x - 9} ${y} L ${x + 9} ${y} L ${x + 9} ${y + 4} L ${x - 9} ${y + 4} Z"/>
+      <path class="svetlo__zar" d="M ${x - 8} ${y + 4} L ${x + 11} ${y + 28} L ${x - 11} ${y + 28} Z"/>
+    </g>`;
+}
+
+/** Pára stoupající z komínku na střeše. */
+function para(x, y, zpozdeni = 0) {
+  return [0, 1, 2].map((i) => `<circle class="para" cx="${x}" cy="${y}" r="${3 + i * 0.8}"
+    style="animation-delay:${zpozdeni + i * 700}ms"/>`).join("");
+}
+
 function obalka(vnitrek) {
   poradiRezu += 1;
   const znacka = `sipka-rez-${poradiRezu}`;
@@ -66,7 +106,12 @@ function obalka(vnitrek) {
 /** Řez rodinným domem: tepelné čerpadlo, akumulace, podlahovka, radiátor. */
 export function rezDum(popisky) {
   const podlahovka = [];
-  for (let x = 216; x <= 320; x += 12) podlahovka.push(`<circle class="vykres-cara" cx="${x}" cy="250" r="2.6"/>`);
+  let poradi = 0;
+  for (let x = 216; x <= 320; x += 12) {
+    podlahovka.push(`<circle class="vykres-cara podlahovka" cx="${x}" cy="250" r="2.6"
+      style="animation-delay:${poradi * 160}ms"/>`);
+    poradi += 1;
+  }
 
   return obalka([
     teren(256, 10, 430),
@@ -80,24 +125,28 @@ export function rezDum(popisky) {
     // okna a dveře
     blok(168, 164, 30, 26, { zpozdeni: 320, vypln: "vykres-vypln--2" }),
     blok(168, 212, 30, 26, { zpozdeni: 360, vypln: "vykres-vypln--2" }),
+    `<rect class="okno-svit" x="168" y="164" width="30" height="26"/>
+     <rect class="okno-svit" x="168" y="212" width="30" height="26" style="animation-delay:2600ms"/>
+     <rect class="okno-svit" x="300" y="214" width="24" height="42" style="animation-delay:1300ms"/>`,
     blok(300, 214, 24, 42, { zpozdeni: 400, vypln: "vykres-vypln--2" }),
     // venkovní jednotka tepelného čerpadla
     blok(58, 208, 60, 42, { silny: true, zpozdeni: 140 }),
-    `<circle class="vykres-cara" cx="88" cy="229" r="13"/>
-     <path class="vykres-cara--tenka" style="stroke:var(--cara);fill:none;stroke-width:1.2"
-       d="M 88 229 L 88 217 M 88 229 L 98 235 M 88 229 L 78 235"/>
-     <path class="vykres-cara" d="M 52 250 L 124 250 L 124 256 L 52 256 Z"/>`,
+    vrtule(88, 229, 13),
+    `<path class="vykres-cara" d="M 52 250 L 124 250 L 124 256 L 52 256 Z"/>`,
     // zásobník a rozvody
     blok(162, 208, 30, 42, { zpozdeni: 480 }),
     `<path class="vykres-osa" d="M 162 218 L 192 218"/>`,
     rozvod([[118, 226], [140, 226], [140, 232], [162, 232]], { zpozdeni: 620 }),
     rozvod([[177, 208], [177, 186], [252, 186], [252, 196]], { zpozdeni: 760 }),
     rozvod([[177, 250], [177, 254], [212, 254], [212, 250]], { zpozdeni: 900, signal: true }),
+    proud([[118, 226], [140, 226], [140, 232], [162, 232]], "chlad", 0),
+    proud([[177, 208], [177, 186], [252, 186], [252, 196]], "teplo", 400),
+    proud([[177, 250], [177, 254], [212, 254], [212, 250]], "teplo", 800),
     podlahovka.join(""),
     // radiátor v patře
     blok(252, 170, 42, 26, { zpozdeni: 840 }),
-    `<path class="vykres-cara--tenka" style="stroke:var(--cara);fill:none;stroke-width:1"
-       d="M 260 172 L 260 194 M 268 172 L 268 194 M 276 172 L 276 194 M 284 172 L 284 194"/>`,
+    [260, 268, 276, 284].map((x, i) => `<path class="zebro" style="animation-delay:${i * 220}ms"
+       d="M ${x} 172 L ${x} 194"/>`).join(""),
     // prostup zdí
     `<circle class="vykres-cara" cx="150" cy="232" r="4"/>`,
     // kóty a popisky
@@ -125,6 +174,8 @@ export function rezHala(popisky) {
     blok(176, 36, 88, 36, { silny: true, zpozdeni: 260 }),
     `<path class="vykres-cara" d="M 192 36 L 192 24 L 200 24 L 200 36 M 240 36 L 240 24 L 248 24 L 248 36"/>
      <path class="vykres-osa" d="M 176 54 L 264 54"/>`,
+    vrtule(196, 54, 9),
+    para(244, 22, 0),
     // vrata a okna
     blok(76, 190, 54, 66, { zpozdeni: 420, vypln: "vykres-vypln--2" }),
     `<path class="vykres-cara--tenka" style="stroke:var(--cara);fill:none;stroke-width:1"
@@ -133,16 +184,22 @@ export function rezHala(popisky) {
     // hlavní potrubí pod stropem
     rozvod([[220, 72], [220, 124], [360, 124]], { zpozdeni: 620 }),
     rozvod([[220, 124], [150, 124]], { zpozdeni: 760 }),
+    proud([[220, 72], [220, 124], [360, 124]], "vzduch", 0),
+    proud([[220, 124], [150, 124]], "vzduch", 600),
     vyustky,
+    [230, 286, 342].map((x, i) => proud([[x, 124], [x, 150]], "vzduch", 300 + i * 250)).join(""),
+    [230, 286, 342].map((x, i) => vanek(x, 168, i * 500)).join(""),
+    svetlo(120, 104, 0) + svetlo(200, 104, 1400) + svetlo(320, 104, 2800),
     // technologie v hale
     blok(150, 196, 62, 60, { zpozdeni: 540 }),
     `<path class="vykres-cara--tenka" style="stroke:var(--cara);fill:none;stroke-width:1.2"
-       d="M 162 196 L 162 182 L 200 182 L 200 196"/>
-     <circle class="vykres-cara" cx="181" cy="226" r="12"/>`,
+       d="M 162 196 L 162 182 L 200 182 L 200 196"/>`,
+    vrtule(181, 226, 12),
     // kotelna vpravo dole
     blok(300, 206, 60, 50, { zpozdeni: 580 }),
     `<path class="vykres-osa" d="M 300 220 L 360 220"/>`,
     rozvod([[330, 206], [330, 176], [360, 176]], { zpozdeni: 1020 }),
+    proud([[330, 206], [330, 176], [360, 176]], "teplo", 200),
     // kóty a popisky
     kota(60, 276, 220, 276, popisky.kota1),
     kota(406, 70, 406, 256, popisky.kota2),

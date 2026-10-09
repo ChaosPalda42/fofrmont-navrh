@@ -1352,3 +1352,71 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 .hero__scena .vykres-vypln--2 { opacity: .2; }
 .hero__scena .vykres-popis { font-size: 10px; }
 .hero__scena .vykres-osa { opacity: .6; }
+
+/* ======================================================================
+   Život v řezu — proudění, ventilátory, světla, teplo
+   ====================================================================== */
+.proud {
+  fill: none; stroke-width: 2.2; stroke-linecap: round;
+  stroke-dasharray: 5 13; animation: tokMedia 1.5s linear infinite;
+}
+.proud--vzduch { stroke: var(--cara); opacity: .85; }
+.proud--teplo { stroke: var(--signal); opacity: .9; }
+.proud--chlad { stroke: #37a9e0; opacity: .85; }
+@keyframes tokMedia { to { stroke-dashoffset: -18; } }
+
+.vrtule { animation: otacej 2.4s linear infinite; transform-box: fill-box; }
+@keyframes otacej { to { transform: rotate(360deg); } }
+
+.vanek {
+  fill: none; stroke: var(--cara); stroke-width: 1.4; stroke-linecap: round; opacity: 0;
+  animation: vaneDolu 1.5s ease-out infinite;
+}
+@keyframes vaneDolu {
+  0% { opacity: 0; transform: translateY(-4px); }
+  30% { opacity: .75; }
+  100% { opacity: 0; transform: translateY(8px); }
+}
+
+.svetlo__telo { fill: var(--cara); opacity: .5; }
+.svetlo__zar { fill: #ffb547; opacity: 0; }
+.svetlo .svetlo__zar { animation: zarivka 5.6s ease-in-out infinite; animation-delay: inherit; }
+.svetlo .svetlo__telo { animation: zarovkaTelo 5.6s ease-in-out infinite; animation-delay: inherit; }
+@keyframes zarivka {
+  0%, 46% { opacity: 0; }
+  56%, 84% { opacity: .13; }
+  100% { opacity: 0; }
+}
+@keyframes zarovkaTelo {
+  0%, 46% { opacity: .5; }
+  56%, 84% { opacity: .95; }
+  100% { opacity: .5; }
+}
+
+.para { fill: var(--sedy-2); opacity: 0; animation: stoupani 2.8s ease-out infinite; }
+@keyframes stoupani {
+  0% { opacity: 0; transform: translateY(0) scale(.6); }
+  25% { opacity: .35; }
+  100% { opacity: 0; transform: translateY(-22px) scale(1.5); }
+}
+
+.podlahovka { animation: hreje 3.4s ease-in-out infinite; }
+@keyframes hreje {
+  0%, 100% { stroke: var(--cara); }
+  45% { stroke: var(--signal); }
+}
+.zebro {
+  fill: none; stroke: var(--cara); stroke-width: 1.6; stroke-linecap: round;
+  animation: hreje 3s ease-in-out infinite;
+}
+.okno-svit { fill: #ffb547; opacity: 0; animation: oknoSviti 7.5s ease-in-out infinite; }
+@keyframes oknoSviti {
+  0%, 38% { opacity: 0; }
+  48%, 82% { opacity: .3; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proud, .vrtule, .vanek, .svetlo, .svetlo__zar, .para, .podlahovka, .zebro, .okno-svit { animation: none; }
+  .vanek, .para, .okno-svit { opacity: .25; }
+}
