@@ -598,6 +598,17 @@
     "realstaffPoznamka": "Equipment and vehicle rental, as well as property management, are provided by our sister company Real Staff.",
     "vsechnyObory": "All sectors",
     "prepinacNapoveda": "Select, and the menu will adapt accordingly.",
-    "otacejte": "You can grab and rotate the drawing."
+    "otacejte": "You can grab and rotate the drawing.",
+    "scenaB2bPopis": "Plant room and distribution in a large-scale construction",
+    "scenaB2cPopis": "Family house with a heat pump",
+    "scenaOprava": "Repair and service",
+    "vykresJednotka": "AHU unit",
+    "vykresKota1": "4 000",
+    "vykresKota1c": "2 600",
+    "vykresKota2": "+3.60",
+    "vykresKota2c": "+4.40",
+    "vykresOdbocka": "Branch to the OR",
+    "vykresTc": "Heat pump",
+    "vykresZasobnik": "Storage + DHW"
   }
 }
