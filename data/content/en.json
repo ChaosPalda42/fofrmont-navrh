@@ -595,21 +595,5 @@
     "stitek": "HVAC installations · since 2014",
     "realstaffPoznamka": "Equipment and vehicle rental, as well as property management, are provided by our sister company Real Staff.",
     "vsechnyObory": "All sectors"
-  },
-  "_parkovano": {
-    "narocne": {
-      "ctaNadpis": "Have you encountered a challenging project?",
-      "ctaText": "Excellent. That is a job for us. Send us the specifications, and we will come take a look.",
-      "doporuceniNadpis": "What to expect with such a construction",
-      "lead": "Chiseling into a historic vault, piping eleven meters above passengers' heads, a pump for a pantry. Here is our approximate complexity meter — answer six questions and see how we view your project.",
-      "mericNadpis": "Complexity Meter",
-      "mericPopis": "For each factor, select the option that fits best. The result is an estimate, but it tells you what to expect from us.",
-      "nadpis": "Challenging spaces",
-      "priklady": "Three projects with high complexity scores",
-      "prispevkyNadpis": "What increases complexity the most",
-      "stitek": "Our specialty",
-      "vysledekChybi": "Select {pocet} more to complete the assessment.",
-      "vysledekNadpis": "Complexity Estimate"
-    }
   }
 }

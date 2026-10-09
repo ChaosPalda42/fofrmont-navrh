@@ -595,21 +595,5 @@
     "copyright": "© {rok} FOFRMONT CZ s.r.o.",
     "ukazkaPozn": "Ukázka návrhu webu. Neindexuje se a neslouží jako ostrá prezentace firmy.",
     "navigaceNadpis2": "Pro koho a o nás"
-  },
-  "_parkovano": {
-    "narocne": {
-      "stitek": "Naše specialita",
-      "nadpis": "Náročné prostory",
-      "lead": "Sekání do klenby v památce, potrubí jedenáct metrů nad hlavami cestujících, čerpadlo do spíže. Tady je náš orientační měřič náročnosti — vyplňte šest otázek a uvidíte, jak se na vaši stavbu díváme my.",
-      "mericNadpis": "Měřič náročnosti",
-      "mericPopis": "Vyberte u každého faktoru to, co nejvíc sedí. Výsledek je orientační, ale říká, s čím u nás počítat.",
-      "vysledekNadpis": "Odhad náročnosti",
-      "vysledekChybi": "Vyberte ještě {pocet}, ať to má hlavu a patu.",
-      "doporuceniNadpis": "S čím u takové stavby počítáme",
-      "prispevkyNadpis": "Co náročnost zvedá nejvíc",
-      "ctaNadpis": "Vyšlo vám něco těžkého?",
-      "ctaText": "Výborně. To je zakázka pro nás. Pošlete zadání, přijedeme se podívat.",
-      "priklady": "Tři stavby, kde nám to vyšlo vysoko"
-    }
   }
 }

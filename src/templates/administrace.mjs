@@ -25,7 +25,8 @@ export function administrace(ctx) {
         texty: ctx.obsah,
         recenze: ctx.site.recenze,
         stavby: ctx.site.stavby.map((s) => ({ id: s.id, nazev: s.nazev, misto: s.misto, kraj: s.kraj,
-          segment: s.segment, obory: s.obory, rok: s.rok, datum: s.datum, rozsah: s.rozsah, perex: s.perex })),
+          segment: s.segment, obory: s.obory, rok: s.rok, datum: s.datum, rozsah: s.rozsah,
+          perex: s.perex, zadani: s.zadani, trvani: s.trvani, role: s.role, motiv: s.motiv })),
         obory: ctx.site.obory.map((o) => ({ id: o.id, nazev: o.nazev })),
         motivy: ["saly", "terminal", "hala", "vila", "skola", "administrativa", "pamatka", "serverovna"],
         oblasti: [
@@ -102,6 +103,9 @@ export function administrace(ctx) {
           vyhody: "Výhody", postup: "Postup", nabizime: "Co nabízíme", tymPozice: "Role v týmu",
           vzt: "Vzduchotechnika", ut: "Vytápění a ÚT", zti: "Zdravotechnika",
           chlazeni: "Chlazení", tc: "Tepelná čerpadla", klic: "Dodávka na klíč",
+          stavarina: "Realizace staveb", technika: "Pronájem stavební techniky",
+          auta: "Pronájem aut", sprava: "Správa nemovitostí",
+          nedelame: "Co neděláme", cisla: "Čísla v přehledu", faze: "Fáze montáže",
         },
         kontakt: {
           "kontakt.telefon": ctx.site.kontakt.telefon,
