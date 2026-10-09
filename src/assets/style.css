@@ -1320,7 +1320,7 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 }
 .hero__scena { position: relative; display: none; }
 @media (min-width: 64rem) { .hero__scena { display: block; } }
-.hero__scena svg { width: 100%; height: auto; max-height: 300px; overflow: visible; }
+.hero__scena svg { width: 100%; height: auto; max-height: 320px; overflow: visible; }
 .hero__scena-popis {
   margin: .3rem 0 0; display: flex; align-items: center; gap: .45rem; justify-content: flex-end;
   min-height: 1.3em; transition: opacity 320ms ease;
@@ -1343,3 +1343,12 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 @media (prefers-reduced-motion: reduce) {
   .opravuje { animation: none; filter: none; }
 }
+
+/* řez v hlavičce snese silnější čáru — je to hlavní obrázek stránky */
+.hero__scena .vykres-cara { stroke-width: 1.7; }
+.hero__scena .vykres-cara--silna { stroke-width: 2.8; }
+.hero__scena .vykres-cara--tenka { stroke-width: 1.1; opacity: .7; }
+.hero__scena .vykres-vypln { opacity: .11; }
+.hero__scena .vykres-vypln--2 { opacity: .2; }
+.hero__scena .vykres-popis { font-size: 10px; }
+.hero__scena .vykres-osa { opacity: .6; }

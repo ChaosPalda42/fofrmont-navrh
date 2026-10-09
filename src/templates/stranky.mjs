@@ -1,7 +1,8 @@
 /** Stránky: úvod, přehled profesí, detail profese, náročné prostory, postup, B2B, B2C. */
 import { esc, odstavce, cisloCs } from "./lib.mjs";
 import { ikona, IKONY_OBORU } from "./ikony.mjs";
-import { motivStavby, hvezdy, vykresB2b, vykresB2c } from "./kresby.mjs";
+import { motivStavby, hvezdy } from "./kresby.mjs";
+import { rezDum, rezHala } from "./rez.mjs";
 import { hlavicka, drobecky, kartaOboru, kartaStavby, kartaRecenze, ctaPas, udaje, pasmo, deliciTrasa } from "./casti.mjs";
 import * as recenzeLib from "../lib/recenze.mjs";
 
@@ -16,11 +17,11 @@ export function uvod(ctx) {
   const scena = `
     <div class="hero__scena" data-scena-hero aria-hidden="true" data-varianta="b2b"
       data-hlasky='${esc(JSON.stringify({ b2b: t("uvod.scenaB2bPopis"), b2c: t("uvod.scenaB2cPopis"), oprava: t("uvod.scenaOprava") }))}'>
-      <div data-varianta-obsah="b2b">${vykresB2b({
+      <div data-varianta-obsah="b2b">${rezHala({
         kota1: t("uvod.vykresKota1"), kota2: t("uvod.vykresKota2"),
         jednotka: t("uvod.vykresJednotka"), odbocka: t("uvod.vykresOdbocka"),
       })}</div>
-      <div data-varianta-obsah="b2c" hidden>${vykresB2c({
+      <div data-varianta-obsah="b2c" hidden>${rezDum({
         kota1: t("uvod.vykresKota1c"), kota2: t("uvod.vykresKota2c"),
         jednotka: t("uvod.vykresTc"), zasobnik: t("uvod.vykresZasobnik"),
       })}</div>
