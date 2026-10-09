@@ -69,7 +69,9 @@
     "prilohaOdkaz": "Odkaz na velké soubory (úschovna, Dropbox, sdílený disk)",
     "prilohaOdkazNapoveda": "Celá projektová dokumentace nebo BIM model bývá větší než 15 MB — ty pošlete odkazem.",
     "temaPrepnout": "Přepnout světlý a tmavý režim",
-    "ukazkaAdmin": "Zkusit administraci"
+    "ukazkaAdmin": "Zkusit administraci",
+    "segmentB2bKratce": "Firma",
+    "segmentB2cKratce": "Domácnost"
   },
   "uvod": {
     "stitek": "Montáže TZB · realizace staveb · od roku 2014",

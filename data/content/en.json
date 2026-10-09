@@ -558,7 +558,9 @@
     "prilohaVybrat": "Select files",
     "prilohaVyzva": "Drag files here, or select them",
     "temaPrepnout": "Toggle light and dark mode",
-    "ukazkaAdmin": "Try administration"
+    "ukazkaAdmin": "Try administration",
+    "segmentB2bKratce": "Company",
+    "segmentB2cKratce": "Household"
   },
   "stavby": {
     "detailObory": "Trades",

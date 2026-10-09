@@ -28,8 +28,12 @@ export function uvod(ctx) {
         <div class="hero__prepinac" data-prepinac="obory">
           <span class="mono male tise">${esc(t("uvod.prepinacPopis"))}</span>
           <div class="prepinac" role="group">
-            <button type="button" data-varianta="b2b" aria-pressed="true">${esc(t("spolecne.segmentB2b"))}</button>
-            <button type="button" data-varianta="b2c" aria-pressed="false">${esc(t("spolecne.segmentB2c"))}</button>
+            <button type="button" data-varianta="b2b" aria-pressed="true">
+              <span class="jen-siroke">${esc(t("spolecne.segmentB2b"))}</span><span class="jen-uzke">${esc(t("spolecne.segmentB2bKratce"))}</span>
+            </button>
+            <button type="button" data-varianta="b2c" aria-pressed="false">
+              <span class="jen-siroke">${esc(t("spolecne.segmentB2c"))}</span><span class="jen-uzke">${esc(t("spolecne.segmentB2cKratce"))}</span>
+            </button>
           </div>
         </div>
       </div>
