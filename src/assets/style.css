@@ -1310,3 +1310,36 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 @media (prefers-reduced-motion: reduce) {
   .prepinac--velky[data-vyzva="1"] { animation: none; box-shadow: 0 0 0 3px rgba(255, 106, 31, .25); }
 }
+
+/* ======================================================================
+   Izometrická scéna vedle nadpisu — staví se a opravuje
+   ====================================================================== */
+.hero__vrch { display: grid; gap: 1.4rem; align-items: start; }
+@media (min-width: 64rem) {
+  .hero__vrch { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 2.4rem; align-items: center; }
+}
+.hero__scena { position: relative; display: none; }
+@media (min-width: 64rem) { .hero__scena { display: block; } }
+.hero__scena svg { width: 100%; height: auto; max-height: 300px; overflow: visible; }
+.hero__scena-popis {
+  margin: .3rem 0 0; display: flex; align-items: center; gap: .45rem; justify-content: flex-end;
+  min-height: 1.3em; transition: opacity 320ms ease;
+}
+.hero__scena-popis::before {
+  content: ""; width: 7px; height: 7px; border: 1px solid var(--cara); transform: rotate(45deg); flex: none;
+}
+.hero__scena[data-faze="oprava"] .hero__scena-popis { color: var(--signal); }
+.hero__scena[data-faze="oprava"] .hero__scena-popis::before { border-color: var(--signal); background: var(--signal); }
+
+/* právě opravovaný úsek */
+.opravuje {
+  stroke: var(--signal) !important;
+  filter: drop-shadow(0 0 5px rgba(255, 106, 31, .65));
+  animation: opravaTep 900ms ease-in-out infinite;
+}
+@keyframes opravaTep { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+.jiskra { fill: var(--signal); }
+
+@media (prefers-reduced-motion: reduce) {
+  .opravuje { animation: none; filter: none; }
+}

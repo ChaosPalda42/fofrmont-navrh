@@ -92,7 +92,19 @@
     "ctaPatkaText": "Pošlete zadání a my se do dvou pracovních dnů ozveme s tím, jestli to umíme, kdy to umíme a za kolik.",
     "vsechnyObory": "Všechny obory",
     "realstaffPoznamka": "Pronájem techniky, aut a správu nemovitostí zajišťuje sesterská firma Real Staff.",
-    "prepinacNapoveda": "Vyberte a nabídka se tomu přizpůsobí."
+    "prepinacNapoveda": "Vyberte a nabídka se tomu přizpůsobí.",
+    "scenaB2bPopis": "Strojovna a rozvody ve velké stavbě",
+    "scenaB2cPopis": "Rodinný dům s tepelným čerpadlem",
+    "scenaOprava": "Oprava a servis",
+    "vykresJednotka": "VZT jednotka",
+    "vykresOdbocka": "Odbočka do sálu",
+    "vykresKota1": "4 000",
+    "vykresKota2": "+3,60",
+    "vykresTc": "Tepelné čerpadlo",
+    "vykresZasobnik": "Akumulace + TUV",
+    "vykresKota1c": "2 600",
+    "vykresKota2c": "+4,40",
+    "otacejte": "Výkres můžete chytit a otočit."
   },
   "montaze": {
     "nadpis": "Co montujeme",

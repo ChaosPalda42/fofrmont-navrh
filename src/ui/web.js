@@ -490,8 +490,100 @@
     vplyn(videt);
   }
 
+  /** Scéna u nadpisu: nejdřív se postaví, pak se na ní něco opraví, a znovu. */
+  function scenaUNadpisu(hlasky) {
+    var obal = $("[data-scena-hero]");
+    if (!obal) return null;
+    var popis = $("[data-scena-popis]", obal);
+    var cas = null;
+
+    function aktivni() {
+      return $$("[data-varianta-obsah]", obal).filter(function (el) { return !el.hidden; })[0];
+    }
+
+    function postav(varianta) {
+      var blok = aktivni();
+      if (!blok) return;
+      obal.dataset.faze = "stavba";
+      popis.textContent = varianta === "b2c" ? hlasky.b2c : hlasky.b2b;
+      $$(".opravuje", blok).forEach(function (el) { el.classList.remove("opravuje"); });
+      if (tlumene) return;
+      $$("path.kresli", blok).forEach(function (cesta) {
+        cesta.style.animation = "none";
+        void cesta.getBoundingClientRect();
+        cesta.style.animation = "";
+      });
+    }
+
+    function oprav() {
+      var blok = aktivni();
+      if (!blok || tlumene) return;
+      var cesty = $$("path[data-trasa]", blok);
+      if (!cesty.length) return;
+      var cesta = cesty[Math.floor(Math.random() * cesty.length)];
+      obal.dataset.faze = "oprava";
+      popis.textContent = hlasky.oprava;
+      cesta.classList.add("opravuje");
+      posliJiskru(blok, cesta);
+      window.setTimeout(function () {
+        cesta.classList.remove("opravuje");
+        obal.dataset.faze = "stavba";
+        popis.textContent = aktivni() === $("[data-varianta-obsah='b2c']", obal) ? hlasky.b2c : hlasky.b2b;
+      }, 2600);
+    }
+
+    /** Po opravované trase projede značka, jako když po ní jde montér. */
+    function posliJiskru(blok, cesta) {
+      if (!FM.izometrie) return;
+      var body = jsonAttr(cesta, "data-trasa", []);
+      if (!body.length) return;
+      var svg = cesta.ownerSVGElement;
+      var znacka = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      znacka.setAttribute("r", "4.5");
+      znacka.setAttribute("class", "jiskra");
+      svg.appendChild(znacka);
+      var zacatek = null;
+      var krok = function (t) {
+        if (zacatek === null) zacatek = t;
+        var podil = Math.min(1, (t - zacatek) / 2200);
+        var b = FM.izometrie.bodNaPolylinii(body, podil);
+        znacka.setAttribute("cx", b.x);
+        znacka.setAttribute("cy", b.y);
+        if (podil < 1) requestAnimationFrame(krok);
+        else znacka.remove();
+      };
+      requestAnimationFrame(krok);
+    }
+
+    function cyklus() {
+      window.clearTimeout(cas);
+      cas = window.setTimeout(function () {
+        oprav();
+        cas = window.setTimeout(function () { postav(obal.dataset.varianta || "b2b"); cyklus(); }, 5200);
+      }, 4200);
+    }
+
+    return {
+      prepni: function (varianta) {
+        obal.dataset.varianta = varianta;
+        $$("[data-varianta-obsah]", obal).forEach(function (el) {
+          el.hidden = el.dataset.variantaObsah !== varianta;
+        });
+        postav(varianta);
+        cyklus();
+      },
+    };
+  }
+
   /* ---------- hero: přepínač, nitkový kříž, tok potrubím ---------- */
   function hero() {
+    var scenaObal = $("[data-scena-hero]");
+    var scena = scenaObal ? scenaUNadpisu({
+      b2b: (jsonAttr(scenaObal, "data-hlasky", {}) || {}).b2b || "",
+      b2c: (jsonAttr(scenaObal, "data-hlasky", {}) || {}).b2c || "",
+      oprava: (jsonAttr(scenaObal, "data-hlasky", {}) || {}).oprava || "",
+    }) : null;
+
     $$("[data-prepinac]").forEach(function (obal) {
       var tlacitka = $$("button[data-varianta]", obal);
       var prepinac = $(".prepinac", obal);
@@ -500,6 +592,7 @@
         tlacitka.forEach(function (j) { j.setAttribute("aria-pressed", String(j.dataset.varianta === varianta)); });
         $$("[data-varianta-obsah]").forEach(function (el) { el.hidden = el.dataset.variantaObsah !== varianta; });
         filtrujObory(varianta);
+        if (scena) scena.prepni(varianta);
         if (prepinac) delete prepinac.dataset.vyzva;   // vybráno, už nemusí upozorňovat
         if (zapamatovat) {
           try { window.localStorage.setItem("fm-segment", varianta); } catch (e) { /* soukromé okno */ }
