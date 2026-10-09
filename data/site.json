@@ -14,7 +14,12 @@
     "jednatel": "Miloš Lukeš",
     "zapis": "C 225069 vedená u Městského soudu v Praze",
     "kapital": "200 000 Kč",
-    "pusobnost": "Praha, Středočeský kraj a celá ČR"
+    "pusobnost": "Praha, Středočeský kraj a celá ČR",
+    "sesterska": {
+      "nazev": "Real Staff",
+      "popis": "Pronájem aut a stavební techniky, správa nemovitostí.",
+      "poznamka": "Samostatná firma ze stejné skupiny. Na webu vystupuje jako část nabídky Fofrmontu."
+    }
   },
   "kontakt": {
     "telefon": "+420 XXX XXX XXX",
@@ -22,7 +27,8 @@
     "email": "info@fofrmont.cz",
     "emailPoptavky": "poptavky@fofrmont.cz",
     "datovka": "—",
-    "provozniDoba": "Po–Pá 7:00–17:00, na stavbě podle harmonogramu"
+    "provozniDoba": "Po–Pá 7:00–17:00, na stavbě podle harmonogramu",
+    "googleProfil": ""
   },
   "cisla": [
     {
@@ -59,7 +65,12 @@
         "Požární klapky a jejich osazení",
         "Izolace, tlumiče, regulační prvky",
         "Zaregulování a protokol"
-      ]
+      ],
+      "segment": [
+        "b2b",
+        "b2c"
+      ],
+      "znacka": "fofrmont"
     },
     {
       "id": "ut",
@@ -75,7 +86,12 @@
         "Kotelny a strojovny",
         "Předávací stanice",
         "Tlakové zkoušky a proplach"
-      ]
+      ],
+      "segment": [
+        "b2b",
+        "b2c"
+      ],
+      "znacka": "fofrmont"
     },
     {
       "id": "zti",
@@ -91,7 +107,12 @@
         "Cirkulace TUV a její zaregulování",
         "Přeložky za provozu",
         "Tlakové a těsnostní zkoušky"
-      ]
+      ],
+      "segment": [
+        "b2b",
+        "b2c"
+      ],
+      "znacka": "fofrmont"
     },
     {
       "id": "chlazeni",
@@ -107,7 +128,12 @@
         "Chlazení serveroven a technologií",
         "Kondenzát a jeho odvod",
         "Zaregulování soustavy"
-      ]
+      ],
+      "segment": [
+        "b2b",
+        "b2c"
+      ],
+      "znacka": "fofrmont"
     },
     {
       "id": "tc",
@@ -123,6 +149,31 @@
         "Odhlučnění a uložení venkovní jednotky",
         "Podružné rozvody a regulace",
         "Uvedení do provozu s topenářem"
+      ],
+      "segment": [
+        "b2c",
+        "b2b"
+      ],
+      "znacka": "fofrmont"
+    },
+    {
+      "id": "stavarina",
+      "slug": "realizace-staveb",
+      "nazev": "Realizace staveb",
+      "zkratka": "STAV",
+      "cislo": "06",
+      "segment": [
+        "b2b"
+      ],
+      "znacka": "fofrmont",
+      "perex": "Stavební část zakázky: od prostupů a přizdívek po kompletní realizaci.",
+      "polozky": [
+        "Stavební připravenost pro TZB",
+        "Prostupy, přizdívky, dobetonávky",
+        "Rekonstrukce prostor včetně povrchů",
+        "Strojovny a technické místnosti",
+        "Koordinace stavebních profesí",
+        "Předání včetně dokumentace"
       ]
     },
     {
@@ -130,7 +181,7 @@
       "slug": "dodavka-na-klic",
       "nazev": "Dodávka na klíč",
       "zkratka": "D+M",
-      "cislo": "06",
+      "cislo": "07",
       "perex": "Dodávka i montáž v jedné smlouvě. Materiál seženeme, odpovědnost neštěpíme.",
       "polozky": [
         "Materiál a zařízení od ověřených dodavatelů",
@@ -139,6 +190,67 @@
         "Dílenská dokumentace skutečného provedení",
         "Předání s protokoly a zaškolením",
         "Záruční servis přes partnery"
+      ],
+      "segment": [
+        "b2b",
+        "b2c"
+      ],
+      "znacka": "fofrmont"
+    },
+    {
+      "id": "technika",
+      "slug": "pronajem-techniky",
+      "nazev": "Pronájem stavební techniky",
+      "zkratka": "TECH",
+      "cislo": "08",
+      "segment": [
+        "b2b",
+        "b2c"
+      ],
+      "znacka": "realstaff",
+      "perex": "Stroje a technika na stavbu i na jednorázovou práci kolem domu.",
+      "polozky": [
+        "Krátkodobý i dlouhodobý pronájem",
+        "Doprava techniky na stavbu",
+        "Zaškolení obsluhy",
+        "Servis po dobu pronájmu"
+      ]
+    },
+    {
+      "id": "auta",
+      "slug": "pronajem-aut",
+      "nazev": "Pronájem aut",
+      "zkratka": "AUTA",
+      "cislo": "09",
+      "segment": [
+        "b2b",
+        "b2c"
+      ],
+      "znacka": "realstaff",
+      "perex": "Užitkové i osobní vozy na dobu, kterou potřebujete.",
+      "polozky": [
+        "Užitkové vozy a dodávky",
+        "Osobní vozy",
+        "Krátkodobý i dlouhodobý pronájem",
+        "Pojištění v ceně"
+      ]
+    },
+    {
+      "id": "sprava",
+      "slug": "sprava-nemovitosti",
+      "nazev": "Správa nemovitostí",
+      "zkratka": "SPR",
+      "cislo": "10",
+      "segment": [
+        "b2b"
+      ],
+      "znacka": "realstaff",
+      "perex": "Starost o budovu, aby majitel nemusel řešit každou drobnost.",
+      "polozky": [
+        "Technická správa budov",
+        "Drobná údržba a opravy",
+        "Koordinace řemesel",
+        "Pravidelné kontroly"
       ]
     }
   ],
@@ -160,172 +272,6 @@
       "text": "Nemáme plničku ani vakuovačku. Klimatizace montujeme s partnerem, který má oprávnění."
     }
   ],
-  "faktoryObtiznosti": [
-    {
-      "id": "pristup",
-      "nazev": "Přístup na místo montáže",
-      "vaha": 2,
-      "moznosti": [
-        {
-          "id": "volny",
-          "popis": "Volný, dá se zacouvat",
-          "body": 0
-        },
-        {
-          "id": "uzky",
-          "popis": "Úzké schodiště nebo výtah",
-          "body": 5
-        },
-        {
-          "id": "jerab",
-          "popis": "Jen jeřábem nebo plošinou",
-          "body": 10
-        }
-      ]
-    },
-    {
-      "id": "provoz",
-      "nazev": "Provoz budovy během montáže",
-      "vaha": 3,
-      "moznosti": [
-        {
-          "id": "prazdna",
-          "popis": "Prázdná stavba",
-          "body": 0
-        },
-        {
-          "id": "cast",
-          "popis": "Částečný provoz, po etapách",
-          "body": 5
-        },
-        {
-          "id": "nepretrzity",
-          "popis": "Nepřetržitý provoz 24/7",
-          "body": 10
-        }
-      ]
-    },
-    {
-      "id": "vyska",
-      "nazev": "Výška montáže",
-      "vaha": 2,
-      "moznosti": [
-        {
-          "id": "do3",
-          "popis": "Do 3 m, ze štaflí",
-          "body": 0
-        },
-        {
-          "id": "do8",
-          "popis": "3 až 8 m, z plošiny",
-          "body": 5
-        },
-        {
-          "id": "nad8",
-          "popis": "Nad 8 m nebo z lávek",
-          "body": 10
-        }
-      ]
-    },
-    {
-      "id": "prostor",
-      "nazev": "Prostor pro trasy",
-      "vaha": 3,
-      "moznosti": [
-        {
-          "id": "dost",
-          "popis": "Podhled i šachty podle projektu",
-          "body": 0
-        },
-        {
-          "id": "tesne",
-          "popis": "Těsno, kolize s ostatními profesemi",
-          "body": 6
-        },
-        {
-          "id": "neni",
-          "popis": "Trasa se musí vymyslet na místě",
-          "body": 10
-        }
-      ]
-    },
-    {
-      "id": "pamatka",
-      "nazev": "Památková ochrana",
-      "vaha": 1,
-      "moznosti": [
-        {
-          "id": "ne",
-          "popis": "Žádná",
-          "body": 0
-        },
-        {
-          "id": "zona",
-          "popis": "Památková zóna",
-          "body": 5
-        },
-        {
-          "id": "ano",
-          "popis": "Kulturní památka",
-          "body": 10
-        }
-      ]
-    },
-    {
-      "id": "cistota",
-      "nazev": "Požadavky na čistotu a hluk",
-      "vaha": 2,
-      "moznosti": [
-        {
-          "id": "bezne",
-          "popis": "Běžná stavba",
-          "body": 0
-        },
-        {
-          "id": "zvysene",
-          "popis": "Zvýšené (škola, kancelář)",
-          "body": 5
-        },
-        {
-          "id": "operacni",
-          "popis": "Čisté prostory, operační sály",
-          "body": 10
-        }
-      ]
-    }
-  ],
-  "doporuceniObtiznosti": {
-    "pristup": {
-      "uzky": "Počítáme s ruční dopravou dílů a dělíme potrubí na kratší kusy.",
-      "jerab": "Zajistíme zvedací techniku a zábor, montáž plánujeme na jeden blok."
-    },
-    "provoz": {
-      "cast": "Montujeme po etapách a každou uzavíráme funkční, aby šel provoz dál.",
-      "nepretrzity": "Pracujeme v nočních blocích a o víkendech, s přejímkou po každém bloku."
-    },
-    "vyska": {
-      "do8": "Plošina je v ceně, počítáme s ní od začátku.",
-      "nad8": "Montážní plošiny a lávky, práce ve výškách s doloženou kvalifikací."
-    },
-    "prostor": {
-      "tesne": "Trasy koordinujeme 3D nad projektem, kolize řešíme před nákupem materiálu.",
-      "neni": "Zaměříme skutečný stav a navrhneme trasu, kterou pak potvrdí váš projektant."
-    },
-    "pamatka": {
-      "zona": "Vedení tras volíme tak, aby nebyly vidět z veřejného prostoru.",
-      "ano": "Konzultace s památkáři a rozebíratelné uložení bez zásahu do konstrukcí."
-    },
-    "cistota": {
-      "zvysene": "Řezání a broušení mimo prostor, každý den uklizeno.",
-      "operacni": "Práce v režimu čistých prostor, potrubí zaslepené až do zprovoznění."
-    }
-  },
-  "popisyStupnu": {
-    "bezna": "Běžná montáž. Naceníme obratem a nasadíme jednu partu.",
-    "narocna": "Náročnější zakázka. Chce to obhlídku a harmonogram po etapách.",
-    "slozita": "Složitá stavba. Tohle je přesně to, na čem nás baví pracovat.",
-    "extremni": "Extrém. Pojedeme na obhlídku a přineseme variantní řešení."
-  },
   "faze": [
     {
       "id": "obhlidka",
@@ -723,7 +669,8 @@
       "stavba": "nemocnice-operacni-saly",
       "stav": "schvalena",
       "doporucuje": true,
-      "text": "Devět nočních bloků a ráno vždycky uklizeno a funkční. Za celou dobu jsme neřešili jedinou stížnost od personálu. Když něco nešlo podle projektu, přišli s řešením, ne s problémem."
+      "text": "Devět nočních bloků a ráno vždycky uklizeno a funkční. Za celou dobu jsme neřešili jedinou stížnost od personálu. Když něco nešlo podle projektu, přišli s řešením, ne s problémem.",
+      "zdroj": "google"
     },
     {
       "id": "r-2",
@@ -735,7 +682,8 @@
       "stavba": "vila-podkrovi",
       "stav": "schvalena",
       "doporucuje": true,
-      "text": "Dvě firmy přede mnou řekly, že do té místnosti se čerpadlo nevejde. Tihle přijeli, změřili a za jedenáct dní bylo hotovo. A sousedi si nestěžovali na hluk."
+      "text": "Dvě firmy přede mnou řekly, že do té místnosti se čerpadlo nevejde. Tihle přijeli, změřili a za jedenáct dní bylo hotovo. A sousedi si nestěžovali na hluk.",
+      "zdroj": "web"
     },
     {
       "id": "r-3",
@@ -747,7 +695,8 @@
       "stavba": "administrativa-praha",
       "stav": "schvalena",
       "doporucuje": true,
-      "text": "Kolizi v podhledu našli dřív než my a přišli s přetrasováním ještě před objednáním materiálu. Ušetřilo to tři týdny."
+      "text": "Kolizi v podhledu našli dřív než my a přišli s přetrasováním ještě před objednáním materiálu. Ušetřilo to tři týdny.",
+      "zdroj": "google"
     },
     {
       "id": "r-4",
@@ -759,7 +708,8 @@
       "stavba": "hala-rakovnik",
       "stav": "schvalena",
       "doporucuje": true,
-      "text": "Odvedená práce bez výhrad, termín seděl. Jedinou výtku mám ke komunikaci v prvním týdnu, kdy se hůř sháněl někdo, kdo rozhodne. Pak už to šlapalo."
+      "text": "Odvedená práce bez výhrad, termín seděl. Jedinou výtku mám ke komunikaci v prvním týdnu, kdy se hůř sháněl někdo, kdo rozhodne. Pak už to šlapalo.",
+      "zdroj": "web"
     },
     {
       "id": "r-5",
@@ -771,7 +721,8 @@
       "stavba": "",
       "stav": "schvalena",
       "doporucuje": true,
-      "text": "Rekonstrukce koupelny v paneláku, kde stoupačka vede přes tři byty. Domluvili se se sousedy sami a vodu vypnuli jen na jedno dopoledne."
+      "text": "Rekonstrukce koupelny v paneláku, kde stoupačka vede přes tři byty. Domluvili se se sousedy sami a vodu vypnuli jen na jedno dopoledne.",
+      "zdroj": "google"
     },
     {
       "id": "r-6",
@@ -783,7 +734,8 @@
       "stavba": "skola-kladno",
       "stav": "schvalena",
       "doporucuje": true,
-      "text": "Jako projektant oceňuju, že se ptají dřív, než něco udělají po svém. Dokumentace skutečného provedení odpovídala realitě, což bohužel není samozřejmost."
+      "text": "Jako projektant oceňuju, že se ptají dřív, než něco udělají po svém. Dokumentace skutečného provedení odpovídala realitě, což bohužel není samozřejmost.",
+      "zdroj": "web"
     },
     {
       "id": "r-7",
@@ -795,7 +747,8 @@
       "stavba": "serverovna",
       "stav": "schvalena",
       "doporucuje": true,
-      "text": "Přepojovali chlazení za provozu serverovny. Teplota v uličkách se hnula o necelé dva stupně. Tohle si nedovolí každý."
+      "text": "Přepojovali chlazení za provozu serverovny. Teplota v uličkách se hnula o necelé dva stupně. Tohle si nedovolí každý.",
+      "zdroj": "google"
     },
     {
       "id": "r-8",
@@ -807,7 +760,8 @@
       "stavba": "",
       "stav": "schvalena",
       "doporucuje": true,
-      "text": "Podlahové vytápění v přístavbě. Práce dobrá, cena odpovídala nabídce. Trochu déle trvalo, než přišel termín montáže, ale předem to řekli."
+      "text": "Podlahové vytápění v přístavbě. Práce dobrá, cena odpovídala nabídce. Trochu déle trvalo, než přišel termín montáže, ale předem to řekli.",
+      "zdroj": "web"
     },
     {
       "id": "r-9",
@@ -819,7 +773,8 @@
       "stavba": "pamatka-zizkov",
       "stav": "schvalena",
       "doporucuje": true,
-      "text": "Památkáři byli spokojení, což se nestává. Nesekalo se do kleneb a trasy vedly historickými šachtami."
+      "text": "Památkáři byli spokojení, což se nestává. Nesekalo se do kleneb a trasy vedly historickými šachtami.",
+      "zdroj": "google"
     },
     {
       "id": "r-10",
@@ -831,7 +786,8 @@
       "stavba": "letiste-terminal",
       "stav": "schvalena",
       "doporucuje": true,
-      "text": "Osmdesát čtyři nočních směn bez jediného průšvihu s provozem terminálu. Parta, která ví, co dělá, a hlavně se domluví."
+      "text": "Osmdesát čtyři nočních směn bez jediného průšvihu s provozem terminálu. Parta, která ví, co dělá, a hlavně se domluví.",
+      "zdroj": "google"
     },
     {
       "id": "r-11",
@@ -843,7 +799,8 @@
       "stavba": "",
       "stav": "ceka",
       "doporucuje": true,
-      "text": "Výměna rozvodů vody v bytě. Přišli na čas, uklidili po sobě a cena seděla na nabídku. Doporučuju dál."
+      "text": "Výměna rozvodů vody v bytě. Přišli na čas, uklidili po sobě a cena seděla na nabídku. Doporučuju dál.",
+      "zdroj": "web"
     }
   ],
   "pozice": [
@@ -941,5 +898,174 @@
       "otazka": "Co když projekt v realitě nesedí?",
       "odpoved": "Napíšeme to hned po zaměření, ne až po zabudování. Navrhneme řešení a necháme ho potvrdit projektantem, aby se to neotáčelo na nás."
     }
-  ]
+  ],
+  "_parkovano": {
+    "duvod": "Vyřazeno na schůzce 9. 10. 2026 — náročné prostory a statistiky návštěvnosti.",
+    "faktoryObtiznosti": [
+      {
+        "id": "pristup",
+        "nazev": "Přístup na místo montáže",
+        "vaha": 2,
+        "moznosti": [
+          {
+            "id": "volny",
+            "popis": "Volný, dá se zacouvat",
+            "body": 0
+          },
+          {
+            "id": "uzky",
+            "popis": "Úzké schodiště nebo výtah",
+            "body": 5
+          },
+          {
+            "id": "jerab",
+            "popis": "Jen jeřábem nebo plošinou",
+            "body": 10
+          }
+        ]
+      },
+      {
+        "id": "provoz",
+        "nazev": "Provoz budovy během montáže",
+        "vaha": 3,
+        "moznosti": [
+          {
+            "id": "prazdna",
+            "popis": "Prázdná stavba",
+            "body": 0
+          },
+          {
+            "id": "cast",
+            "popis": "Částečný provoz, po etapách",
+            "body": 5
+          },
+          {
+            "id": "nepretrzity",
+            "popis": "Nepřetržitý provoz 24/7",
+            "body": 10
+          }
+        ]
+      },
+      {
+        "id": "vyska",
+        "nazev": "Výška montáže",
+        "vaha": 2,
+        "moznosti": [
+          {
+            "id": "do3",
+            "popis": "Do 3 m, ze štaflí",
+            "body": 0
+          },
+          {
+            "id": "do8",
+            "popis": "3 až 8 m, z plošiny",
+            "body": 5
+          },
+          {
+            "id": "nad8",
+            "popis": "Nad 8 m nebo z lávek",
+            "body": 10
+          }
+        ]
+      },
+      {
+        "id": "prostor",
+        "nazev": "Prostor pro trasy",
+        "vaha": 3,
+        "moznosti": [
+          {
+            "id": "dost",
+            "popis": "Podhled i šachty podle projektu",
+            "body": 0
+          },
+          {
+            "id": "tesne",
+            "popis": "Těsno, kolize s ostatními profesemi",
+            "body": 6
+          },
+          {
+            "id": "neni",
+            "popis": "Trasa se musí vymyslet na místě",
+            "body": 10
+          }
+        ]
+      },
+      {
+        "id": "pamatka",
+        "nazev": "Památková ochrana",
+        "vaha": 1,
+        "moznosti": [
+          {
+            "id": "ne",
+            "popis": "Žádná",
+            "body": 0
+          },
+          {
+            "id": "zona",
+            "popis": "Památková zóna",
+            "body": 5
+          },
+          {
+            "id": "ano",
+            "popis": "Kulturní památka",
+            "body": 10
+          }
+        ]
+      },
+      {
+        "id": "cistota",
+        "nazev": "Požadavky na čistotu a hluk",
+        "vaha": 2,
+        "moznosti": [
+          {
+            "id": "bezne",
+            "popis": "Běžná stavba",
+            "body": 0
+          },
+          {
+            "id": "zvysene",
+            "popis": "Zvýšené (škola, kancelář)",
+            "body": 5
+          },
+          {
+            "id": "operacni",
+            "popis": "Čisté prostory, operační sály",
+            "body": 10
+          }
+        ]
+      }
+    ],
+    "doporuceniObtiznosti": {
+      "pristup": {
+        "uzky": "Počítáme s ruční dopravou dílů a dělíme potrubí na kratší kusy.",
+        "jerab": "Zajistíme zvedací techniku a zábor, montáž plánujeme na jeden blok."
+      },
+      "provoz": {
+        "cast": "Montujeme po etapách a každou uzavíráme funkční, aby šel provoz dál.",
+        "nepretrzity": "Pracujeme v nočních blocích a o víkendech, s přejímkou po každém bloku."
+      },
+      "vyska": {
+        "do8": "Plošina je v ceně, počítáme s ní od začátku.",
+        "nad8": "Montážní plošiny a lávky, práce ve výškách s doloženou kvalifikací."
+      },
+      "prostor": {
+        "tesne": "Trasy koordinujeme 3D nad projektem, kolize řešíme před nákupem materiálu.",
+        "neni": "Zaměříme skutečný stav a navrhneme trasu, kterou pak potvrdí váš projektant."
+      },
+      "pamatka": {
+        "zona": "Vedení tras volíme tak, aby nebyly vidět z veřejného prostoru.",
+        "ano": "Konzultace s památkáři a rozebíratelné uložení bez zásahu do konstrukcí."
+      },
+      "cistota": {
+        "zvysene": "Řezání a broušení mimo prostor, každý den uklizeno.",
+        "operacni": "Práce v režimu čistých prostor, potrubí zaslepené až do zprovoznění."
+      }
+    },
+    "popisyStupnu": {
+      "bezna": "Běžná montáž. Naceníme obratem a nasadíme jednu partu.",
+      "narocna": "Náročnější zakázka. Chce to obhlídku a harmonogram po etapách.",
+      "slozita": "Složitá stavba. Tohle je přesně to, na čem nás baví pracovat.",
+      "extremni": "Extrém. Pojedeme na obhlídku a přineseme variantní řešení."
+    }
+  }
 }

@@ -36,7 +36,7 @@ export function stavby(ctx) {
         ${chip("rok", "vse", t("spolecne.vse"))}
         ${roky.map((r) => chip("rok", String(r), String(r))).join("")}
       </div>
-      <p class="mono male tise" data-pocet-staveb>${esc(t("stavby.pocet").replace("{zobrazeno}", String(site.stavby.length)).replace("{celkem}", String(site.stavby.length)))}</p>
+      <p class="mono male tise" data-pocet-staveb data-sablona="${esc(t("stavby.pocet"))}">${esc(t("stavby.pocet").replace("{zobrazeno}", String(site.stavby.length)).replace("{celkem}", String(site.stavby.length)))}</p>
       <div class="mrizka mrizka--3" style="margin-top:1.2rem" data-vypis-staveb>
         ${site.stavby.map((s) => `<div data-stavba="${esc(s.id)}" data-obory="${esc(s.obory.join(" "))}"
           data-segment="${esc(s.segment)}" data-rok="${esc(String(s.rok))}">${kartaStavby(ctx, s)}</div>`).join("")}
@@ -59,7 +59,8 @@ export function stavbaDetail(ctx, s) {
     }),
     `<section class="pas pas--tesny"><div class="obal mrizka mrizka--bok">
       <div class="prijezd">
-        <div style="color:var(--cara);margin-bottom:1.4rem">${motivStavby(s.motiv)}</div>
+        <div class="galerie" data-galerie="${esc(s.id)}" hidden></div>
+        <div style="color:var(--cara);margin-bottom:1.4rem" data-motiv-stavby="${esc(s.id)}">${motivStavby(s.motiv)}</div>
         <table class="fakta">
           <tr><th>${esc(t("stavby.detailRole"))}</th><td>${esc(s.role)}</td></tr>
           <tr><th>${esc(t("stavby.detailRozsah"))}</th><td>${esc(s.rozsah)}</td></tr>
@@ -120,6 +121,17 @@ export function recenze(ctx) {
             <p class="male tise" style="margin:.9rem 0 0">${esc(t("recenze.doporucuje").replace("{procent}", String(souhrn.doporucujeProcent)))}</p>
           </div>
         </div>
+      </div>
+    </div></section>`,
+    `<section class="pas pas--tesny"><div class="obal">
+      <div class="karta rohy prijezd" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between">
+        <div style="max-width:58ch">
+          <span class="karta__cislo" style="display:flex;align-items:center;gap:.4rem">${ikona("google", { velikost: 15 })} ${esc(t("recenze.googleNadpis"))}</span>
+          <p class="male tise" style="margin:.5rem 0 0">${esc(t("recenze.googleText"))}</p>
+        </div>
+        ${site.kontakt.googleProfil
+          ? `<a class="tl tl--obrys tl--maly" href="${esc(site.kontakt.googleProfil)}" target="_blank" rel="noopener">${esc(t("recenze.googleTlacitko"))}</a>`
+          : `<span class="tl tl--obrys tl--maly" aria-disabled="true" style="opacity:.55;cursor:default">${esc(t("recenze.googleTlacitko"))}</span>`}
       </div>
     </div></section>`,
     `<section class="pas pas--tesny"><div class="obal" data-seznam-recenzi>
@@ -345,6 +357,20 @@ export function kalkulacky(ctx) {
             ${vysledek("rek-koruny", t("kalkulacky.rekKoruny"), true)}
           </div>
         </div>
+      </div>
+    </div></section>`,
+    ctaPas(ctx, { nadpis: t("uvod.ctaPatka"), text: t("uvod.ctaPatkaText") }),
+  ].join("\n");
+}
+
+/** Detail reference, kterou klient přidal v administraci (čte se z prohlížeče). */
+export function stavbaZUloziste(ctx) {
+  const { t } = ctx;
+  return [
+    `<section class="pas pas--tesny"><div class="obal">
+      ${drobecky(ctx, [["uvod", t("nav.uvod")], ["stavby", t("nav.stavby")], ["x", t("stavby.novaStitek")]])}
+      <div data-stavba-z-uloziste data-poznamka="${esc(t("stavby.novaPoznamka"))}">
+        <p class="prazdno">${esc(t("stavby.neniNalezena"))}</p>
       </div>
     </div></section>`,
     ctaPas(ctx, { nadpis: t("uvod.ctaPatka"), text: t("uvod.ctaPatkaText") }),

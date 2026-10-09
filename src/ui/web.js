@@ -265,6 +265,151 @@
     });
   }
 
+  /** Fotky nahrané v administraci se ukážou u referencí. */
+  function fotkyStaveb() {
+    if (!FM.administrace) return;
+    var stav;
+    try { stav = FM.administrace.nacti(window.localStorage); } catch (e) { return; }
+    var podleId = {};
+    (stav.stavby.pridane || []).forEach(function (s) { if (s.id) podleId[s.id] = s; });
+    Object.keys(stav.stavby.upravene || {}).forEach(function (id) {
+      podleId[id] = Object.assign({}, podleId[id], stav.stavby.upravene[id]);
+    });
+
+    $$("[data-motiv-stavby]").forEach(function (el) {
+      var polozka = podleId[el.dataset.motivStavby];
+      if (!polozka || !polozka.fotky || !polozka.fotky.length) return;
+      el.innerHTML = "<img src='" + polozka.fotky[0] + "' alt='' loading='lazy'>";
+    });
+
+    $$("[data-galerie]").forEach(function (el) {
+      var polozka = podleId[el.dataset.galerie];
+      if (!polozka || !polozka.fotky || !polozka.fotky.length) return;
+      var motiv = $("[data-motiv-stavby='" + el.dataset.galerie + "']");
+      if (motiv) motiv.hidden = true;
+      el.hidden = false;
+      el.innerHTML = polozka.fotky.map(function (f, i) {
+        return "<button type='button' data-lupa='" + i + "'><img src='" + f + "' alt='' loading='lazy'></button>";
+      }).join("");
+      $$("[data-lupa]", el).forEach(function (b) {
+        b.addEventListener("click", function () { otevriLupu(polozka.fotky, Number(b.dataset.lupa)); });
+      });
+    });
+  }
+
+  function otevriLupu(fotky, index) {
+    var lupa = $(".lupa");
+    if (!lupa) {
+      lupa = document.createElement("div");
+      lupa.className = "lupa";
+      lupa.innerHTML = "<button class='lupa__zavrit' type='button' aria-label='Zavřít'>"
+        + "<svg width='18' height='18' viewBox='0 0 20 20' fill='none' stroke='currentColor' stroke-width='1.6'"
+        + " stroke-linecap='round'><path d='m5 5 10 10M15 5 5 15'/></svg></button><img alt=''>";
+      document.body.appendChild(lupa);
+      lupa.addEventListener("click", function () { lupa.dataset.otevreno = "0"; });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") lupa.dataset.otevreno = "0";
+      });
+    }
+    $("img", lupa).src = fotky[index];
+    lupa.dataset.otevreno = "1";
+  }
+
+  /** Reference přidané nebo upravené v administraci se promítnou do výpisu i do detailu. */
+  function stavbyZUloziste() {
+    if (!FM.administrace) return;
+    var stav;
+    try { stav = FM.administrace.nacti(window.localStorage); } catch (e) { return; }
+
+    var vypis = $("[data-vypis-staveb]");
+    if (vypis) {
+      (stav.stavby.smazane || []).forEach(function (id) {
+        var el = $("[data-stavba='" + id + "']", vypis);
+        if (el) el.remove();
+      });
+      Object.keys(stav.stavby.upravene || {}).forEach(function (id) {
+        var el = $("[data-stavba='" + id + "']", vypis);
+        var zmena = stav.stavby.upravene[id];
+        if (!el) return;
+        if (zmena.nazev) { var h = $(".karta__nadpis", el); if (h) h.textContent = zmena.nazev; }
+        if (zmena.perex) { var t = $(".karta__text", el); if (t) t.textContent = zmena.perex; }
+        if (zmena.obory) el.dataset.obory = zmena.obory.join(" ");
+        if (zmena.segment) el.dataset.segment = zmena.segment;
+        if (zmena.rok) el.dataset.rok = String(zmena.rok);
+      });
+      (stav.stavby.pridane || []).slice().reverse().forEach(function (s) {
+        vypis.insertBefore(kartaNoveStavby(s), vypis.firstChild);
+      });
+      prepocitejStavby();
+    }
+
+    var detail = $("[data-stavba-z-uloziste]");
+    if (detail) vykresliNovouStavbu(detail, stav);
+  }
+
+  /** Kolik referencí je vidět — počítá se po filtrování i po doplnění z administrace. */
+  function prepocitejStavby() {
+    var obal = $("[data-seznam-staveb]");
+    if (!obal) return;
+    var polozky = $$("[data-stavba]", obal);
+    var videt = polozky.filter(function (el) { return !el.hidden; }).length;
+    var pocetEl = $("[data-pocet-staveb]", obal);
+    if (pocetEl && pocetEl.dataset.sablona) {
+      pocetEl.textContent = pocetEl.dataset.sablona
+        .replace("{zobrazeno}", String(videt)).replace("{celkem}", String(polozky.length));
+    }
+    var prazdno = $("[data-prazdno]", obal);
+    if (prazdno) prazdno.hidden = videt > 0;
+  }
+
+  function kartaNoveStavby(s) {
+    var obal = document.createElement("div");
+    obal.dataset.stavba = s.id;
+    obal.dataset.obory = (s.obory || []).join(" ");
+    obal.dataset.segment = s.segment || "b2b";
+    obal.dataset.rok = String(s.rok || "");
+    var fotka = s.fotky && s.fotky.length
+      ? "<div class='karta__motiv' style='margin:-.4rem 0 .9rem'><img src='" + s.fotky[0] + "' alt=''></div>"
+      : "";
+    obal.innerHTML = "<a class='karta karta--odkaz rohy' href='stavba.html?id=" + encodeURIComponent(s.id) + "'>"
+      + fotka
+      + "<span class='karta__cislo'>" + bezpecne(s.misto) + " · " + bezpecne(s.rok) + "</span>"
+      + "<h3 class='karta__nadpis'>" + bezpecne(s.nazev) + "</h3>"
+      + "<p class='karta__text'>" + bezpecne(s.perex) + "</p></a>";
+    return obal;
+  }
+
+  function bezpecne(hodnota) {
+    return String(hodnota === undefined || hodnota === null ? "" : hodnota)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function vykresliNovouStavbu(obal, stav) {
+    var id = new URLSearchParams(window.location.search).get("id");
+    var polozka = (stav.stavby.pridane || []).filter(function (s) { return s.id === id; })[0];
+    if (!polozka) return;
+    document.title = polozka.nazev + " — FOFRMONT CZ";
+    var fotky = polozka.fotky || [];
+    obal.innerHTML = "<p class='stitek'>" + bezpecne(polozka.misto) + " · " + bezpecne(polozka.rok) + "</p>"
+      + "<h1>" + bezpecne(polozka.nazev) + "</h1>"
+      + "<p class='lead'>" + bezpecne(polozka.perex) + "</p>"
+      + (fotky.length ? "<div class='galerie' style='margin-top:1.4rem'>" + fotky.map(function (f, i) {
+        return "<button type='button' data-lupa='" + i + "'><img src='" + f + "' alt=''></button>";
+      }).join("") + "</div>" : "")
+      + (polozka.zadani ? "<h2 style='font-size:1.5rem;margin-top:2rem'>Zadání</h2><p class='lead'>"
+        + bezpecne(polozka.zadani) + "</p>" : "")
+      + "<table class='fakta' style='margin-top:2rem;max-width:34rem'>"
+      + [["Naše role", polozka.role], ["Rozsah", polozka.rozsah], ["Doba montáže", polozka.trvani],
+         ["Kraj", polozka.kraj]].filter(function (r) { return r[1]; }).map(function (r) {
+        return "<tr><th>" + r[0] + "</th><td>" + bezpecne(r[1]) + "</td></tr>";
+      }).join("") + "</table>"
+      + "<p class='hlaska hlaska--info' style='margin-top:1.6rem'>"
+      + bezpecne(obal.dataset.poznamka || "") + "</p>";
+    $$("[data-lupa]", obal).forEach(function (b) {
+      b.addEventListener("click", function () { otevriLupu(fotky, Number(b.dataset.lupa)); });
+    });
+  }
+
   /* ---------- navigace ---------- */
   function navigace() {
     var tlacitko = $(".hamburger");
@@ -332,6 +477,19 @@
     }, { passive: true });
   }
 
+  /** Na úvodu přepínač schová obory, které pro danou skupinu nedávají smysl. */
+  function filtrujObory(varianta) {
+    var mrizka = $("[data-obory]");
+    if (!mrizka) return;
+    var videt = [];
+    $$("[data-segmenty]", mrizka).forEach(function (karta) {
+      var ok = karta.dataset.segmenty.split(" ").indexOf(varianta) >= 0;
+      karta.hidden = !ok;
+      if (ok) videt.push(karta);
+    });
+    vplyn(videt);
+  }
+
   /* ---------- hero: přepínač, nitkový kříž, tok potrubím ---------- */
   function hero() {
     $$("[data-prepinac]").forEach(function (obal) {
@@ -341,8 +499,7 @@
           var varianta = tl.dataset.varianta;
           tlacitka.forEach(function (j) { j.setAttribute("aria-pressed", String(j === tl)); });
           $$("[data-varianta-obsah]").forEach(function (el) { el.hidden = el.dataset.variantaObsah !== varianta; });
-          prekresli(varianta);
-          spustTok();
+          filtrujObory(varianta);
         });
       });
     });
@@ -406,6 +563,7 @@
       beh = requestAnimationFrame(krok);
     }
     setTimeout(spustTok, 1400);
+    filtrujObory("b2b");
   }
 
 
@@ -551,21 +709,14 @@
     var obal = $("[data-seznam-staveb]");
     if (!obal) return;
     var stav = { obor: "vse", segment: "vse", rok: "vse" };
-    var polozky = $$("[data-stavba]", obal);
-    var pocetEl = $("[data-pocet-staveb]", obal);
-    var sablona = pocetEl ? pocetEl.textContent : "";
     function pouzij() {
-      var videt = 0;
-      polozky.forEach(function (el) {
-        var ok = (stav.obor === "vse" || el.dataset.obory.split(" ").indexOf(stav.obor) >= 0)
+      $$("[data-stavba]", obal).forEach(function (el) {
+        el.hidden = !((stav.obor === "vse" || (el.dataset.obory || "").split(" ").indexOf(stav.obor) >= 0)
           && (stav.segment === "vse" || el.dataset.segment === stav.segment)
-          && (stav.rok === "vse" || el.dataset.rok === stav.rok);
-        el.hidden = !ok;
-        if (ok) videt += 1;
+          && (stav.rok === "vse" || el.dataset.rok === stav.rok));
       });
-      $("[data-prazdno]", obal).hidden = videt > 0;
-      vplyn(polozky.filter(function (el) { return !el.hidden; }));
-      if (pocetEl) pocetEl.textContent = sablona.replace(/^\D*\d+/, function (m) { return m.replace(/\d+$/, String(videt)); });
+      vplyn($$("[data-stavba]", obal).filter(function (el) { return !el.hidden; }));
+      prepocitejStavby();
     }
     $$("button[data-filtr]", obal).forEach(function (tl) {
       tl.addEventListener("click", function () {
@@ -1065,6 +1216,8 @@
     prepisyUdaju();
     prilohy();
     tema();
+    fotkyStaveb();
+    stavbyZUloziste();
     navigace(); prijezd(); rastr(); svitivaMrizka(); pravitko(); pocitadla();
     hero(); naklon(); otacecka(); magnety(); meric(); gantt();
     filtrujStavby(); filtrujRecenze(); dotazy(); kalkulacky(); pruvodce(); formulare();

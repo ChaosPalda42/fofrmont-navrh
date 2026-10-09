@@ -16,12 +16,13 @@ const OUT = path.join(KOREN, "out");
 const JAZYKY = ["cs", "en"];
 
 const SOUBORY = {
-  uvod: "index.html", montaze: "co-montujeme.html", narocne: "narocne-prostory.html",
+  uvod: "index.html", montaze: "co-delame.html",
   jakPracujeme: "jak-pracujeme.html", b2b: "pro-generalni-dodavatele.html", b2c: "pro-domacnosti.html",
   stavby: "stavby.html", recenze: "recenze.html", poptavka: "poptavka.html",
   kalkulacky: "orientacni-vypocty.html", oNas: "o-firme.html", kariera: "kariera.html",
   dotazy: "caste-dotazy.html", kontakt: "kontakt.html", administrace: "administrace.html",
   ukazka: "o-ukazce.html", soukromi: "ochrana-udaju.html", chyba404: "404.html",
+  stavbaNova: "stavba.html",
   prokoho: "pro-generalni-dodavatele.html", vice: "o-firme.html",
 };
 
@@ -38,7 +39,7 @@ function ctxProJazyk(jazyk, data, otisky) {
   };
   const prefix = jazyk === "cs" ? "" : "../";
   const souborProId = (id) => {
-    if (id.startsWith("obor-")) return `montaz-${id.slice(5)}.html`;
+    if (id.startsWith("obor-")) return `sluzba-${id.slice(5)}.html`;
     if (id.startsWith("stavba-")) return `stavba-${id.slice(7)}.html`;
     return SOUBORY[id] || "index.html";
   };
@@ -136,7 +137,6 @@ async function main() {
     for (const obor of site.obory) {
       await uloz(`obor-${obor.slug}`, obor.nazev, obor.perex, `obor-${obor.slug}`, () => S1.oborDetail(ctx, obor));
     }
-    await uloz("narocne", t("narocne.nadpis"), t("narocne.lead"), "narocne", () => S1.narocne(ctx));
     await uloz("jakPracujeme", t("jakPracujeme.nadpis"), t("jakPracujeme.lead"), "jakPracujeme", () => S1.jakPracujeme(ctx));
     await uloz("b2b", t("b2b.nadpis"), t("b2b.lead"), "b2b", () => S1.b2b(ctx));
     await uloz("b2c", t("b2c.nadpis"), t("b2c.lead"), "b2c", () => S1.b2c(ctx));
@@ -144,6 +144,7 @@ async function main() {
     for (const s of site.stavby) {
       await uloz(`stavba-${s.id}`, s.nazev, s.perex, "stavby", () => S2.stavbaDetail(ctx, s));
     }
+    await uloz("stavbaNova", t("stavby.novaStitek"), t("stavby.lead"), "stavby", () => S2.stavbaZUloziste(ctx));
     await uloz("recenze", t("recenze.nadpis"), t("recenze.lead"), "recenze", () => S2.recenze(ctx));
     await uloz("poptavka", t("poptavka.nadpis"), t("poptavka.lead"), "poptavka", () => S2.poptavka(ctx));
     await uloz("kalkulacky", t("kalkulacky.nadpis"), t("kalkulacky.lead"), "kalkulacky", () => S2.kalkulacky(ctx));

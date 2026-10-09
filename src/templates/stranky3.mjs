@@ -197,15 +197,18 @@ export function kontakt(ctx) {
 export function oUkazce(ctx) {
   const { t, odkaz, site } = ctx;
   const skutecne = [
-    "Název, IČO, DIČ, sídlo, datum vzniku, jednatel a spisová značka — z veřejného rejstříku (ARES).",
-    "Popis toho, co firma montuje a co naopak nedělá — podle zadání od klienta.",
+    "Název, IČO, DIČ, sídlo, datum vzniku, jednatel a spisová značka Fofrmontu — z veřejného rejstříku (ARES).",
+    "Rozdělení nabídky na firmy a domácnosti a skladba úvodní stránky — podle schůzky 9. 10. 2026.",
+    "To, že pronájem techniky, aut a správu nemovitostí zajišťuje sesterská firma Real Staff.",
   ];
   const smyslene = [
-    "Všech osm staveb včetně čísel, termínů a rolí. Žádná z nich neproběhla.",
-    "Všechny recenze i jejich autoři.",
+    "Všech osm staveb v referencích včetně čísel, termínů a rolí. Žádná z nich neproběhla.",
+    "Všechny recenze i jejich autoři. Označení „Google“ u některých z nich je jen ukázka, jak to bude vypadat po napojení firemního profilu.",
+    "Popisy u nových oborů (realizace staveb, pronájem techniky, pronájem aut, správa nemovitostí) — čekáme na rozpis činností od vás.",
     "Údaje „24 montérů“ a podobná čísla v přehledu.",
     "Otevřené pozice v sekci Kariéra.",
-    "Telefon (je uvedený jako XXX) a e-mailové adresy — doména zatím neexistuje.",
+    "Telefon (je uvedený jako XXX) a e-mailové adresy.",
+    "Logo. Fofrmont i Real Staff dodají vlastní; zatím je v ukázce naše značka.",
   ];
   return [
     hlavicka(ctx, {
@@ -224,7 +227,17 @@ export function oUkazce(ctx) {
       </div>
     </div></section>`,
     `<section class="pas pas--tesny pas--linka"><div class="obal" style="max-width:62ch">
-      <h2 style="font-size:1.4rem">Jak to nahradit skutečnými daty</h2>
+      <h2 style="font-size:1.4rem">Co se změnilo po schůzce 9. 10. 2026</h2>
+      <ul class="seznam">
+        <li>Úvodní stránka ukazuje rovnou všechny obory; izometrický výkres z hlavičky je pryč.</li>
+        <li>Nabídka se dělí na firmy a domácnosti.</li>
+        <li>Přibyly obory Real Staffu: pronájem techniky, pronájem aut a správa nemovitostí.</li>
+        <li>Sekce Náročné prostory a statistiky návštěvnosti v administraci byly odstraněny.</li>
+        <li>Reference jsou jen hotové realizace a dají se k nim v administraci nahrát fotky.</li>
+        <li>Recenze počítají s napojením na firemní profil na Googlu.</li>
+      </ul>
+
+      <h2 style="font-size:1.4rem;margin-top:2rem">Jak to nahradit skutečnými daty</h2>
       <p>Všechny texty, stavby i recenze se dají přepsat v <a href="${odkaz("administrace")}">demo administraci</a>.
       Změny se v ukázce ukládají jen do vašeho prohlížeče a dají se stáhnout jako soubor.
       V ostré verzi by se stejné rozhraní napojilo na server.</p>

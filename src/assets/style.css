@@ -1175,3 +1175,73 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
   100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 106, 31, 0); }
 }
 @media (prefers-reduced-motion: reduce) { .tl--tepe { animation: none; } }
+
+/* ======================================================================
+   Úvodní hlavička s obory — všechno na první obrazovce
+   ====================================================================== */
+.hero--obory { padding: clamp(1.6rem, 1rem + 2.4vw, 2.8rem) 0 clamp(2rem, 1.4rem + 2vw, 3rem); }
+.hero--obory h1 {
+  font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem); max-width: 20ch; white-space: pre-line; margin-bottom: 0;
+}
+.hero--obory .podtrzeni { margin-top: .7rem; }
+.hero--obory .hero__lead { max-width: 74ch; margin: .9rem 0 0; font-size: clamp(.98rem, .94rem + .3vw, 1.12rem); }
+.hero__akce {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: .9rem 1.4rem; margin: 1.3rem 0 1.4rem;
+}
+.hero__prepinac { margin: 0; justify-content: flex-start; }
+.mrizka--obory { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); }
+.karta--obor { padding: .85rem .95rem 1rem; }
+.karta--obor .karta__cislo { margin-bottom: .45rem; font-size: .62rem; }
+.karta--obor .karta__nadpis { margin-bottom: .25rem; line-height: 1.2; }
+.karta--obor .karta__text { font-size: .83rem; line-height: 1.45; }
+.karta--obor[hidden] { display: none !important; }
+.hero__poznamka { margin: .9rem 0 0; }
+@media (max-width: 40rem) {
+  .mrizka--obory { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .55rem; }
+  .karta--obor { padding: .7rem .75rem .8rem; }
+  .karta--obor .karta__text { display: none; }
+}
+
+.znacka-firmy {
+  display: inline-block; margin-left: .4rem; padding: .02rem .34rem; border-radius: 2px;
+  border: 1px solid var(--cara-2); color: var(--sedy-2); font-size: .58rem; letter-spacing: .08em;
+}
+
+/* ======================================================================
+   Fotky k realizacím
+   ====================================================================== */
+.galerie { display: grid; gap: .5rem; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); margin-bottom: 1.4rem; }
+.galerie button {
+  padding: 0; border: 1px solid var(--cara-3); border-radius: var(--radius); background: var(--bila);
+  cursor: zoom-in; overflow: hidden; aspect-ratio: 4 / 3; transition: border-color var(--prechod), transform var(--prechod);
+}
+.galerie button:hover { border-color: var(--cara); transform: translateY(-2px); }
+.galerie img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.galerie--prvni { grid-template-columns: 1fr; }
+.karta__motiv img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius); display: block; }
+
+.lupa {
+  position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 2rem;
+  background: rgba(9, 22, 38, .9); cursor: zoom-out; opacity: 0; pointer-events: none;
+  transition: opacity 240ms ease;
+}
+.lupa[data-otevreno="1"] { opacity: 1; pointer-events: auto; }
+.lupa img { max-width: 100%; max-height: 100%; border-radius: var(--radius); box-shadow: var(--stin-2); }
+.lupa__zavrit {
+  position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .4); background: rgba(0, 0, 0, .35); color: #fff; cursor: pointer;
+  display: grid; place-items: center;
+}
+
+/* fotky v administraci */
+.admin-fotky { display: grid; gap: .5rem; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); margin-top: .6rem; }
+.admin-fotky figure { position: relative; margin: 0; border: 1px solid var(--cara-3); border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 3; }
+.admin-fotky img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.admin-fotky button {
+  position: absolute; top: .25rem; right: .25rem; width: 24px; height: 24px; border-radius: 50%;
+  border: 0; background: rgba(9, 22, 38, .75); color: #fff; cursor: pointer; display: grid; place-items: center;
+}
+.admin-fotky button:hover { background: var(--cervena); }
+
+.zdroj-google { display: inline-flex; align-items: center; gap: .28rem; color: var(--cara); }

@@ -73,33 +73,6 @@
     "textySekce": "Area",
     "textyVse": "All",
     "zalozkaNastaveni": "Contact Information",
-    "statDelka": "Average visits",
-    "statGrafNadpis": "Day-over-day visits",
-    "statGrafPoptavky": "Inquiries sent from the website",
-    "statLead": "How many people visit the website, where they come from, and what they read. The numbers in this sample are fictional — in the live version, they would be loaded from traffic measurements.",
-    "statNavstevy": "Visits",
-    "statNavstevyTvary": [
-      "visit",
-      "visits",
-      "visits"
-    ],
-    "statObdobi": "Period",
-    "statObdobi30": "30 days",
-    "statObdobi7": "7 days",
-    "statObdobi90": "90 days",
-    "statOprotiMinule": "compared to the previous period",
-    "statOpusteni": "Leaves immediately",
-    "statPoptavky": "Website inquiries",
-    "statPoznamka": "In the live version, numbers are taken from traffic measurements (Google Analytics, or Matomo or Plausible, if you do not want to send data to Google). Measurement can be connected without affecting the website's appearance.",
-    "statStranka": "Page",
-    "statStranky": "Most read pages",
-    "statUzivatele": "People",
-    "statZarizeni": "Viewed on",
-    "statZdroje": "Where people came from",
-    "statZive": "Currently on the website: {pocet}",
-    "statZobrazeni": "Page views",
-    "statZobrazeniSloupec": "Views",
-    "zalozkaStatistiky": "Statistics",
     "zarizeniMobil": "Mobile",
     "zarizeniPocitac": "Desktop",
     "zarizeniTablet": "Tablet",
@@ -114,7 +87,16 @@
     "textyPrazdno": "Nothing found. Try another word.",
     "textyUpraveno": "edited",
     "textyVratitVse": "Revert all changes on this page",
-    "textyZobrazit": "View page"
+    "textyZobrazit": "View page",
+    "fotkyLimit": "We take a maximum of 8 photos per project at one time.",
+    "fotkyOdebrat": "Remove photo",
+    "fotkyPopis": "Photos will be resized and saved in the browser. In the production version, they will be uploaded to the server in full quality.",
+    "fotkyPrazdno": "No photos yet. Drag them here or select them.",
+    "fotkyPridat": "Add photos",
+    "googleNadpis": "Google reviews",
+    "googleText": "Once a Google Business Profile is created, reviews will be downloaded here. You can approve them just like the ones from the website.",
+    "stavbyFotky": "Project photos",
+    "zalozkaFotky": "Photos"
   },
   "b2b": {
     "ctaNadpis": "Do you have a tender inquiry?",
@@ -335,20 +317,6 @@
     "nedelameLead": "We'd rather be upfront than have you find out halfway through the construction.",
     "nedelameNadpis": "What we don't do"
   },
-  "narocne": {
-    "ctaNadpis": "Did you get a high difficulty score?",
-    "ctaText": "Excellent. That's a job for us. Send us the specifications, and we'll come to take a look.",
-    "doporuceniNadpis": "What to expect with such a project",
-    "lead": "Chiseling into a historic vault, piping eleven meters above passengers' heads, a pump for a pantry. Here is our indicative difficulty meter — answer six questions and see how we view your project.",
-    "mericNadpis": "Difficulty Meter",
-    "mericPopis": "For each factor, select the option that fits best. The result is indicative, but it tells you what to expect with us.",
-    "nadpis": "Challenging spaces",
-    "priklady": "Three projects where we scored high",
-    "prispevkyNadpis": "What increases difficulty the most",
-    "stitek": "Our specialty",
-    "vysledekChybi": "Select {pocet} more, to make it complete.",
-    "vysledekNadpis": "Complexity estimate"
-  },
   "nav": {
     "administrace": "Administration",
     "b2b": "For general contractors",
@@ -359,7 +327,6 @@
     "kariera": "Careers",
     "kontakt": "Contact",
     "montaze": "What we install",
-    "narocne": "Challenging spaces",
     "oNas": "About us",
     "poptavka": "Inquiry",
     "prokoho": "For whom",
@@ -435,7 +402,24 @@
     "zti": {
       "detail": "Internal water supply including fire protection, sewage and stormwater drainage, hot water circulation, and its regulation. We specialize in rerouting during operation, where water continues to flow and downtime lasts hours, not days.",
       "kdyVolat": "When you need water supply, drainage, or sanitary fixtures — often in a building where another company said it couldn't be done."
-    }
+    },
+    "auta": {
+      "detail": "Commercial and passenger vehicles for a day, a month, or longer. Insurance is included, and the car is delivered ready and clean.",
+      "kdyVolat": "When you need a van for moving or a vehicle for a temporary period."
+    },
+    "sprava": {
+      "detail": "We will take care of technical building management: regular inspections, minor maintenance, and coordination of trades. Anything we cannot do ourselves, we will arrange through proven partners.",
+      "kdyVolat": "When you own a building and don't want to deal with every faulty socket or dripping faucet."
+    },
+    "stavarina": {
+      "detail": "We handle the construction part of the contract related to the building's technical systems: penetrations, infill masonry, concrete topping, modifications to machine rooms and technical rooms, as well as complete space reconstruction. The advantage is simple — no one shifts responsibility at the boundary of professions.",
+      "kdyVolat": "When installation includes construction work and you don't want to hire an additional contractor for it."
+    },
+    "technika": {
+      "detail": "We rent construction equipment for the short term or for the entire duration of the project. We deliver the equipment, train the operators, and provide service during the rental period.",
+      "kdyVolat": "When you need a machine for a few days and it doesn't make sense to buy it."
+    },
+    "znackaRealstaff": "Real Staff"
   },
   "patka": {
     "copyright": "© {rok} FOFRMONT CZ s.r.o.",
@@ -520,7 +504,12 @@
     "razeniNejlepsi": "Best",
     "razeniNejnovejsi": "Newest",
     "stitek": "Customer testimonials",
-    "zPoctu": "out of {pocet}"
+    "zPoctu": "out of {pocet}",
+    "googleNadpis": "Google Reviews",
+    "googleText": "Reviews are being loaded from the Fofrmont Google Business Profile. You can write a new one directly there or via the form below.",
+    "googleTlacitko": "Write a review on Google",
+    "zdrojGoogle": "From Google Business Profile",
+    "zdrojWeb": "Submitted via web"
   },
   "spolecne": {
     "cta": "Non-binding inquiry",
@@ -582,22 +571,18 @@
     "lead": "A selection of completed projects. For each, we describe the most challenging part of the brief and how we solved it.",
     "nadpis": "Projects",
     "pocet": "Showing {zobrazeno} of {celkem}",
-    "stitek": "References"
+    "stitek": "References",
+    "neniNalezena": "We couldn't find this reference. It may have been deleted.",
+    "novaPoznamka": "This reference is currently only in your browser — you added it in the administration. In the live version, it would be immediately on the website for everyone after saving.",
+    "novaStitek": "New reference"
   },
   "uvod": {
     "ctaHlavni": "I want a non-binding quote",
     "ctaPatka": "Do you have a project, or at least an idea?",
     "ctaPatkaText": "Send us your brief and we will get back to you within two working days to let you know if we can do it, when we can do it, and at what cost.",
     "ctaVedlejsi": "View projects",
-    "heroB2bNadpis": "Hospitals, terminals, halls",
-    "heroB2bText": "We install during operation, in night shifts, and within a schedule that holds. For general contractors, we are the subcontractor who calls not with a problem, but with a solution.",
-    "heroB2cNadpis": "Family houses and apartments",
-    "heroB2cText": "A heat pump for a technical room the size of a pantry, piping in a house where no wall-cutting is allowed. The tighter the space, the better.",
     "lead": "Ventilation, heating, plumbing, and cooling. Supply and installation in a single contract — for general contractors on large-scale projects and for family houses.",
     "nadpis": "We will assemble it even where the design says it's impossible",
-    "narocneCta": "Calculate complexity",
-    "narocneLead": "Most companies want a level ceiling, free access, and an empty construction site. We choose exactly what others have rejected. Try calculating how demanding yours is.",
-    "narocneNadpis": "The more complex the space, the greater the challenge",
     "oboryLead": "We are not a design office or a service company. We are the ones who actually assemble it — and who stand behind it.",
     "oboryNadpis": "Six professions, one team",
     "postupLead": "Eight steps from the first call to handover. We skip none of them.",
@@ -608,14 +593,23 @@
     "stavbyLead": "From operating rooms to residential attics. The same rule applies everywhere: cleaned and functional by morning.",
     "stavbyNadpis": "Recent projects",
     "stitek": "HVAC installations · since 2014",
-    "otacejte": "You can grab and rotate the drawing.",
-    "vykresJednotka": "AHU unit 12,000 m³/h",
-    "vykresKota1": "4,000",
-    "vykresKota1c": "2,600",
-    "vykresKota2": "+3.60",
-    "vykresKota2c": "+4.40",
-    "vykresOdbocka": "Ø 400 — branch to the OR",
-    "vykresTc": "Air-to-water heat pump 14 kW",
-    "vykresZasobnik": "Accumulation + DHW"
+    "realstaffPoznamka": "Equipment and vehicle rental, as well as property management, are provided by our sister company Real Staff.",
+    "vsechnyObory": "All sectors"
+  },
+  "_parkovano": {
+    "narocne": {
+      "ctaNadpis": "Have you encountered a challenging project?",
+      "ctaText": "Excellent. That is a job for us. Send us the specifications, and we will come take a look.",
+      "doporuceniNadpis": "What to expect with such a construction",
+      "lead": "Chiseling into a historic vault, piping eleven meters above passengers' heads, a pump for a pantry. Here is our approximate complexity meter — answer six questions and see how we view your project.",
+      "mericNadpis": "Complexity Meter",
+      "mericPopis": "For each factor, select the option that fits best. The result is an estimate, but it tells you what to expect from us.",
+      "nadpis": "Challenging spaces",
+      "priklady": "Three projects with high complexity scores",
+      "prispevkyNadpis": "What increases complexity the most",
+      "stitek": "Our specialty",
+      "vysledekChybi": "Select {pocet} more to complete the assessment.",
+      "vysledekNadpis": "Complexity Estimate"
+    }
   }
 }

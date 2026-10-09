@@ -48,164 +48,28 @@
   }
 
 
-  /* ---------- statistiky návštěvnosti (ukázková data) ---------- */
-  var statObdobi = 30;
-  var statRada = null;
+  /* ---------- fotky k realizacím ---------- */
+  var MAX_FOTEK = 8;
 
-  function statistiky(panel) {
-    if (!FM.statistiky) { panel.innerHTML = "<p class='prazdno'>Statistiky nejsou k dispozici.</p>"; return; }
-    var S = FM.statistiky;
-    if (!statRada) statRada = S.generuj(20260930, 120, Z.dnes || "2026-09-30");
-
-    var vyrez = S.vyrez(statRada, statObdobi);
-    var porovnani = S.porovnani(statRada, statObdobi);
-    var souhrn = S.souhrn(vyrez);
-    var delka = 96 + (statObdobi % 7) * 11;
-    var opusteni = 42 - Math.round(statObdobi / 30);
-    var zive = 1 + (souhrn.navstevy % 5);
-
-    var cislo = function (v) { return FM.vypocty ? FM.vypocty.formatujCislo(v) : String(v); };
-    var zmenaHtml = function (z) {
-      var smer = z > 0 ? "nahoru" : z < 0 ? "dolu" : "stejne";
-      var sipka = z > 0 ? "▲" : z < 0 ? "▼" : "–";
-      return "<span class='stat-zmena' data-smer='" + smer + "'>" + sipka + " " + Math.abs(z)
-        + " % <span class='tise'>" + esc(H.statOprotiMinule) + "</span></span>";
-    };
-    var dlazdice = function (hodnota, popis, zmena) {
-      return "<div class='karta rohy'><div class='stat-cislo'>" + hodnota + "</div>"
-        + "<div class='stat-popis'>" + esc(popis) + "</div>"
-        + (zmena === null ? "" : zmenaHtml(zmena)) + "</div>";
-    };
-    var obdobiTlacitko = function (dnu, popisek) {
-      return "<button type='button' class='chip' data-obdobi='" + dnu + "' aria-pressed='"
-        + (statObdobi === dnu) + "'>" + esc(popisek) + "</button>";
-    };
-
-    // --- graf návštěv: plocha + čára, pod ním sloupce poptávek (sdílená osa) ---
-    var W = 640, H1 = 150, H2 = 44;
-    var k = S.krivka(vyrez, "navstevy", W, H1);
-    var osa = S.osa(vyrez, Math.min(6, vyrez.length));
-    var maxPoptavek = Math.max(1, vyrez.reduce(function (m, d) { return Math.max(m, d.poptavky); }, 0));
-    var sirkaSloupce = Math.max(2, Math.min(9, (W / Math.max(1, vyrez.length)) * 0.55));
-    var sloupce = vyrez.map(function (d, i) {
-      var x = vyrez.length === 1 ? 0 : (i / (vyrez.length - 1)) * W;
-      var v = (d.poptavky / maxPoptavek) * H2;
-      return "<rect class='graf-sloupec' x='" + (x - sirkaSloupce / 2).toFixed(1) + "' y='" + (H2 - v).toFixed(1)
-        + "' width='" + sirkaSloupce.toFixed(1) + "' height='" + Math.max(0, v).toFixed(1) + "' rx='1.5'/>";
-    }).join("");
-    var mrizka = [0, 0.5, 1].map(function (podil) {
-      var y = (H1 * podil).toFixed(1);
-      return "<line class='graf-mrizka' x1='0' y1='" + y + "' x2='" + W + "' y2='" + y + "'/>";
-    }).join("");
-    var popiskyOsy = osa.map(function (o) {
-      var x = vyrez.length === 1 ? 0 : (o.index / (vyrez.length - 1)) * W;
-      var kotva = o.index === 0 ? "start" : o.index === vyrez.length - 1 ? "end" : "middle";
-      return "<text class='graf-osa' x='" + x.toFixed(1) + "' y='" + (H1 + 14) + "' text-anchor='" + kotva + "'>"
-        + esc(o.datum.slice(8) + ". " + Number(o.datum.slice(5, 7)) + ".") + "</text>";
-    }).join("");
-
-    panel.innerHTML = "<p class='male tise'>" + esc(H.statLead) + "</p>"
-      + "<div class='stat-hlavicka'>"
-      + "<div class='filtry' style='margin:0'><span class='mono male tise'>" + esc(H.statObdobi) + "</span>"
-      + obdobiTlacitko(7, H.statObdobi7) + obdobiTlacitko(30, H.statObdobi30) + obdobiTlacitko(90, H.statObdobi90)
-      + "</div>"
-      + "<span class='stat-zive'><i></i>" + esc(String(H.statZive).replace("{pocet}", String(zive))) + "</span>"
-      + "</div>"
-      + "<div class='stat-dlazdice'>"
-      + dlazdice(cislo(porovnani.navstevy.hodnota), H.statNavstevy, porovnani.navstevy.zmena)
-      + dlazdice(cislo(porovnani.uzivatele.hodnota), H.statUzivatele, porovnani.uzivatele.zmena)
-      + dlazdice(cislo(porovnani.zobrazeni.hodnota), H.statZobrazeni, porovnani.zobrazeni.zmena)
-      + dlazdice(S.formatujTrvani(delka), H.statDelka, null)
-      + dlazdice(opusteni + " %", H.statOpusteni, null)
-      + dlazdice(cislo(porovnani.poptavky.hodnota), H.statPoptavky, porovnani.poptavky.zmena)
-      + "</div>"
-
-      + "<div class='karta rohy' style='margin-bottom:1.2rem'>"
-      + "<h3 style='font-size:1rem;margin-bottom:.9rem'>" + esc(H.statGrafNadpis) + "</h3>"
-      + "<div class='graf' data-graf>"
-      + "<svg viewBox='0 0 " + W + " " + (H1 + 22) + "' preserveAspectRatio='none' role='img' aria-label='"
-      + esc(H.statGrafNadpis) + "'>" + mrizka
-      + "<path class='graf-plocha' d='" + k.plocha + "'/><path class='graf-cara' d='" + k.cesta + "'/>"
-      + "<line class='graf-kriz' data-kriz y1='0' y2='" + H1 + "' x1='0' x2='0'/>"
-      + "<circle class='graf-bod' data-bod r='4' cx='-99' cy='-99' style='opacity:0'/>"
-      + "<rect class='graf-plocha-dotyku' x='0' y='0' width='" + W + "' height='" + (H1 + 22) + "' data-plocha/>"
-      + popiskyOsy + "</svg>"
-      + "<div class='graf-bublina' data-bublina></div></div>"
-      + "<h3 style='font-size:.9rem;margin:1.1rem 0 .5rem;color:var(--sedy)'>" + esc(H.statGrafPoptavky) + "</h3>"
-      + "<svg viewBox='0 0 " + W + " " + H2 + "' preserveAspectRatio='none' role='img' aria-label='"
-      + esc(H.statGrafPoptavky) + "' style='width:100%;height:" + H2 + "px'>" + sloupce + "</svg>"
-      + "</div>"
-
-      + "<div class='mrizka mrizka--2' style='margin-bottom:1.2rem'>"
-      + "<div class='karta rohy'><h3 style='font-size:1rem;margin-bottom:.9rem'>" + esc(H.statZdroje) + "</h3>"
-      + (Z.statZdroje || []).map(function (z) {
-        return "<div class='stat-pruh'><span>" + esc(z.id) + "</span>"
-          + "<span class='stat-pruh__drazka'><i style='--podil:" + z.podil + "%'></i></span>"
-          + "<span class='stat-pruh__hodnota'>" + cislo(Math.round(souhrn.navstevy * z.podil / 100))
-          + " · " + z.podil + " %</span></div>";
-      }).join("") + "</div>"
-      + "<div class='karta rohy'><h3 style='font-size:1rem;margin-bottom:.9rem'>" + esc(H.statZarizeni) + "</h3>"
-      + (Z.statZarizeni || []).map(function (z) {
-        return "<div class='stat-pruh'><span>" + esc(z.id) + "</span>"
-          + "<span class='stat-pruh__drazka'><i style='--podil:" + z.podil + "%'></i></span>"
-          + "<span class='stat-pruh__hodnota'>" + z.podil + " %</span></div>";
-      }).join("") + "</div></div>"
-
-      + "<div class='karta rohy'><h3 style='font-size:1rem;margin-bottom:.9rem'>" + esc(H.statStranky) + "</h3>"
-      + "<div class='posuvne'><table class='stat-tabulka'><thead><tr><th>" + esc(H.statStranka)
-      + "</th><th></th><th>" + esc(H.statZobrazeniSloupec) + "</th></tr></thead><tbody>"
-      + (function () {
-        var celkem = (Z.statStranky || []).reduce(function (a, s) { return a + s.vaha; }, 0) || 1;
-        return (Z.statStranky || []).map(function (s) {
-          var zobrazeni = Math.round(souhrn.zobrazeni * s.vaha / celkem);
-          var podil = Math.round(s.vaha / (Z.statStranky[0].vaha || 1) * 100);
-          return "<tr><td>" + esc(s.nazev) + "<br><span class='mono male tise'>" + esc(s.cesta) + "</span></td>"
-            + "<td style='width:40%'><span class='stat-pruh__drazka'><i style='--podil:" + podil + "%'></i></span></td>"
-            + "<td>" + cislo(zobrazeni) + "</td></tr>";
-        }).join("");
-      })() + "</tbody></table></div></div>"
-
-      + "<p class='hlaska hlaska--info' style='margin-top:1.2rem'>" + esc(H.statPoznamka) + "</p>";
-
-    $$("[data-obdobi]", panel).forEach(function (b) {
-      b.addEventListener("click", function () { statObdobi = Number(b.dataset.obdobi); statistiky(panel); });
-    });
-    najedGraf(panel, vyrez, k, W, H1);
-  }
-
-  /** Nitkový kříž a bublina nad grafem návštěv. */
-  function najedGraf(panel, rada, krivka, sirka, vyska) {
-    var graf = $("[data-graf]", panel);
-    if (!graf || !rada.length) return;
-    var plocha = $("[data-plocha]", graf);
-    var kriz = $("[data-kriz]", graf);
-    var bod = $("[data-bod]", graf);
-    var bublina = $("[data-bublina]", graf);
-    var cislo = function (v) { return FM.vypocty ? FM.vypocty.formatujCislo(v) : String(v); };
-
-    plocha.addEventListener("pointermove", function (e) {
-      var r = graf.getBoundingClientRect();
-      var podil = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
-      var i = Math.round(podil * (rada.length - 1));
-      var den = rada[i];
-      var b = krivka.body[i];
-      graf.dataset.nad = "1";
-      kriz.setAttribute("x1", b.x);
-      kriz.setAttribute("x2", b.x);
-      bod.setAttribute("cx", b.x);
-      bod.setAttribute("cy", b.y);
-      bod.style.opacity = "1";
-      bublina.style.left = (b.x / sirka * 100) + "%";
-      bublina.style.top = (b.y / (vyska + 22) * r.height) + "px";
-      var tvar = FM.i18n && Array.isArray(H.statNavstevyTvary)
-        ? FM.i18n.pocet(den.navstevy, H.statNavstevyTvary, Z.jazyk)
-        : String(H.statNavstevy).toLowerCase();
-      bublina.innerHTML = "<b>" + cislo(den.navstevy) + "</b> " + esc(tvar)
-        + "<br><span class='tise'>" + esc(den.datum) + "</span>";
-    });
-    plocha.addEventListener("pointerleave", function () {
-      graf.dataset.nad = "0";
-      bod.style.opacity = "0";
+  /** Fotku zmenšíme a uložíme jako datovou adresu — v ukázce není kam ji nahrát. */
+  function zmensiFotku(soubor, maxSirka) {
+    return new Promise(function (hotovo, chyba) {
+      var cteni = new FileReader();
+      cteni.onerror = function () { chyba(new Error("soubor se nepodařilo přečíst")); };
+      cteni.onload = function () {
+        var obrazek = new Image();
+        obrazek.onerror = function () { chyba(new Error("neplatný obrázek")); };
+        obrazek.onload = function () {
+          var pomer = Math.min(1, maxSirka / obrazek.width);
+          var platno = document.createElement("canvas");
+          platno.width = Math.round(obrazek.width * pomer);
+          platno.height = Math.round(obrazek.height * pomer);
+          platno.getContext("2d").drawImage(obrazek, 0, 0, platno.width, platno.height);
+          hotovo(platno.toDataURL("image/jpeg", 0.68));
+        };
+        obrazek.src = cteni.result;
+      };
+      cteni.readAsDataURL(soubor);
     });
   }
 
@@ -495,6 +359,8 @@
         + (filtrRecenzi === hodnota) + "'>" + esc(popisek) + "</button>";
     };
     panel.innerHTML = "<p class='male tise'>" + esc(H.recenzeLead) + "</p>"
+      + "<div class='hlaska hlaska--info' style='margin-bottom:1rem'><strong>" + esc(H.googleNadpis)
+      + "</strong><br>" + esc(H.googleText) + "</div>"
       + "<div class='filtry'><span class='mono male tise'>" + esc(H.recenzeFiltr) + "</span>"
       + chip("vse", H.recenzeVse) + chip("ceka", H.stavCeka) + chip("schvalena", H.stavSchvalena)
       + chip("skryta", H.stavSkryta) + "</div>"
@@ -550,6 +416,16 @@
         }).join("") + "</select></div>"
         + "<div class='pole'><label>" + esc(H.stavbyPerex) + "</label><textarea data-f='perex' rows='3'>" + esc(s.perex) + "</textarea></div>"
         + "<div class='pole'><label>" + esc(H.stavbyZadani) + "</label><textarea data-f='zadani' rows='3'>" + esc(s.zadani || "") + "</textarea></div>"
+        + "<div class='pole'><label>" + esc(H.stavbyFotky) + "</label>"
+        + "<label class='prilohy__zona' for='fotky-vstup'>"
+        + "<svg width='22' height='22' viewBox='0 0 20 20' fill='none' stroke='currentColor' stroke-width='1.5'"
+        + " stroke-linecap='round' stroke-linejoin='round'><rect x='2.5' y='4.5' width='15' height='11' rx='1.5'/>"
+        + "<circle cx='7' cy='8.5' r='1.3'/><path d='m3.5 14 4-4 3.5 3.5 2.5-2 3 2.5'/></svg>"
+        + "<span><strong>" + esc(H.fotkyPridat) + "</strong><br><span class='napoveda'>" + esc(H.fotkyPopis)
+        + "</span></span></label>"
+        + "<input type='file' id='fotky-vstup' accept='image/jpeg,image/png,image/webp,image/heic' multiple class='skryte' data-fotky-vstup>"
+        + "<div class='admin-fotky' data-fotky></div>"
+        + "<span class='chyba' data-fotky-chyba hidden></span></div>"
         + "<div class='pole'><label>Profese</label><div class='znacky'>" + Z.obory.map(function (o) {
           return "<label class='chip'><input type='checkbox' data-obor='" + o.id + "'"
             + ((s.obory || []).indexOf(o.id) >= 0 ? " checked" : "") + "> " + esc(o.nazev) + "</label>";
@@ -566,8 +442,9 @@
       + "<div data-misto-formulare></div>"
       + seznam.map(function (s) {
         return "<div class='admin-radek' data-id='" + esc(s.id) + "'>"
-          + "<div class='admin-radek__hlava'><strong>" + esc(s.nazev) + "</strong>"
-          + "<span class='mono male tise'>" + esc(s.misto) + " · " + esc(s.rok) + "</span></div>"
+          + "<div class='admin-radek__hlava'><strong>" + esc(s.nazev)
+          + (s.fotky && s.fotky.length ? " <span class='texty__pocet'>" + s.fotky.length + " foto</span>" : "")
+          + "</strong><span class='mono male tise'>" + esc(s.misto) + " · " + esc(s.rok) + "</span></div>"
           + "<p class='male' style='margin:0;color:var(--sedy)'>" + esc(s.perex) + "</p>"
           + "<div class='admin-akce'><button class='tl tl--obrys tl--maly' type='button' data-upravit>Upravit</button>"
           + "<button class='tl tl--obrys tl--maly' type='button' data-smazat>" + esc(H.smazat) + "</button></div></div>";
@@ -576,6 +453,43 @@
     var misto = $("[data-misto-formulare]", panel);
     function otevri(s) {
       misto.innerHTML = formular(s);
+      var fotky = ((s && s.fotky) || []).slice();
+      var pas = $("[data-fotky]", misto);
+      var chybaFotek = $("[data-fotky-chyba]", misto);
+
+      function vykresliFotky() {
+        pas.innerHTML = fotky.length
+          ? fotky.map(function (f, i) {
+            return "<figure><img src='" + f + "' alt=''>"
+              + "<button type='button' data-smazat-fotku='" + i + "' aria-label='" + esc(H.fotkyOdebrat) + "'>"
+              + "<svg width='13' height='13' viewBox='0 0 20 20' fill='none' stroke='currentColor' stroke-width='2'"
+              + " stroke-linecap='round'><path d='m5 5 10 10M15 5 5 15'/></svg></button></figure>";
+          }).join("")
+          : "<p class='male tise' style='grid-column:1/-1;margin:0'>" + esc(H.fotkyPrazdno) + "</p>";
+        $$("[data-smazat-fotku]", pas).forEach(function (b) {
+          b.addEventListener("click", function () {
+            fotky.splice(Number(b.dataset.smazatFotku), 1);
+            vykresliFotky();
+          });
+        });
+      }
+
+      $("[data-fotky-vstup]", misto).addEventListener("change", function (e) {
+        var soubory = Array.prototype.slice.call(e.target.files);
+        chybaFotek.hidden = true;
+        if (fotky.length + soubory.length > MAX_FOTEK) {
+          chybaFotek.hidden = false;
+          chybaFotek.textContent = H.fotkyLimit;
+          soubory = soubory.slice(0, Math.max(0, MAX_FOTEK - fotky.length));
+        }
+        Promise.all(soubory.map(function (f) { return zmensiFotku(f, 1100).catch(function () { return null; }); }))
+          .then(function (nove) {
+            nove.filter(Boolean).forEach(function (f) { fotky.push(f); });
+            vykresliFotky();
+          });
+        e.target.value = "";
+      });
+      vykresliFotky();
       $("[data-ulozit-stavbu]", misto).addEventListener("click", function () {
         var f = $("[data-formular-stavby]", misto);
         var polozka = {};
@@ -585,8 +499,18 @@
         polozka.obory = $$("[data-obor]", f).filter(function (e) { return e.checked; })
           .map(function (e) { return e.dataset.obor; });
         polozka.motiv = polozka.motiv || "hala";
+        polozka.fotky = fotky;
+        var zaloha = stav;
         stav = A.ulozPolozku(stav, "stavby", polozka, Z.stavby);
-        uloz();
+        try {
+          uloz();
+        } catch (chyba) {
+          stav = zaloha;                      // úložiště prohlížeče je plné
+          chybaFotek.hidden = false;
+          chybaFotek.textContent = "Úložiště prohlížeče je plné. Odeberte část fotek, nebo v záložce "
+            + "Export a import stáhněte a vymažte starší změny.";
+          return;
+        }
         stavby(panel);
       });
       $("[data-zrusit]", misto).addEventListener("click", function () { misto.innerHTML = ""; });
@@ -721,7 +645,7 @@
     });
   }
 
-  var PANELY = { prehled: prehled, statistiky: statistiky, texty: texty, recenze: recenze,
+  var PANELY = { prehled: prehled, texty: texty, recenze: recenze,
     stavby: stavby, poptavky: poptavky, nastaveni: nastaveni, data: data };
 
   function vykresliPanel(id) {

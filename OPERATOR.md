@@ -103,3 +103,53 @@ webu bez nálezu, balíček `_balicek/Fofrmont-ukazka.zip` (432 kB).
 soubor právě zpracovávaného kontraktu (PATH_POLICY) — při běhu C-013 mi takhle
 zmizel hotový kus `src/assets/style.css` a projevilo se to až jako nastylovaný
 graf bez stylů. Buď počkat, nebo pracovat ve vlastním worktree.
+
+## Schůzka s klientem 9. 10. 2026 — co se změnilo
+
+Zápis ze schůzky (Fireflies) zůstal u Michaela; sem jdou jen rozhodnutí.
+Objednaný rozsah: web 7 000 + administrace 1 000 + založení firmy na Googlu
+a napojení recenzí 1 500 = **9 500 Kč**. Doména 200 Kč/rok (koupena), hosting
+~500 Kč/rok. Fakturace až po odsouhlasení finální verze, zatím na IČO.
+
+### Rozhodnutí promítnutá do webu
+1. **Jedna značka — Fofrmont.** Sesterská firma **Real Staff** (pronájem aut
+   a stavební techniky, správa nemovitostí) se nepropaguje samostatně; její
+   nabídka je součástí Fofrmontu, jen s drobnou značkou u oboru.
+   V ARESu pod názvem „Real Staff“ nic není — rejstříkové údaje nemáme
+   a nevymýšlíme je.
+2. **Úvodní stránka přestavěná.** Velký nadpis pokrývající montáže TZB
+   i realizaci staveb, krátké představení a **hned všechny obory**, bez
+   scrollování. Klient (resp. jeho otec) to chtěl výslovně takhle;
+   nabídli jsme protinázor (jeden scroll), neprošel — měřit se to dá později.
+3. **Izometrický výkres z hlavičky pryč.** Zůstal u referencí a jako dělicí
+   prvek. `scenaB2b`/`scenaB2c` a otáčení zůstávají v kódu pro případ návratu.
+4. **Rozdělení na firmy / domácnosti** je teď filtr oborů, ne přepínač výkresu.
+5. **Náročné prostory odstraněny** — klient nechce působit, že si vybírá.
+   `src/lib/obtiznost.mjs` (C-006), jeho test i data jsou **parkované**
+   v `site.json` pod `_parkovano`, stránka se negeneruje.
+6. **Stavby → Reference**, jen hotové realizace. Aktivní zakázky se vést nebudou.
+7. **Statistiky návštěvnosti odstraněny** z administrace (klient si je nekoupil).
+   `src/lib/statistiky.mjs` (C-013) a test zůstávají, panel je pryč.
+8. **Fotky u referencí.** V administraci jde ke každé referenci nahrát až osm
+   fotek; zmenší se na 1100 px / JPEG 0.68 a uloží se do `localStorage`.
+   Při zaplnění úložiště se změna vrátí a ukáže se srozumitelná hláška.
+9. **Reference přidané v administraci se objeví na webu.** Výpis je doplní
+   klientsky, detail vykresluje `stavba.html?id=…` z uloženého stavu
+   a poctivě říká, že je zatím jen v prohlížeči.
+10. **Google.** Recenze mají zdroj (Google / web), na stránce recenzí je blok
+    s odkazem na firemní profil (`site.kontakt.googleProfil`, zatím prázdný).
+    Veta „recenze procházejí schválením“ z veřejné části zmizela — klientův
+    otec správně namítl, že tím dává najevo výběr jen hezkých recenzí.
+
+### Čeká se na klienta (bez toho nejde dokončit)
+- rozpis činností Fofrmontu a Real Staffu (texty u oborů jsou zatím naše)
+- logo Fofrmontu ve vektoru; podoba loga Real Staffu (návrh je na nás)
+- podklady alespoň k jedné hotové realizaci (fotky + pár vět)
+- skutečný telefon a e-maily
+- kdo bude platit doménu a hosting
+
+### Otevřené otázky k rozhodnutí
+- přesné názvy oborů a znění úvodního nadpisu (teď „Montujeme a stavíme
+  po celé republice“ — návrh, ne schválené)
+- konečné rozdělení oborů mezi firmy a domácnosti (teď odhad)
+- zda Real Staff dostane v rejstříku dohledatelný název

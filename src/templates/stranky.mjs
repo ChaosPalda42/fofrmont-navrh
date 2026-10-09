@@ -1,7 +1,7 @@
 /** Stránky: úvod, přehled profesí, detail profese, náročné prostory, postup, B2B, B2C. */
 import { esc, odstavce, cisloCs } from "./lib.mjs";
 import { ikona, IKONY_OBORU } from "./ikony.mjs";
-import { vykresB2b, vykresB2c, motivStavby, hvezdy } from "./kresby.mjs";
+import { motivStavby, hvezdy } from "./kresby.mjs";
 import { hlavicka, drobecky, kartaOboru, kartaStavby, kartaRecenze, ctaPas, udaje, pasmo, deliciTrasa } from "./casti.mjs";
 import * as recenzeLib from "../lib/recenze.mjs";
 
@@ -12,66 +12,38 @@ export function uvod(ctx) {
   const posledni = recenzeLib.serad(viditelne, "nejnovejsi").slice(0, 3);
   const stavby = [...site.stavby].sort((a, b) => b.datum.localeCompare(a.datum)).slice(0, 3);
 
+  // Hlavička: nadpis, představení a rovnou obory — vše na první obrazovce.
   const hero = `
-  <section class="hero">
-    <div class="obal hero__mrizka">
-      <div>
-        <p class="stitek">${esc(t("uvod.stitek"))}</p>
-        <h1>${esc(t("uvod.nadpis"))}</h1>
-        <span class="podtrzeni" aria-hidden="true"></span>
-        <p class="lead hero__lead">${esc(t("uvod.lead"))}</p>
-        <div class="tlacitka" style="margin:1.8rem 0 1.6rem">
+  <section class="hero hero--obory">
+    <div class="obal">
+      <p class="stitek">${esc(t("uvod.stitek"))}</p>
+      <h1>${esc(t("uvod.nadpis"))}</h1>
+      <span class="podtrzeni" aria-hidden="true"></span>
+      <p class="lead hero__lead">${esc(t("uvod.lead"))}</p>
+      <div class="hero__akce">
+        <div class="tlacitka">
           <a class="tl tl--signal" href="${odkaz("poptavka")}">${esc(t("uvod.ctaHlavni"))} ${ikona("sipka", { velikost: 16 })}</a>
           <a class="tl tl--obrys" href="${odkaz("stavby")}">${esc(t("uvod.ctaVedlejsi"))}</a>
         </div>
-      </div>
-      <div>
-        <div class="hero__prepinac" data-prepinac="hero">
-          <p class="mono male tise" style="margin:0">${esc(t("uvod.prepinacPopis"))}</p>
+        <div class="hero__prepinac" data-prepinac="obory">
+          <span class="mono male tise">${esc(t("uvod.prepinacPopis"))}</span>
           <div class="prepinac" role="group">
             <button type="button" data-varianta="b2b" aria-pressed="true">${esc(t("spolecne.segmentB2b"))}</button>
             <button type="button" data-varianta="b2c" aria-pressed="false">${esc(t("spolecne.segmentB2c"))}</button>
           </div>
         </div>
-        <div class="hero__vykres je-videt" data-kriz>
-        <div data-varianta-obsah="b2b">${vykresB2b({
-          kota1: t("uvod.vykresKota1"), kota2: t("uvod.vykresKota2"),
-          jednotka: t("uvod.vykresJednotka"), odbocka: t("uvod.vykresOdbocka"),
-        })}</div>
-        <div data-varianta-obsah="b2c" hidden>${vykresB2c({
-          kota1: t("uvod.vykresKota1c"), kota2: t("uvod.vykresKota2c"),
-          jednotka: t("uvod.vykresTc"), zasobnik: t("uvod.vykresZasobnik"),
-        })}</div>
-        <div class="kriz" aria-hidden="true">
-          <div class="kriz__v"></div><div class="kriz__h"></div>
-          <div class="kriz__popis"></div>
-        </div>
-        </div>
-        <p class="hero__napoveda mono male tise">
-          <svg width="15" height="15" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor"
-            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 10h12m-3-3 3 3-3 3M7 7 4 10l3 3"/>
-          </svg>
-          ${esc(t("uvod.otacejte"))}
-        </p>
-        <div class="hero__popis">
-          <div data-varianta-obsah="b2b">
-            <h2>${esc(t("uvod.heroB2bNadpis"))}</h2>
-            <p>${esc(t("uvod.heroB2bText"))}</p>
-          </div>
-          <div data-varianta-obsah="b2c" hidden>
-            <h2>${esc(t("uvod.heroB2cNadpis"))}</h2>
-            <p>${esc(t("uvod.heroB2cText"))}</p>
-          </div>
-        </div>
       </div>
+      <div class="mrizka mrizka--obory" data-obory>
+        ${site.obory.map((o) => kartaOboru(ctx, o, { maly: true })).join("")}
+      </div>
+      <p class="male tise hero__poznamka">${esc(t("uvod.realstaffPoznamka"))}</p>
     </div>
   </section>`;
 
   const legenda = pasmo([
     "Vzduchotechnika", "Vytápění a ÚT", "Zdravotechnika", "Chlazení", "Tepelná čerpadla",
-    "Dodávka na klíč", "Montáž za provozu", "Nemocnice", "Terminály", "Výrobní haly",
-    "Rodinné domy", "Památky", "Serverovny",
+    "Realizace staveb", "Dodávka na klíč", "Pronájem techniky", "Správa nemovitostí",
+    "Montáž za provozu", "Nemocnice", "Výrobní haly", "Rodinné domy",
   ]);
 
   const cisla = `
@@ -79,53 +51,12 @@ export function uvod(ctx) {
     <div class="obal prijezd">${udaje(ctx, site.cisla)}</div>
   </section>`;
 
-  const obory = `
-  <section class="pas">
-    <div class="obal">
-      <div class="hlavicka-sekce prijezd">
-        <p class="stitek">01 — ${esc(t("nav.montaze"))}</p>
-        <h2>${esc(t("uvod.oboryNadpis"))}</h2>
-        <p class="lead">${esc(t("uvod.oboryLead"))}</p>
-      </div>
-      <div class="mrizka mrizka--3 prijezd--rada">
-        ${site.obory.map((o) => kartaOboru(ctx, o)).join("")}
-      </div>
-    </div>
-  </section>`;
-
-  const narocne = `
-  <section class="pas pas--vykres">
-    <div class="obal">
-      <div class="mrizka mrizka--2" style="align-items:center">
-        <div class="prijezd">
-          <p class="stitek stitek--bily">02 — ${esc(t("narocne.stitek"))}</p>
-          <h2>${esc(t("uvod.narocneNadpis"))}</h2>
-          <p class="lead">${esc(t("uvod.narocneLead"))}</p>
-          <div class="tlacitka" style="margin-top:1.4rem">
-            <a class="tl tl--signal" href="${odkaz("narocne")}">${esc(t("uvod.narocneCta"))} ${ikona("sipka", { velikost: 16 })}</a>
-          </div>
-        </div>
-        <div class="prijezd">
-          <div class="karta rohy">
-            <span class="karta__cislo">${esc(t("narocne.mericNadpis"))}</span>
-            <div class="merka" style="margin:1.2rem 0 .3rem">
-              <div class="merka__pruh" style="--procent:78%"></div>
-              <div class="merka__stupnice"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
-            </div>
-            <p class="stupen" data-stupen="extremni" style="margin:1rem 0 .2rem">78 / 100</p>
-            <p class="male tise" style="margin:0">${esc(site.stavby[0].perex)}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>`;
-
   const sekceStavby = `
   <section class="pas">
     <div class="obal">
       <div class="hlavicka-sekce hlavicka-sekce--mezi prijezd">
         <div>
-          <p class="stitek">03 — ${esc(t("nav.stavby"))}</p>
+          <p class="stitek">01 — ${esc(t("nav.stavby"))}</p>
           <h2>${esc(t("uvod.stavbyNadpis"))}</h2>
           <p class="lead">${esc(t("uvod.stavbyLead"))}</p>
         </div>
@@ -137,10 +68,10 @@ export function uvod(ctx) {
 
   const pravidla = t("jakPracujeme.pravidla");
   const postup = `
-  <section class="pas pas--linka">
+  <section class="pas pas--vykres">
     <div class="obal mrizka mrizka--bok">
       <div class="prijezd">
-        <p class="stitek">04 — ${esc(t("jakPracujeme.stitek"))}</p>
+        <p class="stitek stitek--bily">02 — ${esc(t("jakPracujeme.stitek"))}</p>
         <h2>${esc(t("uvod.postupNadpis"))}</h2>
         <p class="lead">${esc(t("uvod.postupLead"))}</p>
         <a class="sipka" href="${odkaz("jakPracujeme")}">${esc(t("nav.jakPracujeme"))} ${ikona("sipka", { velikost: 15 })}</a>
@@ -161,7 +92,7 @@ export function uvod(ctx) {
     <div class="obal">
       <div class="hlavicka-sekce hlavicka-sekce--mezi prijezd">
         <div>
-          <p class="stitek">05 — ${esc(t("nav.recenze"))}</p>
+          <p class="stitek">03 — ${esc(t("nav.recenze"))}</p>
           <h2>${esc(t("uvod.recenzeNadpis"))}</h2>
           <p class="lead">${esc(t("uvod.recenzeLead"))}</p>
         </div>
@@ -176,7 +107,8 @@ export function uvod(ctx) {
     </div>
   </section>`;
 
-  return [hero, legenda, cisla, obory, `<div class="pas pas--tesny">${deliciTrasa()}</div>`, narocne, sekceStavby, postup, sekceRecenze,
+  return [hero, legenda, cisla, sekceStavby, `<div class="pas pas--tesny">${deliciTrasa()}</div>`,
+    postup, sekceRecenze,
     ctaPas(ctx, { nadpis: t("uvod.ctaPatka"), text: t("uvod.ctaPatkaText"), druhe: ["stavby", t("spolecne.vsechnyStavby")] })].join("\n");
 }
 
@@ -216,7 +148,10 @@ export function oborDetail(ctx, obor) {
   const dalsi = site.obory.filter((o) => o.id !== obor.id);
   return [
     hlavicka(ctx, {
-      stitek: `${t("obor.stitek")} ${obor.cislo} — ${obor.zkratka}`, nadpis: obor.nazev, lead: obor.perex,
+      stitek: obor.znacka === "realstaff"
+        ? `${t("obor.stitek")} ${obor.cislo} · ${t("obor.znackaRealstaff")}`
+        : `${t("obor.stitek")} ${obor.cislo} — ${obor.zkratka}`,
+      nadpis: obor.nazev, lead: obor.perex,
       drobecky: drobecky(ctx, [["uvod", t("nav.uvod")], ["montaze", t("nav.montaze")], ["x", obor.nazev]]),
       akce: `<a class="tl tl--signal" href="${odkaz("poptavka")}">${esc(t("spolecne.cta"))}</a>`,
     }),
@@ -241,60 +176,6 @@ export function oborDetail(ctx, obor) {
         `<a href="${odkaz(`obor-${o.slug}`)}" class="chip">${esc(o.nazev)}</a>`).join("")}</div>
     </div></section>`,
     ctaPas(ctx, { nadpis: t("uvod.ctaPatka"), text: t("uvod.ctaPatkaText") }),
-  ].join("\n");
-}
-
-export function narocne(ctx) {
-  const { t, site } = ctx;
-  const faktory = site.faktoryObtiznosti;
-  const nejtezsi = site.stavby.slice(0, 3);
-  const otazka = (f) => `
-    <fieldset class="prijezd" data-faktor="${esc(f.id)}">
-      <legend class="legenda" style="margin-bottom:.55rem">${esc(f.nazev)}</legend>
-      <div class="volby">
-        ${f.moznosti.map((m, i) => `
-          <label class="volba">
-            <input type="radio" name="f-${esc(f.id)}" value="${esc(m.id)}">
-            <span data-znak="${String(i + 1).padStart(2, "0")}">${esc(m.popis)}</span>
-          </label>`).join("")}
-      </div>
-    </fieldset>`;
-  return [
-    hlavicka(ctx, {
-      stitek: t("narocne.stitek"), nadpis: t("narocne.nadpis"), lead: t("narocne.lead"),
-      drobecky: drobecky(ctx, [["uvod", t("nav.uvod")], ["narocne", t("nav.narocne")]]),
-    }),
-    `<section class="pas pas--tesny"><div class="obal">
-      <div class="meric" data-meric
-        data-faktory='${esc(JSON.stringify(faktory))}'
-        data-doporuceni='${esc(JSON.stringify(site.doporuceniObtiznosti))}'
-        data-stupne='${esc(JSON.stringify(site.popisyStupnu))}'
-        data-hlasky='${esc(JSON.stringify({ chybi: t("narocne.vysledekChybi"), doporuceni: t("narocne.doporuceniNadpis"), prispevky: t("narocne.prispevkyNadpis") }))}'>
-        <div>
-          <p class="stitek">${esc(t("narocne.mericNadpis"))}</p>
-          <p class="male tise" style="max-width:56ch">${esc(t("narocne.mericPopis"))}</p>
-          <div style="margin-top:1.6rem;display:grid;gap:1.4rem">${faktory.map(otazka).join("")}</div>
-        </div>
-        <aside class="meric__vysledek">
-          <div class="karta rohy">
-            <span class="karta__cislo">${esc(t("narocne.vysledekNadpis"))}</span>
-            <p class="stupen" data-stupen="bezna" data-vystup="stupen" style="margin:.7rem 0 .1rem">—</p>
-            <p class="male tise" data-vystup="popis" style="min-height:3em">${esc(t("narocne.vysledekChybi").replace("{pocet}", String(faktory.length)))}</p>
-            <div class="merka" style="margin:1.2rem 0 .3rem">
-              <div class="merka__pruh" data-vystup="merka" style="--procent:0%"></div>
-              <div class="merka__stupnice"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
-            </div>
-            <div data-vystup="prispevky" style="margin-top:1.4rem"></div>
-            <div data-vystup="doporuceni" style="margin-top:1.2rem"></div>
-          </div>
-        </aside>
-      </div>
-    </div></section>`,
-    `<section class="pas pas--linka"><div class="obal">
-      <div class="hlavicka-sekce prijezd"><h2 style="font-size:1.7rem">${esc(t("narocne.priklady"))}</h2></div>
-      <div class="mrizka mrizka--3 prijezd--rada">${nejtezsi.map((s) => kartaStavby(ctx, s)).join("")}</div>
-    </div></section>`,
-    ctaPas(ctx, { nadpis: t("narocne.ctaNadpis"), text: t("narocne.ctaText") }),
   ].join("\n");
 }
 

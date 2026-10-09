@@ -18,12 +18,11 @@ export function navigace(ctx, aktivni) {
     </div>`;
   const polypolozky = (polozky) => polozky.map(([id, p]) => polozka(id, p)).join("");
 
-  const obory = site.obory.map((o) => [`obor-${o.slug}`, `${o.nazev} (${o.zkratka})`]);
+  const obory = site.obory.map((o) => [`obor-${o.slug}`, o.nazev]);
   const jeObor = String(aktivni).startsWith("obor-") || aktivni === "montaze";
   return `
   <nav class="navigace" id="navigace" aria-label="${esc(t("nav.uvod"))}">
     ${rozbal("montaze", t("nav.montaze"), [["montaze", t("nav.montaze")], ...obory], jeObor)}
-    ${polozka("narocne", t("nav.narocne"))}
     ${polozka("stavby", t("nav.stavby"))}
     ${polozka("recenze", t("nav.recenze"))}
     ${rozbal("prokoho", t("nav.prokoho"), [["b2b", t("nav.b2b")], ["b2c", t("nav.b2c")]],
@@ -62,10 +61,10 @@ export function razitko(ctx, { list, meritko = "1 : 100" } = {}) {
 export function patka(ctx) {
   const { t, odkaz, site } = ctx;
   const a = site.firma.adresa;
-  const odkazy = [["montaze", t("nav.montaze")], ["narocne", t("nav.narocne")], ["stavby", t("nav.stavby")],
-    ["recenze", t("nav.recenze")], ["jakPracujeme", t("nav.jakPracujeme")], ["kalkulacky", t("nav.kalkulacky")]];
+  const odkazy = [["montaze", t("nav.montaze")], ["stavby", t("nav.stavby")], ["recenze", t("nav.recenze")],
+    ["jakPracujeme", t("nav.jakPracujeme")], ["kalkulacky", t("nav.kalkulacky")], ["kariera", t("nav.kariera")]];
   const odkazy2 = [["b2b", t("nav.b2b")], ["b2c", t("nav.b2c")], ["oNas", t("nav.oNas")],
-    ["kariera", t("nav.kariera")], ["dotazy", t("nav.dotazy")], ["kontakt", t("nav.kontakt")]];
+    ["dotazy", t("nav.dotazy")], ["kontakt", t("nav.kontakt")], ["poptavka", t("nav.poptavka")]];
   const sloupec = (nadpis, polozky) => `
     <div><h3>${esc(nadpis)}</h3><ul class="patka__seznam">
       ${polozky.map(([id, p]) => `<li><a href="${odkaz(id)}">${esc(p)}</a></li>`).join("")}

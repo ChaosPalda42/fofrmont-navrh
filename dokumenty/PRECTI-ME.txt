@@ -1,68 +1,73 @@
 FOFRMONT CZ — návrh nového webu
 ===============================
+Verze po schůzce 9. 10. 2026
 
 Co to je
 --------
-Klikací ukázka nového webu pro FOFRMONT CZ s.r.o. Není to hotový web, ale návrh,
-na kterém si můžete osahat rozvržení, texty i chování. Otevřete soubor index.html
-v prohlížeči (funguje i bez internetu) nebo si projděte odkaz, který jsme poslali.
-
-Web se záměrně NEINDEXUJE ve vyhledávačích a není nikde veřejně odkázaný.
+Klikací ukázka webu. Otevřete index.html v prohlížeči (funguje i bez internetu),
+nebo si projděte odkaz, který jsme poslali. Web se NEINDEXUJE ve vyhledávačích.
 
 
-Co je v ukázce skutečné
------------------------
-* Název firmy, IČO 02911973, DIČ, sídlo Roháčova 145/14, Praha 3-Žižkov,
-  datum vzniku, jednatel a spisová značka — z veřejného rejstříku.
-* Popis toho, co montujete a co naopak neděláte (projekce, servis, audity,
-  plnění chladiva) — podle toho, co jsme dostali v zadání.
+Co se změnilo podle schůzky
+---------------------------
+* Úvodní stránka: velký nadpis, který pokrývá montáže TZB i realizaci staveb,
+  pod ním krátké představení firmy a hned všechny obory — bez scrollování.
+* Izometrický výkres (3D model) z hlavičky zmizel, aby se tam obory vešly.
+  Zůstal u referencí a jako dělicí prvek mezi sekcemi.
+* Nabídka se přepíná na FIRMY / DOMÁCNOSTI. Obory, které pro danou skupinu
+  nedávají smysl, se schovají.
+* Přibyly obory Real Staffu: pronájem stavební techniky, pronájem aut
+  a správa nemovitostí. Jsou pod Fofrmontem, jen s drobnou značkou „Real Staff“.
+* Sekce „Náročné prostory“ byla odstraněna.
+* „Stavby“ se jmenují „Reference“ a jsou jen hotové realizace.
+* Statistiky návštěvnosti z administrace odstraněny. Místo nich web počítá
+  s firemním profilem na Googlu a recenzemi z něj.
+* V administraci jde ke každé referenci nahrát fotky.
 
 
-Co je vymyšlené, a musíte to přepsat
-------------------------------------
-* VŠECH OSM STAVEB v sekci „Stavby“ — názvy, čísla, termíny i role. Žádná
-  z nich neproběhla. Sloužily jen k tomu, aby web nevypadal prázdně.
-* VŠECHNY RECENZE i jejich autoři.
-* Čísla v přehledu na úvodní stránce („24 montérů“ a podobně).
-* Otevřené pozice v sekci Kariéra.
-* TELEFON je schválně uvedený jako „+420 XXX XXX XXX“ — číslo jsme neměli
-  a vymýšlet ho nebudeme. E-mailové adresy jsou na doméně fofrmont.cz,
-  která zatím není zaregistrovaná.
-* Logo. Firma žádné nemá, tak jsme udělali značku z izometrického kolena
-  v rámečku. Pokud logo máte, nahradíme ho.
-
-Stejný seznam najdete i na stránce „O ukázce“ přímo ve webu.
+Co si vyzkoušejte
+-----------------
+1. Úvodní stránka — přepněte Firma / Domácnost a sledujte obory.
+2. Administrace (odkaz je v oranžovém pruhu nahoře, bez hesla):
+   - Stavby → Přidat stavbu → vyplňte pár údajů a nahrajte fotky → Uložit.
+     Pak se podívejte do Referencí: nová položka tam je i s fotkou.
+     Celé to zabere pár minut.
+   - Texty → vlevo vyberte stránku, přepište nadpis a podívejte se na web.
+   - Kontaktní údaje → změňte telefon; propíše se do patičky i na Kontakt.
+   - Recenze → schvalování; nové recenze z webu sem chodí.
+3. Poptávka — průvodce se větví podle toho, jestli jste firma, nebo domácnost.
+4. Přepínač světlého a tmavého režimu je vedle jazyků.
 
 
-Co si můžete vyzkoušet
-----------------------
-1. Úvodní stránka — přepínač „Firma / Domácnost“ překreslí výkres v záhlaví.
-2. Náročné prostory — měřič náročnosti. Vyberte šest faktorů a uvidíte skóre
-   i to, s čím u takové stavby počítáte.
-3. Orientační výpočty — průtok vzduchu a dimenze potrubí, výkon tepelného
-   čerpadla, úspora z rekuperace. Počítá to živě.
-4. Poptávka — průvodce, který se větví podle toho, jestli jste firma, nebo
-   domácnost. Po odeslání poptávka spadne do administrace.
-5. Recenze — filtrování, řazení a formulář na novou recenzi. Nová recenze
-   čeká na schválení v administraci.
-6. Administrace — bez hesla, stačí kliknout na „Vstoupit“. Dá se v ní přepsat
-   kterýkoli text na webu, schvalovat recenze, přidávat stavby a číst došlé
-   poptávky. Změny se ukládají jen do vašeho prohlížeče a jdou stáhnout
-   jako soubor. Nic neodchází na server.
+Co od vás potřebujeme
+---------------------
+* ROZPIS ČINNOSTÍ Fofrmontu a Real Staffu. Texty u oborů jsou zatím naše
+  a je potřeba je nahradit vašimi — hlavně u čtyř nových.
+* LOGO FOFRMONTU, ideálně vektor (AI, EPS, SVG, PDF). Když je jen obrázek,
+  překreslíme ho.
+* PŘEDSTAVU O LOGU REAL STAFFU. Návrh připravíme, odsouhlasíme online.
+* PODKLADY ALESPOŇ K JEDNÉ HOTOVÉ REALIZACI — fotky a pár vět. Podle ní
+  nastavíme, jak mají reference vypadat, a zbytek už zvládnete sami.
+* TELEFON a e-mailové adresy, které mají být na webu.
+* Rozhodnutí, KDO BUDE PLATIT doménu a hosting (přibližně 700 Kč ročně).
 
 
-Na čem se musíme domluvit
--------------------------
-* skutečný telefon, e-mail a doména
-* skutečné reference (ideálně i s fotkami ze staveb — teď jsou všude
-  vlastní technické výkresy, protože fotky nemáme)
-* jestli chcete anglickou verzi (v ukázce je, překládal ji stroj a chtěla
-  by projít rodilým mluvčím)
-* kam mají v ostré verzi chodit poptávky — na e-mail, nebo do systému
+Co je v ukázce vymyšlené
+------------------------
+* Všech osm referencí včetně čísel a termínů. Žádná z nich neproběhla.
+* Všechny recenze i jejich autoři. Značka „Google“ u některých je jen ukázka,
+  jak to bude vypadat po založení firemního profilu.
+* Popisy u nových oborů Real Staffu a u realizace staveb.
+* Čísla v přehledu na úvodu („24 montérů“ a podobně).
+* Otevřené pozice v Kariéře.
+* Telefon je schválně „+420 XXX XXX XXX“.
+
+Skutečné jsou údaje Fofrmontu z veřejného rejstříku a to, co jsme si řekli
+na schůzce.
 
 
-Jak číst technické věci
------------------------
-Web je statický: žádný WordPress, žádná databáze, nic, co by se dalo
-hacknout. Běží odkudkoli, i z flashky. Administrace je zatím demo —
-v ostré verzi se stejné rozhraní napojí na server.
+Technicky
+---------
+Web je statický — žádný WordPress, žádná databáze. Administrace je zatím demo
+a ukládá do vašeho prohlížeče; v ostré verzi se stejné rozhraní napojí na server,
+takže fotky i texty uvidí všichni návštěvníci.

@@ -7,9 +7,8 @@
   "nav": {
     "uvod": "Úvod",
     "montaze": "Co montujeme",
-    "narocne": "Náročné prostory",
     "jakPracujeme": "Jak pracujeme",
-    "stavby": "Stavby",
+    "stavby": "Reference",
     "recenze": "Recenze",
     "prokoho": "Pro koho",
     "b2b": "Pro generální dodavatele",
@@ -31,7 +30,7 @@
     "zpet": "Zpět",
     "vice": "Více",
     "viceOOboru": "Co v tom oboru děláme",
-    "vsechnyStavby": "Všechny stavby",
+    "vsechnyStavby": "Všechny reference",
     "vsechnyRecenze": "Všechny recenze",
     "razitkoInvestor": "Investor",
     "razitkoProfese": "Profese",
@@ -73,38 +72,24 @@
     "ukazkaAdmin": "Zkusit administraci"
   },
   "uvod": {
-    "stitek": "Montáže TZB · od roku 2014",
-    "nadpis": "Smontujeme to i tam,\nkde to podle projektu nejde",
-    "lead": "Vzduchotechnika, vytápění, zdravotechnika a chlazení. Dodávka i montáž v jedné smlouvě — pro generální dodavatele na velkých stavbách i pro rodinné domy.",
+    "stitek": "Montáže TZB · realizace staveb · od roku 2014",
+    "nadpis": "Montujeme a stavíme\npo celé republice",
+    "lead": "Vzduchotechnika, vytápění, zdravotechnika, chlazení a stavební část zakázky — dodávka i montáž v jedné smlouvě. Pracujeme pro generální dodavatele na velkých stavbách i přímo pro majitele domů.",
     "ctaHlavni": "Chci nezávaznou nabídku",
     "ctaVedlejsi": "Prohlédnout stavby",
-    "prepinacPopis": "Vyberte, co vám ukázat:",
-    "heroB2bNadpis": "Nemocnice, terminály, haly",
-    "heroB2bText": "Montujeme za provozu, v nočních blocích a v harmonogramu, který drží. Pro generální dodavatele jsme podzhotovitel, který nevolá s problémem, ale s řešením.",
-    "heroB2cNadpis": "Rodinné domy a byty",
-    "heroB2cText": "Tepelné čerpadlo do technické místnosti velké jako spíž, rozvody v domě, kde se nesmí sekat. Čím těsnější prostor, tím lepší.",
-    "oboryNadpis": "Šest profesí, jedna parta",
-    "oboryLead": "Nejsme projekční kancelář ani servisní firma. Jsme ti, kdo to opravdu smontuje — a kdo za to ručí.",
-    "narocneNadpis": "Čím složitější prostor, tím větší výzva",
-    "narocneLead": "Většina firem chce rovný podhled, volný přístup a prázdnou stavbu. My si vybíráme přesně to, co ostatní odmítli. Zkuste si spočítat, jak náročná je ta vaše.",
-    "narocneCta": "Spočítat náročnost",
-    "stavbyNadpis": "Poslední stavby",
-    "stavbyLead": "Od operačních sálů po podkroví rodinného domu. Všude stejné pravidlo: ráno uklizeno a funkční.",
+    "prepinacPopis": "Co hledáte?",
+    "oboryNadpis": "Co děláme",
+    "oboryLead": "Vyberte obor a podívejte se, co v něm umíme.",
+    "stavbyNadpis": "Co jsme postavili",
+    "stavbyLead": "Hotové realizace od operačních sálů po podkroví rodinného domu. U každé je napsané, co bylo nejtěžší.",
     "recenzeNadpis": "Co o nás říkají",
     "recenzeLead": "Investoři, stavbyvedoucí, technický dozor i majitelé domů.",
     "postupNadpis": "Jak to u nás běží",
     "postupLead": "Od telefonu k předání osm kroků. Žádný z nich nepřeskakujeme.",
     "ctaPatka": "Máte projekt, nebo aspoň představu?",
     "ctaPatkaText": "Pošlete zadání a my se do dvou pracovních dnů ozveme s tím, jestli to umíme, kdy to umíme a za kolik.",
-    "otacejte": "Výkres můžete chytit a otočit.",
-    "vykresJednotka": "VZT jednotka 12 000 m³/h",
-    "vykresOdbocka": "Ø 400 — odbočka do sálu",
-    "vykresKota1": "4 000",
-    "vykresKota2": "+3,60",
-    "vykresTc": "TČ vzduch–voda 14 kW",
-    "vykresZasobnik": "Akumulace + TUV",
-    "vykresKota1c": "2 600",
-    "vykresKota2c": "+4,40"
+    "vsechnyObory": "Všechny obory",
+    "realstaffPoznamka": "Pronájem techniky, aut a správu nemovitostí zajišťuje sesterská firma Real Staff."
   },
   "montaze": {
     "nadpis": "Co montujeme",
@@ -141,21 +126,24 @@
     "klic": {
       "kdyVolat": "Když nechcete koordinovat tři dodavatele a řešit, kdo za co může.",
       "detail": "Materiál i zařízení seženeme, smontujeme a předáme s protokoly. Jeden harmonogram, jedna odpovědnost, jedna faktura. Na stavbě se koordinujeme s ostatními profesemi sami."
+    },
+    "znackaRealstaff": "Real Staff",
+    "stavarina": {
+      "kdyVolat": "Když k montáži patří i stavební práce a nechcete kvůli nim shánět další firmu.",
+      "detail": "Děláme stavební část zakázky, která s technikou budovy souvisí: prostupy, přizdívky, dobetonávky, úpravy strojoven a technických místností i kompletní rekonstrukce prostor. Výhoda je jednoduchá — nikdo si nepřehazuje odpovědnost na hranici profesí."
+    },
+    "technika": {
+      "kdyVolat": "Když potřebujete stroj na pár dní a nedává smysl ho kupovat.",
+      "detail": "Pronajímáme stavební techniku krátkodobě i na celou stavbu. Techniku dovezeme, obsluhu zaškolíme a po dobu pronájmu se staráme o servis."
+    },
+    "auta": {
+      "kdyVolat": "Když potřebujete dodávku na stěhování nebo vůz na přechodnou dobu.",
+      "detail": "Užitkové i osobní vozy na den, na měsíc i na déle. Pojištění je v ceně, auto předáváme připravené a čisté."
+    },
+    "sprava": {
+      "kdyVolat": "Když máte budovu a nechcete řešit každou vadnou zásuvku a kapající baterii.",
+      "detail": "Postaráme se o technickou správu budovy: pravidelné kontroly, drobnou údržbu a koordinaci řemesel. Co neumíme sami, zajistíme přes prověřené partnery."
     }
-  },
-  "narocne": {
-    "stitek": "Naše specialita",
-    "nadpis": "Náročné prostory",
-    "lead": "Sekání do klenby v památce, potrubí jedenáct metrů nad hlavami cestujících, čerpadlo do spíže. Tady je náš orientační měřič náročnosti — vyplňte šest otázek a uvidíte, jak se na vaši stavbu díváme my.",
-    "mericNadpis": "Měřič náročnosti",
-    "mericPopis": "Vyberte u každého faktoru to, co nejvíc sedí. Výsledek je orientační, ale říká, s čím u nás počítat.",
-    "vysledekNadpis": "Odhad náročnosti",
-    "vysledekChybi": "Vyberte ještě {pocet}, ať to má hlavu a patu.",
-    "doporuceniNadpis": "S čím u takové stavby počítáme",
-    "prispevkyNadpis": "Co náročnost zvedá nejvíc",
-    "ctaNadpis": "Vyšlo vám něco těžkého?",
-    "ctaText": "Výborně. To je zakázka pro nás. Pošlete zadání, přijedeme se podívat.",
-    "priklady": "Tři stavby, kde nám to vyšlo vysoko"
   },
   "jakPracujeme": {
     "stitek": "Postup",
@@ -257,8 +245,8 @@
   },
   "stavby": {
     "stitek": "Reference",
-    "nadpis": "Stavby",
-    "lead": "Výběr z realizací. U každé je napsané, co bylo na zadání nejtěžší a jak jsme to vyřešili.",
+    "nadpis": "Reference",
+    "lead": "Hotové realizace. U každé je napsané, co bylo na zadání nejtěžší a jak jsme to vyřešili — ať si nás můžete proklepnout dřív, než zvednete telefon.",
     "filtrNadpis": "Filtr",
     "pocet": "Zobrazeno {zobrazeno} z {celkem}",
     "detailZadani": "Zadání",
@@ -266,12 +254,15 @@
     "detailRole": "Naše role",
     "detailTrvani": "Doba montáže",
     "detailRozsah": "Rozsah",
-    "detailObory": "Profese"
+    "detailObory": "Profese",
+    "novaStitek": "Nová reference",
+    "novaPoznamka": "Tahle reference je zatím jen ve vašem prohlížeči — přidali jste ji v administraci. V ostré verzi by po uložení byla rovnou na webu pro všechny.",
+    "neniNalezena": "Tuhle referenci jsme nenašli. Možná byla smazána."
   },
   "recenze": {
     "stitek": "Reference od lidí",
     "nadpis": "Recenze",
-    "lead": "Hodnocení od investorů, stavbyvedoucích, technického dozoru i majitelů domů. Všechny zveřejněné recenze procházejí schválením.",
+    "lead": "Hodnocení od investorů, stavbyvedoucích, technického dozoru i majitelů domů.",
     "prumerPopis": "průměrné hodnocení",
     "zPoctu": "z {pocet}",
     "doporucuje": "{procent} % pisatelů nás doporučuje dál",
@@ -284,7 +275,7 @@
     "poleHodnoceni": "Hodnocení",
     "poleText": "Vaše zkušenost",
     "poleDoporucuje": "Doporučil(a) bych Fofrmont dál",
-    "poleSouhlas": "Souhlasím se zveřejněním recenze po schválení",
+    "poleSouhlas": "Souhlasím se zveřejněním recenze",
     "odeslat": "Odeslat recenzi",
     "odeslano": "Děkujeme. Recenze čeká na schválení — v této ukázce ji najdete v administraci.",
     "filtrVse": "Všechny",
@@ -294,7 +285,12 @@
     "razeniNejnovejsi": "Nejnovější",
     "razeniNejlepsi": "Nejlepší",
     "razeniNejhorsi": "Nejhorší",
-    "keStavbe": "Ke stavbě"
+    "keStavbe": "Ke stavbě",
+    "zdrojGoogle": "Z firemního profilu na Googlu",
+    "zdrojWeb": "Odesláno přes web",
+    "googleNadpis": "Hodnocení na Googlu",
+    "googleText": "Recenze se načítají z firemního profilu Fofrmont na Googlu. Napsat novou můžete přímo tam, nebo formulářem níž.",
+    "googleTlacitko": "Napsat recenzi na Googlu"
   },
   "poptavka": {
     "stitek": "Poptávka",
@@ -559,28 +555,6 @@
     "stavbyZadani": "Zadání",
     "stavbyTrvani": "Doba montáže",
     "stavbyRole": "Naše role",
-    "zalozkaStatistiky": "Statistiky",
-    "statLead": "Kolik lidí na web chodí, odkud a co si čtou. Čísla v této ukázce jsou vymyšlená — v ostré verzi by se načítala z měření návštěvnosti.",
-    "statObdobi": "Období",
-    "statObdobi7": "7 dní",
-    "statObdobi30": "30 dní",
-    "statObdobi90": "90 dní",
-    "statNavstevy": "Návštěvy",
-    "statUzivatele": "Lidí",
-    "statZobrazeni": "Zobrazení stránek",
-    "statDelka": "Průměrná návštěva",
-    "statOpusteni": "Odejde hned",
-    "statPoptavky": "Poptávek z webu",
-    "statOprotiMinule": "oproti předchozímu období",
-    "statGrafNadpis": "Návštěvy den po dni",
-    "statGrafPoptavky": "Poptávky odeslané z webu",
-    "statZdroje": "Odkud lidé přišli",
-    "statZarizeni": "Na čem se dívali",
-    "statStranky": "Nejčtenější stránky",
-    "statStranka": "Stránka",
-    "statZobrazeniSloupec": "Zobrazení",
-    "statZive": "Právě teď na webu: {pocet}",
-    "statPoznamka": "V ostré verzi se čísla berou z měření návštěvnosti (Google Analytics, nebo Matomo či Plausible, pokud nechcete posílat data do Googlu). Měření se dá napojit bez zásahu do vzhledu webu.",
     "zdrojVyhledavace": "Vyhledávače",
     "zdrojPrimo": "Přímo (zadaná adresa)",
     "zdrojOdkazy": "Odkazy z jiných webů",
@@ -589,18 +563,22 @@
     "zarizeniMobil": "Mobil",
     "zarizeniPocitac": "Počítač",
     "zarizeniTablet": "Tablet",
-    "statNavstevyTvary": [
-      "návštěva",
-      "návštěvy",
-      "návštěv"
-    ],
     "textyOblasti": "Stránky",
     "textyUpraveno": "upraveno",
     "textyNalezeno": "Nalezeno {pocet}",
     "textyZobrazit": "Zobrazit stránku",
     "textyPrazdno": "Nic nenalezeno. Zkuste jiné slovo.",
     "textyVratitVse": "Vrátit všechny změny na této stránce",
-    "textyPolozka": "{cislo}. položka"
+    "textyPolozka": "{cislo}. položka",
+    "zalozkaFotky": "Fotky",
+    "stavbyFotky": "Fotky k realizaci",
+    "fotkyPridat": "Přidat fotky",
+    "fotkyPrazdno": "Zatím žádné fotky. Přetáhněte je sem nebo vyberte.",
+    "fotkyOdebrat": "Odebrat fotku",
+    "fotkyPopis": "Fotky se zmenší a uloží do prohlížeče. V ostré verzi by se nahrávaly na server v plné kvalitě.",
+    "fotkyLimit": "Najednou vezmeme nejvýš 8 fotek na jednu realizaci.",
+    "googleNadpis": "Recenze z Googlu",
+    "googleText": "Po založení firemního profilu na Googlu se sem budou stahovat recenze. Schvalujete je stejně jako ty z webu."
   },
   "chyba404": {
     "nadpis": "Tahle trasa nikam nevede",
@@ -617,5 +595,21 @@
     "copyright": "© {rok} FOFRMONT CZ s.r.o.",
     "ukazkaPozn": "Ukázka návrhu webu. Neindexuje se a neslouží jako ostrá prezentace firmy.",
     "navigaceNadpis2": "Pro koho a o nás"
+  },
+  "_parkovano": {
+    "narocne": {
+      "stitek": "Naše specialita",
+      "nadpis": "Náročné prostory",
+      "lead": "Sekání do klenby v památce, potrubí jedenáct metrů nad hlavami cestujících, čerpadlo do spíže. Tady je náš orientační měřič náročnosti — vyplňte šest otázek a uvidíte, jak se na vaši stavbu díváme my.",
+      "mericNadpis": "Měřič náročnosti",
+      "mericPopis": "Vyberte u každého faktoru to, co nejvíc sedí. Výsledek je orientační, ale říká, s čím u nás počítat.",
+      "vysledekNadpis": "Odhad náročnosti",
+      "vysledekChybi": "Vyberte ještě {pocet}, ať to má hlavu a patu.",
+      "doporuceniNadpis": "S čím u takové stavby počítáme",
+      "prispevkyNadpis": "Co náročnost zvedá nejvíc",
+      "ctaNadpis": "Vyšlo vám něco těžkého?",
+      "ctaText": "Výborně. To je zakázka pro nás. Pošlete zadání, přijedeme se podívat.",
+      "priklady": "Tři stavby, kde nám to vyšlo vysoko"
+    }
   }
 }

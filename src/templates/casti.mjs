@@ -23,17 +23,23 @@ export function drobecky(ctx, cesta) {
   return `<nav class="drobecky" aria-label="Drobečková navigace">${kusy.join(" ")}</nav>`;
 }
 
-export function kartaOboru(ctx, obor, { odkazovat = true } = {}) {
+export function kartaOboru(ctx, obor, { odkazovat = true, maly = false } = {}) {
   const { t, odkaz } = ctx;
-  const vnitrek = `
-    <span class="karta__cislo">${esc(obor.cislo)} — ${esc(obor.zkratka)}</span>
-    <div style="color:var(--cara);margin-bottom:.7rem">${ikona(IKONY_OBORU[obor.id] || "vykres", { velikost: 26 })}</div>
-    <h3 class="karta__nadpis">${esc(obor.nazev)}</h3>
-    <p class="karta__text">${esc(obor.perex)}</p>
-    ${odkazovat ? `<p class="karta__pata"><span class="sipka">${esc(t("spolecne.viceOOboru"))} ${ikona("sipka", { velikost: 15 })}</span></p>` : ""}`;
+  const realstaff = obor.znacka === "realstaff";
+  const vnitrek = maly
+    ? `<span class="karta__cislo">${esc(obor.cislo)}${realstaff ? `<span class="znacka-firmy">${esc(t("obor.znackaRealstaff"))}</span>` : ""}</span>
+       <div style="color:var(--cara);margin-bottom:.5rem">${ikona(IKONY_OBORU[obor.id] || "vykres", { velikost: 22 })}</div>
+       <h3 class="karta__nadpis" style="font-size:1.02rem">${esc(obor.nazev)}</h3>
+       <p class="karta__text male">${esc(obor.perex.split(/[.!?]/)[0])}.</p>`
+    : `<span class="karta__cislo">${esc(obor.cislo)} — ${esc(obor.zkratka)}${realstaff ? ` · ${esc(t("obor.znackaRealstaff"))}` : ""}</span>
+       <div style="color:var(--cara);margin-bottom:.7rem">${ikona(IKONY_OBORU[obor.id] || "vykres", { velikost: 26 })}</div>
+       <h3 class="karta__nadpis">${esc(obor.nazev)}</h3>
+       <p class="karta__text">${esc(obor.perex)}</p>
+       ${odkazovat ? `<p class="karta__pata"><span class="sipka">${esc(t("spolecne.viceOOboru"))} ${ikona("sipka", { velikost: 15 })}</span></p>` : ""}`;
+  const trida = `karta rohy${odkazovat ? " karta--odkaz" : ""}${maly ? " karta--obor" : ""}`;
   return odkazovat
-    ? `<a class="karta karta--odkaz rohy" href="${odkaz(`obor-${obor.slug}`)}">${vnitrek}</a>`
-    : `<div class="karta rohy">${vnitrek}</div>`;
+    ? `<a class="${trida}" href="${odkaz(`obor-${obor.slug}`)}" data-segmenty="${esc((obor.segment || []).join(" "))}">${vnitrek}</a>`
+    : `<div class="${trida}" data-segmenty="${esc((obor.segment || []).join(" "))}">${vnitrek}</div>`;
 }
 
 export function kartaStavby(ctx, stavba) {
@@ -41,7 +47,7 @@ export function kartaStavby(ctx, stavba) {
   const obory = stavba.obory.map((id) => site.obory.find((o) => o.id === id)).filter(Boolean);
   return `
   <a class="karta karta--odkaz rohy" href="${odkaz(`stavba-${stavba.id}`)}">
-    <div class="karta__motiv" style="margin:-.4rem 0 .9rem;color:var(--cara)">${motivStavby(stavba.motiv)}</div>
+    <div class="karta__motiv" data-motiv-stavby="${esc(stavba.id)}" style="margin:-.4rem 0 .9rem;color:var(--cara)">${motivStavby(stavba.motiv)}</div>
     <span class="karta__cislo">${esc(stavba.misto)} · ${esc(String(stavba.rok))}</span>
     <h3 class="karta__nadpis">${esc(stavba.nazev)}</h3>
     <p class="karta__text">${esc(stavba.perex)}</p>
@@ -56,7 +62,10 @@ export function kartaRecenze(ctx, r, { odkazNaStavbu = true } = {}) {
   <article class="karta rohy recenze-karta" data-segment="${esc(r.segment)}" data-hodnoceni="${esc(String(r.hodnoceni))}" data-datum="${esc(r.datum)}">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:.8rem;margin-bottom:.9rem">
       ${hvezdy(r.hodnoceni)}
-      <span class="mono male tise">${esc(ctx.datumText(r.datum))}</span>
+      <span class="mono male tise" style="display:flex;align-items:center;gap:.45rem">
+        ${r.zdroj === "google" ? `<span class="zdroj-google" title="${esc(t("recenze.zdrojGoogle"))}">${ikona("google", { velikost: 13 })} Google</span>` : ""}
+        ${esc(ctx.datumText(r.datum))}
+      </span>
     </div>
     <blockquote>„${esc(r.text)}“</blockquote>
     <div class="recenze-karta__autor karta__pata">
