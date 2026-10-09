@@ -64,7 +64,7 @@ function vrtule(x, y, r) {
     return `M ${x} ${y} L ${(x + Math.cos(rad) * r * 0.82).toFixed(1)} ${(y + Math.sin(rad) * r * 0.82).toFixed(1)}`;
   }).join(" ");
   return `<circle class="vykres-cara" cx="${x}" cy="${y}" r="${r}"/>
-    <g class="vrtule" style="transform-origin:${x}px ${y}px">
+    <g class="vrtule">
       <path class="vykres-cara--tenka" style="stroke:var(--cara);fill:none;stroke-width:1.4" d="${lopatky}"/>
     </g>
     <circle cx="${x}" cy="${y}" r="1.6" fill="var(--cara)"/>`;
@@ -175,7 +175,7 @@ export function rezHala(popisky) {
     `<path class="vykres-cara" d="M 192 36 L 192 24 L 200 24 L 200 36 M 240 36 L 240 24 L 248 24 L 248 36"/>
      <path class="vykres-osa" d="M 176 54 L 264 54"/>`,
     vrtule(196, 54, 9),
-    para(244, 22, 0),
+    para(244, 30, 0),
     // vrata a okna
     blok(76, 190, 54, 66, { zpozdeni: 420, vypln: "vykres-vypln--2" }),
     `<path class="vykres-cara--tenka" style="stroke:var(--cara);fill:none;stroke-width:1"

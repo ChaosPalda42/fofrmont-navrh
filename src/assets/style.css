@@ -1318,9 +1318,10 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 @media (min-width: 64rem) {
   .hero__vrch { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 2.4rem; align-items: center; }
 }
-.hero__scena { position: relative; display: none; }
-@media (min-width: 64rem) { .hero__scena { display: block; } }
-.hero__scena svg { width: 100%; height: auto; max-height: 320px; overflow: visible; }
+/* kresba jede i na mobilu — je to ona, kdo rozdíl firma/domácnost vysvětluje */
+.hero__scena { position: relative; display: block; }
+.hero__scena svg { width: 100%; height: auto; max-height: 210px; overflow: hidden; }
+@media (min-width: 64rem) { .hero__scena svg { max-height: 320px; } }
 .hero__scena-popis {
   margin: .3rem 0 0; display: flex; align-items: center; gap: .45rem; justify-content: flex-end;
   min-height: 1.3em; transition: opacity 320ms ease;
@@ -1365,12 +1366,13 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 .proud--chlad { stroke: #37a9e0; opacity: .85; }
 @keyframes tokMedia { to { stroke-dashoffset: -18; } }
 
-.vrtule { animation: otacej 2.4s linear infinite; transform-box: fill-box; }
+.vrtule { animation: otacej 2.4s linear infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes otacej { to { transform: rotate(360deg); } }
 
 .vanek {
   fill: none; stroke: var(--cara); stroke-width: 1.4; stroke-linecap: round; opacity: 0;
   animation: vaneDolu 1.5s ease-out infinite;
+  transform-box: fill-box; transform-origin: center;
 }
 @keyframes vaneDolu {
   0% { opacity: 0; transform: translateY(-4px); }
@@ -1393,11 +1395,16 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
   100% { opacity: .5; }
 }
 
-.para { fill: var(--sedy-2); opacity: 0; animation: stoupani 2.8s ease-out infinite; }
+/* pozor: ve SVG se transform počítá od počátku soustavy, ne od prvku — bez
+   transform-box by se pára rozletěla přes celou kresbu */
+.para {
+  fill: var(--sedy-2); opacity: 0; animation: stoupani 2.8s ease-out infinite;
+  transform-box: fill-box; transform-origin: center;
+}
 @keyframes stoupani {
   0% { opacity: 0; transform: translateY(0) scale(.6); }
   25% { opacity: .35; }
-  100% { opacity: 0; transform: translateY(-22px) scale(1.5); }
+  100% { opacity: 0; transform: translateY(-16px) scale(1.4); }
 }
 
 .podlahovka { animation: hreje 3.4s ease-in-out infinite; }
