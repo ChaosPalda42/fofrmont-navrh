@@ -20,21 +20,24 @@ export function uvod(ctx) {
       <h1>${esc(t("uvod.nadpis"))}</h1>
       <span class="podtrzeni" aria-hidden="true"></span>
       <p class="lead hero__lead">${esc(t("uvod.lead"))}</p>
-      <div class="hero__akce">
-        <div class="tlacitka">
-          <a class="tl tl--signal" href="${odkaz("poptavka")}">${esc(t("uvod.ctaHlavni"))} ${ikona("sipka", { velikost: 16 })}</a>
-          <a class="tl tl--obrys" href="${odkaz("stavby")}">${esc(t("uvod.ctaVedlejsi"))}</a>
+      <div class="tlacitka hero__tlacitka">
+        <a class="tl tl--signal" href="${odkaz("poptavka")}">${esc(t("uvod.ctaHlavni"))} ${ikona("sipka", { velikost: 16 })}</a>
+        <a class="tl tl--obrys" href="${odkaz("stavby")}">${esc(t("uvod.ctaVedlejsi"))}</a>
+      </div>
+      <div class="volba-segmentu" data-prepinac="obory">
+        <div class="volba-segmentu__popis">
+          <span class="volba-segmentu__otazka">${esc(t("uvod.prepinacPopis"))}</span>
+          <span class="male tise">${esc(t("uvod.prepinacNapoveda"))}</span>
         </div>
-        <div class="hero__prepinac" data-prepinac="obory">
-          <span class="mono male tise">${esc(t("uvod.prepinacPopis"))}</span>
-          <div class="prepinac" role="group">
-            <button type="button" data-varianta="b2b" aria-pressed="true">
-              <span class="jen-siroke">${esc(t("spolecne.segmentB2b"))}</span><span class="jen-uzke">${esc(t("spolecne.segmentB2bKratce"))}</span>
-            </button>
-            <button type="button" data-varianta="b2c" aria-pressed="false">
-              <span class="jen-siroke">${esc(t("spolecne.segmentB2c"))}</span><span class="jen-uzke">${esc(t("spolecne.segmentB2cKratce"))}</span>
-            </button>
-          </div>
+        <div class="prepinac prepinac--velky" role="group" data-vyzva="1">
+          <button type="button" data-varianta="b2b" aria-pressed="true">
+            ${ikona("budova", { velikost: 19 })}
+            <span class="jen-siroke">${esc(t("spolecne.segmentB2b"))}</span><span class="jen-uzke">${esc(t("spolecne.segmentB2bKratce"))}</span>
+          </button>
+          <button type="button" data-varianta="b2c" aria-pressed="false">
+            ${ikona("dum", { velikost: 19 })}
+            <span class="jen-siroke">${esc(t("spolecne.segmentB2c"))}</span><span class="jen-uzke">${esc(t("spolecne.segmentB2cKratce"))}</span>
+          </button>
         </div>
       </div>
       <div class="mrizka mrizka--obory" data-obory>

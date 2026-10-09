@@ -494,13 +494,25 @@
   function hero() {
     $$("[data-prepinac]").forEach(function (obal) {
       var tlacitka = $$("button[data-varianta]", obal);
+      var prepinac = $(".prepinac", obal);
+
+      var nastav = function (varianta, zapamatovat) {
+        tlacitka.forEach(function (j) { j.setAttribute("aria-pressed", String(j.dataset.varianta === varianta)); });
+        $$("[data-varianta-obsah]").forEach(function (el) { el.hidden = el.dataset.variantaObsah !== varianta; });
+        filtrujObory(varianta);
+        if (prepinac) delete prepinac.dataset.vyzva;   // vybráno, už nemusí upozorňovat
+        if (zapamatovat) {
+          try { window.localStorage.setItem("fm-segment", varianta); } catch (e) { /* soukromé okno */ }
+        }
+      };
+
+      var ulozeny = null;
+      try { ulozeny = window.localStorage.getItem("fm-segment"); } catch (e) { /* soukromé okno */ }
+      nastav(ulozeny === "b2c" ? "b2c" : "b2b", false);
+      if (!ulozeny && prepinac) prepinac.dataset.vyzva = "1";   // ještě si nevybral, upozorníme
+
       tlacitka.forEach(function (tl) {
-        tl.addEventListener("click", function () {
-          var varianta = tl.dataset.varianta;
-          tlacitka.forEach(function (j) { j.setAttribute("aria-pressed", String(j === tl)); });
-          $$("[data-varianta-obsah]").forEach(function (el) { el.hidden = el.dataset.variantaObsah !== varianta; });
-          filtrujObory(varianta);
-        });
+        tl.addEventListener("click", function () { nastav(tl.dataset.varianta, true); });
       });
     });
 
@@ -563,7 +575,6 @@
       beh = requestAnimationFrame(krok);
     }
     setTimeout(spustTok, 1400);
-    filtrujObory("b2b");
   }
 
 

@@ -1263,3 +1263,50 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 
 .jen-uzke { display: none; }
 @media (max-width: 40rem) { .jen-siroke { display: none; } .jen-uzke { display: inline; } }
+
+/* ======================================================================
+   Rozcestník firma / domácnost — hlavní volba na úvodní stránce
+   ====================================================================== */
+.hero__tlacitka { margin: 1.3rem 0 1.5rem; }
+.volba-segmentu {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem;
+  padding: 1rem 1.1rem; margin-bottom: 1.4rem;
+  border: 1px solid var(--cara-2); border-radius: var(--radius); background: var(--bila);
+  position: relative;
+}
+.volba-segmentu::before {
+  content: ""; position: absolute; left: -1px; top: -1px; bottom: -1px; width: 3px;
+  background: var(--signal); border-radius: var(--radius) 0 0 var(--radius);
+}
+.volba-segmentu__popis { display: grid; gap: .1rem; }
+.volba-segmentu__otazka {
+  font-family: var(--pismo-nadpis); font-weight: 600; font-size: 1.08rem; letter-spacing: -.015em;
+}
+.prepinac--velky { margin-left: auto; padding: 4px; gap: 4px; }
+.prepinac--velky button {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .72rem 1.25rem; font-size: 1rem; border-radius: 3px;
+}
+.prepinac--velky button svg { opacity: .8; }
+.prepinac--velky button[aria-pressed="true"] svg { opacity: 1; }
+.prepinac--velky button:not([aria-pressed="true"]):hover {
+  background: var(--papir-2); color: var(--cara);
+}
+
+/* dokud si člověk nevybere, prvek na sebe upozorní */
+.prepinac--velky[data-vyzva="1"] { animation: vyzvaSegment 2.4s cubic-bezier(.3, .1, .3, 1) 3; }
+@keyframes vyzvaSegment {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 106, 31, 0); }
+  18% { box-shadow: 0 0 0 5px rgba(255, 106, 31, .28); }
+  40% { box-shadow: 0 0 0 11px rgba(255, 106, 31, 0); }
+}
+
+@media (max-width: 48rem) {
+  .volba-segmentu { flex-direction: column; align-items: stretch; gap: .7rem; padding: .9rem; }
+  .prepinac--velky { margin-left: 0; width: 100%; }
+  .prepinac--velky button { flex: 1 1 0; justify-content: center; padding: .7rem .5rem; font-size: .95rem; }
+  .volba-segmentu__otazka { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prepinac--velky[data-vyzva="1"] { animation: none; box-shadow: 0 0 0 3px rgba(255, 106, 31, .25); }
+}
