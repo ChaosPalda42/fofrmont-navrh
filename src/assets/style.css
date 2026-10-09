@@ -1318,10 +1318,10 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 @media (min-width: 64rem) {
   .hero__vrch { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 2.4rem; align-items: center; }
 }
-/* kresba jede i na mobilu — je to ona, kdo rozdíl firma/domácnost vysvětluje */
-.hero__scena { position: relative; display: block; }
-.hero__scena svg { width: 100%; height: auto; max-height: 210px; overflow: hidden; }
-@media (min-width: 64rem) { .hero__scena svg { max-height: 320px; } }
+/* kresba je jen pro širokou obrazovku — na mobilu by jen překážela */
+.hero__scena { position: relative; display: none; }
+@media (min-width: 64rem) { .hero__scena { display: block; } }
+.hero__scena svg { width: 100%; height: auto; max-height: 320px; overflow: hidden; }
 .hero__scena-popis {
   margin: .3rem 0 0; display: flex; align-items: center; gap: .45rem; justify-content: flex-end;
   min-height: 1.3em; transition: opacity 320ms ease;
