@@ -21,6 +21,9 @@
   --cyan: #6fd3ff;
   --cyan-tlum: rgba(111, 211, 255, .22);
   --signal: #ff6a1f;
+  /* modrá ze skutečného loga klienta (#203C5A z tiskového PDF) — drží se zvlášť
+     od barvy textu (--tus je tmavší), aby značka vypadala jako v tiskovinách */
+  --znacka: #203c5a;
   --signal-2: #d8540f;
   --sedy: #55657a;
   --sedy-2: #8496ab;
@@ -153,9 +156,9 @@ a:hover { text-decoration-color: currentColor; }
 }
 .lista__obal { display: flex; align-items: center; gap: 1.2rem; height: 68px; }
 .znacka { display: flex; align-items: center; gap: .62rem; text-decoration: none; color: inherit; flex: none; }
-.znacka__mark { width: 34px; height: 34px; flex: none; }
-.znacka__text { font-family: var(--pismo-nadpis); font-weight: 700; font-size: 1.16rem; letter-spacing: -.02em; }
-.znacka__text span { color: var(--cara); }
+/* značka není čtvercová (314,86 × 282,43), výšku nechá dopočítat */
+.znacka__mark { width: 34px; height: auto; flex: none; color: var(--znacka); }
+.znacka__napis { display: block; width: 104px; height: auto; color: var(--znacka); }
 .znacka__pod { display: block; font-family: var(--pismo-mono); font-size: .58rem; letter-spacing: .21em; color: var(--sedy-2); text-transform: uppercase; margin-top: -2px; }
 
 .navigace { margin-left: auto; display: flex; align-items: center; gap: .15rem; }
@@ -864,13 +867,68 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
   background-size: var(--rastr) var(--rastr), var(--rastr) var(--rastr);
 }
 .nacitani__vnitrek { position: relative; display: grid; justify-items: center; gap: .85rem; padding: 0 1.2rem; }
-.nacitani__znak { width: clamp(64px, 14vw, 92px); height: clamp(64px, 14vw, 92px); color: var(--tus); }
-.nacitani__znak rect, .nacitani__znak path { stroke-dasharray: 190; stroke-dashoffset: 190;
-  animation: nacitaniKresli 1250ms cubic-bezier(.3, .1, .2, 1) forwards; }
-.nacitani__znak path { animation-delay: 500ms; }
-.nacitani__znak circle { opacity: 0; animation: nacitaniTecka 520ms cubic-bezier(.2,1.4,.4,1) 1700ms forwards; }
-@keyframes nacitaniKresli { to { stroke-dashoffset: 0; } }
-@keyframes nacitaniTecka { to { opacity: 1; } }
+/* Úvodní animace staví značku tak, jak firma pracuje: nejdřív se nakreslí dům,
+   pak ťukne kladivo, naskočí kohoutek a nakonec se rozvlní vzduch. Obrys a výplň
+   mají stejný viewBox, takže se překrývají na pixel — obrys se po dokreslení
+   vymění za výplň, aby nebyly vidět seříznuté okapy. */
+.nacitani__znak {
+  position: relative; width: clamp(112px, 22vw, 168px); color: var(--znacka);
+  aspect-ratio: 383.68 / 282.43;
+}
+.nacitani__obrys, .nacitani__dily { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* dům se kreslí: zdi zdola nahoru, pak střecha, nakonec komín */
+.nacitani__obrys #fm-obrys-zed-vlevo,
+.nacitani__obrys #fm-obrys-zed-vpravo { stroke-dasharray: 166; stroke-dashoffset: -166;
+  animation: nacitaniCara 620ms cubic-bezier(.4, .05, .25, 1) forwards; }
+.nacitani__obrys #fm-obrys-zed-vpravo { animation-delay: 120ms; }
+.nacitani__obrys #fm-obrys-strecha { stroke-dasharray: 393; stroke-dashoffset: 393;
+  animation: nacitaniCara 720ms cubic-bezier(.35, .05, .25, 1) 520ms forwards; }
+.nacitani__obrys #fm-obrys-komin { stroke-dasharray: 55; stroke-dashoffset: -55;
+  animation: nacitaniCara 300ms ease-out 1150ms forwards; }
+@keyframes nacitaniCara { to { stroke-dashoffset: 0; } }
+
+/* obrys odejde ve chvíli, kdy ho převezme výplň */
+.nacitani__obrys { animation: nacitaniZmiz 260ms linear 1420ms forwards; }
+@keyframes nacitaniZmiz { to { opacity: 0; } }
+
+.nacitani__dily > g { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.nacitani__dily #fm-dum { animation: nacitaniNajed 260ms ease-out 1420ms forwards; }
+
+/* kladivo doťukne — přijede nakloněné a srovná se */
+.nacitani__dily #fm-kladivo {
+  transform-origin: 70% 80%;
+  animation: nacitaniKladivo 520ms cubic-bezier(.3, 1.5, .5, 1) 1620ms forwards;
+}
+@keyframes nacitaniKladivo {
+  0% { opacity: 0; transform: rotate(-14deg); }
+  55% { opacity: 1; transform: rotate(3deg); }
+  100% { opacity: 1; transform: rotate(0); }
+}
+
+/* kohoutek doroste po rouře */
+.nacitani__dily #fm-kohoutek {
+  transform-origin: left center;
+  animation: nacitaniKohoutek 420ms cubic-bezier(.22, .9, .3, 1) 1980ms forwards;
+}
+@keyframes nacitaniKohoutek {
+  from { opacity: 0; transform: translateX(-10%) scaleX(.72); }
+  to { opacity: 1; transform: none; }
+}
+
+/* vzduch se rozvlní, každá vlnka o chvíli později */
+.nacitani__dily #fm-vlna-1, .nacitani__dily #fm-vlna-2 {
+  opacity: 0; transform-box: fill-box; transform-origin: left center;
+  animation: nacitaniVlna 560ms cubic-bezier(.22, .78, .3, 1) 2280ms forwards;
+}
+.nacitani__dily #fm-vlna-2 { animation-delay: 2400ms; }
+.nacitani__dily #fm-vlny { opacity: 1; animation: none; }
+@keyframes nacitaniVlna {
+  0% { opacity: 0; transform: translateX(-22%) scaleX(.6); }
+  60% { opacity: 1; transform: translateX(2%) scaleX(1.04); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes nacitaniNajed { to { opacity: 1; } }
 .nacitani__jmeno {
   font-family: var(--pismo-mono); font-size: .7rem; letter-spacing: .28em; text-transform: uppercase;
   color: var(--sedy-2); opacity: 0;
@@ -879,14 +937,12 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 @keyframes nacitaniJmeno { from { opacity: 0; letter-spacing: .5em; } to { opacity: 1; letter-spacing: .28em; } }
 
 /* velký nápis se „vyplotruje“ zleva doprava */
-.nacitani__znacka {
-  font-family: var(--pismo-nadpis); font-weight: 700;
-  font-size: clamp(2.1rem, 9vw, 3.6rem); letter-spacing: -.035em; line-height: 1;
-  color: var(--tus); white-space: nowrap;
+.nacitani__napis {
+  width: clamp(172px, 34vw, 258px); height: auto; color: var(--znacka);
   clip-path: inset(0 100% 0 0);
-  animation: nacitaniNapis 1000ms cubic-bezier(.62, .02, .28, 1) 1300ms forwards;
+  animation: nacitaniNapis 900ms cubic-bezier(.62, .02, .28, 1) 2560ms forwards;
 }
-.nacitani__znacka span { color: var(--cara); }
+
 .nacitani__pruh { width: min(280px, 60vw); height: 2px; background: var(--cara-3); overflow: hidden; margin-top: .4rem; }
 .nacitani__pruh i {
   display: block; height: 100%; width: 100%; background: linear-gradient(90deg, var(--cara), var(--signal));
@@ -904,9 +960,10 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 @media (prefers-reduced-motion: reduce) {
   .nacitani { animation: nacitaniPryc 320ms linear forwards; }
   .nacitani__jmeno { opacity: 1; animation: none; }
-  .nacitani__znacka { clip-path: none; animation: none; }
-  .nacitani__znak rect, .nacitani__znak path { stroke-dashoffset: 0; animation: none; }
-  .nacitani__znak circle { opacity: 1; animation: none; }
+  .nacitani__napis { clip-path: none; animation: none; }
+  .nacitani__obrys { display: none; }
+  .nacitani__dily > g, .nacitani__dily #fm-vlna-1, .nacitani__dily #fm-vlna-2 {
+    opacity: 1; transform: none; animation: none; }
   .nacitani__hlava { display: none; }
   .nacitani__pruh i { transform: scaleX(1); animation: none; }
 }
@@ -1062,7 +1119,8 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 :root[data-tema="tmavy"] .hamburger { background: var(--bila); }
 :root[data-tema="tmavy"] .navigace { background: var(--bila); }
 :root[data-tema="tmavy"] .navigace__panel { background: var(--bila); }
-:root[data-tema="tmavy"] .znacka__mark rect { opacity: .5; }
+/* tmavě modrá by na tmavém pozadí zmizela — značka se obrací do světlé */
+:root[data-tema="tmavy"] { --znacka: #dbe6f6; }
 :root[data-tema="tmavy"] .nacitani { background: var(--papir); }
 :root[data-tema="tmavy"] .admin-text[data-zmeneno="1"] textarea { background: #1a2b1f; }
 :root[data-tema="tmavy"] .prurez .obrys { fill: rgba(111, 211, 255, .1); }

@@ -153,3 +153,21 @@ a napojení recenzí 1 500 = **9 500 Kč**. Doména 200 Kč/rok (koupena), hosti
   po celé republice“ — návrh, ne schválené)
 - konečné rozdělení oborů mezi firmy a domácnosti (teď odhad)
 - zda Real Staff dostane v rejstříku dohledatelný název
+
+## Skutečné logo, 22. 10. 2026
+
+Klient poslal tiskové PDF (`podklady/logo/FOFRMONT_CZ_logo_tisk.pdf`). Čistý vektor,
+16 cest, **jedna barva #203C5A** (tmavá modrá). Značka: obrys domu, uvnitř kladivo,
+vodovodní kohoutek a dvě vlnovky vzduchu — montáž / voda / vzduch, tedy přesně tři
+obory firmy. Pod značkou nápis FOFRMONT. Žádný claim, žádné „CZ" v logu.
+
+**Rozhodnutí (Michael, 22. 10.):** oranžová #ff6a1f zůstává jako doplňková.
+Logo si drží svou modrou, akcenty (tlačítka, signální prvky) zůstávají oranžové.
+Důvod: #203C5A je příliš tmavá na to, aby na ní hlavní tlačítko vyniklo, a oranžová
+s tou modrou ladí. Značková modrá dostane vlastní token, aby se nemíchala s barvou
+textu (`--tus` #0b1a2d je tmavší).
+
+Vektorovou sadu pro web (logo.svg, znak.svg, napis.svg, znak-dily.svg s pojmenovanými
+skupinami pro animaci) dělá session „Loga a animované titulky". Až dorazí, nahradí
+vymyšlený čtvercový znak v hlavičce, ve faviconě a v úvodní animaci — tam se má dům
+nakreslit, pak ťukne kladivo, kápne voda a rozvlní se vzduch.

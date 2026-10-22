@@ -10,6 +10,7 @@ import * as S1 from "./src/templates/stranky.mjs";
 import * as S2 from "./src/templates/stranky2.mjs";
 import * as S3 from "./src/templates/stranky3.mjs";
 import { administrace } from "./src/templates/administrace.mjs";
+import { favicona } from "./src/templates/znacka.mjs";
 
 const KOREN = path.dirname(new URL(import.meta.url).pathname);
 const OUT = path.join(KOREN, "out");
@@ -85,10 +86,7 @@ async function spojSoubory(cesty) {
   return kusy.join("\n");
 }
 
-const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-<rect width="32" height="32" rx="4" fill="#0b1a2d"/>
-<path d="M7 24V13.5A3.5 3.5 0 0 1 10.5 10H25" fill="none" stroke="#6fd3ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="25" cy="10" r="3" fill="#ff6a1f"/></svg>`;
+const FAVICON = favicona();
 
 async function main() {
   const site = JSON.parse(await readFile(path.join(KOREN, "data/site.json"), "utf8"));

@@ -189,18 +189,6 @@ export function motivStavby(druh) {
   return `<svg viewBox="${iso.viewBox(body, 16)}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">${svg}</svg>`;
 }
 
-/** Značka firmy: izometrické koleno v rámečku. */
-export function logo(velikost = 34) {
-  return `<svg class="znacka__mark" width="${velikost}" height="${velikost}" viewBox="0 0 32 32" aria-hidden="true">
-    <rect x="1.2" y="1.2" width="29.6" height="29.6" rx="2" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".28"/>
-    <path d="M7 24V13.5A3.5 3.5 0 0 1 10.5 10H25" fill="none" stroke="var(--cara)" stroke-width="2.6"
-      stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M12.5 17.5H21" fill="none" stroke="var(--cara)" stroke-width="2.2" stroke-linecap="round" opacity=".55"/>
-    <circle cx="25" cy="10" r="2.6" fill="var(--signal)"/>
-    <path d="M4 7h2M4 25h2M26 25h2" stroke="currentColor" stroke-width="1.2" opacity=".35" stroke-linecap="round"/>
-  </svg>`;
-}
-
 /** Hvězdičky hodnocení. */
 export function hvezdy(hodnoceni, velikost = 15) {
   const plna = `<path d="m10 2.8 2.3 4.7 5.2.8-3.8 3.6.9 5.1-4.6-2.4-4.6 2.4.9-5.1L2.5 8.3l5.2-.8z" fill="currentColor"/>`;

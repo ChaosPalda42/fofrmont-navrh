@@ -1,7 +1,7 @@
 /** Kostra stránky: hlavička, navigace, patička s výkresovým razítkem. */
 import { esc, atr } from "./lib.mjs";
 import { ikona } from "./ikony.mjs";
-import { logo } from "./kresby.mjs";
+import { znacka, napisLoga, znackaDily, dumObrys } from "./znacka.mjs";
 
 export function navigace(ctx, aktivni) {
   const { t, odkaz, site } = ctx;
@@ -119,13 +119,11 @@ export function stranka(ctx, { titulek, popis, aktivni, obsah, telo = "" }) {
 <div class="nacitani" aria-hidden="true">
   <div class="nacitani__hlava"></div>
   <div class="nacitani__vnitrek">
-    <svg class="nacitani__znak" viewBox="0 0 32 32" fill="none">
-      <rect x="1.2" y="1.2" width="29.6" height="29.6" rx="2" stroke="currentColor" stroke-width="1.4" opacity=".3"/>
-      <path d="M7 24V13.5A3.5 3.5 0 0 1 10.5 10H25" stroke="var(--cara)" stroke-width="2.6"
-        stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="25" cy="10" r="2.6" fill="var(--signal)"/>
-    </svg>
-    <span class="nacitani__znacka">FOFR<span>MONT</span></span>
+    <div class="nacitani__znak">
+      ${dumObrys("nacitani__obrys")}
+      ${znackaDily("nacitani__dily")}
+    </div>
+    ${napisLoga({ trida: "nacitani__napis" })}
     <span class="nacitani__jmeno">${esc(t("spolecne.znackaPodtitul"))}</span>
     <span class="nacitani__pruh"><i></i></span>
   </div>
@@ -143,9 +141,9 @@ export function stranka(ctx, { titulek, popis, aktivni, obsah, telo = "" }) {
 </div>
 <header class="lista">
   <div class="obal lista__obal">
-    <a class="znacka" href="${odkaz("uvod")}">
-      ${logo()}
-      <span><span class="znacka__text">FOFR<span>MONT</span></span>
+    <a class="znacka" href="${odkaz("uvod")}" aria-label="FOFRMONT CZ">
+      ${znacka(34)}
+      <span>${napisLoga({ trida: "znacka__napis" })}
       <span class="znacka__pod">${esc(t("spolecne.znackaPodtitul"))}</span></span>
     </a>
     <button class="tema" type="button" data-prepinac-tema aria-label="${esc(t("spolecne.temaPrepnout"))}"

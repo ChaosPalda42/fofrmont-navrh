@@ -1308,7 +1308,7 @@
   function nacitani() {
     var od = Date.now();
     var hotovo = function () {
-      var zbyva = Math.max(0, 3400 - (Date.now() - od));   // ať je celá animace vidět
+      var zbyva = Math.max(0, 3700 - (Date.now() - od));   // ať je celá animace vidět
       window.setTimeout(function () { document.body.dataset.nacteno = "1"; }, zbyva);
     };
     if (document.readyState === "complete") hotovo();

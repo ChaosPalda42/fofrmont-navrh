@@ -1,0 +1,8 @@
+<!-- FOFRMONT – dům jako otevřené čáry (střednice pásu) pro kreslení přes stroke-dasharray.
+     Stejný viewBox jako znak.svg. Barva se bere z currentColor. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.68 282.43" fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="miter">
+<path id="obrys-strecha" d="M20.19 136.87L173.57 15.45L327.54 136.87" stroke-width="24.2"/>
+<path id="obrys-zed-vlevo" d="M44.46 117.66L44.46 282.43" stroke-width="23.14"/>
+<path id="obrys-zed-vpravo" d="M302.99 117.51L302.99 282.43" stroke-width="23.75"/>
+<path id="obrys-komin" d="M267.97 35.78L267.97 89.88" stroke-width="36.54"/>
+</svg>
