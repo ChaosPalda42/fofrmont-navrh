@@ -12,17 +12,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 
 const KOREN = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
-/* DOČASNÉ: znak-maly.svg má viewBox užší (314,86), než je kresba (bbox 345,92
-   změřený přes getBBox v prohlížeči) — ořezával se pravý okap střechy. Nahlášeno
-   sessioně „Loga a animované titulky" 22. 10. 2026; až dorazí opravený soubor,
-   tenhle přepis zrušit. Mění se jen výřez, tvary ne. */
-const OPRAVA_VIEWBOX = { "znak-maly.svg": "0 0 345.92 282.43" };
-
-const nacti = (jmeno) => {
-  const zdroj = readFileSync(path.join(KOREN, "podklady/logo", jmeno), "utf8");
-  const oprava = OPRAVA_VIEWBOX[jmeno];
-  return oprava ? zdroj.replace(/viewBox="[^"]*"/, `viewBox="${oprava}"`) : zdroj;
-};
+const nacti = (jmeno) => readFileSync(path.join(KOREN, "podklady/logo", jmeno), "utf8");
 
 /** Kořenový <svg> i s komentářem nad ním; vrátíme jen tu značku a obsah. */
 function rozeber(zdroj) {
