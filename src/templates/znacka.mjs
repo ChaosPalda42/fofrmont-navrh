@@ -66,8 +66,13 @@ function vloz(klic, { trida = "", sirka = null, popis = null, prefix = null } = 
  * Pod ~48 px se vlnky vzduchu slijí do šmouhy (pás vlnky vychází na 0,88 px při
  * 28 px šířky), proto má malá velikost vlastní zjednodušenou kresbu — bez vlnek,
  * bez držadla kohoutku a bez vývodu.
+ *
+ * `dily: true` vloží značku rozsekanou na pojmenované části, aby se daly
+ * jednotlivé díly (třeba vlnky vzduchu) rozhýbat z CSS. Pak je potřeba vlastní
+ * `prefix`, ať se id nesrazí s jinou kopií značky na téže stránce.
  */
-export function znacka(sirka = 34, { popis = null, trida = "znacka__mark" } = {}) {
+export function znacka(sirka = 34, { popis = null, trida = "znacka__mark", dily = false, prefix = null } = {}) {
+  if (dily) return vloz("znakDily", { trida, sirka, popis, prefix });
   const klic = sirka < 56 ? "znakMaly" : "znak";
   return vloz(klic, { trida, sirka, popis });
 }

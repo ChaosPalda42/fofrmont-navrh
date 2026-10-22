@@ -142,7 +142,7 @@ export function stranka(ctx, { titulek, popis, aktivni, obsah, telo = "" }) {
 <header class="lista">
   <div class="obal lista__obal">
     <a class="znacka" href="${odkaz("uvod")}" aria-label="FOFRMONT CZ">
-      ${znacka(34)}
+      ${znacka(56, { dily: true, prefix: "hl-" })}
       <span>${napisLoga({ trida: "znacka__napis" })}
       <span class="znacka__pod">${esc(t("spolecne.znackaPodtitul"))}</span></span>
     </a>

@@ -156,8 +156,25 @@ a:hover { text-decoration-color: currentColor; }
 }
 .lista__obal { display: flex; align-items: center; gap: 1.2rem; height: 68px; }
 .znacka { display: flex; align-items: center; gap: .62rem; text-decoration: none; color: inherit; flex: none; }
-/* značka není čtvercová (314,86 × 282,43), výšku nechá dopočítat */
-.znacka__mark { width: 34px; height: auto; flex: none; color: var(--znacka); }
+/* V hlavičce je značka celá i s vlnkami vzduchu, proto nesmí být menší — pod
+   ~48 px se vlnky slijí do šmouhy. Není čtvercová (383,68 × 282,43), výšku
+   nechá dopočítat. */
+.znacka__mark { width: 56px; height: auto; flex: none; color: var(--znacka); }
+/* Vzduch se nedrží na místě: vlnky se střídavě nadechnou a vydechnou. Posun jde
+   dovnitř (doleva), protože špička vlnky sahá přesně na okraj viewBoxu a ven by
+   se seřízla. Bez transform-box by se procenta počítala z celého SVG. */
+.znacka__mark #hl-vlna-1,
+.znacka__mark #hl-vlna-2 {
+  transform-box: fill-box; transform-origin: right center;
+  animation: znackaVzduch 3.2s cubic-bezier(.45, 0, .55, 1) infinite;
+}
+.znacka__mark #hl-vlna-2 { animation-delay: -1.6s; }
+/* Vlnky jdou v protifázi, takže inkoustu je v logu pořád stejně — nebliká to,
+   jen se to pomalu převaluje od domu ven. */
+@keyframes znackaVzduch {
+  0%, 100% { opacity: 1; transform: translateX(0); }
+  50% { opacity: .42; transform: translateX(-5%); }
+}
 .znacka__napis { display: block; width: 104px; height: auto; color: var(--znacka); }
 .znacka__pod { display: block; font-family: var(--pismo-mono); font-size: .58rem; letter-spacing: .21em; color: var(--sedy-2); text-transform: uppercase; margin-top: -2px; }
 

@@ -171,3 +171,32 @@ Vektorovou sadu pro web (logo.svg, znak.svg, napis.svg, znak-dily.svg s pojmenov
 skupinami pro animaci) dělá session „Loga a animované titulky". Až dorazí, nahradí
 vymyšlený čtvercový znak v hlavičce, ve faviconě a v úvodní animaci — tam se má dům
 nakreslit, pak ťukne kladivo, kápne voda a rozvlní se vzduch.
+
+**Dodatek 22. 10. večer.** Vektorová sada je zapojená: hlavička a favicona mají
+skutečnou značku, nápis FOFRMONT jde z loga jako křivky, úvodní animace staví dům
+(obrys přes `stroke-dasharray`), prolne ho do výplně a po řadě rozsvítí kladivo,
+kohoutek a obě vlnky vzduchu. Značková modrá je v tokenu `--znacka`, v tmavém
+režimu se obrací na #dbe6f6 (kontrast 14,4 proti liště).
+
+`znak-maly.svg` měl v první dodávce rám užší než kresbu (ořezával pravý okap o 31,06
+jednotky); session Loga to opravila na 0 0 345.92 282.43 a doplnila na to bránu.
+Opravený soubor stihl dorazit ještě před prvním commitem, takže živý web vadu nikdy
+neměl — dočasné přemostění v `znacka.mjs` bylo od začátku no-op a je zrušené.
+
+Čtvercová favicona se nedělá zvlášť: `favicona()` v `src/templates/znacka.mjs` si
+znak vycentruje do čtverce posunem, takže se při každé opravě značky přepočítá sama.
+
+**Celá značka v hlavičce, 22. 10.** Michael si všiml, že v liště chybí vzduch —
+byla tam zjednodušená `znak-maly.svg` bez vlnek. Hlavička teď bere značku po dílech
+(`znacka(56, { dily: true, prefix: "hl-" })`), takže je celá a vlnky jdou adresovat
+z CSS. Musela se zvětšit z 34 na 56 px: při 44 px má pásmo vlnek 3 řádky inkoustu
+a mezera mezi vlnkami nespadne pod 50 % krytí, při 56 px jsou to 2 plné řádky na
+vlnku a mezera klesá na 25 % — teprve tam jsou to dvě čáry, ne šmouha. V liště
+(68 px) zbývá nad i pod značkou 13,5 px, na 320 i 375 px bez vodorovného přesahu.
+
+Vzduch se vlní: `@keyframes znackaVzduch` mění krytí 1 ↔ 0,42 a posouvá vlnku
+o 5 % šířky dovnitř, 3,2 s, obě vlnky v protifázi (`animation-delay: -1.6s`).
+Protifáze je schválně — inkoustu je v logu pořád stejně, takže to nebliká, jen se
+to převaluje. Posun jde doleva, protože špička vlnky sahá přesně na okraj viewBoxu.
+Ověřeno: složená značka z dílů se od `znak.svg` liší na 5 z 433 920 pixelů
+(0,0012 %, jen antialias na švech), pytest 0, kontrola_webu 72/0, prohlizec 0 chyb.
