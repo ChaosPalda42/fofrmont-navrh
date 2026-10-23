@@ -216,3 +216,18 @@ sedělo odsazení, háček nad Ž smí přečuhovat (`overflow: visible`).
 
 Změřeno: nápis i podtitul 104,00 px, rozdíl vlevo 0,00 a vpravo 0,00 na desktopu,
 na mobilu i na /en/. Velikost písmen se nezměnila (verzálky 6,8 px jako dřív).
+
+**Lockup na výšku a HVAC, 23. 10.** Text v hlavičce byl svisle vystředěný proti
+značce (rozdíl středů 0,12 px), ale o 6,8 px kratší nahoře i dole. Teď je stejně
+vysoký jako značka: nápis i podtitul berou šířku z jednoho `calc()`, který vychází
+z výšky značky — `--napis = (0,73611 × --mark − --mezera) / 0,224752`, kde 0,73611
+je poměr značky a 0,224752 součet výšek nápisu (82,6/517,05) a verzálek podtitulu
+(65/1000) vůči šířce. Mění se tedy jen `--mark` a zbytek se dopočítá.
+
+Značka 56 px (nápis 147,8), pod 30 rem 48 px (nápis 121,6) — jinak by lockup
+(213,7 px) nevyšel na úzký telefon. Vlnky při 48 px drží i tak: na displeji
+s DPR 2 a 3 je mezi nimi propad krytí na 25 %. Změřeno: rozdíl nahoře −0,09 px,
+dole −0,11 px, vlevo i vpravo 0,00 — v CZ i EN, na desktopu i na mobilu.
+
+Terminologie v EN sjednocená na HVAC (byla směs MEP a HVAC): titulek úvodní
+stránky, „six HVAC trades" a „for HVAC trades".

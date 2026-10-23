@@ -101,7 +101,7 @@
   "b2b": {
     "ctaNadpis": "Do you have a tender inquiry?",
     "ctaText": "Send the Bill of Quantities. We will provide itemized pricing and deadlines that we can meet.",
-    "lead": "We are capable of operating on large-scale construction sites: coordination meetings, HSE protocols, phasing, and handovers. For MEP trades, we are a single point of contact instead of four.",
+    "lead": "We are capable of operating on large-scale construction sites: coordination meetings, HSE protocols, phasing, and handovers. For HVAC trades, we are a single point of contact instead of four.",
     "nadpis": "A subcontractor that sticks to the schedule",
     "postup": [
       "Send us the Bill of Quantities or the project documentation, ideally including the deadline for completion.",
@@ -309,10 +309,10 @@
   "meta": {
     "popis": "Installation company for ventilation, heating, plumbing, and cooling. Turnkey supply and installation for general contractors and households.",
     "pripona": "FOFRMONT CZ",
-    "titulek": "FOFRMONT CZ — MEP installations"
+    "titulek": "FOFRMONT CZ — HVAC installations"
   },
   "montaze": {
-    "lead": "Six MEP trades. You can choose one, or all of them under a single contract — the latter is often cheaper and faster.",
+    "lead": "Six HVAC trades. You can choose one, or all of them under a single contract — the latter is often cheaper and faster.",
     "nadpis": "What we install",
     "nedelameLead": "We'd rather be upfront than have you find out halfway through the construction.",
     "nedelameNadpis": "What we don't do"

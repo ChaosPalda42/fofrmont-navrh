@@ -155,11 +155,19 @@ a:hover { text-decoration-color: currentColor; }
   border-bottom: 1px solid var(--cara-3);
 }
 .lista__obal { display: flex; align-items: center; gap: 1.2rem; height: 68px; }
-.znacka { display: flex; align-items: center; gap: .62rem; text-decoration: none; color: inherit; flex: none; }
+/* Lockup: text je stejně vysoký jako značka a stejně široký na obou řádcích.
+   Všechno se počítá z jedné šířky značky, ať to drží i po změně velikosti.
+   0,73611 = 282,43/383,68 (poměr značky), 0,224752 = 82,6/517,05 + 65/1000
+   (výška nápisu a verzálek podtitulu vůči šířce textu). */
+.znacka {
+  --mark: 56px; --mezera: 8px;
+  display: flex; align-items: center; gap: .62rem; text-decoration: none; color: inherit; flex: none;
+}
+@media (max-width: 30rem) { .znacka { --mark: 48px; } }
 /* V hlavičce je značka celá i s vlnkami vzduchu, proto nesmí být menší — pod
    ~48 px se vlnky slijí do šmouhy. Není čtvercová (383,68 × 282,43), výšku
    nechá dopočítat. */
-.znacka__mark { width: 56px; height: auto; flex: none; color: var(--znacka); }
+.znacka__mark { width: var(--mark); height: auto; flex: none; color: var(--znacka); }
 /* Vzduch se nedrží na místě: vlnky se střídavě nadechnou a vydechnou. Posun jde
    dovnitř (doleva), protože špička vlnky sahá přesně na okraj viewBoxu a ven by
    se seřízla. Bez transform-box by se procenta počítala z celého SVG. */
@@ -178,10 +186,10 @@ a:hover { text-decoration-color: currentColor; }
 /* Nápis a podtitul mají jednu šířku, aby lockup seděl na obou stranách. Podtitul
    je SVG text s textLength, takže se vysází přesně do té šířky sám — nezáleží na
    jazyce ani na tom, jestli se stihlo načíst JetBrains Mono. */
-.znacka__text { --napis: 104px; display: block; }
+.znacka__text { --napis: calc((0.73611 * var(--mark) - var(--mezera)) / 0.224752); display: block; }
 .znacka__napis { display: block; width: var(--napis); height: auto; color: var(--znacka); }
 .znacka__pod {
-  display: block; width: var(--napis); height: auto; margin-top: 4px;
+  display: block; width: var(--napis); height: auto; margin-top: var(--mezera);
   font-family: var(--pismo-mono); font-size: 89px; font-weight: 500; fill: var(--sedy-2);
   /* rámeček je utažený na verzálky, ať sedí odsazení; háček nad Ž smí přečuhovat */
   overflow: visible;
