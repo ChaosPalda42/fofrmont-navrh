@@ -477,6 +477,61 @@
     }, { passive: true });
   }
 
+  /**
+   * Srovnané řádky v mřížce karet.
+   *
+   * CSS `auto-fill` jen nasype do řádku, co se vejde: z deseti karet při šesti
+   * sloupcích vyjde 6 + 4 a druhý řádek je napůl prázdný. Zjistíme tedy, kolik
+   * sloupců se nejvýš vejde (karta nesmí být užší než `--karta-min`), a z těch
+   * možností vybereme tu nejhezčí: každé prázdné místo v posledním řádku i
+   * každý řádek nad nutné minimum stojí jeden bod a vyhrává nejmenší součet; při
+   * shodě víc sloupců, protože se zkouší odshora.
+   *
+   * Vyjde z toho, co člověk nakreslí od ruky: 10 → 2×5, 8 → 2×4, 7 → 4 + 3,
+   * 11 → 6 + 5, 9 → 5 + 4, 5 → jedna řada. A když se vejdou nejvýš tři sloupce,
+   * je z deseti karet pět řádků po dvou místo 3 + 3 + 3 + 1 — osamocená karta
+   * v řádku je přesně to, co bije do oka.
+   *
+   * Počítají se jen karty, které jsou opravdu vidět, takže to drží i po
+   * přepnutí segmentu. Nejmenší šířka karty se čte z `--karta-min`, aby to
+   * číslo bylo jen v CSS a nemohlo se rozejít.
+   */
+  function srovnejRadky(mrizka) {
+    var pocet = 0;
+    for (var i = 0; i < mrizka.children.length; i++) if (!mrizka.children[i].hidden) pocet++;
+    var styl = window.getComputedStyle(mrizka);
+    var min = parseFloat(styl.getPropertyValue("--karta-min"));
+    var mezera = parseFloat(styl.columnGap) || 0;
+    var sirka = mrizka.clientWidth - (parseFloat(styl.paddingLeft) || 0) - (parseFloat(styl.paddingRight) || 0);
+    if (!pocet || !(min > 0) || !(sirka > 0)) {         // ještě se nekreslí (display:none, nenaběhlo CSS)
+      mrizka.style.removeProperty("grid-template-columns");
+      return;
+    }
+    var max = Math.min(pocet, Math.max(1, Math.floor((sirka + mezera) / (min + mezera))));
+    var radkuMin = Math.ceil(pocet / max);
+    var sloupcu = max, nejlepsi = Infinity;
+    for (var s = max; s >= 1; s--) {
+      var radku = Math.ceil(pocet / s);
+      var body = (s * radku - pocet) + (radku - radkuMin);   // díry v posledním řádku + řádky navíc
+      if (body < nejlepsi) { nejlepsi = body; sloupcu = s; }
+    }
+    mrizka.style.gridTemplateColumns = "repeat(" + sloupcu + ", minmax(0, 1fr))";
+  }
+
+  /** Přepočítá srovnané mřížky — po načtení a při každé změně šířky okna. */
+  function srovnaneMrizky() {
+    var mrizky = $$("[data-srovnat]");
+    if (!mrizky.length) return;
+    var ceka = false;
+    var prepocitej = function () { mrizky.forEach(srovnejRadky); };
+    prepocitej();
+    window.addEventListener("resize", function () {
+      if (ceka) return;
+      ceka = true;
+      window.requestAnimationFrame(function () { prepocitej(); ceka = false; });
+    });
+  }
+
   /** Na úvodu přepínač schová obory, které pro danou skupinu nedávají smysl. */
   function filtrujObory(varianta) {
     var mrizka = $("[data-obory]");
@@ -487,6 +542,7 @@
       karta.hidden = !ok;
       if (ok) videt.push(karta);
     });
+    if (mrizka.hasAttribute("data-srovnat")) srovnejRadky(mrizka);   // ubylo/přibylo karet
     vplyn(videt);
   }
 
@@ -1325,6 +1381,7 @@
     navigace(); prijezd(); rastr(); svitivaMrizka(); pravitko(); pocitadla();
     hero(); naklon(); otacecka(); magnety(); meric(); gantt();
     filtrujStavby(); filtrujRecenze(); dotazy(); kalkulacky(); pruvodce(); formulare();
+    srovnaneMrizky();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();

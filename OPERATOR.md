@@ -231,3 +231,25 @@ dole −0,11 px, vlevo i vpravo 0,00 — v CZ i EN, na desktopu i na mobilu.
 
 Terminologie v EN sjednocená na HVAC (byla směs MEP a HVAC): titulek úvodní
 stránky, „six HVAC trades" a „for HVAC trades".
+
+## Srovnané řádky v mřížce oborů, 23. 10.
+
+Michaelovi vadilo, že z deseti karet oborů vycházelo 6 + 4 a druhý řádek byl
+napůl prázdný. CSS `auto-fill` neumí nic jiného — nasype do řádku, co se vejde.
+Počet sloupců proto dopočítává `srovnejRadky()` ve `src/ui/web.js`: zjistí, kolik
+sloupců se nejvýš vejde (karta nesmí být užší než `--karta-min`, to číslo je jen
+v CSS), a z možností vybere tu s nejmenším součtem „díry v posledním řádku +
+řádky nad nutné minimum“. Z deseti karet tak vyjde 2×5, z osmi (domácnosti) 2×4,
+ze sedmi 4 + 3, z jedenácti 6 + 5.
+
+Počítají se jen karty, které jsou vidět, takže to drží i po přepnutí segmentu;
+přepočítá se po načtení, při změně šířky okna a při každém filtrování. Mřížka se
+přihlásí atributem `data-srovnat`, zatím ho má jen mřížka oborů na úvodu. Bez JS
+zůstane v CSS původní `auto-fill`.
+
+Naměřeno (šířka mřížky → sloupců × řádků, poslední řádek, šířka karty):
+firmy 1440 → 5×2 posl. 5 (279 px), 971 → 5×2 posl. 5 (185 px), 860 → 4×3 posl. 2,
+715 → 2×5 posl. 2, 380 → 2×5 posl. 2 (184 px); domácnosti 1440 → 4×2 posl. 4,
+860 → 4×2, 715 → 3×3 posl. 2, 380 → 2×4 posl. 2. Nikde nevyšel poslední řádek
+s jedinou kartou, nikde karta pod `--karta-min` (175 px, pod 40rem 150 px) a nikde
+mřížka nepřetekla. Na mobilu (375 px) 2 sloupce, karta 164 px.

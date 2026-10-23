@@ -60,7 +60,7 @@ export function uvod(ctx) {
           </button>
         </div>
       </div>
-      <div class="mrizka mrizka--obory" data-obory>
+      <div class="mrizka mrizka--obory" data-obory data-srovnat>
         ${site.obory.map((o) => kartaOboru(ctx, o, { maly: true })).join("")}
       </div>
       <p class="male tise hero__poznamka">${esc(t("uvod.realstaffPoznamka"))}</p>

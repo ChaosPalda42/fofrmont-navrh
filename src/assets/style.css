@@ -1282,7 +1282,16 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
   gap: .9rem 1.4rem; margin: 1.3rem 0 1.4rem;
 }
 .hero__prepinac { margin: 0; justify-content: flex-start; }
-.mrizka--obory { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); }
+/* Karty oborů. `auto-fill` jen nasype do řádku, co se vejde — z deseti karet
+   vyjde 6 + 4 a poslední řádek je napůl prázdný. Rovnoměrné rozdělení (2×5,
+   u domácností 2×4) dopočítá web.js z karet, které jsou právě vidět; nejmenší
+   šířku karty si přečte z `--karta-min`, ať je ten údaj na jednom místě. Bez
+   JS zůstane auto-fill, což je pořád použitelné, jen neurovnané. */
+.mrizka--obory {
+  --karta-min: 175px;
+  display: grid; gap: .7rem;
+  grid-template-columns: repeat(auto-fill, minmax(var(--karta-min), 1fr));
+}
 .karta--obor { padding: .85rem .95rem 1rem; }
 .karta--obor .karta__cislo { margin-bottom: .45rem; font-size: .62rem; }
 .karta--obor .karta__nadpis { margin-bottom: .25rem; line-height: 1.2; }
@@ -1290,7 +1299,7 @@ body[data-nacteno="1"] .nacitani { animation: nacitaniPryc 620ms cubic-bezier(.6
 .karta--obor[hidden] { display: none !important; }
 .hero__poznamka { margin: .9rem 0 0; }
 @media (max-width: 40rem) {
-  .mrizka--obory { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .55rem; }
+  .mrizka--obory { --karta-min: 150px; gap: .55rem; }
   .karta--obor { padding: .7rem .75rem .8rem; }
   .karta--obor .karta__text { display: none; }
 }
