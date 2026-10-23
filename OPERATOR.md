@@ -253,3 +253,10 @@ firmy 1440 → 5×2 posl. 5 (279 px), 971 → 5×2 posl. 5 (185 px), 860 → 4×
 860 → 4×2, 715 → 3×3 posl. 2, 380 → 2×4 posl. 2. Nikde nevyšel poslední řádek
 s jedinou kartou, nikde karta pod `--karta-min` (175 px, pod 40rem 150 px) a nikde
 mřížka nepřetekla. Na mobilu (375 px) 2 sloupce, karta 164 px.
+
+**Přečíslování karet, 23. 10.** V domácnostech chyběla v řadě čísla oborů, které
+patří jen firmám (01–05, 07, 08). Číslo má v malé kartě vlastní prvek
+(`[data-poradi]`) a `filtrujObory()` ho přepíše podle pořadí viditelných karet:
+firmy 01–10, domácnosti 01–08, po přepnutí zpět zase 01–10. Jinde se číslování
+nemění — na `co-delame` a v detailech oborů zůstává číslo z dat (je ve dvojici
+se zkratkou profese). Bez JS zůstane číslo z dat i na úvodu.
