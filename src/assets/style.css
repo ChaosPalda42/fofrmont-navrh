@@ -175,8 +175,17 @@ a:hover { text-decoration-color: currentColor; }
   0%, 100% { opacity: 1; transform: translateX(0); }
   50% { opacity: .42; transform: translateX(-5%); }
 }
-.znacka__napis { display: block; width: 104px; height: auto; color: var(--znacka); }
-.znacka__pod { display: block; font-family: var(--pismo-mono); font-size: .58rem; letter-spacing: .21em; color: var(--sedy-2); text-transform: uppercase; margin-top: -2px; }
+/* Nápis a podtitul mají jednu šířku, aby lockup seděl na obou stranách. Podtitul
+   je SVG text s textLength, takže se vysází přesně do té šířky sám — nezáleží na
+   jazyce ani na tom, jestli se stihlo načíst JetBrains Mono. */
+.znacka__text { --napis: 104px; display: block; }
+.znacka__napis { display: block; width: var(--napis); height: auto; color: var(--znacka); }
+.znacka__pod {
+  display: block; width: var(--napis); height: auto; margin-top: 4px;
+  font-family: var(--pismo-mono); font-size: 89px; font-weight: 500; fill: var(--sedy-2);
+  /* rámeček je utažený na verzálky, ať sedí odsazení; háček nad Ž smí přečuhovat */
+  overflow: visible;
+}
 
 .navigace { margin-left: auto; display: flex; align-items: center; gap: .15rem; }
 .navigace a {

@@ -200,3 +200,19 @@ Protifáze je schválně — inkoustu je v logu pořád stejně, takže to nebli
 to převaluje. Posun jde doleva, protože špička vlnky sahá přesně na okraj viewBoxu.
 Ověřeno: složená značka z dílů se od `znak.svg` liší na 5 z 433 920 pixelů
 (0,0012 %, jen antialias na švech), pytest 0, kontrola_webu 72/0, prohlizec 0 chyb.
+
+**Podtitul zarovnaný s nápisem, 23. 10.** Michael změřil okem to, co se dalo
+změřit: podtitul vyčuhoval vpravo za nápis FOFRMONT o 37 z 103 px (36 %). Praha
+z něj jde pryč — firma montuje po celé republice, takže z „montáže TZB · Praha"
+zůstává „montáže TZB" (a v EN „HVAC installations"). Adresa Žižkova v kontaktech
+a „práce v Praze a okolí" v kariéře zůstávají, to jsou jiná tvrzení.
+
+Zarovnání se nedělá odhadem prostrkání: podtitul je teď SVG text s `textLength`
+a `lengthAdjust="spacing"` (`podtitulLoga()` ve `znacka.mjs`), nápis i podtitul
+berou šířku z jedné proměnné `--napis`. Vysází se tedy vždy přesně do šířky nápisu
+— v češtině (11 znaků) i angličtině (18) a i kdyby se nenačetlo JetBrains Mono,
+což je přesně ta vada, co ji Michael viděl. Rámeček je utažený na verzálky, aby
+sedělo odsazení, háček nad Ž smí přečuhovat (`overflow: visible`).
+
+Změřeno: nápis i podtitul 104,00 px, rozdíl vlevo 0,00 a vpravo 0,00 na desktopu,
+na mobilu i na /en/. Velikost písmen se nezměnila (verzálky 6,8 px jako dřív).

@@ -105,3 +105,14 @@ export function favicona() {
 <g transform="translate(${dx.toFixed(2)} ${dy.toFixed(2)})">${s.telo}</g>
 </svg>`;
 }
+
+/**
+ * Podtitul pod nápisem FOFRMONT. Sází se jako SVG text s `textLength`, takže je
+ * vždy přesně tak široký jako nápis nad ním — ať je text český, anglický, nebo
+ * se nestihne načíst písmo. Mezery se rozdělí mezi písmena (`lengthAdjust`),
+ * tvary písmen se nedeformují. Text musí přijít už převedený na verzálky
+ * a ošetřený, značka se o něj nestará.
+ */
+export function podtitulLoga(text, { trida = "znacka__pod" } = {}) {
+  return `<svg class="${trida}" viewBox="0 24 1000 65" aria-hidden="true" focusable="false"><text x="0" y="89" textLength="1000" lengthAdjust="spacing">${text}</text></svg>`;
+}

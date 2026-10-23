@@ -1,7 +1,7 @@
 /** Kostra stránky: hlavička, navigace, patička s výkresovým razítkem. */
 import { esc, atr } from "./lib.mjs";
 import { ikona } from "./ikony.mjs";
-import { znacka, napisLoga, znackaDily, dumObrys } from "./znacka.mjs";
+import { znacka, napisLoga, znackaDily, dumObrys, podtitulLoga } from "./znacka.mjs";
 
 export function navigace(ctx, aktivni) {
   const { t, odkaz, site } = ctx;
@@ -143,8 +143,8 @@ export function stranka(ctx, { titulek, popis, aktivni, obsah, telo = "" }) {
   <div class="obal lista__obal">
     <a class="znacka" href="${odkaz("uvod")}" aria-label="FOFRMONT CZ">
       ${znacka(56, { dily: true, prefix: "hl-" })}
-      <span>${napisLoga({ trida: "znacka__napis" })}
-      <span class="znacka__pod">${esc(t("spolecne.znackaPodtitul"))}</span></span>
+      <span class="znacka__text">${napisLoga({ trida: "znacka__napis" })}
+      ${podtitulLoga(esc(t("spolecne.znackaPodtitul").toUpperCase()))}</span>
     </a>
     <button class="tema" type="button" data-prepinac-tema aria-label="${esc(t("spolecne.temaPrepnout"))}"
       title="${esc(t("spolecne.temaPrepnout"))}">
