@@ -542,6 +542,12 @@
       karta.hidden = !ok;
       if (ok) videt.push(karta);
     });
+    // Čísla karet jdou po sobě podle toho, co zbylo — jinak by v domácnostech
+    // chyběla ta, která patří jen firmám (01, 02, …, 05, 07, 08).
+    videt.forEach(function (karta, i) {
+      var poradi = $("[data-poradi]", karta);
+      if (poradi) poradi.textContent = (i < 9 ? "0" : "") + (i + 1);
+    });
     if (mrizka.hasAttribute("data-srovnat")) srovnejRadky(mrizka);   // ubylo/přibylo karet
     vplyn(videt);
   }

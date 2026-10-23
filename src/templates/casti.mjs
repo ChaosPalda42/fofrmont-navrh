@@ -26,8 +26,11 @@ export function drobecky(ctx, cesta) {
 export function kartaOboru(ctx, obor, { odkazovat = true, maly = false } = {}) {
   const { t, odkaz } = ctx;
   const realstaff = obor.znacka === "realstaff";
+  // Číslo je v malé kartě ve vlastním prvku: na úvodu se obory filtrují podle
+  // segmentu a web.js je pak přečísluje podle toho, co je opravdu vidět, ať
+  // v řadě nechybí čísla. Bez JS zůstane číslo z dat.
   const vnitrek = maly
-    ? `<span class="karta__cislo">${esc(obor.cislo)}${realstaff ? `<span class="znacka-firmy">${esc(t("obor.znackaRealstaff"))}</span>` : ""}</span>
+    ? `<span class="karta__cislo"><span data-poradi>${esc(obor.cislo)}</span>${realstaff ? `<span class="znacka-firmy">${esc(t("obor.znackaRealstaff"))}</span>` : ""}</span>
        <div style="color:var(--cara);margin-bottom:.5rem">${ikona(IKONY_OBORU[obor.id] || "vykres", { velikost: 22 })}</div>
        <h3 class="karta__nadpis" style="font-size:1.02rem">${esc(obor.nazev)}</h3>
        <p class="karta__text male">${esc(obor.perex.split(/[.!?]/)[0])}.</p>`
