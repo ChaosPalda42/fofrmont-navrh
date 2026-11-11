@@ -1,0 +1,98 @@
+FOFRMONT CZ — doména, webhosting a pošta
+========================================
+Odpověď na dotaz z 11. 11. 2026
+KONCEPT — než to půjde klientovi, doplnit registrátora, ceny a kdo fakturuje.
+
+
+Co ten web technicky potřebuje
+------------------------------
+Web je statický: 72 hotových stránek (česky a anglicky), obrázky, písma
+a jeden soubor s chováním stránky. Žádná databáze, žádný redakční systém,
+který by běžel na serveru. Takový web uveze i ten nejlevnější hosting a je
+rychlý a bezpečný — není co hacknout.
+
+Dvě věci server přesto potřebují:
+
+1. ODESLÁNÍ POPTÁVKY. Formulář v ukázce zatím nikam neposílá, jen ukazuje,
+   jak to bude vypadat. V ostré verzi ho napojíme tak, aby poptávka přišla
+   na fofrmont@gmail.com (a později kamkoli jinam, je to jeden řádek
+   nastavení). Nejjednodušší je to na klasickém webhostingu s PHP.
+
+2. ADMINISTRACE. V ukázce si změny ukládá jen váš prohlížeč. Jestli budete
+   chtít sami přepisovat texty a přidávat reference i naostro, potřebuje
+   administrace místo na serveru, kam ukládá. To je také na klasickém
+   webhostingu bez problému.
+
+
+Doména
+------
+Ano, doménu si kupte na firmu a na svůj účet — tak je to správně. Doména je
+majetek firmy, stejně jako telefonní číslo. Držitel: FOFRMONT CZ s.r.o.,
+kontaktní e-mail kancelarfofrmont@gmail.com.
+
+Prakticky to vypadá takhle:
+
+* Doménu zaregistrujete u českého registrátora na svůj účet, platíte ji vy
+  a faktura chodí na firmu.
+* V administraci domény nám přidáte přístup (u běžných registrátorů jde
+  přidat další uživatele, nebo se dá zadat technický kontakt). Nepotřebujeme
+  vaše heslo — potřebujeme jen právo měnit DNS záznamy.
+* DNS záznamy nastavíme my: kam ukazuje web (A/CNAME) a kam chodí pošta (MX).
+  Je to patnáct minut práce a děje se to jednou.
+* Kdykoli nás můžete z přístupů odebrat a web převzít jinam. Nic vám
+  nedržíme „jako rukojmí".
+
+Jaká doména: fofrmont.cz, pokud je volná; jinak se podíváme na varianty.
+Doporučujeme k tomu rovnou zaregistrovat i fofrmontcz.cz nebo fofrmont.eu
+jako obranu proti překlepům — to je ale nepovinné.
+
+
+Webhosting
+----------
+Jsou dvě rozumné cesty.
+
+A) BALÍČEK U ČESKÉHO POSKYTOVATELE (doporučujeme)
+   Doména + webhosting + e-mailové schránky na jednom místě, jedna faktura,
+   česká podpora po telefonu. Protože je web statický, stačí nejnižší tarif.
+   Formulář i administrace fungují hned, nic dalšího se neřeší.
+   Orientačně: doména kolem [DOPLNIT] Kč/rok, hosting se schránkami kolem
+   [DOPLNIT] Kč/rok. Přesné číslo doplníme podle vybraného poskytovatele.
+
+B) STATICKÝ HOSTING ZVLÁŠŤ A POŠTA ZVLÁŠŤ
+   Web by běžel na službě pro statické weby (prakticky zdarma, velmi rychlé,
+   HTTPS automaticky), pošta a formulář by byly u jiného poskytovatele.
+   Levnější na provoz, ale máte dva účty na dvou místech a při každé změně
+   je potřeba vědět, co kde je.
+
+Pro firmu vaší velikosti doporučujeme A. Rozdíl v ceně je řádově stokoruny
+za rok, rozdíl v klidu je větší — všechno je na jednom účtu, který je váš.
+
+
+Pošta na doméně
+---------------
+Jakmile doména poběží, můžete mít schránky typu info@fofrmont.cz nebo
+kancelar@fofrmont.cz. Na web i do nabídek je to lepší vizitka než gmail
+a jde to nastavit tak, že se pošta sbírá dál do Gmailu, na který jste zvyklí.
+
+Do té doby je na webu uvedený telefon +420 777 176 070 a fofrmont@gmail.com.
+Přepnout to na adresu v doméně je potom práce na pět minut.
+
+
+Co by se dělo dál
+-----------------
+1. Vyberete poskytovatele a zaregistrujete doménu na firmu.
+2. Pošlete nám přístup do správy domény (nebo nás přidáte jako uživatele).
+3. Nastavíme DNS, nahrajeme web, zapneme HTTPS.
+4. Napojíme poptávkový formulář na fofrmont@gmail.com.
+5. Založíme e-mailové schránky na doméně, pokud je budete chtít.
+6. Vypneme zákaz indexování a web se začne objevovat ve vyhledávačích.
+
+Od chvíle, kdy je doména koupená, je to otázka jednoho až dvou dnů.
+
+
+Co k tomu potřebujeme od vás
+----------------------------
+* Rozhodnutí, jestli jdeme cestou A (balíček) nebo B.
+* Název domény, kterou chcete.
+* Potvrzení, že veškerá komunikace a přístupy chodí na
+  kancelarfofrmont@gmail.com.

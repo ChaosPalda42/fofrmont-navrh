@@ -260,3 +260,50 @@ patří jen firmám (01–05, 07, 08). Číslo má v malé kartě vlastní prvek
 firmy 01–10, domácnosti 01–08, po přepnutí zpět zase 01–10. Jinde se číslování
 nemění — na `co-delame` a v detailech oborů zůstává číslo z dat (je ve dvojici
 se zkratkou profese). Bez JS zůstane číslo z dat i na úvodu.
+
+## Podklady od klienta, 11. 11. 2026
+
+Klient poslal e-mailem (přes Michaela) skutečné kontakty, název sesterské
+firmy, jednu výhradu k designu a dotaz na doménu s hostingem.
+
+**Kontakty jsou skutečné.** Telefon **+420 777 176 070** (realizace i obecné
+dotazy), e-mail pro poptávky **fofrmont@gmail.com**. V `site.json` je
+`telefonDoplnit: false`, poznámka „telefon doplníme“ se už nevypisuje a
+zmizela i z polí administrace (editovat neviditelný text nedává smysl).
+Adresa **kancelarfofrmont@gmail.com** je pro komunikaci, přístupy a podklady —
+**na web nepatří**, dokud to klient neřekne.
+
+**Sesterská firma se jmenuje Realitstav Praha s.r.o.** Tím padá otevřená
+otázka z 9. 10., proč „Real Staff“ není v ARESu — ten název byl jen
+z doslechu. V textech je plný název („zajišťuje sesterská společnost
+Realitstav Praha s.r.o.“), na kartách oborů kratší značka „Realitstav Praha“,
+protože do karty široké 175 px se plný název nevejde. Vnitřní klíč
+(`znacka: "realstaff"`, překladový klíč `znackaRealstaff`) zůstal — je to
+identifikátor, ne text pro čtenáře.
+
+**Svit mřížky pod kurzorem zmírněn.** Klientovi efekt odváděl pozornost od
+obsahu. Kruh 150 → 110 px (plocha na 54 %), síla čar × průhlednost vrstvy
+.3 × .6 = .18 → .2 × .45 = .09. Naměřeno na snímcích ze stejného místa:
+amplituda čáry proti pozadí 33,7 (svit) a 22,4 (bez svitu), po úpravě 27,5 —
+příspěvek svitu tedy klesl z 11,3 na 5,1, **na 45 %**. Rozteč mřížky
+(`--rastr: 24px`) se nesahá, jinak by se rozešlo pozadí, snap a pravítko.
+V tmavých pásech s výkresem ubráno stejným dílem.
+
+**Text pro generální dodavatele** — klient poslal „Podzhotovitel, který drží
+harmonogram“. Na stránce `pro-generalni-dodavatele` je přesně tahle věta jako
+nadpis už od začátku, takže to berem jako schválení, ne změnu. Kdyby ji chtěl
+použít jinde (třeba v hlavičce úvodu pro segment firmy), je to jedna věta
+v `cs.json`.
+
+**Doména a hosting.** Odpověď sepsána do `dokumenty/DOMENA-A-HOSTING.txt`
+jako koncept pro Michaela — chybí registrátor, ceny a kdo fakturuje. Jádro:
+doménu kupuje klient na firmu a na svůj účet (je to jeho majetek), nám stačí
+právo měnit DNS; web je statický, takže stačí nejnižší tarif, ale formulář
+a administrace chtějí server, proto doporučujeme balíček doména + hosting +
+schránky u jednoho českého poskytovatele.
+
+### Zbývá z „čeká se na klienta“
+- rozpis činností Fofrmontu a Realitstavu Praha (texty u oborů jsou naše)
+- logo Realitstavu Praha (u jeho oborů je zatím jen textová značka)
+- podklady alespoň k jedné hotové realizaci
+- rozhodnutí o doméně a hostingu (A/B z dokumentu výše)
