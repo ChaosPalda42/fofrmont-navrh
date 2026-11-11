@@ -16,8 +16,9 @@ Co se změnilo podle schůzky
   Zůstal u referencí a jako dělicí prvek mezi sekcemi.
 * Nabídka se přepíná na FIRMY / DOMÁCNOSTI. Obory, které pro danou skupinu
   nedávají smysl, se schovají.
-* Přibyly obory Real Staffu: pronájem stavební techniky, pronájem aut
-  a správa nemovitostí. Jsou pod Fofrmontem, jen s drobnou značkou „Real Staff“.
+* Přibyly obory Realitstavu Praha: pronájem stavební techniky, pronájem aut
+  a správa nemovitostí. Jsou pod Fofrmontem, jen s drobnou značkou
+  „Realitstav Praha“.
 * Sekce „Náročné prostory“ byla odstraněna.
 * „Stavby“ se jmenují „Reference“ a jsou jen hotové realizace.
 * Statistiky návštěvnosti z administrace odstraněny. Místo nich web počítá
@@ -41,11 +42,11 @@ Co si vyzkoušejte
 
 Co od vás potřebujeme
 ---------------------
-* ROZPIS ČINNOSTÍ Fofrmontu a Real Staffu. Texty u oborů jsou zatím naše
+* ROZPIS ČINNOSTÍ Fofrmontu a Realitstavu Praha. Texty u oborů jsou zatím naše
   a je potřeba je nahradit vašimi — hlavně u čtyř nových.
 * LOGO FOFRMONTU, ideálně vektor (AI, EPS, SVG, PDF). Když je jen obrázek,
   překreslíme ho.
-* PŘEDSTAVU O LOGU REAL STAFFU. Návrh připravíme, odsouhlasíme online.
+* PŘEDSTAVU O LOGU REALITSTAVU PRAHA. Návrh připravíme, odsouhlasíme online.
 * PODKLADY ALESPOŇ K JEDNÉ HOTOVÉ REALIZACI — fotky a pár vět. Podle ní
   nastavíme, jak mají reference vypadat, a zbytek už zvládnete sami.
 * TELEFON a e-mailové adresy, které mají být na webu.
@@ -57,10 +58,9 @@ Co je v ukázce vymyšlené
 * Všech osm referencí včetně čísel a termínů. Žádná z nich neproběhla.
 * Všechny recenze i jejich autoři. Značka „Google“ u některých je jen ukázka,
   jak to bude vypadat po založení firemního profilu.
-* Popisy u nových oborů Real Staffu a u realizace staveb.
+* Popisy u nových oborů Realitstavu Praha a u realizace staveb.
 * Čísla v přehledu na úvodu („24 montérů“ a podobně).
 * Otevřené pozice v Kariéře.
-* Telefon je schválně „+420 XXX XXX XXX“.
 
 Skutečné jsou údaje Fofrmontu z veřejného rejstříku a to, co jsme si řekli
 na schůzce.

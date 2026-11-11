@@ -77,7 +77,6 @@ export function administrace(ctx) {
           "spolecne.ukazkaOdkaz": "Pruh nahoře: odkaz na seznam smyšleného",
           "spolecne.ukazkaAdmin": "Pruh nahoře: odkaz do administrace",
           "spolecne.znackaPodtitul": "Podtitul u loga",
-          "spolecne.telefonDoplnit": "Poznámka pod telefonem",
           "meta.titulek": "Titulek webu v prohlížeči",
           "meta.popis": "Popis webu pro vyhledávače",
           "meta.pripona": "Přípona titulku stránek",

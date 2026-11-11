@@ -16,16 +16,16 @@
     "kapital": "200 000 Kč",
     "pusobnost": "Praha, Středočeský kraj a celá ČR",
     "sesterska": {
-      "nazev": "Real Staff",
+      "nazev": "Realitstav Praha s.r.o.",
       "popis": "Pronájem aut a stavební techniky, správa nemovitostí.",
-      "poznamka": "Samostatná firma ze stejné skupiny. Na webu vystupuje jako část nabídky Fofrmontu."
+      "poznamka": "Samostatná firma ze stejné skupiny (potvrzeno klientem 11. 11. 2026). Na webu vystupuje jako část nabídky Fofrmontu, karty nese drobná značka „Realitstav Praha“."
     }
   },
   "kontakt": {
-    "telefon": "+420 XXX XXX XXX",
-    "telefonDoplnit": true,
-    "email": "info@fofrmont.cz",
-    "emailPoptavky": "poptavky@fofrmont.cz",
+    "telefon": "+420 777 176 070",
+    "telefonDoplnit": false,
+    "email": "fofrmont@gmail.com",
+    "emailPoptavky": "fofrmont@gmail.com",
     "datovka": "—",
     "provozniDoba": "Po–Pá 7:00–17:00, na stavbě podle harmonogramu",
     "googleProfil": ""

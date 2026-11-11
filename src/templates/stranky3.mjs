@@ -149,7 +149,7 @@ export function kontakt(ctx) {
           <span class="karta__cislo">${esc(t("kontakt.udajeNadpis"))}</span>
           <p style="display:flex;gap:.6rem;align-items:center;margin:.9rem 0 .2rem;font-size:1.06rem;font-weight:600">
             ${ikona("telefon", { velikost: 18 })} <span class="mono" data-udaj="kontakt.telefon">${esc(k.telefon)}</span></p>
-          <p class="male tise" style="margin:0 0 1rem">${esc(t("spolecne.telefonDoplnit"))}</p>
+          ${k.telefonDoplnit ? `<p class="male tise" style="margin:0 0 1rem">${esc(t("spolecne.telefonDoplnit"))}</p>` : ""}
           <p style="display:flex;gap:.6rem;align-items:center;margin:0 0 1rem">
             ${ikona("obalka", { velikost: 18 })} <a href="mailto:${esc(k.email)}" data-udaj="kontakt.email" data-udaj-mailto>${esc(k.email)}</a></p>
           <p style="display:flex;gap:.6rem;align-items:flex-start;margin:0">
@@ -199,7 +199,8 @@ export function oUkazce(ctx) {
   const skutecne = [
     "Název, IČO, DIČ, sídlo, datum vzniku, jednatel a spisová značka Fofrmontu — z veřejného rejstříku (ARES).",
     "Rozdělení nabídky na firmy a domácnosti a skladba úvodní stránky — podle schůzky 9. 10. 2026.",
-    "To, že pronájem techniky, aut a správu nemovitostí zajišťuje sesterská firma Real Staff.",
+    "To, že pronájem techniky, aut a správu nemovitostí zajišťuje sesterská společnost Realitstav Praha s.r.o.",
+    "Telefon a e-mailová adresa — platné kontakty firmy.",
   ];
   const smyslene = [
     "Všech osm staveb v referencích včetně čísel, termínů a rolí. Žádná z nich neproběhla.",
@@ -207,8 +208,7 @@ export function oUkazce(ctx) {
     "Popisy u nových oborů (realizace staveb, pronájem techniky, pronájem aut, správa nemovitostí) — čekáme na rozpis činností od vás.",
     "Údaje „24 montérů“ a podobná čísla v přehledu.",
     "Otevřené pozice v sekci Kariéra.",
-    "Telefon (je uvedený jako XXX) a e-mailové adresy.",
-    "Logo. Fofrmont i Real Staff dodají vlastní; zatím je v ukázce naše značka.",
+    "Logo Realitstavu Praha — zatím je u jeho oborů jen textová značka.",
   ];
   return [
     hlavicka(ctx, {
@@ -231,7 +231,7 @@ export function oUkazce(ctx) {
       <ul class="seznam">
         <li>Úvodní stránka ukazuje rovnou všechny obory; izometrický výkres z hlavičky je pryč.</li>
         <li>Nabídka se dělí na firmy a domácnosti.</li>
-        <li>Přibyly obory Real Staffu: pronájem techniky, pronájem aut a správa nemovitostí.</li>
+        <li>Přibyly obory Realitstavu Praha: pronájem techniky, pronájem aut a správa nemovitostí.</li>
         <li>Sekce Náročné prostory a statistiky návštěvnosti v administraci byly odstraněny.</li>
         <li>Reference jsou jen hotové realizace a dají se k nim v administraci nahrát fotky.</li>
         <li>Recenze počítají s napojením na firemní profil na Googlu.</li>
