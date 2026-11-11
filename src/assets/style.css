@@ -650,21 +650,25 @@ input[type="range"] { width: 100%; accent-color: var(--cara); }
    Kurzor a pohyb — mřížka pod kurzorem, snap na uzly, pravítko postupu
    ====================================================================== */
 
+/* Mřížka se pod kurzorem rozsvítí. Klient 11. 11. 2026: efekt působil rušivě
+   a odváděl pozornost od obsahu, proto je kruh menší (150 → 110 px) a svit
+   slabší: síla čáry .3 × .6 = .18 → .2 × .45 = .09, tedy na polovinu. Rozteč
+   mřížky zůstává (--rastr), aby se nerozešla s pozadím a se snapem. */
 .rastr-svit {
   position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
   transition: opacity 500ms ease;
   background-image:
-    radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px), rgba(var(--rastr-cara-svit), .028), transparent 70%),
-    linear-gradient(to right, rgba(var(--rastr-cara-svit), .3) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(var(--rastr-cara-svit), .3) 1px, transparent 1px);
+    radial-gradient(circle 110px at var(--mx, -999px) var(--my, -999px), rgba(var(--rastr-cara-svit), .022), transparent 70%),
+    linear-gradient(to right, rgba(var(--rastr-cara-svit), .2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--rastr-cara-svit), .2) 1px, transparent 1px);
   background-size: 100% 100%, var(--rastr) var(--rastr), var(--rastr) var(--rastr);
   transform: translate3d(0, var(--rastr-posun, 0), 0);
-  -webkit-mask-image: radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px),
-    #000 0, rgba(0, 0, 0, .45) 45%, transparent 78%);
-  mask-image: radial-gradient(circle 150px at var(--mx, -999px) var(--my, -999px),
-    #000 0, rgba(0, 0, 0, .45) 45%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle 110px at var(--mx, -999px) var(--my, -999px),
+    #000 0, rgba(0, 0, 0, .4) 45%, transparent 78%);
+  mask-image: radial-gradient(circle 110px at var(--mx, -999px) var(--my, -999px),
+    #000 0, rgba(0, 0, 0, .4) 45%, transparent 78%);
 }
-body[data-kurzor="1"] .rastr-svit { opacity: .6; }
+body[data-kurzor="1"] .rastr-svit { opacity: .45; }
 
 /* značka, která skáče po uzlech mřížky jako uchycení v CADu */
 .rastr-snap {
@@ -680,18 +684,20 @@ body[data-kurzor="1"] .rastr-svit { opacity: .6; }
 .rastr-snap::after { top: 50%; margin-top: -.5px; left: -6px; height: 1px; width: 21px; }
 body[data-kurzor="1"] .rastr-snap { opacity: .3; }
 
+/* Totéž v tmavých pásech s výkresem — tam svítí světle modrá, tak ubralo
+   stejným dílem: .34 × .45 = .153 → .24 × .3 = .072. */
 .pas__svit {
   position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
   transition: opacity 500ms ease;
   background-image:
-    radial-gradient(circle 160px at var(--mx, -999px) var(--my, -999px), rgba(111, 211, 255, .04), transparent 70%),
-    linear-gradient(to right, rgba(111, 211, 255, .34) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(111, 211, 255, .34) 1px, transparent 1px);
+    radial-gradient(circle 120px at var(--mx, -999px) var(--my, -999px), rgba(111, 211, 255, .03), transparent 70%),
+    linear-gradient(to right, rgba(111, 211, 255, .24) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(111, 211, 255, .24) 1px, transparent 1px);
   background-size: 100% 100%, var(--rastr) var(--rastr), var(--rastr) var(--rastr);
-  -webkit-mask-image: radial-gradient(circle 165px at var(--mx, -999px) var(--my, -999px), #000 0, transparent 76%);
-  mask-image: radial-gradient(circle 165px at var(--mx, -999px) var(--my, -999px), #000 0, transparent 76%);
+  -webkit-mask-image: radial-gradient(circle 125px at var(--mx, -999px) var(--my, -999px), #000 0, transparent 76%);
+  mask-image: radial-gradient(circle 125px at var(--mx, -999px) var(--my, -999px), #000 0, transparent 76%);
 }
-.pas--vykres[data-svit="1"] .pas__svit { opacity: .45; }
+.pas--vykres[data-svit="1"] .pas__svit { opacity: .3; }
 
 /* pravítko postupu čtení pod lištou */
 .merit {
