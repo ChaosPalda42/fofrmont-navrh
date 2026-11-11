@@ -34,6 +34,7 @@ export function oNas(ctx) {
           <tr><th>${esc(t("oNas.zapis"))}</th><td>${esc(f.zapis)}</td></tr>
           <tr><th>${esc(t("oNas.kapital"))}</th><td>${esc(f.kapital)}</td></tr>
           <tr><th>${esc(t("oNas.pusobnost"))}</th><td>${esc(f.pusobnost)}</td></tr>
+          ${f.sesterska && f.sesterska.ico ? `<tr><th>${esc(t("oNas.sesterska"))}</th><td>${esc(f.sesterska.nazev)}, ${esc(t("oNas.ico"))} ${esc(f.sesterska.ico)}<br><span class="tise">${esc(f.sesterska.adresa.ulice)}, ${esc(f.sesterska.adresa.psc)} ${esc(f.sesterska.adresa.mesto)}</span></td></tr>` : ""}
         </table>
       </div>
     </div></section>`,
@@ -199,7 +200,7 @@ export function oUkazce(ctx) {
   const skutecne = [
     "Název, IČO, DIČ, sídlo, datum vzniku, jednatel a spisová značka Fofrmontu — z veřejného rejstříku (ARES).",
     "Rozdělení nabídky na firmy a domácnosti a skladba úvodní stránky — podle schůzky 9. 10. 2026.",
-    "To, že pronájem techniky, aut a správu nemovitostí zajišťuje sesterská společnost Realitstav Praha s.r.o.",
+    "To, že pronájem techniky, aut a správu nemovitostí zajišťuje sesterská společnost Realitstav Praha s.r.o. Její IČO, DIČ a sídlo jsou také z rejstříku (ARES).",
     "Telefon a e-mailová adresa — platné kontakty firmy.",
   ];
   const smyslene = [

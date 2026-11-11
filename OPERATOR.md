@@ -307,3 +307,19 @@ schránky u jednoho českého poskytovatele.
 - logo Realitstavu Praha (u jeho oborů je zatím jen textová značka)
 - podklady alespoň k jedné hotové realizaci
 - rozhodnutí o doméně a hostingu (A/B z dokumentu výše)
+
+**Realitstav Praha dohledán v ARESu, 11. 11.** Dotaz na veřejné rozhraní
+ARESu (`/ekonomicke-subjekty/vyhledat`, obchodní jméno „Realitstav Praha“)
+vrátil **jediný** subjekt, aktivní, bez zániku: **Realitstav Praha s.r.o.,
+IČO 10768211**, DIČ CZ10768211 (plátce DPH), sídlo V Roháčích 473/63,
+Jinonice, 158 00 Praha 5, zapsáno 13. 5. 2021. Tím padá poznámka z 9. 10.,
+že rejstříkové údaje sesterské firmy nemáme — nedohledatelný byl jen starý
+pracovní název „Real Staff“, ne firma.
+
+Údaje jsou v `data/site.json` pod `firma.sesterska` (`ico`, `dic`, `adresa`,
+`vznik`) a na webu se ukazují na stránce **O nás** v tabulce údajů jako řádek
+„Sesterská společnost“: název, IČO a sídlo. Řádek se vykreslí jen když je
+`sesterska.ico` vyplněné — chybějící údaj se nevypisuje prázdný. Na úvodní
+stránce zůstává jen věta bez čísel, tam by rejstříkové údaje rušily.
+V „Co je skutečné“ je doplněno, že IČO, DIČ a sídlo Realitstavu jsou taky
+z rejstříku.

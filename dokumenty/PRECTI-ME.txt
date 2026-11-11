@@ -18,7 +18,8 @@ Co se změnilo podle schůzky
   nedávají smysl, se schovají.
 * Přibyly obory Realitstavu Praha: pronájem stavební techniky, pronájem aut
   a správa nemovitostí. Jsou pod Fofrmontem, jen s drobnou značkou
-  „Realitstav Praha“.
+  „Realitstav Praha“. V údajích o firmě na stránce „O nás“ je Realitstav Praha
+  s.r.o. uvedený i s IČO 10768211 a sídlem — dohledáno v rejstříku (ARES).
 * Sekce „Náročné prostory“ byla odstraněna.
 * „Stavby“ se jmenují „Reference“ a jsou jen hotové realizace.
 * Statistiky návštěvnosti z administrace odstraněny. Místo nich web počítá
