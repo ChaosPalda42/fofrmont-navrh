@@ -20,13 +20,14 @@
     "kontakt": "Kontakt",
     "poptavka": "Poptávka",
     "administrace": "Administrace",
-    "dalsi": "Další"
+    "dalsi": "Další",
+    "kontakty": "Kontakty"
   },
   "spolecne": {
     "ukazka": "Ukázka návrhu webu — obsah i reference jsou pracovní, ne ostrá data.",
     "ukazkaOdkaz": "Co je v ukázce smyšlené",
     "cta": "Nezávazná poptávka",
-    "ctaPopis": "Šest otázek, dvě minuty. Ozveme se do dvou pracovních dnů.",
+    "ctaPopis": "6 otázek, 2 minuty a my se ozveme.",
     "zpet": "Zpět",
     "vice": "Více",
     "viceOOboru": "Co v tom oboru děláme",
@@ -83,13 +84,13 @@
     "oboryNadpis": "Co děláme",
     "oboryLead": "Vyberte obor a podívejte se, co v něm umíme.",
     "stavbyNadpis": "Co jsme postavili",
-    "stavbyLead": "Hotové realizace od operačních sálů po podkroví rodinného domu. U každé je napsané, co bylo nejtěžší.",
+    "stavbyLead": "Hotové realizace od bytových domů přes operační sály po podkroví rodinného domu.",
     "recenzeNadpis": "Co o nás říkají",
     "recenzeLead": "Investoři, stavbyvedoucí, technický dozor i majitelé domů.",
     "postupNadpis": "Jak to u nás běží",
     "postupLead": "Od telefonu k předání osm kroků. Žádný z nich nepřeskakujeme.",
     "ctaPatka": "Máte projekt, nebo aspoň představu?",
-    "ctaPatkaText": "Pošlete zadání a my se do dvou pracovních dnů ozveme s tím, jestli to umíme, kdy to umíme a za kolik.",
+    "ctaPatkaText": "Pošlete zadání a my se ozveme s tím, jestli to umíme, kdy to umíme a za kolik.",
     "vsechnyObory": "Všechny obory",
     "realstaffPoznamka": "Pronájem techniky, aut a správu nemovitostí zajišťuje sesterská společnost Realitstav Praha s.r.o.",
     "prepinacNapoveda": "Vyberte a nabídka se tomu přizpůsobí.",
@@ -191,7 +192,7 @@
   },
   "b2b": {
     "stitek": "Pro generální dodavatele",
-    "nadpis": "Podzhotovitel, který drží harmonogram",
+    "nadpis": "Zhotovitel, který drží harmonogram",
     "lead": "Umíme se pohybovat na velké stavbě: koordinační schůzky, BOZP režim, etapizace, přejímky. Na TZB profese jsme jeden kontakt místo čtyř.",
     "vyhodyNadpis": "Co od nás dostanete",
     "vyhody": [

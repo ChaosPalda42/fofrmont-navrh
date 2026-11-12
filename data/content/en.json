@@ -102,7 +102,7 @@
     "ctaNadpis": "Do you have a tender inquiry?",
     "ctaText": "Send the Bill of Quantities. We will provide itemized pricing and deadlines that we can meet.",
     "lead": "We are capable of operating on large-scale construction sites: coordination meetings, HSE protocols, phasing, and handovers. For HVAC trades, we are a single point of contact instead of four.",
-    "nadpis": "A subcontractor that sticks to the schedule",
+    "nadpis": "A contractor that sticks to the schedule",
     "postup": [
       "Send us the Bill of Quantities or the project documentation, ideally including the deadline for completion.",
       "Within two working days, we will confirm whether we can take on the job and arrange a site inspection.",
@@ -333,7 +333,8 @@
     "recenze": "Reviews",
     "stavby": "Projects",
     "uvod": "Home",
-    "dalsi": "More"
+    "dalsi": "More",
+    "kontakty": "Contacts"
   },
   "oNas": {
     "dic": "VAT ID",
@@ -514,7 +515,7 @@
   },
   "spolecne": {
     "cta": "Non-binding inquiry",
-    "ctaPopis": "Six questions, two minutes. We will contact you within two working days.",
+    "ctaPopis": "6 questions, 2 minutes, and we will get back to you.",
     "hledat": "Search",
     "kraj": "Region",
     "nacistDalsi": "Load more",
@@ -582,7 +583,7 @@
   "uvod": {
     "ctaHlavni": "I want a non-binding quote",
     "ctaPatka": "Do you have a project, or at least an idea?",
-    "ctaPatkaText": "Send us your brief and we will get back to you within two working days to let you know if we can do it, when we can do it, and at what cost.",
+    "ctaPatkaText": "Send us your brief and we will get back to you to let you know if we can do it, when we can do it, and at what cost.",
     "ctaVedlejsi": "View projects",
     "lead": "Ventilation, heating, plumbing, and cooling. Supply and installation in a single contract — for general contractors on large-scale projects and for family houses.",
     "nadpis": "We will assemble it even where the design says it's impossible",
@@ -593,7 +594,7 @@
     "prepinacPopis": "Select what you want to see:",
     "recenzeLead": "Investors, site managers, technical supervisors, and homeowners.",
     "recenzeNadpis": "What they say about us",
-    "stavbyLead": "From operating rooms to residential attics. The same rule applies everywhere: cleaned and functional by morning.",
+    "stavbyLead": "Completed projects, from apartment buildings through operating rooms to a family-home attic.",
     "stavbyNadpis": "Recent projects",
     "stitek": "HVAC installations · since 2014",
     "realstaffPoznamka": "Equipment and vehicle rental, as well as property management, are provided by our sister company Realitstav Praha s.r.o.",

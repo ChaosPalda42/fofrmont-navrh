@@ -212,6 +212,7 @@
       if (hodnota === undefined || hodnota === "") return;
       el.textContent = hodnota;
       if (el.hasAttribute("data-udaj-mailto")) el.setAttribute("href", "mailto:" + hodnota);
+      if (el.hasAttribute("data-udaj-tel")) el.setAttribute("href", "tel:" + hodnota.replace(/\s/g, ""));
     });
     prepisyTextu(stav);
   }

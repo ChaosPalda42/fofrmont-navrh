@@ -323,3 +323,29 @@ pracovní název „Real Staff“, ne firma.
 stránce zůstává jen věta bez čísel, tam by rejstříkové údaje rušily.
 V „Co je skutečné“ je doplněno, že IČO, DIČ a sídlo Realitstavu jsou taky
 z rejstříku.
+
+## Úpravy od klienta, 12. 11. 2026
+
+**Texty.** „Pošlete zadání a my se ozveme…“ (`uvod.ctaPatkaText`) a „6 otázek,
+2 minuty a my se ozveme.“ (`spolecne.ctaPopis`) — z obou zmizel slib „do dvou
+pracovních dnů“. Lead u referencí na úvodu (`uvod.stavbyLead`) je zkrácený na
+jednu větu podle klienta. `b2b.nadpis`: Podzhotovitel → **Zhotovitel**, který
+drží harmonogram (včera si přitom vyžádal „Podzhotovitel“ — platí novější).
+Anglické protějšky přepsány stejně, `subcontractor` → `contractor`.
+
+Slovo „Podzhotovitel“ zůstává v rolích u čtyř referencí („Podzhotovitel
+generálního dodavatele“, `data/stavby.json`) a tím i v administraci. Nechal
+jsem to tak: „Zhotovitel generálního dodavatele“ by znamenalo něco jiného, a
+jestli to má zmizet, chce to vlastní formulaci (třeba „Zhotovitel části díla
+pro generálního dodavatele“). Otázka na klienta.
+
+**Kontakty v liště.** Nová rozbalovací položka vlevo, před „Co montujeme“
+(`kontaktyVListe()` v `layout.mjs`). Ukazuje totéž, co sloupec „Kontakt“
+v patičce: telefon, e-mail, adresu a IČO s DIČ, pod tím odkaz na stránku
+Kontakt. Telefon a e-mail jsou odkazy `tel:` a `mailto:`; kvůli tomu umí
+`web.js` nově i `data-udaj-tel`, takže změna čísla v administraci přepíše
+i odkaz. Údaje nesou stejné `data-udaj` jako patička, takže se nemůžou
+rozejít. Panel se zarovnává doleva (`--vlevo`), vpravo zarovnaný by vyjel
+z okna — naměřeno 280 × 197,5 px na levé hraně 442,8 při šířce 1440.
+Na mobilu je v rozbalené nabídce, 336,6 px široký při okně 375 (vejde se),
+a zrušené jsou linky, které mobilní nabídka jinak kreslí pod každý odkaz.

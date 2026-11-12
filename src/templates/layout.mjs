@@ -3,6 +3,38 @@ import { esc, atr } from "./lib.mjs";
 import { ikona } from "./ikony.mjs";
 import { znacka, napisLoga, znackaDily, dumObrys, podtitulLoga } from "./znacka.mjs";
 
+/**
+ * Kontakty hned v liště, vlevo před nabídkou oborů (klient 12. 11. 2026).
+ *
+ * Rozbalovací panel ukazuje totéž, co sloupec „Kontakt“ v patičce — telefon,
+ * e-mail, adresu a IČO s DIČ — aby člověk nemusel sjíždět dolů. Telefon
+ * a e-mail jsou odkazy (`tel:`, `mailto:`), na mobilu se z nich volá rovnou.
+ * Údaje nesou `data-udaj`, takže je administrace přepíše spolu s patičkou
+ * a nemůžou se rozejít. Panel se otevírá stejným `data-rozbal` jako ostatní
+ * nabídky v liště, jen se zarovnává na levou hranu — vpravo by vyjel z okna.
+ */
+function kontaktyVListe(ctx) {
+  const { t, odkaz, site } = ctx;
+  const a = site.firma.adresa;
+  const k = site.kontakt;
+  const radek = (jmeno, obsah) => `<p class="lista-kontakt__radek">
+        <span class="lista-kontakt__ikona">${ikona(jmeno, { velikost: 15 })}</span>${obsah}</p>`;
+  return `
+    <div class="navigace__vice" data-rozbal>
+      <button type="button" aria-expanded="false">
+        ${esc(t("nav.kontakty"))}${ikona("sipkaDolu", { velikost: 13 })}
+      </button>
+      <div class="navigace__panel navigace__panel--vlevo lista-kontakt">
+        ${radek("telefon", `<a class="mono" href="tel:${esc(k.telefon.replace(/\s/g, ""))}" data-udaj="kontakt.telefon" data-udaj-tel>${esc(k.telefon)}</a>`)}
+        ${radek("obalka", `<a href="mailto:${esc(k.email)}" data-udaj="kontakt.email" data-udaj-mailto>${esc(k.email)}</a>`)}
+        ${radek("pin", `<span><span data-udaj="kontakt.ulice">${esc(a.ulice)}</span>, ${esc(a.cast)}<br>
+        <span data-udaj="kontakt.psc">${esc(a.psc)}</span> <span data-udaj="kontakt.mesto">${esc(a.mesto)}</span></span>`)}
+        <p class="lista-kontakt__rejstrik">IČO ${esc(site.firma.ico)} · DIČ ${esc(site.firma.dic)}</p>
+        <a class="lista-kontakt__odkaz" href="${odkaz("kontakt")}">${esc(t("nav.kontakt"))}</a>
+      </div>
+    </div>`;
+}
+
 export function navigace(ctx, aktivni) {
   const { t, odkaz, site } = ctx;
   const polozka = (id, popisek) => {
@@ -22,6 +54,7 @@ export function navigace(ctx, aktivni) {
   const jeObor = String(aktivni).startsWith("obor-") || aktivni === "montaze";
   return `
   <nav class="navigace" id="navigace" aria-label="${esc(t("nav.uvod"))}">
+    ${kontaktyVListe(ctx)}
     ${rozbal("montaze", t("nav.montaze"), [["montaze", t("nav.montaze")], ...obory], jeObor)}
     ${polozka("stavby", t("nav.stavby"))}
     ${polozka("recenze", t("nav.recenze"))}
